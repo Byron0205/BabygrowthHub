@@ -5,6 +5,11 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
+      path:'/:pathMatch(.*)',
+      name: '404',
+      component: ()=> import ("../views/NotFound.vue")
+    },
+    {
       path: '/',
       name: 'home',
       component: HomeView
@@ -16,6 +21,21 @@ const router = createRouter({
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue')
+    },
+    {
+      path: "/admin",
+      name: 'admin',
+      component: ()=> import('../views/AdminView.vue')
+    },
+    {
+      path: "/admin/usuarios",
+      name: "usuarios",
+      component: ()=> import('../views/UsuariosView.vue')
+    },
+    {
+      path: "/admin/auditoria",
+      name: "auditoria",
+      component: ()=> import("../views/AuditoriaView.vue")
     }
   ]
 })
