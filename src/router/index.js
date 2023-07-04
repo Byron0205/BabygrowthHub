@@ -36,6 +36,11 @@ const router = createRouter({
       path: "/admin/auditoria",
       name: "auditoria",
       component: ()=> import("../views/AuditoriaView.vue")
+    },
+    {
+      path: '/actividades/seguimiento',
+      name: 'seguimiento',
+      component: ()=> import('../views/ActividadesView.vue')
     }
   ]
 })

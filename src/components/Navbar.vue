@@ -27,7 +27,7 @@
         </div>
     </nav>
     <div class="container-img">
-        <img src="../assets/img/Efecto-nube.png" alt="efecto">
+        <img class="img-efecto-nube" src="../assets/img/Efecto-nube.png" alt="efecto">
     </div>
 </template>
 
