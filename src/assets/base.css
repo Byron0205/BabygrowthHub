@@ -152,6 +152,73 @@ footer {
   font-weight: 700;
 }
 
+.home-flex-container {
+  display: flex;
+  padding: 2rem;
+}
+
+.home-text {
+  flex: 1;
+  font-family: "Baloo 2";
+  font-style: normal;
+  line-height: normal;
+  color: #253962;
+  padding: 4rem;
+}
+
+.home-logo {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.home-blue-text {
+  color: #7FCDFC;
+}
+
+.home-parrafo {
+  font-size: 1.3rem;
+}
+
+.home-logo {
+  color: #253962;
+}
+
+.home-img-container {
+  flex: 1;
+  max-width: 40%;
+}
+
+.home-img {
+  max-width: 100%;
+}
+
+.home-container-enlaces {
+  display: flex;
+  justify-content: space-between;
+  max-width: 60%;
+}
+
+.home-enlace {
+  color: #e24a75;
+  font-family: "Baloo 2";
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.home-decoracion {
+  position: relative;
+  padding: 1rem;
+}
+
+.home-nave-espacial {
+  position: absolute;
+  top: -5rem;
+  left: -3rem;
+}
+
 html {
   box-sizing: border-box;
   margin: 0;
