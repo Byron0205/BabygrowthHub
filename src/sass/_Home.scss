@@ -63,5 +63,53 @@
   position: absolute;
   top: -5rem;
   left: -3rem;
+}
+
+@media (max-width: 767px) {
+  .home-flex-container {
+    flex-direction: column;
+    padding: 0rem;
+    align-items: center;
+  }
+
+  .home-text {
+    padding: 1rem;
+    text-align: justify;
+  }
+
+  .home-logo {
+    font-size: 1.5rem;
+  }
+  
+  .home-parrafo {
+    font-size: 1rem;
+  }
+
+  .home-decoracion{
+    width: 15%;
+  }
+
+  .home-nave-espacial{
+    width: 100%;
+    top: -3rem;
+    left: 0rem;
+  }
+
+  .home-container-enlaces {
+    max-width: 100%;
+  }
+
+  .home-enlace {
+    font-size: 0.9rem;
+  }
+
+  .home-img-container {
+    margin-top: 1.5rem;
+    max-width: 90%;
+  }
+  
+  .home-img {
+    max-width: 100%;
+  }
   
 }

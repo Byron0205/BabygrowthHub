@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Catamaran:wght@100;200;300;400;500;600;700&display=swap");
 .flex {
   display: flex;
   justify-content: space-evenly;
@@ -217,6 +218,125 @@ footer {
   position: absolute;
   top: -5rem;
   left: -3rem;
+}
+
+@media (max-width: 767px) {
+  .home-flex-container {
+    flex-direction: column;
+    padding: 0rem;
+    align-items: center;
+  }
+  .home-text {
+    padding: 1rem;
+    text-align: justify;
+  }
+  .home-logo {
+    font-size: 1.5rem;
+  }
+  .home-parrafo {
+    font-size: 1rem;
+  }
+  .home-decoracion {
+    width: 15%;
+  }
+  .home-nave-espacial {
+    width: 100%;
+    top: -3rem;
+    left: 0rem;
+  }
+  .home-container-enlaces {
+    max-width: 100%;
+  }
+  .home-enlace {
+    font-size: 0.9rem;
+  }
+  .home-img-container {
+    margin-top: 1.5rem;
+    max-width: 90%;
+  }
+  .home-img {
+    max-width: 100%;
+  }
+}
+.NS-flex-container {
+  display: flex;
+  padding: 2rem;
+}
+
+.NS-img-container {
+  flex: 1;
+  max-width: 40%;
+}
+
+.NS-img {
+  max-width: 100%;
+}
+
+.NS-text {
+  flex: 1;
+  font-family: "Baloo 2";
+  font-style: normal;
+  line-height: normal;
+  padding: 4rem;
+}
+
+.NS-titulo {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #e24a75;
+  text-transform: uppercase;
+}
+
+.NS-parrafo {
+  font-size: 1.3rem;
+  color: #253962;
+}
+
+.NS-buscar-container {
+  display: flex;
+  align-items: center;
+}
+
+.NS-input {
+  width: 30rem;
+  padding: 0.7rem;
+  margin-right: 1rem;
+  border-radius: 5px;
+  border: solid 1px #253962;
+}
+
+.NS-input:focus {
+  outline: none;
+}
+
+.NS-icon {
+  color: #479DD8;
+  font-size: 2rem;
+}
+
+.NS-button {
+  background-color: transparent;
+  border: none;
+}
+
+.NS-button:hover {
+  cursor: pointer;
+}
+
+.NS-resultado-container {
+  background-color: rgba(169, 220, 255, 0.1);
+  padding: 1rem;
+  margin-top: 2rem;
+  width: 90%;
+}
+
+.NS-resultado {
+  color: #253962;
+  font-size: 1.2rem;
+  font-family: "Catamaran";
+  font-style: normal;
+  font-weight: 250;
+  line-height: normal;
 }
 
 html {
