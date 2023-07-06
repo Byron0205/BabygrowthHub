@@ -1,4 +1,5 @@
 .NS-flex-container {
+  margin-top: 2rem;
   display: flex;
   padding: 2rem;
 }
@@ -77,4 +78,37 @@
   font-style: normal;
   font-weight: 250;
   line-height: normal;
+}
+
+@media (max-width: 767px) {
+  .NS-flex-container{
+    flex-direction: column;
+    padding: 0rem;
+  }
+
+  .NS-text{
+    padding: 1rem;
+    text-align: justify;
+  }
+
+  .NS-titulo {
+    font-size: 1.5rem;
+  }
+
+  .NS-parrafo {
+    font-size: 1rem;
+  }
+
+  .NS-img-container {
+    display: none;
+  }
+
+  .NS-resultado-container {
+    padding: 0.5rem;
+    width: 95%;
+  }
+  
+  .NS-resultado {
+    font-size: 1rem;
+  }
 }

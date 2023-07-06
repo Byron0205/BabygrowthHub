@@ -65,6 +65,20 @@
   left: -3rem;
 }
 
+.home-oso{
+  position: absolute;
+  top: -30rem;
+  left: 50rem;
+  width: 7rem;
+}
+
+.home-sol{
+  position: absolute;
+  top: 5rem;
+  left: 120rem;
+  width: 7rem;
+}
+
 @media (max-width: 767px) {
   .home-flex-container {
     flex-direction: column;
@@ -110,6 +124,16 @@
   
   .home-img {
     max-width: 100%;
+  }
+
+  .home-oso{
+    display: none;
+  }
+
+  .home-sol{
+    top: -1rem;
+    left: 19rem;
+    width: 5rem;
   }
   
 }

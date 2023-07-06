@@ -1,4 +1,5 @@
 <template>
+  <!-- Mensaje bienvenida -->
   <div class="home-flex-container">
     <div class="home-text">
       <div class="home-decoracion">
@@ -66,17 +67,41 @@
           {{ resultadoSignificado }}
         </p>
       </div>
+
+      <div class="home-decoracion">
+        <img
+          class="home-oso"
+          src="../assets/img/Decoracion-oso.png"
+          alt="Decoracion osito de peluche"
+        />
+      </div>
     </div>
+  </div>
+
+  <!-- Slider consejos -->
+  <div>
+    <div class="home-decoracion">
+        <img
+          class="home-sol"
+          src="../assets/img/Decoracion-sol.png"
+          alt="Decoracion osito de peluche"
+        />
+      </div>
+    <SliderConsejos />
   </div>
 </template>
 
-
 <script>
-  export default {
-    data() {
-      return {
-        resultadoSignificado: "El nombre Brian tiene origen celta y su significado es 'fuerte' o 'poderoso'. Proviene de la palabra irlandesa 'Brígh' que significa 'fuerza' o 'virtud'."
-      }
-    },
-  }
+import SliderConsejos from "../components/SliderConsejos.vue";
+export default {
+  data() {
+    return {
+      resultadoSignificado:
+        "El nombre Brian tiene origen celta y su significado es 'fuerte' o 'poderoso'. Proviene de la palabra irlandesa 'Brígh' que significa 'fuerza' o 'virtud'.",
+    };
+  },
+  components: {
+    SliderConsejos,
+  },
+};
 </script>
