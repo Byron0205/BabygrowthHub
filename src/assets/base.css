@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Catamaran:wght@400;500;600;700&display=swap");
 .flex {
   display: flex;
   justify-content: space-evenly;
@@ -98,6 +98,12 @@ nav {
   list-style-type: none;
 }
 
+.container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .menu-lateral {
   width: 323px;
   height: 876px;
@@ -150,6 +156,191 @@ footer {
   text-align: center;
   font-family: "baloo 2", cursive;
   font-weight: 700;
+}
+
+.c-login {
+  border-radius: 15px 15px 0 0;
+  width: 550px;
+  padding-bottom: 30px;
+  flex-shrink: 0;
+  color: #253962;
+  background-color: rgba(79, 67, 154, 0.05);
+}
+
+.c-login-header {
+  padding: 6px 0;
+  border-radius: 15px 15px 0 0;
+  color: #4F439A;
+  background-color: rgba(121, 108, 208, 0.3);
+  font-size: 40px;
+  text-align: center;
+  font-family: "Baloo 2", cursive;
+  font-weight: 700;
+}
+
+.c-login-body {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Clases para campos de formulario */
+.input-container {
+  height: 40px;
+  position: relative;
+  width: 100%;
+}
+
+.ic1 {
+  margin-top: 20px;
+}
+
+.input {
+  background-color: #fcfcfc;
+  border-radius: 5px;
+  border: 1px solid #4F439A;
+  box-sizing: border-box;
+  color: #253962;
+  font-size: 18px;
+  height: 40px;
+  padding: 4px 10px 0;
+  width: 100%;
+}
+
+.input:not(:-moz-placeholder-shown) ~ .cut {
+  transform: translateY(8px);
+}
+
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
+  transform: translateY(8px);
+}
+
+.placeholder {
+  background-color: #fcfcfc;
+  color: #253962;
+  font-family: "Catamaran", sans-serif;
+  font-weight: 400;
+  font-size: 30px;
+  left: 0px;
+  line-height: 15px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 30%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.input:not(:-moz-placeholder-shown) ~ .placeholder {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:-moz-placeholder-shown) ~ .placeholder {
+  color: #4F439A;
+}
+
+.input:not(:placeholder-shown) ~ .placeholder {
+  color: #4F439A;
+}
+
+.input:focus ~ .placeholder {
+  color: #18152f;
+}
+
+/* boton de login */
+.submit {
+  width: 80%;
+  padding: 4px 0;
+  color: #fcfcfc;
+  background-color: rgba(255, 158, 198, 0.9);
+  border: none;
+  border-radius: 26px;
+  font-family: "Baloo 2", cursive;
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: normal;
+}
+
+.submit-2 {
+  background: linear-gradient(90deg, rgba(79, 67, 154, 0.9) 0%, rgba(105, 85, 228, 0.9) 100%);
+}
+
+.text-option {
+  color: #4F439A;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "Catamaran", sans-serif;
+  line-height: normal;
+}
+.text-option:first-of-type {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+.text-option:last-child {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.option {
+  font-weight: 700;
+}
+.option:hover {
+  color: #342c65;
+  cursor: pointer;
+}
+
+.divider {
+  width: 90%;
+  border-bottom: 2px dashed #4F439A;
+}
+
+.container-img-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  height: 100%;
+}
+
+.img-padres-1 {
+  width: 342px;
+  height: 343px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 30px;
+  border: 2px dashed #FB5D3B;
+  border-radius: 50%;
+}
+
+.sun-sticker {
+  position: relative;
+  top: 45px;
+  left: 95px;
+}
+
+.img-padres-2 {
+  width: 342px;
+  height: 343px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 30px;
+  border-radius: 50%;
+  border: 2px dashed #786ACF;
 }
 
 html {

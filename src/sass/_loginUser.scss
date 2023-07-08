@@ -1,0 +1,176 @@
+.c-login {
+    border-radius: 15px 15px 0 0;
+    width: 550px;
+    padding-bottom: 30px;
+    flex-shrink: 0;
+    color: $letter-1;
+    background-color: rgba(79, 67, 154, 0.05);
+    ;
+}
+
+.c-login-header {
+    padding: 6px 0;
+    border-radius: 15px 15px 0 0;
+    color: $letter-4;
+    background-color: rgba(121, 108, 208, 0.30);
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Baloo 2', cursive;
+    font-weight: 700;
+}
+
+.c-login-body {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Clases para campos de formulario */
+.input-container {
+    height: 40px;
+    position: relative;
+    width: 100%;
+}
+
+.ic1 {
+    margin-top: 20px;
+}
+
+.input {
+    background-color: $blanco;
+    border-radius: 5px;
+    border: 1px solid $border-input;
+    box-sizing: border-box;
+    color: $letter-1;
+    font-size: 18px;
+    height: 40px;
+    padding: 4px 10px 0;
+    width: 100%;
+}
+
+.input:focus~.cut,
+.input:not(:placeholder-shown)~.cut {
+    transform: translateY(8px);
+}
+
+.placeholder {
+    background-color: $blanco;
+    color: $letter-1;
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    left: 0px;
+    line-height: 15px;
+    pointer-events: none;
+    position: absolute;
+    transform-origin: 0 30%;
+    transition: transform 200ms, color 200ms;
+    top: 20px;
+}
+
+.input:focus~.placeholder,
+.input:not(:placeholder-shown)~.placeholder {
+    transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown)~.placeholder {
+    color: $letter-4;
+}
+
+.input:focus~.placeholder {
+    color: darken($letter-4, 30)
+}
+
+/* boton de login */
+.submit {
+    width: 80%;
+    padding: 4px 0;
+    color: $blanco;
+    background-color: rgba(255, 158, 198, 0.90);
+    border: none;
+    border-radius: 26px;
+
+    font-family: 'Baloo 2', cursive;
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: normal;
+}
+
+.submit-2 {
+    background: linear-gradient(90deg, rgba(79, 67, 154, 0.90) 0%, rgba(105, 85, 228, 0.90) 100%);
+}
+
+.text-option {
+    color: $letter-4;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: 'Catamaran', sans-serif;
+    line-height: normal;
+
+    &:first-of-type {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+    &:last-child {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+}
+
+
+.option {
+    font-weight: 700;
+
+    &:hover {
+        color: darken($letter-4, 15);
+        cursor: pointer;
+    }
+}
+
+.divider {
+    width: 90%;
+    border-bottom: 2px dashed $letter-4;
+}
+
+.container-img-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+}
+
+.img-padres-1 {
+    width: 342px;
+    height: 343px;
+    object-fit: contain;
+    padding: 30px;
+    border: 2px dashed $orange;
+    border-radius: 50%;
+}
+
+.sun-sticker{
+    position: relative;
+    top: 45px;
+    left: 95px;
+}
+
+.img-padres-2 {
+    width: 342px;
+    height: 343px;
+    object-fit: contain;
+    padding: 30px;
+    border-radius: 50%;
+    border: 2px dashed $border-purple;
+}

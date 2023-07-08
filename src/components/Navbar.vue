@@ -20,7 +20,7 @@
                 <button class="btn">Salir</button>
             </div> -->
             <div class="btn-group">
-                <button class="btn-inicio">Iniciar Sesion</button>
+                <button @click="login" class="btn-inicio">Iniciar Sesion</button>
                 <button class="btn-registro">Registrarse</button>
             </div>
             
@@ -33,7 +33,11 @@
 
 <script>
 export default {
-
+    methods:{
+        login(){
+            this.$router.push('/login')
+        }
+    }
 }
 </script>
 
