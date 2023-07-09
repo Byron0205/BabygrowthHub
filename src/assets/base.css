@@ -104,6 +104,21 @@ nav {
   gap: 10px;
 }
 
+.container-register {
+  margin: 0 auto;
+  width: 90%;
+  height: 344px;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  justify-self: start;
+  align-items: center;
+}
+@media (min-height: 900px) {
+  .container-register {
+    height: 523px;
+  }
+}
+
 .menu-lateral {
   width: 323px;
   height: 876px;
@@ -341,6 +356,84 @@ footer {
   padding: 30px;
   border-radius: 50%;
   border: 2px dashed #786ACF;
+}
+
+.img-boy {
+  position: absolute;
+  bottom: 0;
+}
+@media (min-height: 900px) {
+  .img-boy {
+    height: 40%;
+  }
+}
+
+.img-cloud-bg {
+  position: absolute;
+  top: 250px;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  z-index: 0;
+}
+@media (min-height: 900px) {
+  .img-cloud-bg {
+    width: 100%;
+    height: 440px;
+    top: 280px;
+    left: 0;
+  }
+}
+
+.img-star-1 {
+  position: absolute;
+}
+
+.img-star-2 {
+  position: absolute;
+}
+
+.img-star-3 {
+  position: absolute;
+}
+
+.form-register {
+  grid-column: 2/4;
+  grid-row: 1/3;
+  align-items: flex-start;
+  justify-content: flex-start;
+  z-index: 1;
+}
+
+.title-register {
+  grid-column: 1/3;
+  grid-row: 1/2;
+  color: #479DD8;
+  font-family: "baloo 2", cursive;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.submit-register {
+  font-size: 20px;
+  background-color: #7ECAFD;
+  border-radius: 36px;
+  width: 25%;
+}
+
+.width-50 {
+  width: 40%;
+}
+@media (min-height: 900px) {
+  .width-50 {
+    width: 50%;
+  }
+}
+
+.flex-register {
+  gap: 10px;
 }
 
 html {

@@ -2,5 +2,18 @@
     display: flex;
     align-items: center;
     gap: 10px;
+}
 
+.container-register{
+    margin: 0 auto;
+    width: 90%;
+    height: 344px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    justify-self: start;
+    align-items: center;
+
+    @include respond-to(tv){
+        height: 523px;
+    }
 }

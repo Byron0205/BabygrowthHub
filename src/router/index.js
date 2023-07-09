@@ -28,6 +28,11 @@ const router = createRouter({
       component: () => import('../views/LoginUserView.vue')
     },
     {
+      path: "/registro",
+      name: 'registro',
+      component: () => import('../views/RegisterParentVIew.vue')
+    },
+    {
       path: "/admin",
       name: 'admin',
       component: ()=> import('../views/AdminView.vue')
