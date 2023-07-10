@@ -10,16 +10,14 @@
       </button>
     </div>
     <div>
-        <img
-          class="img"
-          src="../assets/img/Efecto-nube.png"
-          alt="fondo nubes"
-        />
-      </div>
+      <img class="img" src="../assets/img/Efecto-nube.png" alt="fondo nubes" />
+    </div>
     <table class="tabla-calendario">
       <thead>
         <tr>
-          <th class="nombre-dia-semana" v-for="day in daysOfWeek" :key="day">{{ day }}</th>
+          <th class="nombre-dia-semana" v-for="day in daysOfWeek" :key="day">
+            {{ day }}
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -34,6 +32,7 @@
                 v-for="event in getEventsForDate(day.date)"
                 :key="event.title"
                 class="event"
+                :style="{ backgroundColor: event.color }"
               >
                 {{ event.title }}
               </div>
@@ -43,28 +42,50 @@
       </tbody>
     </table>
 
-    <div class="popup" v-if="isPopupOpen">
-      <div class="popup-content">
-        <h3>Agregar evento</h3>
-        <div>
-          <label for="event-name">Nombre:</label>
-          <input type="text" id="event-name" v-model="eventName" />
-        </div>
-        <div>
-          <label for="event-description">Descripción:</label>
-          <textarea
-            id="event-description"
-            v-model="eventDescription"
-          ></textarea>
-        </div>
-        <div>
-          <label for="event-date">Fecha:</label>
-          <input type="text" id="event-date" v-model="eventDate" readonly />
+    <div class="nuevo-evento" v-if="isPopupOpen">
+      <div class="nuevo-evento-content">
+        <div class="nuevo-evento-header">
+          <p>NUEVA ACTIVIDAD</p>
         </div>
 
-        <div>
-          <button @click="saveEvent">Guardar</button>
-          <button @click="isPopupOpen = false">Cancelar</button>
+        <div class="nuevo-evento-contenido">
+          <div class="nuevo-evento-flex-container">
+            <label class="nuevo-evento-label" for="event-name">Nombre Actividad</label>
+            <input
+              class="nuevo-evento-input"
+              type="text"
+              id="event-name"
+              v-model="eventName"
+            />
+          </div>
+          <div class="nuevo-evento-flex-container">
+            <label class="nuevo-evento-label" for="event-description">Detalle:</label>
+            <textarea class="nuevo-evento-input"
+              id="event-description"
+              v-model="eventDescription"
+            ></textarea>
+          </div>
+          <div class="nuevo-evento-flex-container">
+            <label for="event-date">Fecha:</label>
+            <input type="text" id="event-date" v-model="eventDate" readonly />
+          </div>
+          <div>
+            <label for="event-category">Categoría:</label>
+            <select id="event-category" v-model="eventCategory">
+              <option
+                v-for="category in categories"
+                :key="category.name"
+                :value="category"
+              >
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+
+          <div>
+            <button @click="saveEvent">Guardar</button>
+            <button @click="isPopupOpen = false">Cancelar</button>
+          </div>
         </div>
       </div>
     </div>
@@ -93,6 +114,12 @@ export default {
       eventDescription: "",
       isPopupOpen: false,
       eventDate: null,
+      categories: [
+        { name: "Cita Médica", color: "#87bd40" },
+        { name: "Tratamiento", color: "#4081bd" },
+        { name: "Personal", color: "#7e40bd" },
+      ],
+      eventCategory: null,
     };
   },
   computed: {
@@ -154,22 +181,37 @@ export default {
       }
     },
     saveEvent() {
+      const selectedCategory = this.eventCategory;
       const event = {
         date: format(this.selectedDate, "yyyy-MM-dd"),
         title: this.eventName,
         description: this.eventDescription,
+        category: selectedCategory.name,
+        color: selectedCategory.color,
       };
       this.events.push(event);
 
       // Reset input values
       this.eventName = "";
       this.eventDescription = "";
+      this.eventCategory = null;
 
       this.isPopupOpen = false;
     },
     getEventsForDate(date) {
       const formattedDate = format(date, "yyyy-MM-dd");
-      return this.events.filter((event) => event.date === formattedDate);
+      return this.events
+        .filter((event) => event.date === formattedDate)
+        .map((event) => ({
+          ...event,
+          color: this.getCategoryColor(event.category),
+        }));
+    },
+    getCategoryColor(categoryName) {
+      const category = this.categories.find(
+        (category) => category.name === categoryName
+      );
+      return category ? category.color : "";
     },
   },
 };
