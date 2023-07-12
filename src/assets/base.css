@@ -385,18 +385,6 @@ footer {
   }
 }
 
-.img-star-1 {
-  position: absolute;
-}
-
-.img-star-2 {
-  position: absolute;
-}
-
-.img-star-3 {
-  position: absolute;
-}
-
 .form-register {
   grid-column: 2/4;
   grid-row: 1/3;

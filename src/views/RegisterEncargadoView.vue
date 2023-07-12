@@ -1,15 +1,15 @@
 <template>
     <div class="container">
-        <register-parent />
+        <RegisterEncargado />
         <img class="img-boy" src="../assets/img/niño1.png" alt="niño">
         
     </div>
 </template>
 
 <script>
-import RegisterParent from '../components/RegisterParent.vue'
+import RegisterEncargado from '../components/RegisterEncargado.vue'
 export default {
-    components: { RegisterParent },
+    components: { RegisterEncargado },
 
 }
 </script>
