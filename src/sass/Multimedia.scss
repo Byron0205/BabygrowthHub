@@ -1,0 +1,164 @@
+
+.info-text {
+    display: flex;
+    width: 779px;
+    height: 219px;
+    flex-direction: column;
+    color: #253962;
+    text-align: justify;
+    font-family: 'Baloo 2';
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.form-multi {
+    width: 788px;
+    height: 691px;
+    border-radius: 15px;
+    border: 1px dashed #6359A6;
+}
+
+.text-label {
+    color: #3E3578;
+    font-family: 'Baloo 2';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.new-memory {
+    width: 336px;
+    height: 46px;
+    border-radius: 5px;
+    border: 1px solid #3E3578;
+    background: rgba(121, 108, 208, 0.03);
+}
+
+.upload-multi {
+    border-radius: 5px;
+    border: 1px dashed #253962;
+    background: rgba(121, 108, 208, 0.03);
+    width: 700px;
+    height: 124px;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &.drag-over {
+        background-color: #E5E5E5;
+    }
+
+    .date {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        font-size: 16px;
+    }
+
+    .drag-text {
+        text-align: center;
+        font-size: 18px;
+    }
+
+    .trash-icon {
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        font-size: 20px;
+    }
+}
+
+.type-multi {
+    font-family: 'Baloo 2';
+    width: 100%;
+    height: 48px;
+    border-radius: 5px;
+    border: 1px solid #4F439A;
+    background-color: #fcfcfc;
+    color: #4F439A;
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.age-baby {
+    font-family: 'Baloo 2';
+    width: 100%;
+    height: 48px;
+    border-radius: 5px;
+    border: 1px solid #4F439A;
+    background-color: #fcfcfc;
+    color: #4F439A;
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.sons {
+    font-family: 'Baloo 2';
+    width: 100%;
+    height: 48px;
+    border-radius: 5px;
+    border: 1px solid #4F439A;
+    background-color: #fcfcfc;
+    color: #4F439A;
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.save-multi{
+    border-radius: 15px;
+    background: #3E3578;
+    width: 262px;
+    height: 42px;
+    color: #FFF;
+    text-align: center;
+    font-family: 'Baloo 2';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.date{
+    p{
+        color: #3E3578;
+        font-family: 'Catamaran';
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+}
+
+.drag-text{
+    p{
+        color: #3E3578;
+        font-family: 'Baloo 2';
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+    }
+}
+
+.upload-message {
+    font-family: 'Baloo 2';
+    width: 300px;
+    height: 48px;
+    border-radius: 5px;
+    border: 1px solid #4F439A;
+    background-color: #fcfcfc;
+    color: #4F439A;
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
