@@ -1,18 +1,18 @@
 <template>
   <!-- Mensaje bienvenida -->
-  <div class="home-flex-container">
-    <div class="home-text">
-      <div class="home-decoracion">
+  <div class="homeFlexContainer">
+    <div class="homeText">
+      <div class="homeDecoration">
         <img
-          class="home-nave-espacial"
+          class="homeSpaceship"
           src="../assets/img/Decoracion-nave-espacial.png"
           alt="Decoracion nave espacial"
         />
       </div>
-      <p class="home-logo">
-        ¡Bienvenido a <span class="home-blue-text">BabyGrowthHub</span>!
+      <p class="homeLogo">
+        ¡Bienvenido a <span class="homeBlueText">BabyGrowthHub</span>!
       </p>
-      <p class="home-parrafo">
+      <p class="homeParagraph">
         Te ofrecemos una amplia gama de servicios diseñados para ayudarte a
         cuidar y mantener a tu pequeño tesoro feliz y saludable. Nos enorgullece
         brindarte una experiencia sencilla, intuitiva y agradable mientras te
@@ -22,16 +22,16 @@
       </p>
 
       <!-- Queda pendiente modificar los enlaces -->
-      <div class="home-container-enlaces">
-        <a class="home-enlace" href="#">Consejos</a>
-        <a class="home-enlace" href="#">Nombres & Significados</a>
-        <a class="home-enlace" href="#">Acerca De</a>
+      <div class="homeContainerLinks">
+        <a class="homeLink" href="#">Consejos</a>
+        <a class="homeLink" href="#">Nombres & Significados</a>
+        <a class="homeLink" href="#">Acerca De</a>
       </div>
     </div>
 
-    <div class="home-img-container">
+    <div class="homeImgContainer">
       <img
-        class="home-img"
+        class="homeImg"
         src="../assets/img/Home-image-01.png"
         alt="Niños jugando"
       />
@@ -39,38 +39,38 @@
   </div>
 
   <!-- 'NS' = Nombres y significados -->
-  <div class="NS-flex-container">
-    <div class="NS-img-container">
+  <div class="NSflexContainer">
+    <div class="NSImgContainer">
       <img
-        class="NS-img"
+        class="NSImg"
         src="../assets/img/Home-image-02.png"
         alt="Niños jugando"
       />
     </div>
-    <div class="NS-text">
-      <p class="NS-titulo">Nombres & Significados</p>
-      <p class="NS-parrafo">
+    <div class="NSText">
+      <p class="NSTitle">Nombres & Significados</p>
+      <p class="NSParagraph">
         ¡Descubre el significado detrás de cada nombre de bebé con nuestro
         buscador especializado! Simplemente ingresa el nombre que deseas
         explorar y haz clic en el botón de búsqueda
       </p>
-      <div class="NS-buscar-container">
-        <input type="text" class="NS-input" />
-        <button class="NS-button">
-          <i class="fa-solid fa-magnifying-glass NS-icon"></i>
+      <div class="NSSearchContainer">
+        <input type="text" class="NSInput" />
+        <button class="NSButton">
+          <i class="fa-solid fa-magnifying-glass NSIcon"></i>
         </button>
       </div>
 
       <!-- Ocultar y mostrar segun sea necesario -->
-      <div id="ResultadoSignificado" class="NS-resultado-container">
-        <p class="NS-resultado" id="Resultado">
-          {{ resultadoSignificado }}
+      <div id="ResultMeaning" class="NSResultContainer">
+        <p class="NSResult" id="Result">
+          {{ resultMeaning }}
         </p>
       </div>
 
-      <div class="home-decoracion">
+      <div class="homeDecoration">
         <img
-          class="home-oso"
+          class="homeBear"
           src="../assets/img/Decoracion-oso.png"
           alt="Decoracion osito de peluche"
         />
@@ -80,9 +80,9 @@
 
   <!-- Slider consejos -->
   <div>
-    <div class="home-decoracion">
+    <div class="homeDecoration">
         <img
-          class="home-sol"
+          class="homeSun"
           src="../assets/img/Decoracion-sol.png"
           alt="Decoracion osito de peluche"
         />
@@ -96,7 +96,7 @@ import SliderConsejos from "../components/SliderConsejos.vue";
 export default {
   data() {
     return {
-      resultadoSignificado:
+      resultMeaning:
         "El nombre Brian tiene origen celta y su significado es 'fuerte' o 'poderoso'. Proviene de la palabra irlandesa 'Brígh' que significa 'fuerza' o 'virtud'.",
     };
   },

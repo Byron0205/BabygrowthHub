@@ -1,19 +1,19 @@
-.NS-flex-container {
+.NSflexContainer {
   margin-top: 2rem;
   display: flex;
   padding: 2rem;
 }
 
-.NS-img-container {
+.NSImgContainer {
   flex: 1;
   max-width: 40%;
 }
 
-.NS-img {
+.NSImg {
   max-width: 100%;
 }
 
-.NS-text {
+.NSText {
   flex: 1;
   font-family: "Baloo 2";
   font-style: normal;
@@ -21,24 +21,24 @@
   padding: 4rem;
 }
 
-.NS-titulo {
+.NSTitle {
   font-weight: bold;
   font-size: 2rem;
   color: $letter-2;
   text-transform: uppercase;
 }
 
-.NS-parrafo {
+.NSParagraph {
   font-size: 1.3rem;
   color: $letter-1;
 }
 
-.NS-buscar-container {
+.NSSearchContainer {
   display: flex;
   align-items: center;
 }
 
-.NS-input {
+.NSInput {
   width: 30rem;
   padding: 0.7rem;
   margin-right: 1rem;
@@ -46,32 +46,32 @@
   border: solid 1px $letter-1;
 }
 
-.NS-input:focus {
+.NSInput:focus {
   outline: none;
 }
 
-.NS-icon {
+.NSIcon {
   color: $lb-2;
   font-size: 2rem;
 }
 
-.NS-button {
+.NSButton {
   background-color: transparent;
   border: none;
 }
 
-.NS-button:hover {
+.NSButton:hover {
   cursor: pointer;
 }
 
-.NS-resultado-container {
+.NSResultContainer {
   background-color: rgba($lb-4, 0.1);
   padding: 1rem;
   margin-top: 2rem;
   width: 90%;
 }
 
-.NS-resultado {
+.NSResult {
   color: $letter-1;
   font-size: 1.2rem;
   font-family: 'Catamaran';
@@ -80,35 +80,3 @@
   line-height: normal;
 }
 
-@media (max-width: 767px) {
-  .NS-flex-container{
-    flex-direction: column;
-    padding: 0rem;
-  }
-
-  .NS-text{
-    padding: 1rem;
-    text-align: justify;
-  }
-
-  .NS-titulo {
-    font-size: 1.5rem;
-  }
-
-  .NS-parrafo {
-    font-size: 1rem;
-  }
-
-  .NS-img-container {
-    display: none;
-  }
-
-  .NS-resultado-container {
-    padding: 0.5rem;
-    width: 95%;
-  }
-  
-  .NS-resultado {
-    font-size: 1rem;
-  }
-}

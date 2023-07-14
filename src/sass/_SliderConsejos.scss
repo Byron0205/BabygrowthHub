@@ -1,31 +1,31 @@
-.slider-container {
+.sliderContainer {
   margin-top: 2rem;
   display: flex;
   padding: 2em;
   align-items: center;
 }
 
-.slider-item {
+.sliderItem {
   display: flex;
   align-items: center;
   padding: 2rem;
 }
 
-.slider-image-container {
+.sliderImgContainer {
   flex: 1;
   max-width: 40%;
 }
 
-.slider-image {
+.sliderImage {
   width: 100%;
 }
 
-.slider-content {
+.sliderContent {
   flex: 1;
   padding: 2rem;
 }
 
-.slider-title {
+.sliderTitle {
   color: $letter-2;
   font-family: "Baloo 2";
   font-size: 2rem;
@@ -34,7 +34,7 @@
   text-transform: uppercase;
 }
 
-.slider-text {
+.sliderText {
   color: $letter-1;
   font-family: "Baloo 2";
   font-size: 1.3rem;
@@ -43,58 +43,16 @@
   line-height: normal;
 }
 
-.slider-button {
+.sliderButton {
   background-color: transparent;
   border: none;
 }
 
-.slider-button:hover {
+.sliderButton:hover {
   cursor: pointer;
 }
 
-.slider-button-icon {
+.sliderButtonIcon {
   font-size: 3rem;
   color: $purple;
-}
-
-@media (max-width: 767px) {
-  .slider-container {
-    margin: 1rem;
-    padding: 0rem;
-    border-radius: 5px;
-    background: #fff;
-    box-shadow: 2px 2px 15px 0px rgba(0, 0, 0, 0.25);
-  }
-
-  .slider-item {
-    display: flex;
-    flex-direction: column;
-    padding: 0rem;
-  }
-
-  .slider-content {
-    padding: 0rem;
-    text-align: center;
-  }
-
-  .slider-text {
-    font-size: 1rem;
-    text-align: justify;
-  }
-
-  .slider-title {
-    font-size: 1.5rem;
-  }
-
-  .slider-image-container {
-    max-width: 100%;
-  }
-
-  .slider-image {
-    width: 100%;
-  }
-
-  .slider-button-icon {
-    font-size: 2rem;
-  }
 }

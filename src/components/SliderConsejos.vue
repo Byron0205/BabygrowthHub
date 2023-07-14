@@ -1,25 +1,25 @@
 <template>
-  <div class="slider-container">
-    <button class="slider-button" @click="prevItem">
-      <i class="fa-solid fa-circle-arrow-left slider-button-icon"></i>
+  <div class="sliderContainer">
+    <button class="sliderButton" @click="prevItem">
+      <i class="fa-solid fa-circle-arrow-left sliderButtonIcon"></i>
     </button>
 
-    <div class="slider-item">
-      <div class="slider-image-container">
+    <div class="sliderItem">
+      <div class="sliderImgContainer">
         <img
           :src="items[currentIndex].image"
           alt="Slider Image"
-          class="slider-image"
+          class="sliderImage"
         />
       </div>
-      <div class="slider-content">
-        <p class="slider-title">{{ items[currentIndex].title }}</p>
-        <p class="slider-text">{{ items[currentIndex].description }}</p>
+      <div class="sliderContent">
+        <p class="sliderTitle">{{ items[currentIndex].title }}</p>
+        <p class="sliderText">{{ items[currentIndex].description }}</p>
       </div>
     </div>
 
-    <button class="slider-button" @click="nextItem">
-      <i class="fa-solid fa-circle-arrow-right slider-button-icon"></i>
+    <button class="sliderButton" @click="nextItem">
+      <i class="fa-solid fa-circle-arrow-right sliderButtonIcon"></i>
     </button>
   </div>
 </template>

@@ -1,37 +1,38 @@
 <template>
-  <div class="containter-calendario">
-    <div class="header-calendario">
-      <button class="next-button" @click="previousMonth">
-        <i class="fa-solid fa-arrow-left calendario-button-icon"></i>
+  <div class="containterCalendar">
+    <div class="headerCalendar">
+      <button class="nextButton" @click="previousMonth">
+        <i class="fa-solid fa-arrow-left calendarButtonIcon"></i>
       </button>
       <p class="mes">{{ currentMonth }}</p>
-      <button class="next-button" @click="nextMonth">
-        <i class="fa-solid fa-arrow-right calendario-button-icon"></i>
+      <button class="nextButton" @click="nextMonth">
+        <i class="fa-solid fa-arrow-right calendarButtonIcon"></i>
       </button>
     </div>
     <div>
       <img class="img" src="../assets/img/Efecto-nube.png" alt="fondo nubes" />
     </div>
-    <table class="tabla-calendario">
+    <table class="tableCalendar">
       <thead>
         <tr>
-          <th class="nombre-dia-semana" v-for="day in daysOfWeek" :key="day">
+          <th class="nameDayWeek" v-for="day in daysOfWeek" :key="day">
             {{ day }}
           </th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="(week, index) in calendar" :key="index">
-          <td class="celdas-calendario" v-for="day in week" :key="day.date">
+          <td class="cellsCalendar" v-for="day in week" :key="day.date">
+            <!-- Metodos 'isToday' y 'isSelected retornan boolean y segun este se aplica la clase 'today' o 'isSelected'' -->
             <div
-              :class="{ today: isToday(day), selected: isSelected(day) }"
+              :class="{ calendarToday: isToday(day), isSelected: isSelected(day) }"
               @click="selectDate(day)"
             >
-              <span class="date">{{ day.day }}</span>
+              <span>{{ day.day }}</span>
               <div
                 v-for="event in getEventsForDate(day.date)"
                 :key="event.title"
-                class="event"
+                class="calendarEvent"
                 :style="{ backgroundColor: event.color }"
               >
                 {{ event.title }}
@@ -42,36 +43,36 @@
       </tbody>
     </table>
 
-    <div class="nuevo-evento" v-if="isPopupOpen">
-      <div class="nuevo-evento-content">
-        <div class="nuevo-evento-header">
+    <div class="createEventContainer" v-if="isPopupOpen">
+      <div class="createEventContent">
+        <div class="createEventHeader">
           <p>NUEVA ACTIVIDAD</p>
         </div>
 
-        <div class="nuevo-evento-contenido">
-          <div class="nuevo-evento-flex-container">
-            <label class="nuevo-evento-label" for="event-name">Nombre Actividad</label>
+        <div class="formCreateNewEvent">
+          <div class="newEventFlexContainer">
+            <label class="newEventLabel" for="newEventName">Nombre Actividad</label>
             <input
-              class="nuevo-evento-input"
+              class="newEventInput"
               type="text"
-              id="event-name"
+              id="newEventName"
               v-model="eventName"
             />
           </div>
-          <div class="nuevo-evento-flex-container">
-            <label class="nuevo-evento-label" for="event-description">Detalle:</label>
-            <textarea class="nuevo-evento-input"
-              id="event-description"
+          <div class="newEventFlexContainer">
+            <label class="newEventLabel" for="newEventDescription">Detalle:</label>
+            <textarea class="newEventInput"
+              id="newEventDescription"
               v-model="eventDescription"
             ></textarea>
           </div>
-          <div class="nuevo-evento-flex-container">
-            <label for="event-date">Fecha:</label>
-            <input type="text" id="event-date" v-model="eventDate" readonly />
+          <div class="newEventFlexContainer">
+            <label for="newEventDate">Fecha:</label>
+            <input type="text" id="newEventDate" v-model="eventDate" readonly />
           </div>
           <div>
-            <label for="event-category">Categoría:</label>
-            <select id="event-category" v-model="eventCategory">
+            <label for="newEventCategory">Categoría:</label>
+            <select id="newEventCategory" v-model="eventCategory">
               <option
                 v-for="category in categories"
                 :key="category.name"

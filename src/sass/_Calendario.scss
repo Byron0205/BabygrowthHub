@@ -1,9 +1,9 @@
-.containter-calendario {
+.containterCalendar {
   font-family: "Baloo 2";
   margin: 5rem;
 }
 
-.header-calendario {
+.headerCalendar {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19,33 +19,33 @@
   margin: 1.5rem;
 }
 
-.next-button {
+.nextButton {
   background-color: transparent;
   border: none;
   padding: 1rem;
 }
 
-.next-button:hover {
+.nextButton:hover {
   cursor: pointer;
 }
 
-.calendario-button-icon {
+.calendarButtonIcon {
   color: $letter-2;
   font-size: 2rem;
 }
 
-.tabla-calendario {
+.tableCalendar{
   width: 100%;
   border-collapse: collapse;
 }
 
-.nombre-dia-semana {
+.nameDayWeek {
   color: $purple;
   font-size: 1.5rem;
   border: none;
 }
 
-.celdas-calendario {
+.cellsCalendar {
   border: solid 1px rgb($letter-1, 0.1);
   font-size: 1rem;
   padding: 1rem;
@@ -58,20 +58,20 @@
   height: 6rem;
 }
 
-.today {
+.calendarToday {
   border: solid 1px $letter-2;
   background-color: rgb($letter-2, 0.1);
   border-radius: 5px;
   padding: 1rem;
 }
 
-.selected {
+.isSelected {
   border: dashed 1px $letter-1;
   padding: 2rem;
   border-radius: 5px;
 }
 
-.event {
+.calendarEvent {
   margin-top: 8px;
   border-radius: 5px;
   padding: 0.5rem;
@@ -84,11 +84,11 @@
   text-overflow: ellipsis;
 }
 
-.event:hover {
+.calendarEvent:hover {
   cursor: pointer;
 }
 
-.nuevo-evento {
+.createEventContainer {
   position: fixed;
   top: 0;
   left: 0;
@@ -101,14 +101,14 @@
   
 }
 
-.nuevo-evento-content {
+.createEventContent {
   background-color: white;
   border-radius: 15px;
   position: relative;
   padding: 2rem;
 }
 
-.nuevo-evento-header {
+.createEventHeader {
   background: linear-gradient(to right, rgb($purple, 0.3), rgb($letter-2, 0.3));
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -122,22 +122,23 @@
   right: 0;
 }
 
-.nuevo-evento-header p {
+.createEventHeader p {
   margin: 0;
   color: $purple;
   font-weight: bold;
   font-size: 1.2rem;
 }
 
-.nuevo-evento-contenido{
+.formCreateNewEvent{
   margin-top: 2rem;
 }
 
-.nuevo-evento-label{
+.newEventLabel{
   color: $purple;
 }
 
-.nuevo-evento-input{
+
+.newEventInput{
   padding: 0.5rem;
   border-color: $purple;
   border-radius: 5px;
@@ -146,11 +147,11 @@
   margin-bottom: 1.5rem;
 }
 
-.nuevo-evento-input:focus{
+.newEventInput:focus{
   outline: none;
 }
 
-.nuevo-evento-flex-container{
+.newEventFlexContainer{
   display: flex;
   flex-direction: column;
 }
