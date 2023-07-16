@@ -135,16 +135,32 @@
 
 .newEventLabel{
   color: $purple;
+  position: relative;
+  top:0.5rem;
+  left: 0.3rem;
+  width: fit-content ;
+  background-color: #f8f8fd;
+  z-index: 1;
+  line-height: 1;
 }
 
 
 .newEventInput{
   padding: 0.5rem;
-  border-color: $purple;
+  border: solid 1px $purple;
   border-radius: 5px;
-  background-color: rgb($purple, 0.1);
+  background-color: #f8f8fd;
   color: $purple;
   margin-bottom: 1.5rem;
+  width:30rem;
+  max-width: 30rem;
+}
+
+.newEventInput.newEventTextArea{
+  max-width: 30rem;
+  min-width: 30rem;
+  max-height: 6rem;
+  min-height: 6rem;
 }
 
 .newEventInput:focus{
@@ -154,4 +170,28 @@
 .newEventFlexContainer{
   display: flex;
   flex-direction: column;
+}
+
+.newEventFlexContainer.row{
+  flex-direction: row;
+}
+
+.newEventSelect{
+  padding: 0.5rem;
+  border-color: $purple;
+  border-radius: 5px;
+  background-color: #f8f8fd;
+  color: $purple;
+  margin-bottom: 1.5rem;
+  max-width: 15rem;
+  min-width: 15rem;
+  margin-right: 1rem;
+}
+
+.newEventSelect:focus{
+  outline: none;
+}
+
+.newEventSelect.babieSelect{
+  max-width: 31rem;
 }

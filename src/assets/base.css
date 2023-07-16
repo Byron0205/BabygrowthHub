@@ -509,15 +509,32 @@ footer {
 
 .newEventLabel {
   color: #6055A4;
+  position: relative;
+  top: 0.5rem;
+  left: 0.3rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #f8f8fd;
+  z-index: 1;
+  line-height: 1;
 }
 
 .newEventInput {
   padding: 0.5rem;
-  border-color: #6055A4;
+  border: solid 1px #6055A4;
   border-radius: 5px;
-  background-color: rgba(96, 85, 164, 0.1);
+  background-color: #f8f8fd;
   color: #6055A4;
   margin-bottom: 1.5rem;
+  width: 30rem;
+  max-width: 30rem;
+}
+
+.newEventInput.newEventTextArea {
+  max-width: 30rem;
+  min-width: 30rem;
+  max-height: 6rem;
+  min-height: 6rem;
 }
 
 .newEventInput:focus {
@@ -527,6 +544,30 @@ footer {
 .newEventFlexContainer {
   display: flex;
   flex-direction: column;
+}
+
+.newEventFlexContainer.row {
+  flex-direction: row;
+}
+
+.newEventSelect {
+  padding: 0.5rem;
+  border-color: #6055A4;
+  border-radius: 5px;
+  background-color: #f8f8fd;
+  color: #6055A4;
+  margin-bottom: 1.5rem;
+  max-width: 15rem;
+  min-width: 15rem;
+  margin-right: 1rem;
+}
+
+.newEventSelect:focus {
+  outline: none;
+}
+
+.newEventSelect.babieSelect {
+  max-width: 31rem;
 }
 
 html {
