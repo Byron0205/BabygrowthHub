@@ -20,9 +20,9 @@
                     <button class="submit">Iniciar Sesión</button>
                 </form>
 
-                <p class="text-option">¿No tienes una cuenta? <span class="option">¡Creemos una nueva juntos!</span></p>
+                <p class="text-option">¿No tienes una cuenta? <span @click="registerParent" class="option">¡Creemos una nueva juntos!</span></p>
 
-                <p class="text-option">¿Olvido su contraseña? <span class="option">¡Aquí te ayudamos!</span></p>
+                <!-- <p class="text-option">¿Olvido su contraseña? <span class="option">¡Aquí te ayudamos!</span></p> -->
 
                 <div class="divider"></div>
                 <form class="login">
@@ -30,7 +30,7 @@
                     <div class="input-container">
                         <input id="firstname" class="input" type="text" placeholder="">
                     </div>
-                    <button class="submit submit-2">Unirse mediante Código</button>
+                    <button @click="registerEncargado" class="submit submit-2">Unirse mediante Código</button>
                 </form>
 
             </div>
@@ -40,7 +40,14 @@
 
 <script>
 export default {
-
+    methods:{
+        registerParent(){
+            this.$router.push('/registro/1')
+        }, 
+        registerEncargado(){
+            this.$router.push('/registro/2')
+        }
+    }
 }
 </script>
 

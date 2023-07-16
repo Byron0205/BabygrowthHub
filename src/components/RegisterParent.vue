@@ -37,7 +37,7 @@
                 <label for="firstname" class="placeholder">Contraseña</label>
             </div>
             <div class="input-container width-50 text-center">
-                <button class="submit submit-register">Confirmar</button>
+                <button @click="registerBabyForm" class="submit submit-register">Confirmar</button>
             </div>
             
         </form>
@@ -59,7 +59,11 @@
 
 <script>
 export default {
-
+    methods:{
+        registerBabyForm(){
+            this.$router.push('/registro/3')
+        }
+    }
 }
 </script>
 
