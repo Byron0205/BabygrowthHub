@@ -201,7 +201,7 @@ footer {
 }
 
 .login {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -405,14 +405,14 @@ footer {
 }
 
 .submit-register {
+  width: 80%;
   font-size: 20px;
   background-color: #7ECAFD;
   border-radius: 36px;
-  width: 25%;
 }
 
 .width-50 {
-  width: 40%;
+  width: 50%;
 }
 @media (min-height: 900px) {
   .width-50 {
@@ -424,8 +424,60 @@ footer {
   gap: 10px;
 }
 
+.placeholder-baby {
+  color: #e24a75 !important;
+}
+
+.pink-background {
+  background-color: #e24a75 !important;
+}
+
+.select-age-label {
+  font-family: "Catamaran", sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 15px;
+}
+
+.baby-age-msg {
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: "Catamaran";
+  line-height: normal;
+  color: #e24a75;
+}
+
+.btn-age {
+  color: #e24a75;
+  font-family: "Baloo 2", cursive;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: normal;
+  border-radius: 36px 0 0 36px;
+  border: none;
+  background-color: #F8E5EC;
+}
+.btn-age:nth-child(2) {
+  border-radius: 0 36px 36px 0;
+}
+
+.selected {
+  background: #cd4477;
+  color: #fcfcfc;
+}
+
+.select-age-container {
+  display: flex;
+}
+
 html {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+.text-center {
+  text-align: center;
 }/*# sourceMappingURL=base.css.map */

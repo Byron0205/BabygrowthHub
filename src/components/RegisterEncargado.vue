@@ -19,11 +19,14 @@
                 <label for="firstname" class="placeholder">Correo</label>
             </div>
             <div class="input-container width-50 ic1">
-                <input id="firstname" class="input" type="text" placeholder="">
+                <input class="input" type="text" placeholder="">
                 <div class="cut"></div>
-                <label for="firstname" class="placeholder">Contraseña</label>
+                <label class="placeholder">Contraseña</label>
             </div>
-            <button class="submit submit-register">Confirmar</button>
+            <div class="input-container width-50 text-center">
+                <button class="submit submit-register">Confirmar</button>
+            </div>
+            
         </form>
         <svg class="img-cloud-bg" xmlns="http://www.w3.org/2000/svg" width="1374" height="722" viewBox="0 0 1374 722"
             fill="none">

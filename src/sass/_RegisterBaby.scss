@@ -1,0 +1,49 @@
+.placeholder-baby {
+    color: $letter-2 !important;
+}
+
+.pink-background{
+    background-color: $letter-2 !important;
+}
+
+.select-age-label{
+    font-family: 'Catamaran', sans-serif;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 15px;
+}
+
+.baby-age-msg{
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Catamaran';
+    line-height: normal;
+    color: $letter-2
+}
+
+.btn-age{
+    color: $letter-2;
+    font-family: 'Baloo 2',cursive;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: normal;
+    border-radius: 36px 0 0 36px;
+    border: none;
+    background-color: $btn-age-background;
+
+    &:nth-child(2){
+        border-radius: 0 36px 36px 0;
+    }
+}
+
+.selected{
+    background: darken($color: $btn-age-background, $amount: 40);
+    color: $blanco;
+}
+
+
+.select-age-container{
+    display: flex;
+}
