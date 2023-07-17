@@ -29,14 +29,16 @@
                 calendarToday: isToday(day),
                 isSelected: isSelected(day),
               }"
-              @click="selectDate(day)"
             >
-              <span>{{ day.day }}</span>
+              <span class="calendarDay" @click="selectDate(day)">{{
+                day.day
+              }}</span>
               <div
                 v-for="event in getEventsForDate(day.date)"
-                :key="event.title"
+                :key="event.id"
                 class="calendarEvent"
                 :style="{ backgroundColor: event.color }"
+                @click="viewEvent(event)"
               >
                 {{ event.title }}
               </div>
@@ -46,7 +48,7 @@
       </tbody>
     </table>
 
-    <div class="createEventContainer" v-if="isPopupOpen">
+    <div class="createEventContainer" v-if="isNewEventPopupOpen">
       <div class="createEventContent">
         <div class="createEventHeader">
           <p>NUEVA ACTIVIDAD</p>
@@ -96,9 +98,9 @@
                 v-model="eventPriority"
               >
                 <option
-                  v-for="priority in priorities"
+                  v-for="priority in proritiesList"
                   :key="priority.id"
-                  :value="priority.name"
+                  :value="priority"
                 >
                   {{ priority.name }}
                 </option>
@@ -135,7 +137,7 @@
               <option
                 v-for="babie in babiesList"
                 :key="babie.id"
-                :value="babie.name"
+                :value="babie"
               >
                 {{ babie.name }}
               </option>
@@ -153,11 +155,80 @@
             />
           </div>
 
-          <div>
-            <button @click="saveEvent">Guardar</button>
-            <button @click="isPopupOpen = false">Cancelar</button>
+          <div class="newEventFlexContainer row">
+            <button class="newEventBnt save" @click="saveEvent">Guardar</button>
+            <button
+              class="newEventBnt cancel"
+              @click="isNewEventPopupOpen = false"
+            >
+              Cancelar
+            </button>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eventDetailsContainer" v-if="selectedEvent">
+    <div class="eventDetailsContent">
+      <div class="eventDetailsHeader">
+        <p>RESUMEN ACTIVIDAD</p>
+      </div>
+      <div style="margin-top: 1rem">
+        <div class="eventDetailsFlexContainer centerElements informationTop">
+          <p class="eventDetailsTitle">{{ selectedEvent.title }}</p>
+          <div class="eventDetailsFlexContainer centerElements">
+            <i
+              class="fa-solid fa-tag"
+              :style="{ color: selectedEvent.color }"
+            ></i>
+            <p
+              class="eventDetailsCategory"
+              :style="{ color: selectedEvent.categoryColor }"
+            >
+              {{ selectedEvent.category }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="eventDetailsFlexContainer centerElements eventDetailsDateContainer"
+      >
+        <i class="fa-regular fa-clock eventDetailsDate"></i>
+        <p class="eventDetailsDate">{{ selectedEvent.date }}</p>
+        <p class="eventDetailsDate">{{ selectedEvent.time }}</p>
+      </div>
+
+      <div
+        class="eventDetailsFlexContainer centerElements"
+        style="margin-top: 1rem"
+      >
+        <p
+          class="eventDetailsPriority"
+          :style="{ color: selectedEvent.priorityColor }"
+        >
+          {{ selectedEvent.priority }}
+        </p>
+        <p class="eventDetailsBabie">Asociada a {{ selectedEvent.babie }}</p>
+      </div>
+
+      <div
+        class="eventDetailsFlexContainer eventDetailsDescriptionContainer centerElements"
+      >
+        <i class="fa-solid fa-align-left" style="padding: 1rem"></i>
+        <p class="eventDetailsDescription">{{ selectedEvent.description }}</p>
+      </div>
+      <div class="eventDetailsButtonsContainer">
+        <button
+          class="eventDetailsButton delete"
+          @click="deleteEvent(selectedEvent.id)"
+        >
+          <i class="fa-solid fa-trash-can"></i> Eliminar actividad
+        </button>
+        <button class="eventDetailsButton cancel" @click="selectedEvent = null">
+          Cerrar
+        </button>
       </div>
     </div>
   </div>
@@ -184,18 +255,16 @@ export default {
       eventName: "",
       eventDescription: "",
       eventTime: "",
-      isPopupOpen: false,
+      isNewEventPopupOpen: false,
+      isViewEventPopupOpen: false,
       eventDate: null,
       categories: [],
-      priorities: [
-        { id: "1", name: "Alta" },
-        { id: "2", name: "Media" },
-        { id: "3", name: "Baja" },
-      ],
+      priorities: [],
       eventCategory: null,
       eventPriority: null,
       eventBaby: null,
       registeredBabies: [],
+      selectedEvent: null,
     };
   },
   computed: {
@@ -235,6 +304,9 @@ export default {
     categoriesList() {
       return this.categories;
     },
+    proritiesList() {
+      return this.priorities;
+    },
   },
   methods: {
     previousMonth() {
@@ -259,7 +331,7 @@ export default {
       if (day.date) {
         this.selectedDate = day.date;
         this.eventDate = format(day.date, "dd/MM/yyyy");
-        this.isPopupOpen = true;
+        this.isNewEventPopupOpen = true;
       }
     },
     saveEvent() {
@@ -268,13 +340,15 @@ export default {
       const selectedBaby = this.eventBaby;
 
       const event = {
+        id: this.events.length + 1,
         date: format(this.selectedDate, "yyyy-MM-dd"),
         title: this.eventName,
         description: this.eventDescription,
         category: selectedCategory.name,
         priority: selectedPriority.name,
         babie: selectedBaby.name,
-        color: selectedCategory.color,
+        categoryColor: selectedCategory.color,
+        priorityColor: selectedPriority.color,
         time: this.eventTime,
       };
       this.events.push(event);
@@ -287,7 +361,7 @@ export default {
       this.eventBaby = null;
       this.eventTime = "";
 
-      this.isPopupOpen = false;
+      this.isNewEventPopupOpen = false;
     },
     getEventsForDate(date) {
       const formattedDate = format(date, "yyyy-MM-dd");
@@ -304,6 +378,14 @@ export default {
       );
       return category ? category.color : "";
     },
+    viewEvent(event) {
+      this.selectedEvent = event;
+    },
+    deleteEvent(eventId) {
+      // Modificar a futuro para enviar a eliminar a BD
+      this.events = this.events.filter((event) => event.id !== eventId);
+      this.selectedEvent = null;
+    },
   },
   mounted() {
     // Obtener los datos de la BD para llenar el select de los bebes
@@ -314,9 +396,15 @@ export default {
     ];
 
     this.categories = [
-      { name: "Cita Médica", color: "#87bd40" },
-      { name: "Tratamiento", color: "#4081bd" },
-      { name: "Personal", color: "#7e40bd" },
+      { id: "1", name: "Cita Médica", color: "#87bd40" },
+      { id: "1", name: "Tratamiento", color: "#4081bd" },
+      { id: "1", name: "Personal", color: "#7e40bd" },
+    ];
+
+    this.priorities = [
+      { id: "1", name: "Prioridad alta", color: "#D15353" },
+      { id: "2", name: "Prioridad media", color: "#ffbf00" },
+      { id: "3", name: "Prioridad baja", color: "#87bd40" },
     ];
   },
 };
