@@ -5,7 +5,7 @@
                 ¡Bienvenido de nuevo!
             </div>
             <div class="c-login-body">
-                <form @submit.prevent="" class="login">
+                <form @submit.prevent="login" class="login">
                     <div class="input-container ic1">
                         <input id="firstname" class="input" type="text" placeholder="">
                         <div class="cut"></div>
@@ -20,17 +20,18 @@
                     <button class="submit">Iniciar Sesión</button>
                 </form>
 
+                <div class="divider"></div>
                 <p class="text-option">¿No tienes una cuenta? <span @click="registerParent" class="option">¡Creemos una nueva juntos!</span></p>
 
                 <!-- <p class="text-option">¿Olvido su contraseña? <span class="option">¡Aquí te ayudamos!</span></p> -->
 
                 <div class="divider"></div>
-                <form class="login">
+                <form @submit.prevent="validBabyCode" class="login">
                     <p class="text-option">Unirse mediante un <span class="option">código</span></p>
                     <div class="input-container">
                         <input id="firstname" class="input" type="text" placeholder="">
                     </div>
-                    <button @click="registerEncargado" class="submit submit-2">Unirse mediante Código</button>
+                    <button @click="encargadoForm" class="submit submit-2">Unirse mediante Código</button>
                 </form>
 
             </div>
@@ -41,10 +42,12 @@
 <script>
 export default {
     methods:{
+        login(){},
+        validBabyCode(){},
         registerParent(){
             this.$router.push('/registro/1')
         }, 
-        registerEncargado(){
+        encargadoForm(){
             this.$router.push('/registro/2')
         }
     }

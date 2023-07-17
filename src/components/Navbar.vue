@@ -9,19 +9,31 @@
         </div>
         <div class="flex">
             <ul class="navbar">
-                <li class="item">Inicio</li>
-                <li class="item">Expendiente&Medicacion</li>
-                <li class="item">Dietas</li>
-                <li class="item">Preguntas&Respuestas</li>
-                <li class="item">Actividad</li>
-                <li class="item">Perfil</li>
+                <li class="item">
+                    <router-link class="link" to="/">Inicio</router-link>
+                </li>
+                <li class="item">
+                    <router-link class="link" to="/">Expendiente&Medicacion</router-link>
+                </li>
+                <li class="item">
+                    <router-link class="link" to="/">Dietas</router-link>
+                </li>
+                <li class="item">
+                    <router-link class="link" to="/">Preguntas&Respuestas</router-link>
+                </li>
+                <li class="item">
+                    <router-link class="link" to="/">Actividad</router-link>
+                </li>
+                <li class="item">
+                    <router-link class="link" to="/">Perfil</router-link>
+                </li>
             </ul>
             <!-- <div>
                 <button class="btn">Salir</button>
             </div> -->
             <div class="btn-group">
                 <button @click="login" class="btn-inicio">Iniciar Sesion</button>
-                <button class="btn-registro">Registrarse</button>
+                <!-- <button @click="register" class="btn-registro">Registrarse</button> -->
             </div>
             
         </div>
@@ -36,6 +48,9 @@ export default {
     methods:{
         login(){
             this.$router.push('/login')
+        },
+        register(){
+            this.$router.push('/registro/1')
         }
     }
 }

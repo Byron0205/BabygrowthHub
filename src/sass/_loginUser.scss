@@ -27,7 +27,7 @@
 }
 
 .login {
-    width: 100%;
+    width: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -118,8 +118,9 @@
     line-height: normal;
 
     &:first-of-type {
+        margin-top: 10px;
         padding-bottom: 0;
-        margin-bottom: 0;
+        margin-bottom: 10px;
     }
 
     &:last-child {
@@ -141,6 +142,10 @@
 .divider {
     width: 90%;
     border-bottom: 2px dashed $letter-4;
+
+    &:first-of-type{
+        margin-top: 15px;
+    }
 }
 
 .container-img-login {
