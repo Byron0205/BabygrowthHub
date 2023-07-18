@@ -3,4 +3,32 @@
     height: 876px;
     flex-shrink: 0;
     background-color: $menu-lateral;
+    display: flex;
+    flex-direction: column;
+}
+
+.item-lateral{
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 5px;
+    color: $letter-1;
+
+    &:nth-child(2){
+        margin-top: 10px ;
+    }
+}
+
+.link-menu{
+    text-decoration: none;
+    width: 100%;
+    font-family: 'Baloo 2';
+    font-size: 25px;
+    font-weight: 600;
+    line-height: normal;
+
+    &:hover{
+        color: lighten($color: $letter-1, $amount: 15);
+    }
 }

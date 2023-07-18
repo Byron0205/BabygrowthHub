@@ -22,7 +22,7 @@
                     <router-link class="link" to="/">Preguntas&Respuestas</router-link>
                 </li>
                 <li class="item">
-                    <router-link class="link" to="/">Actividad</router-link>
+                    <router-link class="link" to="/actividades/seguimiento">Actividad</router-link>
                 </li>
                 <li class="item">
                     <router-link class="link" to="/">Perfil</router-link>
