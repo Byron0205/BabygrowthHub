@@ -42,7 +42,9 @@
 <script>
 export default {
     methods:{
-        login(){},
+        login(){
+            this.$router.push('/inicio')
+        },
         validBabyCode(){},
         registerParent(){
             this.$router.push('/registro/1')
