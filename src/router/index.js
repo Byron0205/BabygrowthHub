@@ -61,6 +61,11 @@ const router = createRouter({
       path: '/actividades/seguimiento',
       name: 'seguimiento',
       component: ()=> import('../views/ActividadesView.vue')
+    },
+    {
+      path: "/actividades/calendario",
+      name: 'calendario',
+      component: ()=> import('../views/CalendarioView.vue')
     }
   ]
 })

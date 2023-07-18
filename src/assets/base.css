@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700&family=Catamaran:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap");
 .flex {
   display: flex;
   justify-content: space-evenly;
@@ -492,6 +493,598 @@ footer {
 
 .select-age-container {
   display: flex;
+}
+
+.homeFlexContainer {
+  display: flex;
+  padding: 2rem;
+}
+
+.homeText {
+  flex: 1;
+  font-family: "Baloo 2";
+  font-style: normal;
+  line-height: normal;
+  color: #253962;
+  padding: 4rem;
+}
+
+.homeLogo {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.homeBlueText {
+  color: #7FCDFC;
+}
+
+.homeParagraph {
+  font-size: 1.3rem;
+}
+
+.homeLogo {
+  color: #253962;
+}
+
+.homeImgContainer {
+  flex: 1;
+  max-width: 40%;
+}
+
+.homeImg {
+  max-width: 100%;
+}
+
+.homeContainerLinks {
+  display: flex;
+  justify-content: space-between;
+  max-width: 60%;
+}
+
+.homeLink {
+  color: #e24a75;
+  font-family: "Baloo 2";
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.homeDecoration {
+  position: relative;
+  padding: 1rem;
+}
+
+.homeSpaceship {
+  position: absolute;
+  top: -5rem;
+  left: -3rem;
+}
+
+.homeBear {
+  position: absolute;
+  top: -30rem;
+  left: 50rem;
+  width: 7rem;
+}
+
+.homeSun {
+  position: absolute;
+  top: 5rem;
+  left: 120rem;
+  width: 7rem;
+}
+
+.NSflexContainer {
+  margin-top: 2rem;
+  display: flex;
+  padding: 2rem;
+}
+
+.NSImgContainer {
+  flex: 1;
+  max-width: 40%;
+}
+
+.NSImg {
+  max-width: 100%;
+}
+
+.NSText {
+  flex: 1;
+  font-family: "Baloo 2";
+  font-style: normal;
+  line-height: normal;
+  padding: 4rem;
+}
+
+.NSTitle {
+  font-weight: bold;
+  font-size: 2rem;
+  color: #e24a75;
+  text-transform: uppercase;
+}
+
+.NSParagraph {
+  font-size: 1.3rem;
+  color: #253962;
+}
+
+.NSSearchContainer {
+  display: flex;
+  align-items: center;
+}
+
+.NSInput {
+  width: 30rem;
+  padding: 0.7rem;
+  margin-right: 1rem;
+  border-radius: 5px;
+  border: solid 1px #253962;
+}
+
+.NSInput:focus {
+  outline: none;
+}
+
+.NSIcon {
+  color: #479DD8;
+  font-size: 2rem;
+}
+
+.NSButton {
+  background-color: transparent;
+  border: none;
+}
+
+.NSButton:hover {
+  cursor: pointer;
+}
+
+.NSResultContainer {
+  background-color: rgba(169, 220, 255, 0.1);
+  padding: 1rem;
+  margin-top: 2rem;
+  width: 90%;
+}
+
+.NSResult {
+  color: #253962;
+  font-size: 1.2rem;
+  font-family: "Catamaran";
+  font-style: normal;
+  font-weight: 250;
+  line-height: normal;
+}
+
+.sliderContainer {
+  margin-top: 2rem;
+  display: flex;
+  padding: 2em;
+  align-items: center;
+}
+
+.sliderItem {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+}
+
+.sliderImgContainer {
+  flex: 1;
+  max-width: 40%;
+}
+
+.sliderImage {
+  width: 100%;
+}
+
+.sliderContent {
+  flex: 1;
+  padding: 2rem;
+}
+
+.sliderTitle {
+  color: #e24a75;
+  font-family: "Baloo 2";
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.sliderText {
+  color: #253962;
+  font-family: "Baloo 2";
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.sliderButton {
+  background-color: transparent;
+  border: none;
+}
+
+.sliderButton:hover {
+  cursor: pointer;
+}
+
+.sliderButtonIcon {
+  font-size: 3rem;
+  color: #6055A4;
+}
+
+.containterCalendar {
+  font-family: "Baloo 2";
+  margin: 5rem;
+}
+
+.headerCalendar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff2f9;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.mes {
+  color: #e24a75;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 700;
+  margin: 1.5rem;
+}
+
+.nextButton {
+  background-color: transparent;
+  border: none;
+  padding: 1rem;
+}
+
+.nextButton:hover {
+  cursor: pointer;
+}
+
+.calendarButtonIcon {
+  color: #e24a75;
+  font-size: 2rem;
+}
+
+.tableCalendar {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.nameDayWeek {
+  color: #6055A4;
+  font-size: 1.5rem;
+  border: none;
+}
+
+.cellsCalendar {
+  border: solid 1px rgba(37, 57, 98, 0.1);
+  font-size: 1rem;
+  padding: 1rem;
+  text-align: right;
+  /* PARA EVITAR DEFORMACION DE CELDA*/
+  max-width: 5rem;
+  width: 5rem;
+  max-height: 6rem;
+  height: 6rem;
+}
+
+.calendarToday {
+  border: solid 1px #e24a75;
+  background-color: rgba(226, 74, 117, 0.1);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.isSelected {
+  border: dashed 1px #253962;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.calendarEvent {
+  margin-top: 8px;
+  border-radius: 5px;
+  padding: 0.5rem;
+  color: #ffffff;
+  font-weight: normal;
+  font-style: italic;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calendarEvent:hover {
+  cursor: pointer;
+}
+
+.createEventContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(125, 125, 154, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createEventContent {
+  background-color: white;
+  border-radius: 15px;
+  position: relative;
+  padding: 2rem;
+}
+
+.createEventHeader {
+  background: linear-gradient(to right, rgba(96, 85, 164, 0.3), rgba(226, 74, 117, 0.3));
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.createEventHeader p {
+  margin: 0;
+  color: #6055A4;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.formCreateNewEvent {
+  margin-top: 2rem;
+}
+
+.newEventLabel {
+  color: #6055A4;
+  position: relative;
+  top: 0.5rem;
+  left: 0.3rem;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #f8f8fd;
+  z-index: 1;
+  line-height: 1;
+}
+
+.newEventInput {
+  padding: 0.5rem;
+  border: solid 1px #6055A4;
+  border-radius: 5px;
+  background-color: #f8f8fd;
+  color: #6055A4;
+  margin-bottom: 1.5rem;
+  width: 30rem;
+  max-width: 30rem;
+}
+
+.newEventInput.newEventTextArea {
+  max-width: 30rem;
+  min-width: 30rem;
+  max-height: 6rem;
+  min-height: 6rem;
+}
+
+.newEventInput:focus {
+  outline: none;
+}
+
+.newEventFlexContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.newEventFlexContainer.row {
+  flex-direction: row;
+}
+
+.newEventSelect {
+  padding: 0.5rem;
+  border-color: #6055A4;
+  border-radius: 5px;
+  background-color: #f8f8fd;
+  color: #6055A4;
+  margin-bottom: 1.5rem;
+  max-width: 15rem;
+  min-width: 15rem;
+  margin-right: 1rem;
+}
+
+.newEventSelect:focus {
+  outline: none;
+}
+
+.newEventSelect.babieSelect {
+  max-width: 31rem;
+}
+
+.newEventBnt {
+  padding: 0.5rem;
+  margin-right: 2rem;
+  width: 10rem;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  border-radius: 5px;
+  color: #ffffff;
+  border: none;
+  opacity: 0.9;
+}
+
+.newEventBnt.save {
+  background-color: #6055A4;
+}
+
+.newEventBnt.cancel {
+  background-color: #fe5a86;
+}
+
+.newEventBnt:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.eventDetailsContainer {
+  font-family: "Baloo 2";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(125, 125, 154, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eventDetailsHeader {
+  background: linear-gradient(90deg, rgba(126, 202, 253, 0.3) 42.19%, rgba(126, 202, 253, 0.12) 99.48%);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.eventDetailsHeader p {
+  margin: 0;
+  color: #357cac;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.eventDetailsContent {
+  background-color: white;
+  border-radius: 15px;
+  position: relative;
+  padding: 2rem;
+  max-width: 40rem;
+}
+
+.eventDetailsFlexContainer {
+  display: flex;
+}
+
+.informationTop {
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: dashed 2px #357cac;
+}
+
+.eventDetailsTitle {
+  color: #253962;
+  font-family: "Catamaran";
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-right: 1rem;
+}
+
+.eventDetailsCategory {
+  font-family: "Baloo 2";
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.eventDetailsDate {
+  color: #253962;
+  font-size: 1.2rem;
+  margin: 0.2rem;
+}
+
+.eventDetailsDateContainer {
+  margin-top: 1rem;
+}
+
+.eventDetailsPriority {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+.eventDetailsBabie {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #253962;
+}
+
+.eventDetailsDescriptionContainer {
+  border-radius: 15px;
+  border: 1px solid rgba(104, 156, 192, 0.01);
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+}
+
+.eventDetailsDescription {
+  color: #253962;
+  font-family: "Catamaran";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.eventDetailsButton {
+  padding: 0.5rem;
+  margin-right: 2rem;
+  width: 10rem;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  border-radius: 5px;
+  color: #ffffff;
+  border: none;
+  opacity: 0.9;
+}
+
+.eventDetailsButton.cancel {
+  background-color: #357cac;
+}
+
+.eventDetailsButton.delete {
+  background-color: transparent;
+  color: #bc1818;
+  border: 1px solid #bc1818;
+  width: auto;
+}
+
+.eventDetailsButton:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.calendarDay {
+  font-family: "Baloo 2";
+  font-size: 1.5rem;
+}
+
+.calendarDay:hover {
+  cursor: pointer;
+}
+
+.eventDetailsButtonsContainer {
+  margin-top: 2rem;
+}
+
+.centerElements {
+  align-items: center;
 }
 
 html {

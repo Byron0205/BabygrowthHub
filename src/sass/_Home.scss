@@ -1,0 +1,80 @@
+.homeFlexContainer {
+  display: flex;
+  padding: 2rem;
+}
+
+.homeText {
+  flex: 1;
+  font-family: "Baloo 2";
+  font-style: normal;
+  line-height: normal;
+  color: $letter-1;
+  padding: 4rem;
+}
+
+.homeLogo {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.homeBlueText {
+  color: $lb-1;
+}
+
+.homeParagraph {
+  font-size: 1.3rem;
+}
+
+.homeLogo {
+  color: $letter-1;
+}
+
+.homeImgContainer{
+  flex: 1;
+  max-width: 40%;
+}
+
+.homeImg {
+  max-width: 100%;
+}
+
+.homeContainerLinks {
+  display: flex;
+  justify-content: space-between;
+  max-width: 60%;
+}
+
+.homeLink {
+  color: $letter-2;
+  font-family: "Baloo 2";
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+
+.homeDecoration{
+  position: relative;
+  padding: 1rem;
+}
+
+.homeSpaceship{
+  position: absolute;
+  top: -5rem;
+  left: -3rem;
+}
+
+.homeBear{
+  position: absolute;
+  top: -30rem;
+  left: 50rem;
+  width: 7rem;
+}
+
+.homeSun{
+  position: absolute;
+  top: 5rem;
+  left: 120rem;
+  width: 7rem;
+}

@@ -1,0 +1,58 @@
+.sliderContainer {
+  margin-top: 2rem;
+  display: flex;
+  padding: 2em;
+  align-items: center;
+}
+
+.sliderItem {
+  display: flex;
+  align-items: center;
+  padding: 2rem;
+}
+
+.sliderImgContainer {
+  flex: 1;
+  max-width: 40%;
+}
+
+.sliderImage {
+  width: 100%;
+}
+
+.sliderContent {
+  flex: 1;
+  padding: 2rem;
+}
+
+.sliderTitle {
+  color: $letter-2;
+  font-family: "Baloo 2";
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.sliderText {
+  color: $letter-1;
+  font-family: "Baloo 2";
+  font-size: 1.3rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.sliderButton {
+  background-color: transparent;
+  border: none;
+}
+
+.sliderButton:hover {
+  cursor: pointer;
+}
+
+.sliderButtonIcon {
+  font-size: 3rem;
+  color: $purple;
+}

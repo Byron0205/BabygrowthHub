@@ -1,0 +1,82 @@
+.NSflexContainer {
+  margin-top: 2rem;
+  display: flex;
+  padding: 2rem;
+}
+
+.NSImgContainer {
+  flex: 1;
+  max-width: 40%;
+}
+
+.NSImg {
+  max-width: 100%;
+}
+
+.NSText {
+  flex: 1;
+  font-family: "Baloo 2";
+  font-style: normal;
+  line-height: normal;
+  padding: 4rem;
+}
+
+.NSTitle {
+  font-weight: bold;
+  font-size: 2rem;
+  color: $letter-2;
+  text-transform: uppercase;
+}
+
+.NSParagraph {
+  font-size: 1.3rem;
+  color: $letter-1;
+}
+
+.NSSearchContainer {
+  display: flex;
+  align-items: center;
+}
+
+.NSInput {
+  width: 30rem;
+  padding: 0.7rem;
+  margin-right: 1rem;
+  border-radius: 5px;
+  border: solid 1px $letter-1;
+}
+
+.NSInput:focus {
+  outline: none;
+}
+
+.NSIcon {
+  color: $lb-2;
+  font-size: 2rem;
+}
+
+.NSButton {
+  background-color: transparent;
+  border: none;
+}
+
+.NSButton:hover {
+  cursor: pointer;
+}
+
+.NSResultContainer {
+  background-color: rgba($lb-4, 0.1);
+  padding: 1rem;
+  margin-top: 2rem;
+  width: 90%;
+}
+
+.NSResult {
+  color: $letter-1;
+  font-size: 1.2rem;
+  font-family: 'Catamaran';
+  font-style: normal;
+  font-weight: 250;
+  line-height: normal;
+}
+

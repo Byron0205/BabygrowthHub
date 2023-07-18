@@ -1,0 +1,373 @@
+.containterCalendar {
+  font-family: "Baloo 2";
+  margin: 5rem;
+}
+
+.headerCalendar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff2f9;
+  border-radius: 15px 15px 0px 0px;
+}
+
+.mes {
+  color: $letter-2;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 700;
+  margin: 1.5rem;
+}
+
+.nextButton {
+  background-color: transparent;
+  border: none;
+  padding: 1rem;
+}
+
+.nextButton:hover {
+  cursor: pointer;
+}
+
+.calendarButtonIcon {
+  color: $letter-2;
+  font-size: 2rem;
+}
+
+.tableCalendar {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.nameDayWeek {
+  color: $purple;
+  font-size: 1.5rem;
+  border: none;
+}
+
+.cellsCalendar {
+  border: solid 1px rgb($letter-1, 0.1);
+  font-size: 1rem;
+  padding: 1rem;
+  text-align: right;
+
+  /* PARA EVITAR DEFORMACION DE CELDA*/
+  max-width: 5rem;
+  width: 5rem;
+  max-height: 6rem;
+  height: 6rem;
+}
+
+.calendarToday {
+  border: solid 1px $letter-2;
+  background-color: rgb($letter-2, 0.1);
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.isSelected {
+  border: dashed 1px $letter-1;
+  padding: 2rem;
+  border-radius: 5px;
+}
+
+.calendarEvent {
+  margin-top: 8px;
+  border-radius: 5px;
+  padding: 0.5rem;
+  color: #ffffff;
+  font-weight: normal;
+  font-style: italic;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calendarEvent:hover {
+  cursor: pointer;
+}
+
+.createEventContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(#7d7d9a66, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createEventContent {
+  background-color: white;
+  border-radius: 15px;
+  position: relative;
+  padding: 2rem;
+}
+
+.createEventHeader {
+  background: linear-gradient(to right, rgb($purple, 0.3), rgb($letter-2, 0.3));
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.createEventHeader p {
+  margin: 0;
+  color: $purple;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.formCreateNewEvent {
+  margin-top: 2rem;
+}
+
+.newEventLabel {
+  color: $purple;
+  position: relative;
+  top: 0.5rem;
+  left: 0.3rem;
+  width: fit-content;
+  background-color: #f8f8fd;
+  z-index: 1;
+  line-height: 1;
+}
+
+.newEventInput {
+  padding: 0.5rem;
+  border: solid 1px $purple;
+  border-radius: 5px;
+  background-color: #f8f8fd;
+  color: $purple;
+  margin-bottom: 1.5rem;
+  width: 30rem;
+  max-width: 30rem;
+}
+
+.newEventInput.newEventTextArea {
+  max-width: 30rem;
+  min-width: 30rem;
+  max-height: 6rem;
+  min-height: 6rem;
+}
+
+.newEventInput:focus {
+  outline: none;
+}
+
+.newEventFlexContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.newEventFlexContainer.row {
+  flex-direction: row;
+}
+
+.newEventSelect {
+  padding: 0.5rem;
+  border-color: $purple;
+  border-radius: 5px;
+  background-color: #f8f8fd;
+  color: $purple;
+  margin-bottom: 1.5rem;
+  max-width: 15rem;
+  min-width: 15rem;
+  margin-right: 1rem;
+}
+
+.newEventSelect:focus {
+  outline: none;
+}
+
+.newEventSelect.babieSelect {
+  max-width: 31rem;
+}
+
+.newEventBnt {
+  padding: 0.5rem;
+  margin-right: 2rem;
+  width: 10rem;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  border-radius: 5px;
+  color: #ffffff;
+  border: none;
+  opacity: 0.9;
+}
+
+.newEventBnt.save {
+  background-color: $purple;
+}
+
+.newEventBnt.cancel {
+  background-color: #fe5a86;
+}
+
+.newEventBnt:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.eventDetailsContainer {
+  font-family: "Baloo 2";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(#7d7d9a66, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eventDetailsHeader {
+  background: linear-gradient(
+    90deg,
+    rgba(126, 202, 253, 0.3) 42.19%,
+    rgba(126, 202, 253, 0.12) 99.48%
+  );
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.eventDetailsHeader p {
+  margin: 0;
+  color: #357cac;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.eventDetailsContent {
+  background-color: white;
+  border-radius: 15px;
+  position: relative;
+  padding: 2rem;
+  max-width: 40rem;
+}
+
+.eventDetailsFlexContainer {
+  display: flex;
+}
+
+.informationTop {
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: dashed 2px #357cac;
+}
+.eventDetailsTitle {
+  color: $letter-1;
+  font-family: "Catamaran";
+  font-size: 1.8rem;
+  font-weight: 400;
+  margin-right: 1rem;
+}
+
+.eventDetailsCategory {
+  font-family: "Baloo 2";
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.eventDetailsDate {
+  color: $letter-1;
+  font-size: 1.2rem;
+  margin: 0.2rem;
+}
+
+.eventDetailsDateContainer {
+  margin-top: 1rem;
+}
+
+.eventDetailsPriority {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+  font-weight: bold;
+}
+
+.eventDetailsBabie {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: $letter-1;
+}
+
+.eventDetailsDescriptionContainer {
+  border-radius: 15px;
+  border: 1px solid rgba(104, 156, 192, 0.01);
+  box-shadow: 4px 4px 10px 0px rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+}
+
+.eventDetailsDescription {
+  color: #253962;
+  font-family: "Catamaran";
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+
+.eventDetailsButton {
+  padding: 0.5rem;
+  margin-right: 2rem;
+  width: 10rem;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  border-radius: 5px;
+  color: #ffffff;
+  border: none;
+  opacity: 0.9;
+}
+
+.eventDetailsButton.cancel {
+  background-color: #357cac;
+}
+
+.eventDetailsButton.delete {
+  background-color: transparent;
+  color: #bc1818;
+  border: 1px solid #bc1818;
+  width: auto;
+}
+
+.eventDetailsButton:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.calendarDay {
+  font-family: "Baloo 2";
+  font-size: 1.5rem;
+}
+
+.calendarDay:hover {
+  cursor: pointer;
+}
+
+.eventDetailsButtonsContainer {
+  margin-top: 2rem;
+}
+
+.centerElements {
+  align-items: center;
+}
