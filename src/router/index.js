@@ -66,6 +66,16 @@ const router = createRouter({
       path: "/actividades/calendario",
       name: 'calendario',
       component: ()=> import('../views/CalendarioView.vue')
+    },
+    {
+      path: '/perfil',
+      name: 'perfil',
+      component: ()=> import('../views/Perfil/PerfilView.vue')
+    },
+    {
+      path: '/dietas',
+      name: 'dietas',
+      component: ()=> import('../views/Dietas/DietasView.vue')
     }
   ]
 })

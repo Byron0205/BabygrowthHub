@@ -16,7 +16,7 @@
                     <router-link class="link" to="/">Expendiente&Medicacion</router-link>
                 </li>
                 <li class="item">
-                    <router-link class="link" to="/">Dietas</router-link>
+                    <router-link class="link" to="/dietas">Dietas</router-link>
                 </li>
                 <li class="item">
                     <router-link class="link" to="/">Preguntas&Respuestas</router-link>
@@ -25,7 +25,7 @@
                     <router-link class="link" to="/actividades/seguimiento">Actividad</router-link>
                 </li>
                 <li class="item">
-                    <router-link class="link" to="/">Perfil</router-link>
+                    <router-link class="link" to="/perfil">Perfil</router-link>
                 </li>
             </ul>
             <!-- <div>

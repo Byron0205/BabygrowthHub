@@ -9,7 +9,6 @@
                 <img src="../assets/img/icono-calendario.svg" alt="reloj">
                 <router-link class="link-menu" to="/actividades/calendario">Calendario</router-link>
             </div>
-            
         </menu-lateral>
         <Tabla titulo="Hoy dia">
             <div class="actividad">Actividad</div>
