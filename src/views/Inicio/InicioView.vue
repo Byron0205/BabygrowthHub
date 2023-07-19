@@ -1,5 +1,6 @@
 <template>
-    <div>
+    <div class="container-inicio">
+        <div>
         <h1 class="stats-title" >Estadísticas importantes de los tesoros</h1>
         <div class="cards-container">
             <div class="card-dream">
@@ -24,8 +25,10 @@
                 Con amor y atención, trazamos su camino hacia un crecimiento saludable y
                 lleno de felicidad. ¡Registremos juntos cada paso de este maravilloso viaje hacia un futuro radiante!</p>
         </div>
+        </div>
+
         <div class="photos-content">
-            <img src="../../assets/img/decoracion-rosa.png" alt="" class="image-top">
+            <!-- <img src="../../assets/img/decoracion-rosa.png" alt="" class="image-top"> -->
             <img src="../../assets/img/Imagen-niños.png" alt="" class="image-bottom">
         </div>
     </div>

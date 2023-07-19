@@ -1,0 +1,48 @@
+.task{
+    border: 1px solid #EBE7E7;
+    border-radius: 15px;
+    margin: 10px;
+
+    font-size: 20px;
+
+    font-family: 'Catamaran';
+}
+
+.info-task{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 10px;
+    margin-bottom: 15px;
+}
+
+.description-task{
+    display: flex;
+    gap: 20px;
+    margin: 0 10px;
+
+}
+
+.info-left-task{
+    display: flex;
+    gap: 40px;
+}
+
+.task-tag{
+    font-weight: 700;
+    color: #87BD40;
+}
+
+.info-right-task{
+    display: flex;
+    gap: 40px;
+}
+
+.task-priority{
+    font-weight: 700;
+    color: #D15353;
+}
+
+.task-date{
+    display: flex;
+    gap: 10px;
+}

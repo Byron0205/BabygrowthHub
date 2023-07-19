@@ -40,7 +40,7 @@ export default {
                         "La dieta para bebés de 6 meses se basa principalmente en la introducción de alimentos sólidos complementarios a la leche materna o fórmula. Algunos alimentos recomendados incluyen puré de frutas, puré de verduras y cereales fortificados. Es importante consultar con el pediatra antes de iniciar la introducción de nuevos alimentos.",
                 },
                 {
-                    ageRange: 0,
+                    ageRange: 1,
                     title: "Dieta para bebés de 6 meses (Otra dieta)",
                     description:
                         "Esta es otra dieta para bebés de 6 meses. Incluye diferentes opciones de alimentos y recetas recomendadas para esta etapa de desarrollo.",

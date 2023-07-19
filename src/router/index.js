@@ -78,6 +78,11 @@ const router = createRouter({
       component: ()=> import('../views/Dietas/DietasView.vue')
     },
     {
+      path: '/inicio',
+      name: "inicio",
+      component: ()=> import('../views/Inicio/InicioView.vue')
+    },
+    {
       path: "/expediente/salud",
       name: "salud",
       component: ()=> import('../views/ExpedienteSaludView.vue')

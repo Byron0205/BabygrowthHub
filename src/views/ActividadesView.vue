@@ -11,7 +11,7 @@
             </div>
         </menu-lateral>
         <Tabla titulo="Hoy dia">
-            <div class="actividad">Actividad</div>
+            <taskviewer/>
         </Tabla>
     </div>
 </template>
@@ -19,10 +19,12 @@
 <script>
 import Tabla from '../components/Tabla.vue';
 import MenuLateral from '../components/MenuLateral.vue';
+import taskviewer from '../components/taskviewer.vue';
 export default {
     components:{
         Tabla,
-        MenuLateral
+        MenuLateral,
+        taskviewer
     }
 }
 </script>

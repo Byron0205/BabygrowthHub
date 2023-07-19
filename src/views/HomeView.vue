@@ -23,8 +23,8 @@
 
       <!-- Queda pendiente modificar los enlaces -->
       <div class="homeContainerLinks">
-        <a class="homeLink" href="#">Consejos</a>
-        <a class="homeLink" href="#">Nombres & Significados</a>
+        <a class="homeLink" href="#consejos">Consejos</a>
+        <a class="homeLink" href="#nombres">Nombres & Significados</a>
         <a class="homeLink" href="#">Acerca De</a>
       </div>
     </div>
@@ -39,7 +39,7 @@
   </div>
 
   <!-- 'NS' = Nombres y significados -->
-  <div class="NSflexContainer">
+  <div class="NSflexContainer" id="nombres">
     <div class="NSImgContainer">
       <img
         class="NSImg"
@@ -79,14 +79,7 @@
   </div>
 
   <!-- Slider consejos -->
-  <div>
-    <div class="homeDecoration">
-        <img
-          class="homeSun"
-          src="../assets/img/Decoracion-sol.png"
-          alt="Decoracion osito de peluche"
-        />
-      </div>
+  <div id="consejos">
     <SliderConsejos />
   </div>
 </template>
