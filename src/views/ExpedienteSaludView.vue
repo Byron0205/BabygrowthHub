@@ -2,12 +2,12 @@
     <div class="flex-table-menu">
         <MenuLateral>
             <div class="item-lateral">
-                <img src="../assets/img/icono-reloj.svg" alt="reloj">
-                <router-link class="link-menu" to="/actividades/seguimiento">Seguidor</router-link>
+                <img src="../assets/img/icono-Salud.svg" alt="reloj">
+                <router-link class="link-menu" to="/expediente/salud">Salud</router-link>
             </div>
             <div class="item-lateral">
-                <img src="../assets/img/icono-calendario.svg" alt="reloj">
-                <router-link class="link-menu" to="/actividades/calendario">Calendario</router-link>
+                <img src="../assets/img/icono-beaker.svg" alt="reloj">
+                <router-link class="link-menu" to="/actividades/calendario">Medicación</router-link>
             </div>
         </MenuLateral>
 

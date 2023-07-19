@@ -104,6 +104,11 @@
     font-weight: 700;
     text-transform: uppercase;
     line-height: normal;
+
+    &:hover{
+        transform: scale(1.08);
+        cursor: pointer;
+    }
 }
 
 .submit-2 {

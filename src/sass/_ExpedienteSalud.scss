@@ -27,6 +27,14 @@
 
 .input-expediente {
     border: 2px dashed $border-input;
+    
+    &:disabled{
+        background-color: #f1f1f1;
+    }
+}
+
+.input:disabled{
+    background-color: #f1f1f1;
 }
 
 .viewMedicalData {
@@ -53,12 +61,64 @@
     gap: 10px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .data-view-list {
-    width: 540px;
-    height: 248px;
-    border-radius: 15px;
+    width: 530px;
+    height: 218px;
+    border-radius: 15px 0 0 15px;
     border: 2px solid rgba(15, 91, 142, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $letter-2;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: lighten($letter-2, 5);
+    }
+}
+
+.view-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    border: 1px solid #0F5B8E;
+    padding: 1px 5px;
+}
+
+.text-item {
+    display: flex;
+    gap: 15px;
+}
+
+.text-item-style {
+    color: #0F5B8E;
+    font-family: "Catamaran";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.icon-trash{
+    transition: all ease-in-out 500ms;
+    &:hover{
+        transform: scale(1.18);
+    }
 }

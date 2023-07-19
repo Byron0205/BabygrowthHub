@@ -13,7 +13,7 @@
                     <router-link class="link" to="/">Inicio</router-link>
                 </li>
                 <li class="item">
-                    <router-link class="link" to="/">Expendiente&Medicacion</router-link>
+                    <router-link class="link" to="/expediente/salud">Expendiente&Medicacion</router-link>
                 </li>
                 <li class="item">
                     <router-link class="link" to="/dietas">Dietas</router-link>

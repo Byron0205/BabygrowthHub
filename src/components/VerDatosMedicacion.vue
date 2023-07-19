@@ -7,15 +7,17 @@
             <input type="radio" id="diagnosticos" name="opciones" value="opcion1">
             <label for="diagnosticos" class="radio-option">Diagnósticos médicos</label>
 
-            <input type="radio" id="vacunas" name="opciones" value="opcion2">
-            <label for="vacunas" class="radio-option">Historial de vacunación</label>
-
             <input type="radio" id="padecimientos" name="opciones" value="opcion3">
             <label for="padecimientos" class="radio-option">Padecimientos registrados</label>
         </div>
         <div class="data-view-list">
-            <div class="view-item">
-
+            <div class="view-item" v-for="item in diagnosticos" :key="item.id">
+                <div class="text-item">
+                    <img src="../assets/img/icono-texto.svg" alt="icon">
+                    <p class="text-item-style">{{ item.diagnostico }}</p>
+                </div>
+                <img class="icon-trash" @click="deleteDiagnostico(item.id)" src="../assets/img/icono-trash.svg"
+                    alt="icon trash">
             </div>
         </div>
     </div>
@@ -23,7 +25,26 @@
 
 <script>
 export default {
-
+    data() {
+        return {
+            diagnosticos: [
+                { diagnostico: 'Dermatitis del pañal', id: 1 },
+                { diagnostico: 'Cólicos del lactante', id: 2 },
+                { diagnostico: "Infecciones del tracto respiratorio superior", id: 3 },
+                { diagnostico: 'Dermatitis del pañal', id: 4 },
+                { diagnostico: 'Cólicos del lactante', id: 5 },
+                { diagnostico: "Infecciones del tracto respiratorio superior", id: 6 },
+                { diagnostico: 'Dermatitis del pañal', id: 7 },
+                { diagnostico: 'Cólicos del lactante', id: 8 },
+                { diagnostico: "Infecciones del tracto respiratorio superior", id: 9 }
+            ]
+        }
+    },
+    methods: {
+        deleteDiagnostico(id) {
+            this.diagnosticos = this.diagnosticos.filter(elemento => elemento.id !== id);
+        }
+    }
 }
 </script>
 
@@ -61,12 +82,12 @@ label {
     color: #479DD8;
 }
 
-.select-Data>.radio-option:nth-of-type(2) {
+/* .select-Data>.radio-option:nth-of-type(2) {
     background-color: #FBE6C2;
     color: #E89811;
-}
+} */
 
-.select-Data>.radio-option:nth-of-type(3) {
+.select-Data>.radio-option:nth-of-type(2) {
     background-color: #F4D2DE;
     color: #E4547D;
 }
