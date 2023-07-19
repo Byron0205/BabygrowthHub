@@ -1,0 +1,64 @@
+.body-expediente {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.container-expediente {
+    width: 100%;
+}
+
+.header-expediente {
+    border-radius: 15px 15px 0px 0px;
+    background: linear-gradient(90deg, rgba(121, 108, 208, 0.30) 40.10%, rgba(254, 90, 134, 0.12) 90.63%);
+}
+
+.title-expediente {
+    margin: 0;
+    padding: 8px;
+    color: $letter-1;
+    font-family: "Baloo 2";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.input-expediente {
+    border: 2px dashed $border-input;
+}
+
+.viewMedicalData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.description-MedicalData {
+
+    width: 60%;
+    color: $letter-1;
+    text-align: center;
+    font-family: "Baloo 2";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+}
+
+.select-Data {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.data-view-list {
+    width: 540px;
+    height: 248px;
+    border-radius: 15px;
+    border: 2px solid rgba(15, 91, 142, 0.15);
+}
