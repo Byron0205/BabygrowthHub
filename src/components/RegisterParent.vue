@@ -17,7 +17,7 @@
                         <option value="padre">padre</option>
                     </select>
                     <div class="cut"></div>
-                    <label for="firstname" class="placeholder">Relación</label>
+                    <label class="placeholder">Relación</label>
                 </div>
 
             </div>

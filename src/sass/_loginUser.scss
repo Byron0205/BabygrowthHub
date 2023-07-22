@@ -64,31 +64,22 @@
 
 .placeholder {
     background-color: $blanco;
-    color: $letter-1;
+    color: $letter-4;
     font-family: 'Catamaran', sans-serif;
     font-weight: 400;
-    font-size: 30px;
-    left: 0px;
+    font-size: 25px;
+    left: 5px;
     line-height: 15px;
     pointer-events: none;
     position: absolute;
     transform-origin: 0 30%;
     transition: transform 200ms, color 200ms;
-    top: 20px;
+    top: -10px;
 }
 
-.input:focus~.placeholder,
-.input:not(:placeholder-shown)~.placeholder {
-    transform: translateY(-30px) translateX(10px) scale(0.75);
-}
 
-.input:not(:placeholder-shown)~.placeholder {
-    color: $letter-4;
-}
 
-.input:focus~.placeholder {
-    color: darken($letter-4, 30)
-}
+
 
 /* boton de login */
 .submit {

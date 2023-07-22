@@ -7,15 +7,15 @@
             <div class="c-login-body">
                 <form @submit.prevent="login" class="login">
                     <div class="input-container ic1">
-                        <input id="firstname" class="input" type="text" placeholder="">
+                        <input v-model="correo" class="input" type="text" placeholder="">
                         <div class="cut"></div>
-                        <label for="firstname" class="placeholder">Correo</label>
+                        <label class="placeholder">Correo</label>
                     </div>
 
                     <div class="input-container ic1">
-                        <input id="firstname" class="input" type="text" placeholder="">
+                        <input v-model="contrasenna" class="input" type="password" placeholder="">
                         <div class="cut"></div>
-                        <label for="firstname" class="placeholder">Contraseña</label>
+                        <label class="placeholder">Contraseña</label>
                     </div>
                     <button class="submit">Iniciar Sesión</button>
                 </form>
@@ -29,7 +29,7 @@
                 <form @submit.prevent="validBabyCode" class="login">
                     <p class="text-option">Unirse mediante un <span class="option">código</span></p>
                     <div class="input-container">
-                        <input id="firstname" class="input" type="text" placeholder="">
+                        <input class="input" type="text" placeholder="">
                     </div>
                     <button @click="encargadoForm" class="submit submit-2">Unirse mediante Código</button>
                 </form>
@@ -40,10 +40,30 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
+    data(){
+        return{
+            correo:'',
+            contrasenna:''
+        }
+    },
     methods:{
         login(){
-            this.$router.push('/inicio')
+            axios.post('http://localhost:3000/login',{correo: this.correo, contrasenna:this.contrasenna})
+            .then(response =>{
+                //success response
+                let msg = response.data
+                console.log(msg)
+                this.$router.push('/inicio')
+            })
+            .catch(error =>{
+                //error management
+                console.error('Error al hacer el login: ', error)
+            })
+
+
+            
         },
         validBabyCode(){},
         registerParent(){
