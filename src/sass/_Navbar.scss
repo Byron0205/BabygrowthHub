@@ -123,3 +123,7 @@ nav {
         background-color: darken($letter-3, 10);
     }
 }
+
+.item > .router-link-exact-active{
+    background-color: darken($letter-3, 10);
+}

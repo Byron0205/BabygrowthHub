@@ -7,7 +7,7 @@
             </div>
             <div class="item-lateral">
                 <img src="../assets/img/icono-beaker.svg" alt="reloj">
-                <router-link class="link-menu" to="/actividades/calendario">Medicación</router-link>
+                <router-link class="link-menu" to="/expediente/medicacion">Medicación</router-link>
             </div>
         </MenuLateral>
 
@@ -17,18 +17,18 @@
             </div>
             <div class="body-expediente">
                 <ExpedienteBebe/>
-                <verDatosMedicacion/>
+                <verDatosPadecimiento/>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import ExpedienteBebe from '../components/ExpedienteBebe.vue'
+import ExpedienteBebe from '../components/ExpedienteBaby.vue'
 import MenuLateral from '../components/MenuLateral.vue'
-import verDatosMedicacion from '../components/VerDatosMedicacion.vue';
+import verDatosPadecimiento from '../components/VerDatosPadecimiento.vue';
 export default {
-    components: { MenuLateral, ExpedienteBebe, verDatosMedicacion },
+    components: { MenuLateral, ExpedienteBebe, verDatosPadecimiento },
 
 }
 </script>

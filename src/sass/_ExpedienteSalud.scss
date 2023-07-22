@@ -27,13 +27,13 @@
 
 .input-expediente {
     border: 2px dashed $border-input;
-    
-    &:disabled{
+
+    &:disabled {
         background-color: #f1f1f1;
     }
 }
 
-.input:disabled{
+.input:disabled {
     background-color: #f1f1f1;
 }
 
@@ -116,9 +116,128 @@
     line-height: normal;
 }
 
-.icon-trash{
+.icon-trash {
     transition: all ease-in-out 500ms;
-    &:hover{
+
+    &:hover {
         transform: scale(1.18);
+    }
+}
+
+/* ---------- Medicacion ---------- */
+
+.header-medicacion {
+    border-radius: 15px 15px 0px 0px;
+    background: rgba(254, 93, 55, 0.9);
+}
+
+.title-medicacion {
+    text-align: center;
+    margin: 0;
+    padding: 8px;
+    color: $blanco;
+    font-family: "Baloo 2";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+.viewMedicalData-Medicamentos{
+    position: absolute;
+    background-color: $blanco;
+
+    top: 45%;
+    right: 10%;
+
+    z-index: 2;
+}
+
+.baby-container-medicacion-datos{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.baby-name-container {
+    margin: 20px auto 0 10px;
+
+    border-radius: 15px;
+    border: 1px solid $letter-1;
+    background-color: #f6f6fa;
+
+    padding: 10px 25px;
+
+    width: fit-content;
+    height: fit-content;
+    z-index: 2;
+}
+
+.baby-name {
+    color: $letter-1;
+    text-align: center;
+    font-family: "Catamaran";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.name {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.baby-container-msg {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    width: 100%;
+    background: linear-gradient(270deg, rgba(121, 108, 208, 0.05) 0%, rgba(254, 93, 55, 0.05) 99.99%, rgba(121, 108, 208, 0.00) 100%);
+    z-index: 1;
+}
+
+.baby-msg {
+    width: 300px;
+    padding: 5px 10px 5px 0px;
+    color: #FE5D37;
+    text-align: center;
+    font-family: 'Baloo 2';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 35px;
+    /* 175% */
+}
+
+.data-view-medicamentos {
+    width: 530px;
+    height: 218px;
+    border-radius: 15px 0 0 15px;
+    border: 2px solid rgba(15, 91, 142, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #FE5D37;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: lighten(#FE5D37, 5);
     }
 }
