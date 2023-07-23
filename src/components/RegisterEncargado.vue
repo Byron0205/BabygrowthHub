@@ -30,7 +30,7 @@
                 <label class="placeholder">Contraseña</label>
             </div>
             <div class="input-container width-50 text-center">
-                <button class="submit submit-register">Confirmar</button>
+                <button :disabled="!validfield" :class="validfield ? 'submit submit-register':'submit-disabled submit-register'">Confirmar</button>
             </div>
             
         </form>
@@ -62,7 +62,9 @@ export default {
                 Correo: '',
                 Contrasenna: '',
                 IDRol: '3'
-            }
+            },
+
+            validfield : false
         }
     },
     methods:{
@@ -76,7 +78,32 @@ export default {
             .catch(error=>{
                 console.error('Error al guardar el encargado: ' + error)
             })
-        }
+        },
+        validarCampos() {
+            // Verificar si todos los campos son válidos
+            const total = Object.values(this.encargado).every(value => value !== "");
+            if (this.validarCorreo(this.encargado.Correo) && total){
+                this.validfield = true
+            }else{
+                this.validfield= false
+            }
+        },
+
+        validarCorreo(correo) {
+            // Patrón para validar el formato del correo electrónico
+            var patron = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Verificar si el correo cumple con el patrón
+            return patron.test(correo);
+        },
+    },
+    watch: {
+        encargado: {
+            deep: true,
+            handler() {
+                this.validarCampos();
+            }
+        },
     }
 }
 </script>

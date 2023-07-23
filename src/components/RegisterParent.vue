@@ -3,7 +3,7 @@
         <p class="title-register">¿Quién eres?</p>
         <form @submit.prevent="registerParentForm" class="login form-register">
             <div class="input-container width-50">
-                <input v-model="parent.IDAdulto" class="input" type="text" placeholder="">
+                <input title="formato: 111111111" v-model="parent.IDAdulto" class="input" type="text" placeholder="">
                 <div class="cut"></div>
                 <label class="placeholder">Cedula</label>
             </div>
@@ -42,9 +42,10 @@
                 <label class="placeholder">Contraseña</label>
             </div>
             <div class="input-container width-50 text-center">
-                <button class="submit submit-register">Confirmar</button>
+                <button :disabled="!validfield"
+                    :class="validfield ? 'submit submit-register' : 'submit-disabled submit-register'">Confirmar</button>
             </div>
-            
+
         </form>
         <svg class="img-cloud-bg" xmlns="http://www.w3.org/2000/svg" width="1374" height="722" viewBox="0 0 1374 722"
             fill="none">
@@ -65,36 +66,63 @@
 <script>
 import axios from 'axios';
 export default {
-    data(){
-        return{
-            parent:{
+    data() {
+        return {
+            parent: {
                 IDAdulto: '',
                 Nombre: '',
                 Apellidos: '',
                 Correo: '',
                 Contrasenna: '',
                 IDRol: '1'
-            }
+            },
+            validfield: false
         }
     },
-    methods:{
-        registerParentForm(){
+    methods: {
+        registerParentForm() {
             const url = 'http://localhost:3000/registrarAdulto';
 
-            axios.post(url,this.parent)
-            .then(response=>{
-                const msg = response.data
-                console.log(msg)
-            })
-            .catch(error=>{
-                console.error('Error al guardar el usuario: '+ error)
-            })
+            axios.post(url, this.parent)
+                .then(response => {
+                    const msg = response.data
+                    console.log(msg)
+                })
+                .catch(error => {
+                    console.error('Error al guardar el usuario: ' + error)
+                })
 
             console.log(this.parent)
-            //this.$router.push('/registro/3')
-        }
+            this.$router.push('/registro/3')
+        },
+        validarCampos() {
+            // Verificar si todos los campos son válidos
+            const total = Object.values(this.parent).every(value => value !== "");
+            if (this.validarCorreo(this.parent.Correo) && total){
+                this.validfield = true
+            }else{
+                this.validfield= false
+            }
+        },
+
+        validarCorreo(correo) {
+            // Patrón para validar el formato del correo electrónico
+            var patron = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Verificar si el correo cumple con el patrón
+            return patron.test(correo);
+        },
+    },
+    watch: {
+        parent: {
+            deep: true,
+            handler() {
+                this.validarCampos();
+            }
+        },
     }
 }
+
 </script>
 
 <style></style>
