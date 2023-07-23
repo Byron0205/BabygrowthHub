@@ -1,29 +1,30 @@
 <template>
     <div class="viewMedicalData">
-        <p class="description-MedicalData">
+        <!-- <p class="description-MedicalData">
             Selecciona alguna de las siguientes opciones para poder ver los datos
-        </p>
+        </p> -->
         <div class="select-Data">
-            <input type="radio" id="diagnosticos" name="opciones" value="opcion1">
-            <label for="diagnosticos" class="radio-option">Diagnósticos médicos</label>
+            <!-- <input type="radio" id="diagnosticos" name="opciones" value="opcion1"> -->
+            <!-- <label for="diagnosticos" class="radio-option">Diagnósticos médicos</label> -->
 
-            <input type="radio" id="padecimientos" name="opciones" value="opcion3">
+            <!-- <input type="radio" id="padecimientos" name="opciones" value="opcion3"> -->
             <label for="padecimientos" class="radio-option">Padecimientos registrados</label>
         </div>
         <div class="data-view-list">
-            <div class="view-item" v-for="item in diagnosticos" :key="item.id">
+            <div class="view-item" v-for="item in Padecimientos" :key="item.id">
                 <div class="text-item">
                     <img src="../assets/img/icono-texto.svg" alt="icon">
-                    <p class="text-item-style">{{ item.diagnostico }}</p>
+                    <p class="text-item-style">{{ item.Padecimiento }}</p>
                 </div>
-                <img class="icon-trash" @click="deleteDiagnostico(item.id)" src="../assets/img/icono-trash.svg"
-                    alt="icon trash">
+                <!-- <img class="icon-trash" @click="deleteDiagnostico(item.id)" src="../assets/img/icono-trash.svg"
+                    alt="icon trash"> -->
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
@@ -37,13 +38,46 @@ export default {
                 { diagnostico: 'Dermatitis del pañal', id: 7 },
                 { diagnostico: 'Cólicos del lactante', id: 8 },
                 { diagnostico: "Infecciones del tracto respiratorio superior", id: 9 }
-            ]
+            ],
+            Padecimientos:[],
+            PDiagnosticos:[],
+            PAlergias:[]
+
         }
     },
     methods: {
         deleteDiagnostico(id) {
             this.diagnosticos = this.diagnosticos.filter(elemento => elemento.id !== id);
-        }
+        },
+        obtenerDiagnosticos(id) {
+            const url = 'http://localhost:3000/verDiagnosticos/' + id
+            axios.get(url)
+                .then(response => {
+                    this.PDiagnosticos = response.data;
+                    this.Padecimientos.push(...this.PDiagnosticos)
+                    console.log(this.PDiagnosticos)
+                })
+                .catch(err => {
+                    console.error('Error al obtener los datos: ' + err)
+                })
+        },
+        obtenerAlergias(id) {
+            const url = 'http://localhost:3000/verAlergias/' + id
+            axios.get(url)
+                .then(response => {
+                    this.PAlergias= response.data;
+                    this.Padecimientos.push(...this.PAlergias)
+                    console.log(this.PAlergias)
+                })
+                .catch(err => {
+                    console.error('Error al obtener los datos: ' + err)
+                })
+        },
+    },
+    mounted(){
+        const idBebe = this.$route.params.id;
+        this.obtenerDiagnosticos(idBebe)
+        this.obtenerAlergias(idBebe)
     }
 }
 </script>
@@ -63,7 +97,6 @@ label {
     padding: 10px 20px;
     font-family: Arial, sans-serif;
     font-size: 16px;
-    cursor: pointer;
 }
 
 .radio-option {
@@ -77,15 +110,15 @@ label {
     border-radius: 15px;
 }
 
+.select-Data{
+    margin-top: 20px;
+}
+
 .select-Data>.radio-option:nth-of-type(1) {
     background-color: #DAEFFE;
     color: #479DD8;
 }
 
-/* .select-Data>.radio-option:nth-of-type(2) {
-    background-color: #FBE6C2;
-    color: #E89811;
-} */
 
 .select-Data>.radio-option:nth-of-type(2) {
     background-color: #F4D2DE;
