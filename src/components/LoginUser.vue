@@ -69,6 +69,7 @@ export default {
                 //success response
                 let msg = response.data
                 console.log(msg)
+                localStorage.setItem('session', '1')
                 this.$router.push('/inicio')
             })
             .catch(error =>{

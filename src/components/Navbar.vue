@@ -7,33 +7,32 @@
         <div class="container-logo">
             <img class="img-logo" src="../assets/img/logo.png" alt="logo">
         </div>
-        <div class="flex">
+        <div :class="session ? 'flex-session': 'flex'">
             <ul class="navbar">
                 <li class="item">
-                    <router-link class="link" to="/">Inicio</router-link>
+                    <router-link v-if="session" class="link" to="/inicio">Inicio</router-link>
+                    <router-link v-else class="link" to="/">Inicio</router-link>
                 </li>
                 <li class="item">
-                    <router-link class="link" to="/expediente/salud">Expendiente&Medicacion</router-link>
+                    <router-link v-show="session" class="link" to="/expediente/salud">Expendiente&Medicacion</router-link>
                 </li>
                 <li class="item">
                     <router-link class="link" to="/dietas">Dietas</router-link>
                 </li>
                 <li class="item">
-                    <router-link class="link" to="/">Preguntas&Respuestas</router-link>
+                    <router-link v-show="session" class="link" to="/">Preguntas&Respuestas</router-link>
                 </li>
                 <li class="item">
-                    <router-link class="link" to="/actividades/seguimiento">Actividad</router-link>
+                    <router-link v-show="session" class="link" to="/actividades/seguimiento">Actividad</router-link>
                 </li>
                 <li class="item">
-                    <router-link class="link" to="/perfil">Perfil</router-link>
+                    <router-link v-show="session" class="link" to="/perfil">Perfil</router-link>
                 </li>
             </ul>
-            <!-- <div>
-                <button class="btn">Salir</button>
-            </div> -->
+            
             <div class="btn-group">
-                <button @click="login" class="btn-inicio">Iniciar Sesion</button>
-                <!-- <button @click="register" class="btn-registro">Registrarse</button> -->
+                <button v-if="session" @click="salir" class="btn-registro">Salir</button>
+                <button v-else @click="login" class="btn-inicio">Iniciar Sesion</button>
             </div>
             
         </div>
@@ -45,14 +44,33 @@
 
 <script>
 export default {
+    data(){
+        return{
+            session: true
+        }
+    },
     methods:{
         login(){
             this.$router.push('/login')
         },
-        register(){
-            this.$router.push('/registro/1')
+        salir(){
+            localStorage.removeItem('session')
+            this.$router.push('/')
+        },
+        created(){
+        const validatedSession = localStorage.getItem('session')
+        if (validatedSession == '1'){
+            this.session = true
+        }else{
+            this.session = false
         }
     }
+    },
+    watch:{
+        $route() {
+            this.created();
+        }
+    },
 }
 </script>
 

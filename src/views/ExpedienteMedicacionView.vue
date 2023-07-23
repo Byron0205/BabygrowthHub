@@ -38,6 +38,11 @@ export default {
         return {
             baby: 'Ismael Rosales Mora'
         }
+    },
+    mounted(){
+        if(localStorage.getItem('session') !== '1'){
+            this.$router.push('/login')
+        }
     }
 }
 </script>

@@ -29,7 +29,11 @@ import MenuLateral from '../components/MenuLateral.vue'
 import verDatosPadecimiento from '../components/VerDatosPadecimiento.vue';
 export default {
     components: { MenuLateral, ExpedienteBebe, verDatosPadecimiento },
-
+    mounted(){
+        if(localStorage.getItem('session') !== '1'){
+            this.$router.push('/login')
+        }
+    }
 }
 </script>
 
