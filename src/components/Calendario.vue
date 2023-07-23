@@ -210,7 +210,9 @@
         >
           {{ selectedEvent.nombrePrioridad }}
         </p>
-        <p class="eventDetailsBabie">Asociada a {{ selectedEvent.NombreCompleto }}</p>
+        <p class="eventDetailsBabie">
+          Asociada a {{ selectedEvent.NombreCompleto }}
+        </p>
       </div>
 
       <div
@@ -333,19 +335,27 @@ export default {
       const selectedPriority = this.eventPriority;
       const selectedBaby = this.eventBaby;
 
-      const event = {
-        id: this.events.length + 1,
-        date: format(this.selectedDate, "yyyy-MM-dd"),
-        title: this.eventName,
-        description: this.eventDescription,
-        category: selectedCategory.name,
-        priority: selectedPriority.name,
-        babie: selectedBaby.name,
-        categoryColor: selectedCategory.color,
-        priorityColor: selectedPriority.color,
-        time: this.eventTime,
+      // Crear un objeto con los datos a enviar en el cuerpo de la solicitud
+      const data = {
+        titulo: this.eventName,
+        detalle: this.eventDescription,
+        fecha: this.selectedDate,
+        hora: this.eventTime,
+        idbebe: 1,
+        idcategoria: selectedCategory.IDCategoria,
+        idprioridad: selectedPriority.idPrioridad,
       };
-      this.events.push(event);
+
+      // Realizar la solicitud POST con el objeto de datos como cuerpo de la solicitud
+      axios
+        .post("http://localhost:3000/insertar-actividad", data)
+        .then((response) => {
+          this.selectedEvent = null;
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error("Error al obtener los datos:", error);
+        });
 
       // Reset input values
       this.eventName = "";
@@ -379,7 +389,7 @@ export default {
       this.selectedEvent = event;
     },
     deleteEvent(eventId, babyId) {
-      this.postDeleteActivity(eventId, babyId)
+      this.postDeleteActivity(eventId, babyId);
     },
     getCategories() {
       axios
@@ -411,9 +421,11 @@ export default {
           console.error("Error al obtener los datos:", error);
         });
     },
-    postDeleteActivity(idactividad, idbebe){
+    postDeleteActivity(idactividad, idbebe) {
       axios
-        .post(`http://localhost:3000/eliminar-actividad/${idactividad}/${idbebe}`)
+        .post(
+          `http://localhost:3000/eliminar-actividad/${idactividad}/${idbebe}`
+        )
         .then((response) => {
           this.selectedEvent = null;
           window.location.reload();
@@ -421,7 +433,7 @@ export default {
         .catch((error) => {
           console.error("Error al obtener los datos:", error);
         });
-    }
+    },
   },
   mounted() {
     // Obtener los datos de la BD para llenar el select de los bebes
