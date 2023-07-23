@@ -330,6 +330,21 @@ footer {
   cursor: pointer;
 }
 
+.submit-disabled {
+  width: 80%;
+  padding: 4px 0;
+  color: #fcfcfc;
+  background-color: rgba(255, 158, 198, 0.9);
+  border: none;
+  border-radius: 26px;
+  font-family: "Baloo 2", cursive;
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: normal;
+  cursor: not-allowed;
+}
+
 .submit-2 {
   background: linear-gradient(90deg, rgba(79, 67, 154, 0.9) 0%, rgba(105, 85, 228, 0.9) 100%);
 }
@@ -351,12 +366,16 @@ footer {
   margin-bottom: 0;
 }
 
-.option {
+.option-enlace {
   font-weight: 700;
 }
-.option:hover {
+.option-enlace:hover {
   color: #342c65;
   cursor: pointer;
+}
+
+.option {
+  font-weight: 700;
 }
 
 .divider {

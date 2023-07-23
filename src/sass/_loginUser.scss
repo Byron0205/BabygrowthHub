@@ -96,10 +96,28 @@
     text-transform: uppercase;
     line-height: normal;
 
-    &:hover{
+    &:hover {
         transform: scale(1.08);
         cursor: pointer;
     }
+}
+
+.submit-disabled {
+    width: 80%;
+    padding: 4px 0;
+    color: $blanco;
+    background-color: rgba(255, 158, 198, 0.90);
+    border: none;
+    border-radius: 26px;
+
+    font-family: 'Baloo 2', cursive;
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: normal;
+
+    cursor: not-allowed;
+
 }
 
 .submit-2 {
@@ -126,7 +144,7 @@
 }
 
 
-.option {
+.option-enlace {
     font-weight: 700;
 
     &:hover {
@@ -135,11 +153,15 @@
     }
 }
 
+.option {
+    font-weight: 700;
+}
+
 .divider {
     width: 90%;
     border-bottom: 2px dashed $letter-4;
 
-    &:first-of-type{
+    &:first-of-type {
         margin-top: 15px;
     }
 }
@@ -161,7 +183,7 @@
     border-radius: 50%;
 }
 
-.sun-sticker{
+.sun-sticker {
     position: relative;
     top: 45px;
     left: 95px;
