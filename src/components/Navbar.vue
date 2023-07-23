@@ -20,7 +20,7 @@
                     <router-link class="link" to="/dietas">Dietas</router-link>
                 </li>
                 <li class="item">
-                    <router-link v-show="session" class="link" to="/">Preguntas&Respuestas</router-link>
+                    <router-link v-show="session" class="link" to="/preguntas-respuestas">Preguntas&Respuestas</router-link>
                 </li>
                 <li class="item">
                     <router-link v-show="session" class="link" to="/actividades/seguimiento">Actividad</router-link>
