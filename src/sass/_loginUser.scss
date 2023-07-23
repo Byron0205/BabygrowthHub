@@ -64,31 +64,22 @@
 
 .placeholder {
     background-color: $blanco;
-    color: $letter-1;
+    color: $letter-4;
     font-family: 'Catamaran', sans-serif;
     font-weight: 400;
-    font-size: 30px;
-    left: 0px;
+    font-size: 25px;
+    left: 5px;
     line-height: 15px;
     pointer-events: none;
     position: absolute;
     transform-origin: 0 30%;
     transition: transform 200ms, color 200ms;
-    top: 20px;
+    top: -10px;
 }
 
-.input:focus~.placeholder,
-.input:not(:placeholder-shown)~.placeholder {
-    transform: translateY(-30px) translateX(10px) scale(0.75);
-}
 
-.input:not(:placeholder-shown)~.placeholder {
-    color: $letter-4;
-}
 
-.input:focus~.placeholder {
-    color: darken($letter-4, 30)
-}
+
 
 /* boton de login */
 .submit {
@@ -104,6 +95,29 @@
     font-weight: 700;
     text-transform: uppercase;
     line-height: normal;
+
+    &:hover {
+        transform: scale(1.08);
+        cursor: pointer;
+    }
+}
+
+.submit-disabled {
+    width: 80%;
+    padding: 4px 0;
+    color: $blanco;
+    background-color: rgba(255, 158, 198, 0.90);
+    border: none;
+    border-radius: 26px;
+
+    font-family: 'Baloo 2', cursive;
+    font-size: 26px;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: normal;
+
+    cursor: not-allowed;
+
 }
 
 .submit-2 {
@@ -130,7 +144,7 @@
 }
 
 
-.option {
+.option-enlace {
     font-weight: 700;
 
     &:hover {
@@ -139,11 +153,15 @@
     }
 }
 
+.option {
+    font-weight: 700;
+}
+
 .divider {
     width: 90%;
     border-bottom: 2px dashed $letter-4;
 
-    &:first-of-type{
+    &:first-of-type {
         margin-top: 15px;
     }
 }
@@ -165,7 +183,7 @@
     border-radius: 50%;
 }
 
-.sun-sticker{
+.sun-sticker {
     position: relative;
     top: 45px;
     left: 95px;

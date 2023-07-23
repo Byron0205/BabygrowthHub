@@ -1,7 +1,16 @@
 .flex {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-session {
+    display: flex;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.margin-nav{
+    margin: 0 20px;
 }
 
 .btn-group{
@@ -122,4 +131,8 @@ nav {
         color: darken($color: $letter-2, $amount: 15);
         background-color: darken($letter-3, 10);
     }
+}
+
+.item > .router-link-exact-active{
+    background-color: darken($letter-3, 10);
 }

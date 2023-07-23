@@ -1,0 +1,243 @@
+.body-expediente {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.container-expediente {
+    width: 100%;
+}
+
+.header-expediente {
+    border-radius: 15px 15px 0px 0px;
+    background: linear-gradient(90deg, rgba(121, 108, 208, 0.30) 40.10%, rgba(254, 90, 134, 0.12) 90.63%);
+}
+
+.title-expediente {
+    margin: 0;
+    padding: 8px;
+    color: $letter-1;
+    font-family: "Baloo 2";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.input-expediente {
+    border: 2px dashed $border-input;
+
+    &:disabled {
+        background-color: #f1f1f1;
+    }
+}
+
+.input:disabled {
+    background-color: #f1f1f1;
+}
+
+.viewMedicalData {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.description-MedicalData {
+
+    width: 60%;
+    color: $letter-1;
+    text-align: center;
+    font-family: "Baloo 2";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+}
+
+.select-Data {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.data-view-list {
+    width: 530px;
+    height: 218px;
+    border-radius: 15px 0 0 15px;
+    border: 2px solid rgba(15, 91, 142, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $letter-2;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: lighten($letter-2, 5);
+    }
+}
+
+.view-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    border: 1px solid #0F5B8E;
+    padding: 1px 5px;
+}
+
+.text-item {
+    display: flex;
+    gap: 15px;
+}
+
+.text-item-style {
+    color: #0F5B8E;
+    font-family: "Catamaran";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.icon-trash {
+    transition: all ease-in-out 500ms;
+
+    &:hover {
+        transform: scale(1.18);
+    }
+}
+
+/* ---------- Medicacion ---------- */
+
+.header-medicacion {
+    border-radius: 15px 15px 0px 0px;
+    background: rgba(254, 93, 55, 0.9);
+}
+
+.title-medicacion {
+    text-align: center;
+    margin: 0;
+    padding: 8px;
+    color: $blanco;
+    font-family: "Baloo 2";
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+
+.viewMedicalData-Medicamentos{
+    position: absolute;
+    background-color: $blanco;
+
+    top: 45%;
+    right: 10%;
+
+    z-index: 2;
+}
+
+.baby-container-medicacion-datos{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.baby-name-container {
+    margin: 20px auto 0 10px;
+
+    border-radius: 15px;
+    border: 1px solid $letter-1;
+    background-color: #f6f6fa;
+
+    padding: 10px 25px;
+
+    width: fit-content;
+    height: fit-content;
+    z-index: 2;
+}
+
+.baby-name {
+    color: $letter-1;
+    text-align: center;
+    font-family: "Catamaran";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.name {
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.baby-container-msg {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    width: 100%;
+    background: linear-gradient(270deg, rgba(121, 108, 208, 0.05) 0%, rgba(254, 93, 55, 0.05) 99.99%, rgba(121, 108, 208, 0.00) 100%);
+    z-index: 1;
+}
+
+.baby-msg {
+    width: 300px;
+    padding: 5px 10px 5px 0px;
+    color: #FE5D37;
+    text-align: center;
+    font-family: 'Baloo 2';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 35px;
+    /* 175% */
+}
+
+.data-view-medicamentos {
+    width: 530px;
+    height: 218px;
+    border-radius: 15px 0 0 15px;
+    border: 2px solid rgba(15, 91, 142, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #FE5D37;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: lighten(#FE5D37, 5);
+    }
+}

@@ -4,6 +4,11 @@
 
 .pink-background{
     background-color: $letter-2 !important;
+
+    &:hover{
+        transform: scale(1.08);
+        cursor: pointer;
+    }
 }
 
 .select-age-label{

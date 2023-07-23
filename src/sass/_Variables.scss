@@ -27,6 +27,12 @@ $border-purple: #786ACF;
         }
     }
 
+    @else if $breakpoint == lg{
+        @media (min-width: 1280px) {
+            @content;
+        }
+    }
+
     @else if $breakpoint == tv{
         @media (min-height: 900px){
             @content;
