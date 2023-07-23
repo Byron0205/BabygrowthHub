@@ -5,28 +5,35 @@
                 <i class="fa-regular fa-circle-user custom-icon-profile" style="color: #4F439A;"></i>
                 <h2 class="text-profile">Perfil</h2>
                 <div class="profile-role">
-                    <h3>MADRE</h3>
+                    <h3>{{ profileData.ROL }}</h3>
                 </div>
             </div>
             <div class="information-container">
                 <div class="personal-information-container">
                     <div class="personal-information">
                         <label for="name">Nombre</label>
-                        <input type="text" class="input-modify">
+                        <input type="text" class="input-modify" :value="inputValue('Nombre')"
+                            @input="updateProfileData('Nombre', $event.target.value)" :readonly="!isInputEditable" />
                         <label for="last-name">Apellidos</label>
-                        <input type="text" class="input-modify">
+                        <input type="text" class="input-modify" :value="inputValue('Apellidos')"
+                            @input="updateProfileData('Apellidos', $event.target.value)" :readonly="!isInputEditable" />
                         <label for="contact">Contacto</label>
-                        <input type="text" class="input-modify">
-                        <button class="modify">MODIFICAR</button>
+                        <input type="text" class="input-modify" :value="inputValue('Correo')"
+                            @input="updateProfileData('Correo', $event.target.value)" :readonly="!isInputEditable" />
+                        <button v-if="!isInputEditable" class="modify" @click="toggleInputEditable">MODIFICAR</button>
+                        <div v-else>
+                            <button class="save" @click="saveProfileData">GUARDAR</button>
+                            <button class="cancel" @click="cancelEditing">CANCELAR</button>
+                        </div>
                     </div>
                 </div>
                 <div class="son-information-container">
                     <div class="son-information">
                         <label for="sons" class="sons-text">Hijos registrados</label>
-                        <select class="sons">
-                            <option value="opcion1">Opción 1</option>
-                            <option value="opcion2">Opción 2</option>
-                            <option value="opcion3">Opción 3</option>
+                        <select class="sons" v-model="selectedSon">
+                            <option v-for="son in profileData.hijos" :key="son.IDBebe" :value="son.IDBebe">
+                                {{ son.NombreHijo }} {{ son.ApellidoHijo }}
+                            </option>
                         </select>
                         <label for="">Selecciona uno de tus tesoros para:</label>
                         <button class="btn-galery">Galería del recuerdo</button>
@@ -48,25 +55,98 @@
         </div>
     </div>
 </template>
-
+  
 <script>
+import axios from 'axios';
+
 export default {
     name: 'BabygrowthHubPerfilView',
 
     data() {
         return {
-
+            profileData: {
+                IDAdulto: 1,
+                Nombre: '',
+                Apellidos: '',
+                Correo: '',
+                ROL: '',
+            },
+            isInputEditable: false,
+            originalProfileData: {},
+            modifiedProfileData: {}
         };
     },
 
+    computed: {
+        activeProfileData() {
+            return this.isInputEditable ? this.modifiedProfileData : this.profileData;
+        }
+    },
     mounted() {
-
+        this.fetchProfileData();
     },
 
     methods: {
+        fetchProfileData() {
+            axios.get(`http://localhost:3000/adultos/${1}`)
+                .then((response) => {
+                    const profileDataFromAPI = response.data[0];
+                    console.log(profileDataFromAPI)
 
+                    this.profileData.IDAdulto = 1;
+                    this.profileData.Nombre = profileDataFromAPI.Nombre;
+                    this.profileData.Apellidos = profileDataFromAPI.Apellidos;
+                    this.profileData.Correo = profileDataFromAPI.Correo;
+                    this.profileData.ROL = profileDataFromAPI.ROL;
+
+                    this.profileData.hijos = response.data.filter(item => item.IDBebe !== null);
+
+                })
+                .catch((error) => {
+                    console.error('Error al obtener datos del perfil:', error);
+                });
+        },
+
+        toggleInputEditable() {
+            this.isInputEditable = true;
+            this.originalProfileData = { ...this.profileData };
+            this.modifiedProfileData = { ...this.originalProfileData };
+        },
+
+        cancelEditing() {
+            this.isInputEditable = false;
+            this.modifiedProfileData = {};
+        },
+
+        async saveProfileData() {
+            if (!this.modifiedProfileData.Nombre || !this.modifiedProfileData.Apellidos || !this.modifiedProfileData.Correo) {
+                console.error('Error: Please fill in all required fields.');
+                return;
+            }
+
+            try {
+                await axios.put(`http://localhost:3000/adultos/${this.profileData.IDAdulto}`, {
+                    Nombre: this.modifiedProfileData.Nombre,
+                    Apellidos: this.modifiedProfileData.Apellidos,
+                    Correo: this.modifiedProfileData.Correo
+                });
+
+                this.profileData = { ...this.modifiedProfileData };
+
+                this.modifiedProfileData = {};
+                this.isInputEditable = false;
+            } catch (error) {
+                console.error('Error while saving profile data:', error);
+            }
+        },
+
+        updateProfileData(field, value) {
+            this.modifiedProfileData[field] = value;
+        },
+
+        inputValue(field) {
+            return this.activeProfileData[field];
+        }
     },
 };
 </script>
-
-<style lang="scss" scoped></style>

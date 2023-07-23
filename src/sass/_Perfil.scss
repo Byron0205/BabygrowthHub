@@ -65,13 +65,27 @@
             text-transform: uppercase;
         }
     }
-    
+
 }
+
 .information-container {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
+
+.isInputEditable {
+    width: 100%;
+    height: 38.492px;
+    border-radius: 5px;
+    border: 1px dashed #4F439A;
+    background: rgba(121, 108, 208, 0.05);
+    margin-bottom: 10px;
+    padding: 5px;
+    font-size: 16px;
+    color: #4F439A;
+}
+
 .personal-information {
     margin-left: 20px;
     margin-bottom: 20px;
@@ -250,12 +264,45 @@
 }
 
 .rainbow-decoration {
-    position: absolute; 
-    top: 0; 
-    right: 0; 
-    transform: translate(0px, 700px); 
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(0px, 700px);
 }
 
 .rainbow-decoration img {
-    height: 100%; 
+    height: 100%;
+}
+
+.input-modify[readonly] {
+    border: 1px solid transparent;
+    background-color: #f0f0f0;
+}
+
+.save,
+.cancel {
+    margin-top: 10px;
+    width: 100%;
+    height: 47px;
+    text-align: center;
+    font-family: 'Baloo 2';
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+    
+.save {
+    color: #0e7913;
+    border-color: rgba(168, 247, 138, 0.25);
+    background: rgba(168, 247, 138, 0.25);
+}
+
+.cancel {
+    color: #E4547D;
+    border-color: rgba(228, 84, 125, 0.25);
+    background: rgba(228, 84, 125, 0.25);
 }
