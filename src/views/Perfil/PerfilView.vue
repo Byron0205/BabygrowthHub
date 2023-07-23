@@ -42,6 +42,9 @@
                     </div>
                 </div>
             </div>
+            <div v-if="message" class="alert" :class="alertType">
+                {{ message }}
+            </div>
             <div class="administrative-panel-container">
                 <div class="administrative-panel">
                     <h2>Panel administrativo</h2>
@@ -73,7 +76,9 @@ export default {
             },
             isInputEditable: false,
             originalProfileData: {},
-            modifiedProfileData: {}
+            modifiedProfileData: {},
+            message: "",
+            alertType: "",
         };
     },
 
@@ -117,7 +122,14 @@ export default {
             this.isInputEditable = false;
             this.modifiedProfileData = {};
         },
+        showAlert() {
+            const displayDuration = 3000;
 
+            setTimeout(() => {
+                this.message = "";
+                this.alertType = "";
+            }, displayDuration);
+        },
         async saveProfileData() {
             if (!this.modifiedProfileData.Nombre || !this.modifiedProfileData.Apellidos || !this.modifiedProfileData.Correo) {
                 console.error('Error: Please fill in all required fields.');
@@ -135,8 +147,15 @@ export default {
 
                 this.modifiedProfileData = {};
                 this.isInputEditable = false;
+
+                this.message = "¡Perfil modificado exitosamente!";
+                this.alertType = "success";
+                this.showAlert();
             } catch (error) {
                 console.error('Error while saving profile data:', error);
+                this.message = "Error desconocido en el servidor";
+                this.alertType = "error";
+                this.showAlert();
             }
         },
 
@@ -146,7 +165,8 @@ export default {
 
         inputValue(field) {
             return this.activeProfileData[field];
-        }
+        },
+        
     },
 };
 </script>

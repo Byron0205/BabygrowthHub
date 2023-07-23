@@ -306,3 +306,25 @@
     border-color: rgba(228, 84, 125, 0.25);
     background: rgba(228, 84, 125, 0.25);
 }
+
+.alert {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+}
+
+.alert.success {
+    background-color: #28a745; 
+}
+
+.alert.error {
+    background-color: #dc3545; 
+}
