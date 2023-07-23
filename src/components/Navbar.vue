@@ -7,7 +7,7 @@
         <div class="container-logo">
             <img class="img-logo" src="../assets/img/logo.png" alt="logo">
         </div>
-        <div :class="session ? 'flex-session': 'flex'">
+        <div :class="session ? 'flex-session': 'flex margin-nav'">
             <ul class="navbar">
                 <li class="item">
                     <router-link v-if="session" class="link" to="/inicio">Inicio</router-link>
