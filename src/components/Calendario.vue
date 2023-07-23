@@ -35,12 +35,12 @@
               }}</span>
               <div
                 v-for="event in getEventsForDate(day.date)"
-                :key="event.id"
+                :key="event.IDActividad"
                 class="calendarEvent"
-                :style="{ backgroundColor: event.color }"
+                :style="{ backgroundColor: event.CategoriaColor }"
                 @click="viewEvent(event)"
               >
-                {{ event.title }}
+                {{ event.Titulo }}
               </div>
             </div>
           </td>
@@ -98,11 +98,11 @@
                 v-model="eventPriority"
               >
                 <option
-                  v-for="priority in proritiesList"
-                  :key="priority.id"
+                  v-for="priority in priorities"
+                  :key="priority.idPrioridad"
                   :value="priority"
                 >
-                  {{ priority.name }}
+                  {{ priority.nombrePrioridad }}
                 </option>
               </select>
             </div>
@@ -116,11 +116,11 @@
                 v-model="eventCategory"
               >
                 <option
-                  v-for="category in categoriesList"
-                  :key="category.id"
+                  v-for="category in categories"
+                  :key="category.IDCategoria"
                   :value="category"
                 >
-                  {{ category.name }}
+                  {{ category.Nombre }}
                 </option>
               </select>
             </div>
@@ -135,7 +135,7 @@
               v-model="eventBaby"
             >
               <option
-                v-for="babie in babiesList"
+                v-for="babie in registeredBabies"
                 :key="babie.id"
                 :value="babie"
               >
@@ -176,17 +176,17 @@
       </div>
       <div style="margin-top: 1rem">
         <div class="eventDetailsFlexContainer centerElements informationTop">
-          <p class="eventDetailsTitle">{{ selectedEvent.title }}</p>
+          <p class="eventDetailsTitle">{{ selectedEvent.Titulo }}</p>
           <div class="eventDetailsFlexContainer centerElements">
             <i
               class="fa-solid fa-tag"
-              :style="{ color: selectedEvent.color }"
+              :style="{ color: selectedEvent.CategoriaColor }"
             ></i>
             <p
               class="eventDetailsCategory"
-              :style="{ color: selectedEvent.categoryColor }"
+              :style="{ color: selectedEvent.CategoriaColor }"
             >
-              {{ selectedEvent.category }}
+              {{ selectedEvent.CategoriaNombre }}
             </p>
           </div>
         </div>
@@ -196,8 +196,8 @@
         class="eventDetailsFlexContainer centerElements eventDetailsDateContainer"
       >
         <i class="fa-regular fa-clock eventDetailsDate"></i>
-        <p class="eventDetailsDate">{{ selectedEvent.date }}</p>
-        <p class="eventDetailsDate">{{ selectedEvent.time }}</p>
+        <p class="eventDetailsDate">{{ selectedEvent.Fecha }}</p>
+        <p class="eventDetailsDate">{{ selectedEvent.Hora }}</p>
       </div>
 
       <div
@@ -206,23 +206,23 @@
       >
         <p
           class="eventDetailsPriority"
-          :style="{ color: selectedEvent.priorityColor }"
+          :style="{ color: selectedEvent.colorPrioridad }"
         >
-          {{ selectedEvent.priority }}
+          {{ selectedEvent.nombrePrioridad }}
         </p>
-        <p class="eventDetailsBabie">Asociada a {{ selectedEvent.babie }}</p>
+        <p class="eventDetailsBabie">Asociada a {{ selectedEvent.NombreCompleto }}</p>
       </div>
 
       <div
         class="eventDetailsFlexContainer eventDetailsDescriptionContainer centerElements"
       >
         <i class="fa-solid fa-align-left" style="padding: 1rem"></i>
-        <p class="eventDetailsDescription">{{ selectedEvent.description }}</p>
+        <p class="eventDetailsDescription">{{ selectedEvent.Detalle }}</p>
       </div>
       <div class="eventDetailsButtonsContainer">
         <button
           class="eventDetailsButton delete"
-          @click="deleteEvent(selectedEvent.id)"
+          @click="deleteEvent(selectedEvent.IDActividad, selectedEvent.IDBebe)"
         >
           <i class="fa-solid fa-trash-can"></i> Eliminar actividad
         </button>
@@ -243,7 +243,10 @@ import {
   addDays,
   format,
   addMonths,
+  parseISO,
 } from "date-fns";
+
+import axios from "axios";
 
 export default {
   data() {
@@ -297,15 +300,6 @@ export default {
       }
 
       return days;
-    },
-    babiesList() {
-      return this.registeredBabies;
-    },
-    categoriesList() {
-      return this.categories;
-    },
-    proritiesList() {
-      return this.priorities;
     },
   },
   methods: {
@@ -366,26 +360,68 @@ export default {
     getEventsForDate(date) {
       const formattedDate = format(date, "yyyy-MM-dd");
       return this.events
-        .filter((event) => event.date === formattedDate)
+        .filter((event) => {
+          const eventDate = format(parseISO(event.Fecha), "yyyy-MM-dd");
+          return eventDate === formattedDate;
+        })
         .map((event) => ({
           ...event,
-          color: this.getCategoryColor(event.category),
+          color: this.getCategoryColor(event.CategoriaNombre),
         }));
     },
     getCategoryColor(categoryName) {
       const category = this.categories.find(
-        (category) => category.name === categoryName
+        (category) => category.Nombre === categoryName
       );
-      return category ? category.color : "";
+      return category ? category.Color : "";
     },
     viewEvent(event) {
       this.selectedEvent = event;
     },
-    deleteEvent(eventId) {
-      // Modificar a futuro para enviar a eliminar a BD
-      this.events = this.events.filter((event) => event.id !== eventId);
-      this.selectedEvent = null;
+    deleteEvent(eventId, babyId) {
+      this.postDeleteActivity(eventId, babyId)
     },
+    getCategories() {
+      axios
+        .get("http://localhost:3000/recuperar-categorias")
+        .then((response) => {
+          this.categories = response.data;
+        })
+        .catch((error) => {
+          console.error("Error al obtener los datos:", error);
+        });
+    },
+    getPriorities() {
+      axios
+        .get("http://localhost:3000/recuperar-prioridades")
+        .then((response) => {
+          this.priorities = response.data;
+        })
+        .catch((error) => {
+          console.error("Error al obtener los datos:", error);
+        });
+    },
+    getActivities() {
+      axios
+        .get("http://localhost:3000/recuperar-actividades")
+        .then((response) => {
+          this.events = response.data;
+        })
+        .catch((error) => {
+          console.error("Error al obtener los datos:", error);
+        });
+    },
+    postDeleteActivity(idactividad, idbebe){
+      axios
+        .post(`http://localhost:3000/eliminar-actividad/${idactividad}/${idbebe}`)
+        .then((response) => {
+          this.selectedEvent = null;
+          window.location.reload();
+        })
+        .catch((error) => {
+          console.error("Error al obtener los datos:", error);
+        });
+    }
   },
   mounted() {
     // Obtener los datos de la BD para llenar el select de los bebes
@@ -395,17 +431,11 @@ export default {
       { id: 3, name: "Veronica S" },
     ];
 
-    this.categories = [
-      { id: "1", name: "Cita Médica", color: "#87bd40" },
-      { id: "1", name: "Tratamiento", color: "#4081bd" },
-      { id: "1", name: "Personal", color: "#7e40bd" },
-    ];
+    this.getActivities();
+    this.getCategories();
+    this.getPriorities();
 
-    this.priorities = [
-      { id: "1", name: "Prioridad alta", color: "#D15353" },
-      { id: "2", name: "Prioridad media", color: "#ffbf00" },
-      { id: "3", name: "Prioridad baja", color: "#87bd40" },
-    ];
+    //Eventos
   },
 };
 </script>
