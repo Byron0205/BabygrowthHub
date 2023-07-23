@@ -136,10 +136,10 @@
             >
               <option
                 v-for="babie in registeredBabies"
-                :key="babie.id"
+                :key="babie.IDBebe"
                 :value="babie"
               >
-                {{ babie.name }}
+                {{ babie.NombreCompleto }}
               </option>
             </select>
           </div>
@@ -411,9 +411,9 @@ export default {
           console.error("Error al obtener los datos:", error);
         });
     },
-    getActivities() {
+    getActivities(idAdulto) {
       axios
-        .get("http://localhost:3000/recuperar-actividades")
+        .get(`http://localhost:3000/recuperar-actividades/${idAdulto}`)
         .then((response) => {
           this.events = response.data;
         })
@@ -421,10 +421,10 @@ export default {
           console.error("Error al obtener los datos:", error);
         });
     },
-    postDeleteActivity(idactividad, idbebe) {
+    postDeleteActivity(idActividad, idBebe) {
       axios
         .post(
-          `http://localhost:3000/eliminar-actividad/${idactividad}/${idbebe}`
+          `http://localhost:3000/eliminar-actividad/${idActividad}/${idBebe}`
         )
         .then((response) => {
           this.selectedEvent = null;
@@ -434,20 +434,24 @@ export default {
           console.error("Error al obtener los datos:", error);
         });
     },
+    getBabies(idAdulto) {
+      axios
+        .get(`http://localhost:3000/recuperar-bebes/${idAdulto}`)
+        .then((response) => {
+          this.registeredBabies = response.data;
+        })
+        .catch((error) => {
+          console.error("Error al obtener los datos:", error);
+        });
+    },
   },
   mounted() {
-    // Obtener los datos de la BD para llenar el select de los bebes
-    this.registeredBabies = [
-      { id: 1, name: "Brian G" },
-      { id: 2, name: "Juanito D" },
-      { id: 3, name: "Veronica S" },
-    ];
-
-    this.getActivities();
+    /* !Obtener ID adulto que haya iniciado sesion */
+    const IDAdulto = 1;
+    this.getBabies(IDAdulto);
+    this.getActivities(IDAdulto);
     this.getCategories();
     this.getPriorities();
-
-    //Eventos
   },
 };
 </script>
