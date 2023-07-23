@@ -1,20 +1,25 @@
 <template>
     <div class="container-register">
         <p class="title-register">¿Quién eres?</p>
-        <form @submit.prevent="" class="login form-register">
+        <form @submit.prevent="registerParentForm" class="login form-register">
+            <div class="input-container width-50">
+                <input v-model="parent.IDAdulto" class="input" type="text" placeholder="">
+                <div class="cut"></div>
+                <label class="placeholder">Cedula</label>
+            </div>
             <div class="flex flex-register input-container width-50">
 
                 <div class="input-container width-50 ic1">
-                    <input id="firstname" class="input" type="text" placeholder="">
+                    <input v-model="parent.Nombre" class="input" type="text" placeholder="">
                     <div class="cut"></div>
-                    <label for="firstname" class="placeholder">Nombre</label>
+                    <label class="placeholder">Nombre</label>
                 </div>
 
                 <!-- select -->
                 <div class="input-container width-50 ic1">
-                    <select name="relacion" class="input" id="">
-                        <option value="madre">madre</option>
-                        <option value="padre">padre</option>
+                    <select v-model="parent.IDRol" name="relacion" class="input" id="">
+                        <option value="1">madre</option>
+                        <option value="1">padre</option>
                     </select>
                     <div class="cut"></div>
                     <label class="placeholder">Relación</label>
@@ -22,22 +27,22 @@
 
             </div>
             <div class="input-container width-50 ic1">
-                <input id="firstname" class="input" type="text" placeholder="">
+                <input v-model="parent.Apellidos" class="input" type="text" placeholder="">
                 <div class="cut"></div>
-                <label for="firstname" class="placeholder">Apellidos</label>
+                <label class="placeholder">Apellidos</label>
             </div>
-            <div class="input-container width-50 ic1">
-                <input id="firstname" class="input" type="text" placeholder="">
+            <div class="input-container width-50">
+                <input v-model="parent.Correo" class="input" type="text" placeholder="">
                 <div class="cut"></div>
-                <label for="firstname" class="placeholder">Correo</label>
+                <label class="placeholder">Correo</label>
             </div>
-            <div class="input-container width-50 ic1">
-                <input id="firstname" class="input" type="text" placeholder="">
+            <div class="input-container width-50">
+                <input v-model="parent.Contrasenna" class="input" type="text" placeholder="">
                 <div class="cut"></div>
-                <label for="firstname" class="placeholder">Contraseña</label>
+                <label class="placeholder">Contraseña</label>
             </div>
             <div class="input-container width-50 text-center">
-                <button @click="registerBabyForm" class="submit submit-register">Confirmar</button>
+                <button class="submit submit-register">Confirmar</button>
             </div>
             
         </form>
@@ -58,10 +63,35 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
+    data(){
+        return{
+            parent:{
+                IDAdulto: '',
+                Nombre: '',
+                Apellidos: '',
+                Correo: '',
+                Contrasenna: '',
+                IDRol: '1'
+            }
+        }
+    },
     methods:{
-        registerBabyForm(){
-            this.$router.push('/registro/3')
+        registerParentForm(){
+            const url = 'http://localhost:3000/registrarAdulto';
+
+            axios.post(url,this.parent)
+            .then(response=>{
+                const msg = response.data
+                console.log(msg)
+            })
+            .catch(error=>{
+                console.error('Error al guardar el usuario: '+ error)
+            })
+
+            console.log(this.parent)
+            //this.$router.push('/registro/3')
         }
     }
 }

@@ -1,25 +1,31 @@
 <template>
     <div class="container-register">
         <p class="title-register">¿Quién eres?</p>
-        <form @submit.prevent="" class="login form-register">
+        <form @submit.prevent="registerFormEncargado" class="login form-register">
 
-            <div class="input-container width-50 ic1">
-                <input id="firstname" class="input" type="text" placeholder="">
+            <div class="input-container width-50">
+                <input v-model="encargado.IDAdulto" class="input" type="text" placeholder="">
                 <div class="cut"></div>
-                <label for="firstname" class="placeholder">Nombre</label>
+                <label class="placeholder">Cedula</label>
             </div>
-            <div class="input-container width-50 ic1">
-                <input id="firstname" class="input" type="text" placeholder="">
+
+            <div class="input-container width-50">
+                <input v-model="encargado.Nombre" class="input" type="text" placeholder="">
                 <div class="cut"></div>
-                <label for="firstname" class="placeholder">Apellidos</label>
+                <label class="placeholder">Nombre</label>
             </div>
-            <div class="input-container width-50 ic1">
-                <input id="firstname" class="input" type="text" placeholder="">
+            <div class="input-container width-50">
+                <input v-model="encargado.Apellidos" class="input" type="text" placeholder="">
                 <div class="cut"></div>
-                <label for="firstname" class="placeholder">Correo</label>
+                <label class="placeholder">Apellidos</label>
             </div>
-            <div class="input-container width-50 ic1">
-                <input class="input" type="text" placeholder="">
+            <div class="input-container width-50">
+                <input v-model="encargado.Correo" class="input" type="text" placeholder="">
+                <div class="cut"></div>
+                <label class="placeholder">Correo</label>
+            </div>
+            <div class="input-container width-50">
+                <input v-model="encargado.Contrasenna" class="input" type="text" placeholder="">
                 <div class="cut"></div>
                 <label class="placeholder">Contraseña</label>
             </div>
@@ -45,8 +51,33 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
-
+    data(){
+        return{
+            encargado:{
+                IDAdulto: '',
+                Nombre: '',
+                Apellidos: '',
+                Correo: '',
+                Contrasenna: '',
+                IDRol: '3'
+            }
+        }
+    },
+    methods:{
+        registerFormEncargado(){
+            const url = 'http://localhost:3000/registrarAdulto';
+            axios.post(url, this.encargado)
+            .then(response=>{
+                const msg= response.data;
+                console.log(msg);
+            })
+            .catch(error=>{
+                console.error('Error al guardar el encargado: ' + error)
+            })
+        }
+    }
 }
 </script>
 
