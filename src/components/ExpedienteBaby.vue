@@ -61,6 +61,7 @@ export default {
             btn: 'Modificar',
             activarForm: false,
             DatosBebe: {
+                IDBebe: '',
                 Nombre: '',
                 Apellidos: '',
                 Edad: '',
@@ -82,6 +83,22 @@ export default {
                 this.btn = 'Confirmar'
                 this.activarForm = true
             } else {
+                const url= 'http://localhost:3000/modificarBebe'
+
+                axios.put(url, {
+                    IDBebe: this.DatosBebe.IDBebe,
+                    Peso: this.DatosBebe.Peso,
+                    Altura: this.DatosBebe.Altura,
+                    Nombre: this.DatosBebe.Nombre,
+                    Sexo: this.DatosBebe.Sexo
+                })
+                .then(response=>{
+                    const msg = response.data;
+                    console.log(msg);
+                })
+                .catch(err=>{
+                    console.error('Error al modificar bebe')
+                })
                 this.btn = 'Modificar'
                 this.activarForm = false
             }
