@@ -24,7 +24,7 @@
     </div>
     <div class="description-task " style="padding: 1rem;">
       <div>
-        <img src="../assets/img/icono-texto.svg" alt="label" />
+        <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-texto.svg" alt="label" />
       </div>
       <div class="description-task-text color">{{ activity.Detalle }}</div>
     </div>

@@ -2,11 +2,11 @@
     <div class="flex-table-menu">
         <MenuLateral>
             <div class="item-lateral">
-                <img src="../assets/img/icono-Salud.svg" alt="reloj">
+                <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-Salud.svg" alt="reloj">
                 <router-link class="link-menu" :to="'/expediente/salud/'+ this.DatosBebe.IDBebe">Salud</router-link>
             </div>
             <div class="item-lateral">
-                <img src="../assets/img/icono-beaker.svg" alt="reloj">
+                <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-beaker.svg" alt="reloj">
                 <router-link class="link-menu" :to="'/expediente/medicacion/'+ this.DatosBebe.IDBebe">Medicación</router-link>
             </div>
         </MenuLateral>
@@ -22,7 +22,7 @@
 
 
             <div class="baby-container-msg">
-                <img src="../assets/img/Decoracion.png" alt="icon">
+                <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion.png" alt="icon">
                 <p class="baby-msg">Recuerda que mantener actualizado el expediente de medicación de tu precioso bebé es
                     fundamental para garantizar su bienestar!</p>
             </div>

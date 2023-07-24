@@ -54,7 +54,7 @@
             </div>
         </div>
         <div class="rainbow-decoration">
-            <img src="../../assets/img/Decoracion-arcoiris.png" alt="">
+            <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-arcoiris.png" alt="">
         </div>
     </div>
 </template>

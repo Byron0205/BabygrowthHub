@@ -14,7 +14,7 @@
                     <p>Altura actual de tu pequeño</p>
                 </div>
                 <div class="card-weight">
-                    <img src="../../assets/img/Decoracion-sol.png" alt="img-sol">
+                    <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-sol.png" alt="img-sol">
                     <i class="fa-solid fa-weight-scale custom-icon" style="color: #69dcff;"></i>
                     <h2>{{ promedios[edadActual].peso }} Kg</h2>
                     <p>Peso actual de tu pequeño</p>
@@ -30,7 +30,7 @@
 
         <div class="photos-content">
             <!-- <img src="../../assets/img/decoracion-rosa.png" alt="" class="image-top"> -->
-            <img src="../../assets/img/Imagen-niños.png" alt="" class="image-bottom">
+            <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Imagen-ni%C3%B1os.png" alt="" class="image-bottom">
         </div>
     </div>
 </template>

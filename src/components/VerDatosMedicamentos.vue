@@ -6,7 +6,7 @@
         <div class="data-view-medicamentos">
             <div class="view-item" v-for="item in ListMedicamentos" :key="item">
                 <div class="text-item">
-                    <img src="../assets/img/icono-texto.svg" alt="icon">
+                    <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-texto.svg" alt="icon">
                     <p class="text-item-style">{{ item.Nombre}}</p>
                 </div>
                 <!-- <img class="icon-trash" @click="deleteDiagnostico(item.id)" src="../assets/img/icono-trash.svg"

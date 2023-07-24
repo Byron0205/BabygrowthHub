@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="info-container">
-            <img src="../../assets/img/Imagen-decoracion.png" alt="">
+            <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Imagen-decoracion.png" alt="">
             <p class="info-text">Sumérgete en un mundo encantador donde las imágenes y
                 videos se convierten en tesoros de los momentos más
                 preciosos del crecimiento de tus adorables bebés.
