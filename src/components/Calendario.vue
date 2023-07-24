@@ -10,7 +10,7 @@
       </button>
     </div>
     <div>
-      <img class="img" src="../assets/img/Efecto-nube.png" alt="fondo nubes" />
+      <img class="img" src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Efecto-nube.png" alt="fondo nubes" />
     </div>
     <table class="tableCalendar">
       <thead>

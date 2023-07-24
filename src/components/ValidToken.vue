@@ -18,6 +18,9 @@
           </button>
         </form>
       </div>
+      <div v-if="message" class="alert" :class="alertType">
+        {{ message }}
+      </div>
     </div>
   </div>
 </template>
@@ -29,6 +32,8 @@ export default {
     return {
       token: "",
       validToken: false,
+      message: "",
+      alertType: "",
     };
   },
   methods: {
@@ -51,15 +56,23 @@ export default {
             localStorage.setItem("session", "1");
             this.$router.push("/");
           } else {
-            console.log(
-              "Token no válido. Por favor, inicia sesión nuevamente."
-            );
+            this.message = "Token invalido, inténtalo de nuevo!";
+            this.alertType = "error";
+            this.showAlert();
           }
         })
         .catch((error) => {
           //error management
           console.error("Error al hacer el login: ", error);
         });
+    },
+    showAlert() {
+      const displayDuration = 3000;
+
+      setTimeout(() => {
+        this.message = "";
+        this.alertType = "";
+      }, displayDuration);
     },
   },
   watch: {

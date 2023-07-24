@@ -5,7 +5,7 @@
       <div class="homeDecoration">
         <img
           class="homeSpaceship"
-          src="../assets/img/Decoracion-nave-espacial.png"
+          src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-nave-espacial.png"
           alt="Decoracion nave espacial"
         />
       </div>
@@ -32,7 +32,7 @@
     <div class="homeImgContainer">
       <img
         class="homeImg"
-        src="../assets/img/Home-image-01.png"
+        src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Home-image-01.png"
         alt="Niños jugando"
       />
     </div>
@@ -43,7 +43,7 @@
     <div class="NSImgContainer">
       <img
         class="NSImg"
-        src="../assets/img/Home-image-02.png"
+        src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Home-image-02.png"
         alt="Niños jugando"
       />
     </div>
@@ -71,7 +71,7 @@
       <div class="homeDecoration">
         <img
           class="homeBear"
-          src="../assets/img/Decoracion-oso.png"
+          src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-oso.png"
           alt="Decoracion osito de peluche"
         />
       </div>

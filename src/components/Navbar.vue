@@ -1,11 +1,11 @@
 <template>
     <nav>
         <div class="container-img">
-            <img class="img" src="../assets/img/Fondo-de-nubes.png" alt="fondo nubes">
+            <img class="img" src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Fondo-de-nubes.png" alt="fondo nubes">
 
         </div>
         <div class="container-logo">
-            <img class="img-logo" src="../assets/img/logo.png" alt="logo">
+            <img class="img-logo" src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/logo.png" alt="logo">
         </div>
         <div :class="session ? 'flex-session': 'flex margin-nav'">
             <ul class="navbar">
@@ -38,7 +38,7 @@
         </div>
     </nav>
     <div class="container-img">
-        <img class="img-efecto-nube" src="../assets/img/Efecto-nube.png" alt="efecto">
+        <img class="img-efecto-nube" src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Efecto-nube.png" alt="efecto">
     </div>
 </template>
 

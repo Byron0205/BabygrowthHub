@@ -2,11 +2,11 @@
   <div class="flex-table-menu">
     <MenuLateral>
       <div class="item-lateral">
-                <img src="../assets/img/icono-reloj.svg" alt="reloj">
+                <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-reloj.svg" alt="reloj">
                 <router-link class="link-menu" to="/actividades/seguimiento">Seguidor</router-link>
             </div>
             <div class="item-lateral">
-                <img src="../assets/img/icono-calendario.svg" alt="reloj">
+                <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-calendario.svg" alt="reloj">
                 <router-link class="link-menu" to="/actividades/calendario">Calendario</router-link>
             </div>
     </MenuLateral>
