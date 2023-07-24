@@ -4,35 +4,38 @@
         <form @submit.prevent="registerFormEncargado" class="login form-register">
 
             <div class="input-container width-50">
-                <input v-model="encargado.IDAdulto" class="input" type="text" placeholder="">
+                <input title="formato: 000000000" @input="validarCedula" v-model="encargado.IDAdulto" maxlength="9"
+                    class="input" type="text" placeholder="">
                 <div class="cut"></div>
                 <label class="placeholder">Cedula</label>
             </div>
 
             <div class="input-container width-50">
-                <input v-model="encargado.Nombre" class="input" type="text" placeholder="">
+                <input v-model="encargado.Nombre" @input="validarNombre" max="15" class="input" type="text" placeholder="">
                 <div class="cut"></div>
                 <label class="placeholder">Nombre</label>
             </div>
             <div class="input-container width-50">
-                <input v-model="encargado.Apellidos" class="input" type="text" placeholder="">
+                <input v-model="encargado.Apellidos" @input="validarApellidos" maxlength="25" class="input" type="text"
+                    placeholder="">
                 <div class="cut"></div>
                 <label class="placeholder">Apellidos</label>
             </div>
             <div class="input-container width-50">
-                <input v-model="encargado.Correo" class="input" type="text" placeholder="">
+                <input v-model="encargado.Correo" maxlength="25" class="input" type="text" placeholder="">
                 <div class="cut"></div>
                 <label class="placeholder">Correo</label>
             </div>
             <div class="input-container width-50">
-                <input v-model="encargado.Contrasenna" class="input" type="text" placeholder="">
+                <input v-model="encargado.Contrasenna" maxlength="12" class="input" type="text" placeholder="">
                 <div class="cut"></div>
                 <label class="placeholder">Contraseña</label>
             </div>
             <div class="input-container width-50 text-center">
-                <button :disabled="!validfield" :class="validfield ? 'submit submit-register':'submit-disabled submit-register'">Confirmar</button>
+                <button :disabled="!validfield"
+                    :class="validfield ? 'submit submit-register' : 'submit-disabled submit-register'">Confirmar</button>
             </div>
-            
+
         </form>
         <svg class="img-cloud-bg" xmlns="http://www.w3.org/2000/svg" width="1374" height="722" viewBox="0 0 1374 722"
             fill="none">
@@ -53,9 +56,9 @@
 <script>
 import axios from 'axios';
 export default {
-    data(){
-        return{
-            encargado:{
+    data() {
+        return {
+            encargado: {
                 IDAdulto: '',
                 Nombre: '',
                 Apellidos: '',
@@ -64,28 +67,28 @@ export default {
                 IDRol: '3'
             },
 
-            validfield : false
+            validfield: false
         }
     },
-    methods:{
-        registerFormEncargado(){
+    methods: {
+        registerFormEncargado() {
             const url = 'http://localhost:3000/registrarAdulto';
             axios.post(url, this.encargado)
-            .then(response=>{
-                const msg= response.data;
-                console.log(msg);
-            })
-            .catch(error=>{
-                console.error('Error al guardar el encargado: ' + error)
-            })
+                .then(response => {
+                    const msg = response.data;
+                    console.log(msg);
+                })
+                .catch(error => {
+                    console.error('Error al guardar el encargado: ' + error)
+                })
         },
         validarCampos() {
             // Verificar si todos los campos son válidos
             const total = Object.values(this.encargado).every(value => value !== "");
-            if (this.validarCorreo(this.encargado.Correo) && total){
+            if (this.validarCorreo(this.encargado.Correo) && total) {
                 this.validfield = true
-            }else{
-                this.validfield= false
+            } else {
+                this.validfield = false
             }
         },
 
@@ -96,6 +99,25 @@ export default {
             // Verificar si el correo cumple con el patrón
             return patron.test(correo);
         },
+        validarCedula() {
+            if (!this.validCedula) {
+                // Si el usuario ingresó un valor no numérico, actualizamos la variable para que contenga solo números
+                this.encargado.IDAdulto = this.encargado.IDAdulto.replace(/[^\d]/g, '');
+            }
+        },
+
+        validarNombre() {
+            if (!this.validName) {
+                // Si el usuario ingresó un valor no alfabético, actualizamos la variable para que contenga solo letras
+                this.encargado.Nombre = this.encargado.Nombre.replace(/[^A-Za-z]/g, '');
+            }
+        },
+        validarApellidos() {
+            if (!this.validApellidos) {
+                // Si el usuario ingresó un valor no alfabético, actualizamos la variable para que contenga solo letras
+                this.encargado.Apellidos = this.encargado.Apellidos.replace(/[^A-Za-z]/g, '');
+            }
+        },
     },
     watch: {
         encargado: {
@@ -103,6 +125,19 @@ export default {
             handler() {
                 this.validarCampos();
             }
+        },
+    },
+    computed: {
+        // Función computada para validar que la variable tenga solo números
+        validCedula() {
+            return /^\d*$/.test(this.encargado.IDAdulto);
+        },
+        // Función computada para validar que la variable tenga solo letras
+        validName() {
+            return /^[A-Za-z]*$/.test(this.encargado.Nombre);
+        },
+        validApellidos() {
+            return /^[A-Za-z]*$/.test(this.encargado.Apellidos);
         },
     }
 }

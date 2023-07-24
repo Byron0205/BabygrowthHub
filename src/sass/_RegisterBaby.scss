@@ -11,6 +11,12 @@
     }
 }
 
+.pink-background-disabled{
+    background-color: $letter-2 !important;
+
+}
+
+
 .select-age-label{
     font-family: 'Catamaran', sans-serif;
     font-weight: 400;
@@ -28,7 +34,13 @@
     color: $letter-2
 }
 
+.age-btn-container{
+    display: flex;
+}
+
 .btn-age{
+    padding: 5px;
+    display: inline;
     color: $letter-2;
     font-family: 'Baloo 2',cursive;
     font-weight: 700;
@@ -37,6 +49,7 @@
     border-radius: 36px 0 0 36px;
     border: none;
     background-color: $btn-age-background;
+    cursor: pointer;
 
     &:nth-child(2){
         border-radius: 0 36px 36px 0;

@@ -3,14 +3,15 @@
         <p class="title-register">¿Quién eres?</p>
         <form @submit.prevent="registerParentForm" class="login form-register">
             <div class="input-container width-50">
-                <input title="formato: 111111111" v-model="parent.IDAdulto" class="input" type="text" placeholder="">
+                <input title="formato: 000000000" @input="validarCedula" maxlength="9" v-model="parent.IDAdulto" class="input" type="text"
+                    placeholder="">
                 <div class="cut"></div>
                 <label class="placeholder">Cedula</label>
             </div>
             <div class="flex flex-register input-container width-50">
 
                 <div class="input-container width-50 ic1">
-                    <input v-model="parent.Nombre" class="input" type="text" placeholder="">
+                    <input v-model="parent.Nombre" @input="validarNombre" maxlength="15" class="input" type="text" placeholder="">
                     <div class="cut"></div>
                     <label class="placeholder">Nombre</label>
                 </div>
@@ -27,17 +28,17 @@
 
             </div>
             <div class="input-container width-50 ic1">
-                <input v-model="parent.Apellidos" class="input" type="text" placeholder="">
+                <input v-model="parent.Apellidos" @input="validarApellidos" maxlength="25" class="input" type="text" placeholder="">
                 <div class="cut"></div>
                 <label class="placeholder">Apellidos</label>
             </div>
             <div class="input-container width-50">
-                <input v-model="parent.Correo" class="input" type="text" placeholder="">
+                <input v-model="parent.Correo" maxlength="25" class="input" type="text" placeholder="">
                 <div class="cut"></div>
                 <label class="placeholder">Correo</label>
             </div>
             <div class="input-container width-50">
-                <input v-model="parent.Contrasenna" class="input" type="text" placeholder="">
+                <input v-model="parent.Contrasenna" maxlength="12" class="input" type="text" placeholder="">
                 <div class="cut"></div>
                 <label class="placeholder">Contraseña</label>
             </div>
@@ -98,10 +99,10 @@ export default {
         validarCampos() {
             // Verificar si todos los campos son válidos
             const total = Object.values(this.parent).every(value => value !== "");
-            if (this.validarCorreo(this.parent.Correo) && total){
+            if (this.validarCorreo(this.parent.Correo) && total) {
                 this.validfield = true
-            }else{
-                this.validfield= false
+            } else {
+                this.validfield = false
             }
         },
 
@@ -112,6 +113,28 @@ export default {
             // Verificar si el correo cumple con el patrón
             return patron.test(correo);
         },
+
+
+        validarCedula() {
+            if (!this.validCedula) {
+                // Si el usuario ingresó un valor no numérico, actualizamos la variable para que contenga solo números
+                this.parent.IDAdulto = this.parent.IDAdulto.replace(/[^\d]/g, '');
+            }
+        },
+
+
+        validarNombre() {
+            if (!this.validName) {
+                // Si el usuario ingresó un valor no alfabético, actualizamos la variable para que contenga solo letras
+                this.parent.Nombre = this.parent.Nombre.replace(/[^A-Za-z]/g, '');
+            }
+        },
+        validarApellidos() {
+            if (!this.validApellidos) {
+                // Si el usuario ingresó un valor no alfabético, actualizamos la variable para que contenga solo letras
+                this.parent.Apellidos = this.parent.Apellidos.replace(/[^A-Za-z]/g, '');
+            }
+        },
     },
     watch: {
         parent: {
@@ -119,6 +142,19 @@ export default {
             handler() {
                 this.validarCampos();
             }
+        },
+    },
+    computed: {
+        // Función computada para validar que la variable tenga solo números
+        validCedula() {
+            return /^\d*$/.test(this.parent.IDAdulto);
+        },
+        // Función computada para validar que la variable tenga solo letras
+        validName() {
+            return /^[A-Za-z]*$/.test(this.parent.Nombre);
+        },
+        validApellidos() {
+            return /^[A-Za-z]*$/.test(this.parent.Apellidos);
         },
     }
 }

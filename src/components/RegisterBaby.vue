@@ -5,7 +5,8 @@
             <div class="flex flex-register input-container width-50">
 
                 <div class="input-container width-50 ic1">
-                    <input v-model="DatosBebe.Nombre" id="firstname" class="input" type="text" placeholder="">
+                    <input v-model="DatosBebe.Nombre" @input="validarNombre" maxlength="15" id="firstname" class="input"
+                        type="text" placeholder="">
                     <div class="cut"></div>
                     <label for="firstname" class="placeholder placeholder-baby">Nombre</label>
                 </div>
@@ -22,20 +23,23 @@
 
             </div>
             <div class="input-container width-50 ic1">
-                <input v-model="DatosBebe.Apellidos" id="firstname" class="input" type="text" placeholder="">
+                <input v-model="DatosBebe.Apellidos" @input="validarApellidos" id="firstname" maxlength="25" class="input"
+                    type="text" placeholder="">
                 <div class="cut"></div>
                 <label for="firstname" class="placeholder placeholder-baby">Apellidos</label>
             </div>
             <div class="input-container width-50">
                 <p class="baby-age-msg">¿Nos podrías indicar si tu pequeño/a ya ha nacido o aún está en camino?</p>
             </div>
-            <div class="input-container width-50 text-center">
+            <div class="input-container age-btn-container width-50 text-center">
                 <div @click="ChangeStatusAge"
-                    :class="{ 'btn-age selected': selectedAgeStatus == '', 'btn-age': selectedAgeStatus == 'born' }">Viene
+                    :class="{ 'btn-age selected': selectedAgeStatus == 'not-born', 'btn-age': selectedAgeStatus == 'born' }">
+                    Viene
                     en
                     camino</div>
                 <div @click="ChangeStatusAge"
-                    :class="{ 'btn-age selected': selectedAgeStatus == 'born', 'btn-age': selectedAgeStatus == '' }">Ya ha
+                    :class="{ 'btn-age selected': selectedAgeStatus == 'born', 'btn-age': selectedAgeStatus == 'not-born' }">
+                    Ya ha
                     nacido</div>
                 <div class="cut"></div>
             </div>
@@ -62,7 +66,8 @@
                 </select>
             </div>
             <div class="input-container width-50 ic1 text-center">
-                <button class="submit submit-register pink-background">Confirmar</button>
+                <button :disabled="!isFormValid"
+                    :class="isFormValid ? 'submit submit-register pink-background' : 'submit-disabled submit-register pink-background-disabled'">Confirmar</button>
             </div>
 
         </form>
@@ -102,32 +107,30 @@ export default {
             days: [],
             months: [],
             years: [],
-            selectedDay: null,
-            selectedMonth: null,
-            selectedYear: null
+            selectedDay: '',
+            selectedMonth: '',
+            selectedYear: '',
+
+            validfield: false
         }
     },
     methods: {
-        handleDateSelected(date) {
-            // Manejar los valores seleccionados del componente hijo
-            this.selectedDate = date;
-        },
+
         ChangeStatusAge() {
-            this.selectedAgeStatus = (this.selectedAgeStatus == 'born') ? '' : 'born'
+            this.selectedAgeStatus = (this.selectedAgeStatus == 'born') ? 'not-born' : 'born'
         },
         generarCodigoInvitacion() {
-                // Generar un número aleatorio entre 10000 y 99999
-                const numeroAleatorio = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
+            // Generar un número aleatorio entre 10000 y 99999
+            const numeroAleatorio = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
 
-                // Convertir el número a cadena de texto
-                const codigoInvitacion = numeroAleatorio.toString();
+            // Convertir el número a cadena de texto
+            const codigoInvitacion = numeroAleatorio.toString();
 
-                return codigoInvitacion;
+            return codigoInvitacion;
 
         },
 
-        //metodo para enviar a guardar en BD
-        registrarBebe() {
+        validarFechaEdad() {
             if (this.selectedAgeStatus === 'born') {
                 this.selectedDate = this.selectedYear + '/' + this.selectedMonth + '/' + this.selectedDay
                 this.DatosBebe.FechaNacimiento = this.selectedDate
@@ -136,6 +139,11 @@ export default {
             } else {
                 this.DatosBebe.FechaNacimiento = ''
             }
+        },
+
+        //metodo para enviar a guardar en BD
+        registrarBebe() {
+            this.validarFechaEdad()
             this.DatosBebe.IDBebe = this.generarCodigoInvitacion();
             const url = 'http://localhost:3000/registrarBebe'
 
@@ -143,6 +151,7 @@ export default {
                 .then(response => {
                     const msg = response.data;
                     console.log(msg)
+                    this.$router.push('/')
                 })
                 .catch(err => {
                     console.error('Error al obtener los datos: ' + err)
@@ -186,7 +195,20 @@ export default {
             if (this.selectedDay > maxDays) {
                 this.selectedDay = null;
             }
-        }
+        },
+
+        validarNombre() {
+            if (!this.validName) {
+                // Si el usuario ingresó un valor no alfabético, actualizamos la variable para que contenga solo letras
+                this.DatosBebe.Nombre = this.DatosBebe.Nombre.replace(/[^A-Za-z]/g, '');
+            }
+        },
+        validarApellidos() {
+            if (!this.validApellidos) {
+                // Si el usuario ingresó un valor no alfabético, actualizamos la variable para que contenga solo letras
+                this.DatosBebe.Apellidos = this.DatosBebe.Apellidos.replace(/[^A-Za-z]/g, '');
+            }
+        },
     },
     computed: {
         availableDays() {
@@ -200,7 +222,31 @@ export default {
             } else {
                 return this.days;
             }
-        }
+        },
+        // Calcula si el formulario es válido
+        isFormValid() {
+            const nombreValido = this.DatosBebe.Nombre.trim() !== '';
+            const apellidosValidos = this.DatosBebe.Apellidos.trim() !== '';
+            const sexoValido = this.DatosBebe.Sexo.trim() !== '';
+
+            if (this.selectedAgeStatus === 'born') {
+                // Si el bebé ya ha nacido, validar la fecha de nacimiento
+                const fechaNacimientoValida = this.selectedDay !== '' && this.selectedMonth !== '' && this.selectedYear !== '';
+                return nombreValido && apellidosValidos && sexoValido && fechaNacimientoValida;
+            } else {
+                // Si el bebé está en camino, validar la edad
+                const edadValida = this.DatosBebe.Edad !== '';
+                return nombreValido && apellidosValidos && sexoValido && edadValida;
+            }
+        },
+
+        // Función computada para validar que la variable tenga solo letras
+        validName() {
+            return /^[A-Za-z]*$/.test(this.DatosBebe.Nombre);
+        },
+        validApellidos() {
+            return /^[A-Za-z]*$/.test(this.DatosBebe.Apellidos);
+        },
     },
     watch: {
         selectedMonth() {
