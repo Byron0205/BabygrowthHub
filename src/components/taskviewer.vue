@@ -59,7 +59,7 @@ export default {
     }
   },
   mounted() {
-    const idAdulto = 1;
+    const idAdulto = localStorage.getItem('idAdulto');
     this.getActivitiesDay(idAdulto);
   },
 };

@@ -333,7 +333,7 @@ export default {
     saveEvent() {
       const selectedCategory = this.eventCategory;
       const selectedPriority = this.eventPriority;
-      const selectedBaby = this.eventBaby;
+      const selectedBaby = this.eventBaby.IDBebe;
 
       // Crear un objeto con los datos a enviar en el cuerpo de la solicitud
       const data = {
@@ -341,11 +341,10 @@ export default {
         detalle: this.eventDescription,
         fecha: this.selectedDate,
         hora: this.eventTime,
-        idbebe: 1,
+        idbebe: selectedBaby,
         idcategoria: selectedCategory.IDCategoria,
         idprioridad: selectedPriority.idPrioridad,
       };
-
       // Realizar la solicitud POST con el objeto de datos como cuerpo de la solicitud
       axios
         .post("http://localhost:3000/insertar-actividad", data)
