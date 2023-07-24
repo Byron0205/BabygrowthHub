@@ -55,7 +55,6 @@ export default {
                 .then(response => {
                     this.PDiagnosticos = response.data;
                     this.Padecimientos.push(...this.PDiagnosticos)
-                    console.log(this.PDiagnosticos)
                 })
                 .catch(err => {
                     console.error('Error al obtener los datos: ' + err)
@@ -67,7 +66,6 @@ export default {
                 .then(response => {
                     this.PAlergias= response.data;
                     this.Padecimientos.push(...this.PAlergias)
-                    console.log(this.PAlergias)
                 })
                 .catch(err => {
                     console.error('Error al obtener los datos: ' + err)

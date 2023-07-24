@@ -4,19 +4,20 @@
             <p class="title-medicacion">Medicamentos recetados</p>
         </div>
         <div class="data-view-medicamentos">
-            <div class="view-item" v-for="item in diagnosticos" :key="item.id">
+            <div class="view-item" v-for="item in ListMedicamentos" :key="item">
                 <div class="text-item">
                     <img src="../assets/img/icono-texto.svg" alt="icon">
-                    <p class="text-item-style">{{ item.diagnostico }}</p>
+                    <p class="text-item-style">{{ item.Nombre}}</p>
                 </div>
-                <img class="icon-trash" @click="deleteDiagnostico(item.id)" src="../assets/img/icono-trash.svg"
-                    alt="icon trash">
+                <!-- <img class="icon-trash" @click="deleteDiagnostico(item.id)" src="../assets/img/icono-trash.svg"
+                    alt="icon trash"> -->
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
@@ -30,13 +31,43 @@ export default {
                 { diagnostico: 'Dermatitis del pañal', id: 7 },
                 { diagnostico: 'Cólicos del lactante', id: 8 },
                 { diagnostico: "Infecciones del tracto respiratorio superior", id: 9 }
-            ]
+            ],
+            ListMedicamentos: [],
+            Medicamentos: [],
+            Vacunas: []
         }
     },
     methods: {
         deleteDiagnostico(id) {
             this.diagnosticos = this.diagnosticos.filter(elemento => elemento.id !== id);
-        }
+        },
+        obtenerMedicamentos(id) {
+            const url = 'http://localhost:3000/verMedicamentos/' + id
+            axios.get(url)
+                .then(response => {
+                    this.Medicamentos = response.data;
+                    this.ListMedicamentos.push(...this.Medicamentos)
+                })
+                .catch(err => {
+                    console.error('Error al obtener los datos: ' + err)
+                })
+        },
+        obtenerVacunas(id) {
+            const url = 'http://localhost:3000/verVacunas/' + id
+            axios.get(url)
+                .then(response => {
+                    this.Vacunas = response.data;
+                    this.ListMedicamentos.push(...this.Vacunas)
+                })
+                .catch(err => {
+                    console.error('Error al obtener los datos: ' + err)
+                })
+        },
+    },
+    mounted() {
+        const idBebe = this.$route.params.id;
+        this.obtenerMedicamentos(idBebe)
+        this.obtenerVacunas(idBebe)
     }
 }
 </script>

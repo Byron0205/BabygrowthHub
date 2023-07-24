@@ -88,7 +88,7 @@ const router = createRouter({
       component: ()=> import('../views/ExpedienteSaludView.vue')
     },
     {
-      path: "/expediente/medicacion",
+      path: "/expediente/medicacion/:id",
       name: "medicacion",
       component: ()=> import('../views/ExpedienteMedicacionView.vue')
     }
