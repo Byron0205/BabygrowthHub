@@ -68,7 +68,7 @@ export default {
     data() {
         return {
             profileData: {
-                IDAdulto: 1,
+                IDAdulto: "",
                 Nombre: '',
                 Apellidos: '',
                 Correo: '',
@@ -79,7 +79,7 @@ export default {
             modifiedProfileData: {},
             message: "",
             alertType: "",
-            selectedSon: ''
+            selectedSon: 1
         };
     },
 
@@ -92,6 +92,7 @@ export default {
         if(localStorage.getItem('session') !== '1'){
             this.$router.push('/login')
         }
+        this.idAdulto= localStorage.getItem('idAdulto');
         this.fetchProfileData();
     },
 
@@ -100,12 +101,12 @@ export default {
             this.$router.push('/expediente/salud/'+this.selectedSon)
         },
         fetchProfileData() {
-            axios.get(`http://localhost:3000/adultos/${1}`)
+            axios.get(`http://localhost:3000/adultos/${this.profileData.IDAdulto}`)
                 .then((response) => {
                     const profileDataFromAPI = response.data[0];
                     console.log(profileDataFromAPI)
 
-                    this.profileData.IDAdulto = 1;
+                    this.profileData.IDAdulto = localStorage.getItem('idAdulto');
                     this.profileData.Nombre = profileDataFromAPI.Nombre;
                     this.profileData.Apellidos = profileDataFromAPI.Apellidos;
                     this.profileData.Correo = profileDataFromAPI.Correo;

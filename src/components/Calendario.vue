@@ -454,7 +454,7 @@ export default {
   },
   mounted() {
     /* !Obtener ID adulto que haya iniciado sesion */
-    const IDAdulto = 1;
+    const IDAdulto = localStorage.getItem('idAdulto');
     this.getBabies(IDAdulto);
     this.getActivities(IDAdulto);
     this.getCategories();

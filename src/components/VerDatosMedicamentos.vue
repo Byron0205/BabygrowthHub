@@ -21,17 +21,6 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            diagnosticos: [
-                { diagnostico: 'Dermatitis del pañal', id: 1 },
-                { diagnostico: 'Cólicos del lactante', id: 2 },
-                { diagnostico: "Infecciones del tracto respiratorio superior", id: 3 },
-                { diagnostico: 'Dermatitis del pañal', id: 4 },
-                { diagnostico: 'Cólicos del lactante', id: 5 },
-                { diagnostico: "Infecciones del tracto respiratorio superior", id: 6 },
-                { diagnostico: 'Dermatitis del pañal', id: 7 },
-                { diagnostico: 'Cólicos del lactante', id: 8 },
-                { diagnostico: "Infecciones del tracto respiratorio superior", id: 9 }
-            ],
             ListMedicamentos: [],
             Medicamentos: [],
             Vacunas: []
@@ -58,6 +47,27 @@ export default {
                 .then(response => {
                     this.Vacunas = response.data;
                     this.ListMedicamentos.push(...this.Vacunas)
+                })
+                .catch(err => {
+                    console.error('Error al obtener los datos: ' + err)
+                })
+        },
+        obtenerExpediente(id) {
+            const url = 'http://localhost:3000/verExpediente/' + id
+            axios.get(url)
+                .then(response => {
+                    this.DatosBebe = response.data;
+                    const fechaObjeto = new Date(this.DatosBebe.FechaNacimiento)
+
+                    // Obtener los componentes de la fecha (día, mes, año)
+                    const dia = String(fechaObjeto.getDate()).padStart(2, '0');
+                    const mes = String(fechaObjeto.getMonth() + 1).padStart(2, '0');
+                    const anio = fechaObjeto.getFullYear();
+
+                    // Formatear la fecha en el formato "dd/mm/yyyy"
+                    const fechaFormateada = `${dia}/${mes}/${anio}`;
+
+                    this.DatosBebe.FechaNacimiento = fechaFormateada;
                 })
                 .catch(err => {
                     console.error('Error al obtener los datos: ' + err)

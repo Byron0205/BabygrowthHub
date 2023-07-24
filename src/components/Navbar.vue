@@ -13,9 +13,9 @@
                     <router-link v-if="session" class="link" to="/inicio">Inicio</router-link>
                     <router-link v-else class="link" to="/">Inicio</router-link>
                 </li>
-                <li class="item">
+                <!-- <li class="item">
                     <router-link v-show="session" class="link" to="/expediente/salud">Expendiente&Medicacion</router-link>
-                </li>
+                </li> -->
                 <li class="item">
                     <router-link class="link" to="/dietas">Dietas</router-link>
                 </li>
@@ -55,7 +55,13 @@ export default {
         },
         salir(){
             localStorage.removeItem('session')
-            this.$router.push('/')
+            localStorage.removeItem('idAdulto')
+            if (this.$route.path === '/'){
+                window.location.reload()
+            }else{
+                this.$router.push('/')
+            }
+            
         },
         created(){
         const validatedSession = localStorage.getItem('session')

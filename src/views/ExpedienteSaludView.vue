@@ -3,11 +3,11 @@
         <MenuLateral>
             <div class="item-lateral">
                 <img src="../assets/img/icono-Salud.svg" alt="reloj">
-                <router-link class="link-menu" to="/expediente/salud">Salud</router-link>
+                <router-link class="link-menu" :to="'/expediente/salud/'+ this.idBebe">Salud</router-link>
             </div>
             <div class="item-lateral">
                 <img src="../assets/img/icono-beaker.svg" alt="reloj">
-                <router-link class="link-menu" to="/expediente/medicacion">Medicación</router-link>
+                <router-link class="link-menu" :to="'/expediente/medicacion/'+ this.idBebe">Medicación</router-link>
             </div>
         </MenuLateral>
 
@@ -28,11 +28,19 @@ import ExpedienteBebe from '../components/ExpedienteBaby.vue'
 import MenuLateral from '../components/MenuLateral.vue'
 import verDatosPadecimiento from '../components/VerDatosPadecimiento.vue';
 export default {
+    data(){
+        return{
+            idBebe: ''
+        }
+    },
     components: { MenuLateral, ExpedienteBebe, verDatosPadecimiento },
     mounted(){
         if(localStorage.getItem('session') !== '1'){
             this.$router.push('/login')
         }
+    },
+    mounted(){
+        this.idBebe= this.$route.params.id;
     }
 }
 </script>

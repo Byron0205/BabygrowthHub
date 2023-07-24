@@ -76,8 +76,9 @@ export default {
                 .then((response) => {
                     //success response
                     let msg = response.data;
-                    console.log(msg);
+                    console.log(msg.msg);
                     this.enviarToken(this.user.correo);
+                    localStorage.setItem('idAdulto', msg.id)
                     this.$router.push("/doble-factor");
                 })
                 .catch((error) => {
