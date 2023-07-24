@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="information-container">
-                <div class="personal-information-container">
+                <div  class="personal-information-container">
                     <div class="personal-information">
                         <label for="name">Nombre</label>
                         <input type="text" class="input-modify" :value="inputValue('Nombre')"
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="son-information-container">
+                <div v-if="userRole !== '3'" class="son-information-container">
                     <div class="son-information">
                         <label for="sons" class="sons-text">Hijos registrados</label>
                         <select class="sons" v-model="selectedSon" v-if="hasChildren">
@@ -51,8 +51,8 @@
             <div v-if="message" class="alert" :class="alertType">
                 {{ message }}
             </div>
-            <div class="administrative-panel-container">
-                <div class="administrative-panel">
+            <div  class="administrative-panel-container">
+                <div v-if="userRole !== '3'" class="administrative-panel">
                     <h2>Panel administrativo</h2>
                     <button class="family-admin">Administrar familia</button>
                     <button class="add-baby">Agregar otro bebé</button>
@@ -97,6 +97,14 @@ export default {
         hasChildren() {
             return this.profileData.hijos && this.profileData.hijos.length > 0;
         },
+        userRole() {
+            const userRole = localStorage.getItem('userRol')
+            if (userRole === "0" || userRole === undefined) {
+                this.$router.push('/login');
+            }
+            console.log(userRole);
+            return userRole;
+        },
     },
     mounted() {
         if (localStorage.getItem('session') !== '1') {
@@ -104,9 +112,15 @@ export default {
         }
         this.profileData.IDAdulto = localStorage.getItem('idAdulto');
         this.fetchProfileData();
+        this.checkUserRolePermission();
     },
 
     methods: {
+        checkUserRolePermission() {
+            if (this.userRole == "3") {    
+                this.isInputEditable = false;
+            }
+        },
         verExpedienteBebe() {
             this.$router.push('/expediente/salud/' + this.selectedSon)
         },
