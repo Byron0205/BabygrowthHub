@@ -91,6 +91,11 @@ const router = createRouter({
       path: "/expediente/medicacion/:id",
       name: "medicacion",
       component: ()=> import('../views/ExpedienteMedicacionView.vue')
+    },
+    {
+      path: "/doble-factor",
+      name: "doble-factor",
+      component: ()=> import('../views/TokenView.vue')
     }
   ]
 })
