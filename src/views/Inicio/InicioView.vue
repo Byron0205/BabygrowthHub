@@ -53,6 +53,7 @@ export default {
     },
 
     mounted() {
+        this.checkUserSession();
         if(localStorage.getItem('session') !== '1'){
             this.$router.push('/login')
         }
@@ -61,6 +62,12 @@ export default {
     },
 
     methods: {
+        checkUserSession() {
+            const sessionValue = localStorage.getItem('session');
+            if (sessionValue === '0' || sessionValue === undefined) {
+                this.$router.push('/login');
+            }
+        },
         updateData() {
             this.edadActual += 1;
             if (this.edadActual >= this.promedios.length) {
