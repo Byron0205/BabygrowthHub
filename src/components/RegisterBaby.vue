@@ -1,20 +1,20 @@
 <template>
     <div class="container-register">
         <p class="title-register">¿Quién soy?</p>
-        <form @submit.prevent="" class="login form-register">
+        <form @submit.prevent="registrarBebe" class="login form-register">
             <div class="flex flex-register input-container width-50">
 
                 <div class="input-container width-50 ic1">
-                    <input id="firstname" class="input" type="text" placeholder="">
+                    <input v-model="DatosBebe.Nombre" id="firstname" class="input" type="text" placeholder="">
                     <div class="cut"></div>
                     <label for="firstname" class="placeholder placeholder-baby">Nombre</label>
                 </div>
 
                 <!-- select -->
                 <div class="input-container width-50 ic1">
-                    <select name="relacion" class="input" id="">
-                        <option value="masculino">masculino</option>
-                        <option value="femenino">femenino</option>
+                    <select v-model="DatosBebe.Sexo" name="relacion" class="input" id="">
+                        <option value="M">masculino</option>
+                        <option value="F">femenino</option>
                     </select>
                     <div class="cut"></div>
                     <label for="firstname" class="placeholder placeholder-baby">Sexo</label>
@@ -22,7 +22,7 @@
 
             </div>
             <div class="input-container width-50 ic1">
-                <input id="firstname" class="input" type="text" placeholder="">
+                <input v-model="DatosBebe.Apellidos" id="firstname" class="input" type="text" placeholder="">
                 <div class="cut"></div>
                 <label for="firstname" class="placeholder placeholder-baby">Apellidos</label>
             </div>
@@ -30,22 +30,35 @@
                 <p class="baby-age-msg">¿Nos podrías indicar si tu pequeño/a ya ha nacido o aún está en camino?</p>
             </div>
             <div class="input-container width-50 text-center">
-                <button @click="ChangeStatusAge"
-                    :class="{ 'btn-age selected': selectedAgeStatus == '', 'btn-age': selectedAgeStatus == 'born' }">Viene en
-                    camino</button>
-                <button @click="ChangeStatusAge"
+                <div @click="ChangeStatusAge"
+                    :class="{ 'btn-age selected': selectedAgeStatus == '', 'btn-age': selectedAgeStatus == 'born' }">Viene
+                    en
+                    camino</div>
+                <div @click="ChangeStatusAge"
                     :class="{ 'btn-age selected': selectedAgeStatus == 'born', 'btn-age': selectedAgeStatus == '' }">Ya ha
-                    nacido</button>
+                    nacido</div>
                 <div class="cut"></div>
             </div>
             <div v-if="selectedAgeStatus == 'born'" class="input-container width-50">
                 <label class="select-age-label placeholder-baby">Fecha de nacimiento</label>
-                    <DateSelector/>
+                <div class="select-age-container">
+                    <select class="input select-age" v-model="selectedDay">
+                        <option v-for="day in days" :key="day">{{ day }}</option>
+                    </select>
+
+                    <select class="input select-age" v-model="selectedMonth" @change="updateAvailableDays">
+                        <option v-for="(month, index) in months" :key="index" :value="index + 1">{{ month }}</option>
+                    </select>
+
+                    <select class="input select-age" v-model="selectedYear">
+                        <option v-for="year in years" :key="year">{{ year }}</option>
+                    </select>
+                </div>
             </div>
             <div v-else class="input-container width-50">
                 <label class="select-age-label placeholder-baby">Semanas de embarazo</label>
-                <select class="input select-age">
-                    <option v-for="semana in semanasEmbarazo" :key="semana" value="semana">Semana {{ semana }}</option>
+                <select v-model="DatosBebe.Edad" class="input select-age">
+                    <option v-for="semana in semanasEmbarazo" :key="semana" :value="semana">Semana {{ semana }}</option>
                 </select>
             </div>
             <div class="input-container width-50 ic1 text-center">
@@ -71,20 +84,127 @@
 </template>
 
 <script>
-import DateSelector from './DateSelector.vue'
 export default {
-    components: { DateSelector },
     data() {
         return {
             selectedAgeStatus: 'born',
-            semanasEmbarazo: 40
+            semanasEmbarazo: 40,
+            DatosBebe: {
+                IDBebe: '',
+                Nombre: '',
+                Apellidos: '',
+                Edad: '',
+                FechaNacimiento: '',
+                Sexo: '',
+            },
+
+            days: [],
+            months: [],
+            years: [],
+            selectedDay: null,
+            selectedMonth: null,
+            selectedYear: null
         }
     },
     methods: {
+        handleDateSelected(date) {
+            // Manejar los valores seleccionados del componente hijo
+            this.selectedDate = date;
+        },
         ChangeStatusAge() {
             this.selectedAgeStatus = (this.selectedAgeStatus == 'born') ? '' : 'born'
+        },
+        generarCodigoInvitacion() {
+                // Generar una semilla aleatoria de 32 caracteres
+                const seed = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
+                const code = seed.toString()
+                // Calcular el hash de la semilla utilizando SHA-1 de crypto-js
+                const sha1Hash = CryptoJS.SHA1(code).toString();
+
+                // Tomar los primeros 5 caracteres del hash como el código aleatorio
+                const codigoAleatorio = sha1Hash.substr(1, 6);
+
+                return codigoAleatorio;
+        },
+
+        //metodo para enviar a guardar en BD
+        registrarBebe() {
+            if (this.selectedAgeStatus === 'born') {
+                this.selectedDate = this.selectedDay + '/' + this.selectedMonth + '/' + this.selectedYear
+                this.DatosBebe.FechaNacimiento = this.selectedDate
+                this.DatosBebe.Edad = ''
+            } else {
+                this.DatosBebe.FechaNacimiento = ''
+            }
+
+
+            this.DatosBebe.IDBebe = this.generarCodigoInvitacion();
+            console.log(this.DatosBebe)
+        },
+
+
+        fillMonths() {
+            this.months = [
+                "Enero",
+                "Febrero",
+                "Marzo",
+                "Abril",
+                "Mayo",
+                "Junio",
+                "Julio",
+                "Agosto",
+                "Septiembre",
+                "Octubre",
+                "Noviembre",
+                "Diciembre"
+            ];
+        },
+        fillYears() {
+            const currentYear = new Date().getFullYear();
+            const startYear = currentYear - 100;
+            for (let year = startYear; year <= currentYear; year++) {
+                this.years.push(year);
+            }
+            this.years = this.years.reverse()
+
+        },
+        updateAvailableDays() {
+            const maxDays = new Date(
+                this.selectedYear,
+                this.selectedMonth,
+                0
+            ).getDate();
+            this.days = Array.from({ length: maxDays }, (_, index) => index + 1);
+            if (this.selectedDay > maxDays) {
+                this.selectedDay = null;
+            }
         }
-    }
+    },
+    computed: {
+        availableDays() {
+            if (this.selectedMonth) {
+                const maxDays = new Date(
+                    this.selectedYear,
+                    this.selectedMonth,
+                    0
+                ).getDate();
+                return this.days.slice(0, maxDays);
+            } else {
+                return this.days;
+            }
+        }
+    },
+    watch: {
+        selectedMonth() {
+            this.selectedDay = null;
+        }
+    },
+    mounted() {
+        // Llena los selects con los valores correspondientes
+        this.fillMonths();
+        this.fillYears();
+    },
+
 }
 </script>
 
