@@ -79,6 +79,7 @@ export default {
                     console.log(msg.msg);
                     this.enviarToken(this.user.correo);
                     localStorage.setItem('idAdulto', msg.id)
+                    localStorage.setItem('userRol', msg.rol)
                     this.$router.push("/doble-factor");
                 })
                 .catch((error) => {

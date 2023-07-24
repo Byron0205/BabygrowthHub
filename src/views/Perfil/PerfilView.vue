@@ -66,10 +66,10 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-    name: 'BabygrowthHubPerfilView',
+    name: "BabygrowthHubPerfilView",
 
     data() {
         return {
@@ -85,7 +85,8 @@ export default {
             modifiedProfileData: {},
             message: "",
             alertType: "",
-            selectedSon: ""
+            selectedSon: "",
+            isSendCodePopupOpen: false
         };
     },
 
@@ -115,17 +116,18 @@ export default {
                     const profileDataFromAPI = response.data[0];
                     console.log(profileDataFromAPI)
 
-                    this.profileData.IDAdulto = localStorage.getItem('idAdulto');
+                    this.profileData.IDAdulto = localStorage.getItem("idAdulto");
                     this.profileData.Nombre = profileDataFromAPI.Nombre;
                     this.profileData.Apellidos = profileDataFromAPI.Apellidos;
                     this.profileData.Correo = profileDataFromAPI.Correo;
                     this.profileData.ROL = profileDataFromAPI.ROL;
 
-                    this.profileData.hijos = response.data.filter(item => item.IDBebe !== null);
-
+                    this.profileData.hijos = response.data.filter(
+                        (item) => item.IDBebe !== null
+                    );
                 })
                 .catch((error) => {
-                    console.error('Error al obtener datos del perfil:', error);
+                    console.error("Error al obtener datos del perfil:", error);
                 });
         },
 
@@ -148,17 +150,24 @@ export default {
             }, displayDuration);
         },
         async saveProfileData() {
-            if (!this.modifiedProfileData.Nombre || !this.modifiedProfileData.Apellidos || !this.modifiedProfileData.Correo) {
-                console.error('Error: Please fill in all required fields.');
+            if (
+                !this.modifiedProfileData.Nombre ||
+                !this.modifiedProfileData.Apellidos ||
+                !this.modifiedProfileData.Correo
+            ) {
+                console.error("Error: Please fill in all required fields.");
                 return;
             }
 
             try {
-                await axios.put(`http://localhost:3000/adultos/${this.profileData.IDAdulto}`, {
-                    Nombre: this.modifiedProfileData.Nombre,
-                    Apellidos: this.modifiedProfileData.Apellidos,
-                    Correo: this.modifiedProfileData.Correo
-                });
+                await axios.put(
+                    `http://localhost:3000/adultos/${this.profileData.IDAdulto}`,
+                    {
+                        Nombre: this.modifiedProfileData.Nombre,
+                        Apellidos: this.modifiedProfileData.Apellidos,
+                        Correo: this.modifiedProfileData.Correo,
+                    }
+                );
 
                 this.profileData = { ...this.modifiedProfileData };
 
@@ -169,7 +178,7 @@ export default {
                 this.alertType = "success";
                 this.showAlert();
             } catch (error) {
-                console.error('Error while saving profile data:', error);
+                console.error("Error while saving profile data:", error);
                 this.message = "Error desconocido en el servidor";
                 this.alertType = "error";
                 this.showAlert();
@@ -182,6 +191,10 @@ export default {
 
         inputValue(field) {
             return this.activeProfileData[field];
+        },
+
+        viewSendBabyCode() {
+            this.isSendCodePopupOpen = true;
         },
 
     },

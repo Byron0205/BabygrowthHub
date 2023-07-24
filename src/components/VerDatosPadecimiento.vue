@@ -13,7 +13,7 @@
         <div class="data-view-list">
             <div class="view-item" v-for="item in Padecimientos" :key="item.id">
                 <div class="text-item">
-                    <img src="../assets/img/icono-texto.svg" alt="icon">
+                    <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-texto.svg" alt="icon">
                     <p class="text-item-style">{{ item.Padecimiento }}</p>
                 </div>
                 <!-- <img class="icon-trash" @click="deleteDiagnostico(item.id)" src="../assets/img/icono-trash.svg"
