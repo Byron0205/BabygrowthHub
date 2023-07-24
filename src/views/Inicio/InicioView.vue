@@ -29,7 +29,6 @@
         </div>
 
         <div class="photos-content">
-            <!-- <img src="../../assets/img/decoracion-rosa.png" alt="" class="image-top"> -->
             <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Imagen-ni%C3%B1os.png" alt="" class="image-bottom">
         </div>
     </div>
@@ -54,6 +53,7 @@ export default {
     },
 
     mounted() {
+        this.checkUserSession();
         if(localStorage.getItem('session') !== '1'){
             this.$router.push('/login')
         }
@@ -62,6 +62,12 @@ export default {
     },
 
     methods: {
+        checkUserSession() {
+            const sessionValue = localStorage.getItem('session');
+            if (sessionValue === '0' || sessionValue === undefined) {
+                this.$router.push('/login');
+            }
+        },
         updateData() {
             this.edadActual += 1;
             if (this.edadActual >= this.promedios.length) {

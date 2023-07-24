@@ -96,6 +96,11 @@ const router = createRouter({
       path: "/doble-factor",
       name: "doble-factor",
       component: ()=> import('../views/TokenView.vue')
+    },
+    {
+      path: "/etapas-desarrollo",
+      name: "etapas-desarrollo",
+      component: ()=> import('../views/EtapasDesarrollo/EtapasView.vue')
     }
   ]
 })

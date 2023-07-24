@@ -51,7 +51,7 @@
             </div>
           </div>
         </div>
-        <div class="son-information-container">
+        <div v-if="userRole !== '3'" class="son-information-container">
           <div class="son-information">
             <label for="sons" class="sons-text">Hijos registrados</label>
             <select class="sons" v-model="selectedSon">
@@ -81,8 +81,8 @@
       <div v-if="message" class="alert" :class="alertType">
         {{ message }}
       </div>
-      <div class="administrative-panel-container">
-        <div class="administrative-panel">
+      <div  class="administrative-panel-container">
+        <div v-if="userRole !== '3'" class="administrative-panel">
           <h2>Panel administrativo</h2>
           <button class="family-admin">Administrar familia</button>
           <button class="add-baby">Agregar otro bebé</button>
@@ -175,32 +175,45 @@ export default {
     };
   },
 
-  computed: {
-    activeProfileData() {
-      return this.isInputEditable ? this.modifiedProfileData : this.profileData;
+    computed: {
+        activeProfileData() {
+            return this.isInputEditable ? this.modifiedProfileData : this.profileData;
+        },
+        hasChildren() {
+            return this.profileData.hijos && this.profileData.hijos.length > 0;
+        },
+        userRole() {
+            const userRole = localStorage.getItem('userRol')
+            if (userRole === "0" || userRole === undefined) {
+                this.$router.push('/login');
+            }
+            console.log(userRole);
+            return userRole;
+        },
     },
-    hasChildren() {
-      return this.profileData.hijos && this.profileData.hijos.length > 0;
+    mounted() {
+        if (localStorage.getItem('session') !== '1') {
+            this.$router.push('/login')
+        }
+        this.profileData.IDAdulto = localStorage.getItem('idAdulto');
+        this.fetchProfileData();
+        this.checkUserRolePermission();
     },
-  },
-  mounted() {
-    if (localStorage.getItem("session") !== "1") {
-      this.$router.push("/login");
-    }
-    this.profileData.IDAdulto = localStorage.getItem("idAdulto");
-    this.fetchProfileData();
-  },
 
-  methods: {
-    verExpedienteBebe() {
-      this.$router.push("/expediente/salud/" + this.selectedSon);
-    },
-    fetchProfileData() {
-      axios
-        .get(`http://localhost:3000/adultos/${this.profileData.IDAdulto}`)
-        .then((response) => {
-          const profileDataFromAPI = response.data[0];
-          console.log(profileDataFromAPI);
+    methods: {
+        checkUserRolePermission() {
+            if (this.userRole == "3") {    
+                this.isInputEditable = false;
+            }
+        },
+        verExpedienteBebe() {
+            this.$router.push('/expediente/salud/' + this.selectedSon)
+        },
+        fetchProfileData() {
+            axios.get(`http://localhost:3000/adultos/${this.profileData.IDAdulto}`)
+                .then((response) => {
+                    const profileDataFromAPI = response.data[0];
+                    console.log(profileDataFromAPI)
 
           this.profileData.IDAdulto = localStorage.getItem("idAdulto");
           this.profileData.Nombre = profileDataFromAPI.Nombre;

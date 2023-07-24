@@ -16,7 +16,17 @@
 import tokenComp from '../components/ValidToken.vue'
 export default {
   components: { tokenComp },
-
+  methods:{
+    checkUserSession() {
+            const sessionValue = localStorage.getItem('session');
+            if (sessionValue === '0' || sessionValue === undefined) {
+                this.$router.push('/login');
+            }
+        }
+  },
+  mounted(){
+    this.checkUserSession()
+  }
 }
 </script>
 

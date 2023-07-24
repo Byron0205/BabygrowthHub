@@ -35,12 +35,19 @@ export default {
     },
     components: { MenuLateral, ExpedienteBebe, verDatosPadecimiento },
     mounted(){
+        this.checkUserSession();
         if(localStorage.getItem('session') !== '1'){
             this.$router.push('/login')
         }
-    },
-    mounted(){
         this.idBebe= this.$route.params.id;
+    },
+    methods:{
+        checkUserSession() {
+            const sessionValue = localStorage.getItem('session');
+            if (sessionValue === '0' || sessionValue === undefined) {
+                this.$router.push('/login');
+            }
+        }
     }
 }
 </script>

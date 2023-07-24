@@ -54,6 +54,12 @@ export default {
         }
     },
     methods:{
+        checkUserSession() {
+            const sessionValue = localStorage.getItem('session');
+            if (sessionValue === '0' || sessionValue === undefined) {
+                this.$router.push('/login');
+            }
+        },
         obtenerExpediente(id) {
             const url = 'http://localhost:3000/verExpediente/' + id
             axios.get(url)
@@ -80,6 +86,7 @@ export default {
         if(localStorage.getItem('session') !== '1'){
             this.$router.push('/login')
         }
+        this.checkUserSession()
         const idBebe = this.$route.params.id;
         this.obtenerExpediente(idBebe);
     }
