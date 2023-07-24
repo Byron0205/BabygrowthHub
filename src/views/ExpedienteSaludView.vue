@@ -6,7 +6,7 @@
                 <router-link class="link-menu" :to="'/expediente/salud/'+ this.idBebe">Salud</router-link>
             </div>
             <div class="item-lateral">
-                <img src=".https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-beaker.svg" alt="reloj">
+                <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-beaker.svg" alt="reloj">
                 <router-link class="link-menu" :to="'/expediente/medicacion/'+ this.idBebe">Medicación</router-link>
             </div>
         </MenuLateral>
