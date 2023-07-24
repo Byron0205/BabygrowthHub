@@ -84,6 +84,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
@@ -115,30 +116,37 @@ export default {
             this.selectedAgeStatus = (this.selectedAgeStatus == 'born') ? '' : 'born'
         },
         generarCodigoInvitacion() {
-                // Generar una semilla aleatoria de 32 caracteres
-                const seed = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
-                const code = seed.toString()
-                // Calcular el hash de la semilla utilizando SHA-1 de crypto-js
-                const sha1Hash = CryptoJS.SHA1(code).toString();
+                // Generar un número aleatorio entre 10000 y 99999
+                const numeroAleatorio = Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000;
 
-                // Tomar los primeros 5 caracteres del hash como el código aleatorio
-                const codigoAleatorio = sha1Hash.substr(1, 6);
+                // Convertir el número a cadena de texto
+                const codigoInvitacion = numeroAleatorio.toString();
 
-                return codigoAleatorio;
+                return codigoInvitacion;
+
         },
 
         //metodo para enviar a guardar en BD
         registrarBebe() {
             if (this.selectedAgeStatus === 'born') {
-                this.selectedDate = this.selectedDay + '/' + this.selectedMonth + '/' + this.selectedYear
+                this.selectedDate = this.selectedYear + '/' + this.selectedMonth + '/' + this.selectedDay
                 this.DatosBebe.FechaNacimiento = this.selectedDate
                 this.DatosBebe.Edad = ''
+
             } else {
                 this.DatosBebe.FechaNacimiento = ''
             }
-
-
             this.DatosBebe.IDBebe = this.generarCodigoInvitacion();
+            const url = 'http://localhost:3000/registrarBebe'
+
+            axios.post(url, this.DatosBebe)
+                .then(response => {
+                    const msg = response.data;
+                    console.log(msg)
+                })
+                .catch(err => {
+                    console.error('Error al obtener los datos: ' + err)
+                })
             console.log(this.DatosBebe)
         },
 
