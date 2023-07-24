@@ -56,6 +56,7 @@ export default {
         salir(){
             localStorage.removeItem('session')
             localStorage.removeItem('idAdulto')
+            localStorage.removeItem('userRol')
             if (this.$route.path === '/'){
                 window.location.reload()
             }else{

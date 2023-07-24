@@ -88,6 +88,7 @@ export default {
                 .then(response => {
                     const msg = response.data
                     console.log(msg)
+                    this.$router.push('/registro/3')
                 })
                 .catch(error => {
                     console.error('Error al guardar el usuario: ' + error)
