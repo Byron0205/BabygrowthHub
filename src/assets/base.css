@@ -1269,7 +1269,7 @@ footer {
   height: 731px;
   flex-shrink: 0;
   border-radius: 15px;
-  border: 1px dashed #6359A6;
+  border: 1px dashed #6359a6;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1293,11 +1293,11 @@ footer {
 .profile-card .custom-icon-profile {
   margin-left: 20px;
   font-size: 54px;
-  color: #4F439A;
+  color: #4f439a;
 }
 .profile-card .text-profile {
   margin-left: 20px;
-  color: #4F439A;
+  color: #4f439a;
   font-family: "Baloo 2";
   font-size: 30px;
   font-style: normal;
@@ -1313,12 +1313,12 @@ footer {
   height: 48px;
   flex-shrink: 0;
   border-radius: 5px;
-  border: 1px solid #FE5A86;
+  border: 1px solid #fe5a86;
   background: rgba(254, 90, 134, 0.05);
   margin-left: auto;
 }
 .profile-card .profile-role h3 {
-  color: #FE5A86;
+  color: #fe5a86;
   font-family: "Baloo 2";
   font-size: 30px;
   font-style: normal;
@@ -1337,12 +1337,12 @@ footer {
   width: 100%;
   height: 38.492px;
   border-radius: 5px;
-  border: 1px dashed #4F439A;
+  border: 1px dashed #4f439a;
   background: rgba(121, 108, 208, 0.05);
   margin-bottom: 10px;
   padding: 5px;
   font-size: 16px;
-  color: #4F439A;
+  color: #4f439a;
 }
 
 .personal-information {
@@ -1351,7 +1351,7 @@ footer {
   width: 336px;
 }
 .personal-information label {
-  color: #4F439A;
+  color: #4f439a;
   font-family: "Baloo 2";
   font-size: 16px;
   font-style: normal;
@@ -1363,12 +1363,12 @@ footer {
   width: 100%;
   height: 38.492px;
   border-radius: 5px;
-  border: 1px dashed #4F439A;
+  border: 1px dashed #4f439a;
   background: rgba(121, 108, 208, 0.05);
   margin-bottom: 10px;
   padding: 5px;
   font-size: 16px;
-  color: #4F439A;
+  color: #4f439a;
 }
 .personal-information .modify {
   width: 100%;
@@ -1376,7 +1376,7 @@ footer {
   border-radius: 15px;
   border-color: rgba(92, 79, 170, 0.1);
   background: rgba(92, 79, 170, 0.1);
-  color: #5C4FAA;
+  color: #5c4faa;
   text-align: center;
   font-family: "Baloo 2";
   font-size: 22px;
@@ -1392,7 +1392,7 @@ footer {
   width: 336px;
 }
 .son-information label {
-  color: #4F439A;
+  color: #4f439a;
   font-family: "Baloo 2";
   font-size: 16px;
   font-style: normal;
@@ -1404,15 +1404,15 @@ footer {
   width: 100%;
   height: 48px;
   border-radius: 5px;
-  border: 1px solid #4F439A;
+  border: 1px solid #4f439a;
   background-color: #fcfcfc;
-  color: #4F439A;
+  color: #4f439a;
   padding: 5px;
   font-size: 16px;
   margin-bottom: 10px;
 }
 .son-information .sons-text {
-  color: #4F439A;
+  color: #4f439a;
   font-family: "Baloo 2";
   font-size: 20px;
   font-style: normal;
@@ -1437,12 +1437,12 @@ footer {
   margin-bottom: 10px;
 }
 .son-information .btn-galery {
-  color: #FE5D37;
+  color: #fe5d37;
   border-color: rgba(254, 93, 55, 0.15);
   background: rgba(254, 93, 55, 0.15);
 }
 .son-information .btn-expedient {
-  color: #E89811;
+  color: #e89811;
   border-color: rgba(239, 154, 12, 0.25);
   background: rgba(239, 154, 12, 0.25);
 }
@@ -1499,11 +1499,11 @@ footer {
 }
 .administrative-panel .family-admin {
   background: rgba(126, 202, 253, 0.25);
-  color: #479DD8;
+  color: #479dd8;
   border-color: rgba(126, 202, 253, 0.25);
 }
 .administrative-panel .add-baby {
-  color: #E4547D;
+  color: #e4547d;
   border-color: rgba(228, 84, 125, 0.25);
   background: rgba(228, 84, 125, 0.25);
 }
@@ -1547,7 +1547,7 @@ footer {
 }
 
 .cancel {
-  color: #E4547D;
+  color: #e4547d;
   border-color: rgba(228, 84, 125, 0.25);
   background: rgba(228, 84, 125, 0.25);
 }
@@ -1572,6 +1572,111 @@ footer {
 
 .alert.error {
   background-color: #dc3545;
+}
+
+/* Estilos para ventana emergente de compartir el codigo bebe*/
+.sendBabyCodeContainer {
+  font-family: "Baloo 2";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(125, 125, 154, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sendBabyCodeHeader {
+  background-color: #4d4298;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.sendBabyCodeHeader p {
+  margin: 0;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.sendBabyCodeContent {
+  background-color: white;
+  border-radius: 15px;
+  position: relative;
+  padding: 2rem;
+  max-width: 40rem;
+}
+
+.sendBabyCodeButton {
+  padding: 0.5rem;
+  margin-bottom: 2rem;
+  width: 10rem;
+  font-size: 1.2rem;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  border-radius: 5px;
+  color: #ffffff;
+  border: none;
+  opacity: 0.9;
+}
+
+.sendBabyCodeButton.return {
+  background-color: #fff7f5;
+  color: #fe5d37;
+  border: none;
+  width: 100%;
+}
+
+.sendBabyCodeButton.send {
+  background-color: #efedf7;
+  color: #5c4faa;
+  border: none;
+  width: 100%;
+}
+
+.sendBabyCodeButton:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.sendBabyCodeFlexContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.sendBabyCodeInput {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  border: 2px dashed #6055A4;
+  border-radius: 5px;
+  background-color: #f8f8fd;
+  color: #6055A4;
+  margin-bottom: 1.5rem;
+  width: 20rem;
+  max-width: 20rem;
+}
+
+.sendBabyCodeInput:focus {
+  outline: none;
+}
+
+.sendBabyCodeBabieName {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0.5rem;
+  color: #6055A4;
+  text-align: center;
+  margin-bottom: 0.5rem;
 }
 
 .container {

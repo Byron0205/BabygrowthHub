@@ -66,10 +66,10 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
-    name: 'BabygrowthHubPerfilView',
+    name: "BabygrowthHubPerfilView",
 
     data() {
         return {
@@ -85,105 +85,117 @@ export default {
             modifiedProfileData: {},
             message: "",
             alertType: "",
-            selectedSon: ""
+            selectedSon: "",
+            isSendCodePopupOpen: false
         };
     },
 
     computed: {
         activeProfileData() {
-            return this.isInputEditable ? this.modifiedProfileData : this.profileData;
+            return this.isInputEditable ? this.modifiedProfileData : this.profileData;},
+            hasChildren() {
+                return this.profileData.hijos && this.profileData.hijos.length > 0;
+            },
         },
-        hasChildren() {
-            return this.profileData.hijos && this.profileData.hijos.length > 0;
-        },
-    },
-    mounted() {
-        if (localStorage.getItem('session') !== '1') {
-            this.$router.push('/login')
-        }
-        this.profileData.IDAdulto = localStorage.getItem('idAdulto');
-        this.fetchProfileData();
-    },
-
-    methods: {
-        verExpedienteBebe() {
-            this.$router.push('/expediente/salud/' + this.selectedSon)
-        },
-        fetchProfileData() {
-            axios.get(`http://localhost:3000/adultos/${this.profileData.IDAdulto}`)
-                .then((response) => {
-                    const profileDataFromAPI = response.data[0];
-                    console.log(profileDataFromAPI)
-
-                    this.profileData.IDAdulto = localStorage.getItem('idAdulto');
-                    this.profileData.Nombre = profileDataFromAPI.Nombre;
-                    this.profileData.Apellidos = profileDataFromAPI.Apellidos;
-                    this.profileData.Correo = profileDataFromAPI.Correo;
-                    this.profileData.ROL = profileDataFromAPI.ROL;
-
-                    this.profileData.hijos = response.data.filter(item => item.IDBebe !== null);
-
-                })
-                .catch((error) => {
-                    console.error('Error al obtener datos del perfil:', error);
-                });
-        },
-
-        toggleInputEditable() {
-            this.isInputEditable = true;
-            this.originalProfileData = { ...this.profileData };
-            this.modifiedProfileData = { ...this.originalProfileData };
-        },
-
-        cancelEditing() {
-            this.isInputEditable = false;
-            this.modifiedProfileData = {};
-        },
-        showAlert() {
-            const displayDuration = 3000;
-
-            setTimeout(() => {
-                this.message = "";
-                this.alertType = "";
-            }, displayDuration);
-        },
-        async saveProfileData() {
-            if (!this.modifiedProfileData.Nombre || !this.modifiedProfileData.Apellidos || !this.modifiedProfileData.Correo) {
-                console.error('Error: Please fill in all required fields.');
-                return;
+        mounted() {
+            if (localStorage.getItem('session') !== '1') {
+                this.$router.push('/login')
             }
+            this.profileData.IDAdulto = localStorage.getItem('idAdulto');
+            this.fetchProfileData();
+        },
 
-            try {
-                await axios.put(`http://localhost:3000/adultos/${this.profileData.IDAdulto}`, {
-                    Nombre: this.modifiedProfileData.Nombre,
-                    Apellidos: this.modifiedProfileData.Apellidos,
-                    Correo: this.modifiedProfileData.Correo
-                });
+        methods: {
+            verExpedienteBebe() {
+                this.$router.push('/expediente/salud/' + this.selectedSon)
+            },
+            fetchProfileData() {
+                axios.get(`http://localhost:3000/adultos/${this.profileData.IDAdulto}`)
+                    .then((response) => {
+                        const profileDataFromAPI = response.data[0];
+                        console.log(profileDataFromAPI)
 
-                this.profileData = { ...this.modifiedProfileData };
+                        this.profileData.IDAdulto = localStorage.getItem("idAdulto");
+                        this.profileData.Nombre = profileDataFromAPI.Nombre;
+                        this.profileData.Apellidos = profileDataFromAPI.Apellidos;
+                        this.profileData.Correo = profileDataFromAPI.Correo;
+                        this.profileData.ROL = profileDataFromAPI.ROL;
 
-                this.modifiedProfileData = {};
+                        this.profileData.hijos = response.data.filter(
+                            (item) => item.IDBebe !== null
+                        );
+                    })
+                    .catch((error) => {
+                        console.error("Error al obtener datos del perfil:", error);
+                    });
+            },
+
+            toggleInputEditable() {
+                this.isInputEditable = true;
+                this.originalProfileData = { ...this.profileData };
+                this.modifiedProfileData = { ...this.originalProfileData };
+            },
+
+            cancelEditing() {
                 this.isInputEditable = false;
+                this.modifiedProfileData = {};
+            },
+            showAlert() {
+                const displayDuration = 3000;
 
-                this.message = "¡Perfil modificado exitosamente!";
-                this.alertType = "success";
-                this.showAlert();
-            } catch (error) {
-                console.error('Error while saving profile data:', error);
-                this.message = "Error desconocido en el servidor";
-                this.alertType = "error";
-                this.showAlert();
-            }
-        },
+                setTimeout(() => {
+                    this.message = "";
+                    this.alertType = "";
+                }, displayDuration);
+            },
+            async saveProfileData() {
+                if (
+                    !this.modifiedProfileData.Nombre ||
+                    !this.modifiedProfileData.Apellidos ||
+                    !this.modifiedProfileData.Correo
+                ) {
+                    console.error("Error: Please fill in all required fields.");
+                    return;
+                }
 
-        updateProfileData(field, value) {
-            this.modifiedProfileData[field] = value;
-        },
+                try {
+                    await axios.put(
+                        `http://localhost:3000/adultos/${this.profileData.IDAdulto}`,
+                        {
+                            Nombre: this.modifiedProfileData.Nombre,
+                            Apellidos: this.modifiedProfileData.Apellidos,
+                            Correo: this.modifiedProfileData.Correo,
+                        }
+                    );
 
-        inputValue(field) {
-            return this.activeProfileData[field];
-        },
+                    this.profileData = { ...this.modifiedProfileData };
 
+                    this.modifiedProfileData = {};
+                    this.isInputEditable = false;
+
+                    this.message = "¡Perfil modificado exitosamente!";
+                    this.alertType = "success";
+                    this.showAlert();
+                } catch (error) {
+                    console.error("Error while saving profile data:", error);
+                    this.message = "Error desconocido en el servidor";
+                    this.alertType = "error";
+                    this.showAlert();
+                }
+            },
+
+            updateProfileData(field, value) {
+                this.modifiedProfileData[field] = value;
+            },
+
+    inputValue(field) {
+      return this.activeProfileData[field];
     },
+
+    viewSendBabyCode() {
+      this.isSendCodePopupOpen = true;
+    },
+    
+  },
 };
 </script>
