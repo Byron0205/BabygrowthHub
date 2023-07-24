@@ -13,7 +13,7 @@
                     <router-link v-if="session" class="link" to="/inicio">Inicio</router-link>
                     <router-link v-else class="link" to="/">Inicio</router-link>
                 </li>
-                <li class="item" v-show="session && rol !== 0" >
+                <li class="item">
                     <router-link class="link" to="/etapas-desarrollo">Etapas</router-link>
                 </li>
                 <li class="item">
