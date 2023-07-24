@@ -436,3 +436,13 @@
   text-align: center;
   margin-bottom: 0.5rem;
 }
+
+
+.submit-sendEmail:hover {
+  cursor: pointer;
+
+}
+
+.submit-disabled-sendEmail:hover {
+  cursor: not-allowed;
+}
