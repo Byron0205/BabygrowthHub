@@ -31,16 +31,20 @@
                     <div class="son-information">
                         <label for="sons" class="sons-text">Hijos registrados</label>
                         <select class="sons" v-model="selectedSon" v-if="hasChildren">
+                            <option value="" disabled>Selecciona tu tesoro</option>
                             <option v-for="son in profileData.hijos" :key="son.IDBebe" :value="son.IDBebe">
                                 {{ son.NombreHijo }} {{ son.ApellidoHijo }}
                             </option>
                         </select>
-                        <div v-else class="sons-text" style="margin-top: 5px; margin-bottom: 5px;">Registre un hijo para ver su información</div>
+                        <div v-else class="sons-text" style="margin-top: 5px; margin-bottom: 5px;">Registre un hijo para ver
+                            su información</div>
                         <label for="">Selecciona uno de tus tesoros para:</label>
-                        <button class="btn-galery" :disabled="!hasChildren">Galería del recuerdo</button>
-                        <button class="btn-expedient" @click="verExpedienteBebe" :disabled="!hasChildren">Expediente salud
+                        <button class="btn-galery" :disabled="!selectedSon || !hasChildren">Galería del recuerdo</button>
+                        <button class="btn-expedient" @click="verExpedienteBebe"
+                            :disabled="!selectedSon || !hasChildren">Expediente salud
                             medicación</button>
-                        <button class="btn-baby-code" :disabled="!hasChildren">Compartir código bebé</button>
+                        <button class="btn-baby-code" :disabled="!selectedSon || !hasChildren">Compartir código
+                            bebé</button>
                     </div>
                 </div>
             </div>
@@ -81,23 +85,23 @@ export default {
             modifiedProfileData: {},
             message: "",
             alertType: "",
-            selectedSon: 1
+            selectedSon: ""
         };
     },
 
     computed: {
         activeProfileData() {
             return this.isInputEditable ? this.modifiedProfileData : this.profileData;
-        }
-    },
-    hasChildren() {
-        return this.profileData.hijos.length > 0;
+        },
+        hasChildren() {
+            return this.profileData.hijos && this.profileData.hijos.length > 0;
+        },
     },
     mounted() {
         if (localStorage.getItem('session') !== '1') {
             this.$router.push('/login')
         }
-        this.idAdulto = localStorage.getItem('idAdulto');
+        this.profileData.IDAdulto = localStorage.getItem('idAdulto');
         this.fetchProfileData();
     },
 
