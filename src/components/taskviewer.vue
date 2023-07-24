@@ -1,54 +1,68 @@
 <template>
-    <div class="task" v-for="task in tasks" :key="task">
-        <div class="info-task">
-            <div class="info-left-task">
-                <p class="task-name">{{ task.name }}</p>
-                <p class="task-tag">
-                    <img src="../assets/img/icono-label.svg" alt="label">
-                    {{ task.tag }}
-                </p>
-            </div>
-            <div class="info-right-task">
-                <p class="task-priority">Prioridad {{ task.priority }}</p>
-                <div class="task-date">
-                    <img src="../assets/img/icono-reloj.svg" alt="label">
-                    <p>{{ task.date }}</p>
-                </div>
-            </div>
+  <div
+    class="task"
+    v-for="activity in activitiesDay"
+    :key="activity.IDActividad"
+  >
+    <div class="info-task">
+      <div class="info-left-task">
+        <p class="task-name">{{ activity.Titulo }}</p>
+        <p class="task-tag" :style="{ color: activity.CategoriaColor }">
+          <i class="fa-solid fa-tag"></i>
+          {{ activity.CategoriaNombre }}
+        </p>
+      </div>
+      <div class="info-right-task">
+        <p class="task-priority" :style="{ color: activity.colorPrioridad }">
+          Prioridad {{ activity.nombrePrioridad }}
+        </p>
+        <div class="task-date">
+          <i class="fa-solid fa-clock color" style="margin-top: 1.3rem;"></i>
+          <p class="color">{{ formatDate(activity.Fecha) }}</p>
         </div>
-        <div class="description-task">
-            <div>
-                <img src="../assets/img/icono-texto.svg" alt="label">
-            </div>
-            <div class="description-task-text">{{ task.description }}</div>
-        </div>
+      </div>
     </div>
+    <div class="description-task " style="padding: 1rem;">
+      <div>
+        <img src="../assets/img/icono-texto.svg" alt="label" />
+      </div>
+      <div class="description-task-text color">{{ activity.Detalle }}</div>
+    </div>
+  </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
-    data() {
-        return {
-            tasks: {
-                task1: {
-                    name: 'Cita Pediatria',
-                    tag: 'Cita medica',
-                    priority: 'Alta',
-                    date: '2:00 pm 6/4/2023',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est cupiditate non earum rem, cum perferendis ut! Atque enim aspernatur maxime, esse ut mollitia officiis, repellendus perferendis reiciendis deserunt nisi ipsa?'
-                },
-                task2: {
-                    name: 'Retiro medicamento',
-                    tag: 'Cita medica',
-                    priority: 'Media',
-                    date: '2:00 pm 7/4/2023',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est cupiditate non earum rem, cum perferendis ut! Atque enim aspernatur maxime, esse ut mollitia officiis, repellendus perferendis reiciendis deserunt nisi ipsa?'
-                },
-
-            }
-        }
+  data() {
+    return {
+      activitiesDay: [],
+    };
+  },
+  methods: {
+    getActivitiesDay(idAdulto) {
+      axios
+        .get(`http://localhost:3000/recuperar-actividades-dia/${idAdulto}`)
+        .then((response) => {
+          this.activitiesDay = response.data;
+        })
+        .catch((error) => {
+          console.error("Error al obtener los datos:", error);
+        });
+    },
+    formatDate(isoDate) {
+      const date = new Date(isoDate);
+      const day = date.getDate();
+      const month = date.getMonth() + 1; // Los meses en JavaScript son base 0, por eso sumamos 1
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
     }
-}
+  },
+  mounted() {
+    const idAdulto = 1;
+    this.getActivitiesDay(idAdulto);
+  },
+};
 </script>
 
 <style></style>

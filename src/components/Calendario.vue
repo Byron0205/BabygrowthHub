@@ -196,7 +196,7 @@
         class="eventDetailsFlexContainer centerElements eventDetailsDateContainer"
       >
         <i class="fa-regular fa-clock eventDetailsDate"></i>
-        <p class="eventDetailsDate">{{ selectedEvent.Fecha }}</p>
+        <p class="eventDetailsDate">{{ formatDate(selectedEvent.Fecha)  }}</p>
         <p class="eventDetailsDate">{{ selectedEvent.Hora }}</p>
       </div>
 
@@ -443,6 +443,13 @@ export default {
         .catch((error) => {
           console.error("Error al obtener los datos:", error);
         });
+    },
+    formatDate(isoDate) {
+      const date = new Date(isoDate);
+      const day = date.getDate();
+      const month = date.getMonth() + 1; // Los meses en JavaScript son base 0, por eso sumamos 1
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
     },
   },
   mounted() {
