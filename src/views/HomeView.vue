@@ -55,8 +55,8 @@
         explorar y haz clic en el botón de búsqueda
       </p>
       <div class="NSSearchContainer">
-        <input type="text" class="NSInput" />
-        <button class="NSButton">
+        <input type="text" class="NSInput" ref="nameInput" />
+        <button class="NSButton" @click="searchMeaning">
           <i class="fa-solid fa-magnifying-glass NSIcon"></i>
         </button>
       </div>
@@ -86,15 +86,42 @@
 
 <script>
 import SliderConsejos from "../components/SliderConsejos.vue";
+import axios from "axios";
 export default {
   data() {
     return {
-      resultMeaning:
-        "El nombre Brian tiene origen celta y su significado es 'fuerte' o 'poderoso'. Proviene de la palabra irlandesa 'Brígh' que significa 'fuerza' o 'virtud'.",
+      nombres_significados: [],
+      resultMeaning: "",
     };
   },
   components: {
     SliderConsejos,
+  },
+  methods: {
+    getNombresSignificados() {
+      axios
+        .get(`http://localhost:3000/recuperar-nombres-significados`)
+        .then((response) => {
+          this.nombres_significados = response.data;
+        })
+        .catch((error) => {
+          console.error("Error al obtener los datos:", error);
+        });
+    },
+    searchMeaning() {
+      const name = this.$refs.nameInput.value;
+      const foundName = this.nombres_significados.find(
+        (item) => item.nombre.toLowerCase() === name.toLowerCase()
+      );
+      if (foundName) {
+        this.resultMeaning = foundName.significado;
+      } else {
+        this.resultMeaning = "Nombre no encontrado en la base de datos :(";
+      }
+    },
+  },
+  mounted() {
+    this.getNombresSignificados();
   },
 };
 </script>
