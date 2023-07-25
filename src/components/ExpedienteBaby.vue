@@ -83,7 +83,7 @@ export default {
                 this.btn = 'Confirmar'
                 this.activarForm = true
             } else {
-                const url= 'http://localhost:3000/modificarBebe'
+                const url= 'https://tiusr3pl.cuc-carrera-ti.ac.cr/modificarBebe'
 
                 axios.put(url, {
                     IDBebe: this.DatosBebe.IDBebe,
@@ -105,7 +105,7 @@ export default {
         },
 
         obtenerExpediente(id) {
-            const url = 'http://localhost:3000/verExpediente/' + id
+            const url = 'https://tiusr3pl.cuc-carrera-ti.ac.cr/verExpediente/' + id
             axios.get(url)
                 .then(response => {
                     this.DatosBebe = response.data;
@@ -127,7 +127,7 @@ export default {
         },
         
         obtenerPadres(id) {
-            const url = 'http://localhost:3000/ver-padres/' + id
+            const url = 'https://tiusr3pl.cuc-carrera-ti.ac.cr/ver-padres/' + id
             axios.get(url)
                 .then(response => {
                     this.padres = response.data;

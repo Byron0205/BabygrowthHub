@@ -42,7 +42,7 @@ export default {
   methods: {
     getActivitiesDay(idAdulto) {
       axios
-        .get(`http://localhost:3000/recuperar-actividades-dia/${idAdulto}`)
+        .get(`https://tiusr3pl.cuc-carrera-ti.ac.cr/recuperar-actividades-dia/${idAdulto}`)
         .then((response) => {
           this.activitiesDay = response.data;
         })

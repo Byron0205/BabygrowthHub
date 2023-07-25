@@ -64,7 +64,7 @@ export default {
     methods: {
         async fetchDietsFromAPI() {
             try {
-                const response = await axios.get("http://localhost:3000/dietas");
+                const response = await axios.get("https://tiusr3pl.cuc-carrera-ti.ac.cr/dietas");
                 this.diets = response.data;
             } catch (error) {
                 console.error("Error fetching diets from API:", error);

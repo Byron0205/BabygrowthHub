@@ -63,7 +63,7 @@ export default {
     methods: {
         async fetchDevelopmentStagesFromAPI() {
             try {
-                const response = await axios.get("http://localhost:3000/etapa-desarrollo/");
+                const response = await axios.get("https://tiusr3pl.cuc-carrera-ti.ac.cr/etapa-desarrollo/");
                 this.developmentStages = response.data;
             } catch (error) {
                 console.error("Error fetching development stages from API:", error);

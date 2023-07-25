@@ -50,7 +50,7 @@ export default {
     },
     getConsejos() {
       axios
-        .get(`http://localhost:3000/recuperar-consejos`)
+        .get(`https://tiusr3pl.cuc-carrera-ti.ac.cr/recuperar-consejos`)
         .then((response) => {
           this.consejos = response.data;
         })

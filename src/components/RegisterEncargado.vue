@@ -123,7 +123,7 @@ export default {
   },
   methods: {
     registerFormEncargado() {
-      const url = "http://localhost:3000/registrarAdulto";
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/registrarAdulto";
       axios
         .post(url, this.encargado)
         .then((response) => {
@@ -186,7 +186,7 @@ export default {
       console.log(data);
 
       axios
-        .post(`http://localhost:3000/vincular-adulto-bebe`, data)
+        .post(`https://tiusr3pl.cuc-carrera-ti.ac.cr/vincular-adulto-bebe`, data)
         .then((response) => {
           const msg = response.data;
           console.log(msg);

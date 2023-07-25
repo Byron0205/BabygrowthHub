@@ -47,7 +47,7 @@ export default {
       };
 
       axios
-        .post("http://localhost:3000/validar-token", datosToken)
+        .post("https://tiusr3pl.cuc-carrera-ti.ac.cr/validar-token", datosToken)
         .then((response) => {
           let msg = response.data;
           if (msg.isValidToken) {

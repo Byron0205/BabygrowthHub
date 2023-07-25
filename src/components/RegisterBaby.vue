@@ -217,7 +217,7 @@ export default {
       this.DatosBebe.IDBebe = this.generarCodigoInvitacion();
       const idAdulto = this.$route.params.idAdulto;
 
-      const url = "http://localhost:3000/registrarBebe";
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/registrarBebe";
 
       axios
         .post(url, this.DatosBebe)
@@ -293,7 +293,7 @@ export default {
       console.log(data);
 
       axios
-        .post(`http://localhost:3000/vincular-adulto-bebe`, data)
+        .post(`https://tiusr3pl.cuc-carrera-ti.ac.cr/vincular-adulto-bebe`, data)
         .then((response) => {
           const msg = response.data;
           console.log(msg);
