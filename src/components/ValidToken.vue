@@ -50,7 +50,7 @@ export default {
           if (msg.isValidToken) {
             localStorage.removeItem("secreto");
             localStorage.setItem("session", "1");
-            this.$router.push("/");
+            this.$router.push("/inicio");
           } else {
             this.message = "Token invalido, inténtalo de nuevo!";
             this.alertType = "error";

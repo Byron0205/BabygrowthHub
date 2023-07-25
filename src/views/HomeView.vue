@@ -67,14 +67,6 @@
           {{ resultMeaning }}
         </p>
       </div>
-
-      <div class="homeDecoration">
-        <img
-          class="homeBear"
-          src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-oso.png"
-          alt="Decoracion osito de peluche"
-        />
-      </div>
     </div>
   </div>
 

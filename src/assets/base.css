@@ -2313,6 +2313,21 @@ footer {
   background-color: #fe7250;
 }
 
+.placeholder-expediente {
+  background-color: #fcfcfc;
+  color: #4F439A;
+  font-family: "Catamaran", sans-serif;
+  font-weight: 400;
+  font-size: 20px;
+  left: 5px;
+  line-height: 15px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 30%;
+  transition: transform 200ms, color 200ms;
+  top: -10px;
+}
+
 html {
   box-sizing: border-box;
   margin: 0;

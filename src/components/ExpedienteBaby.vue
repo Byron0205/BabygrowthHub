@@ -5,7 +5,7 @@
                 <input v-model="DatosBebe.Nombre" class="input input-expediente" :disabled="!activarForm" type="text"
                     placeholder="">
                 <div class="cut"></div>
-                <label class="placeholder">Nombre del Bebé</label>
+                <label class="placeholder-expediente">Nombre del Bebé</label>
             </div>
 
             <div class="flex flex-register input-container">
@@ -13,35 +13,35 @@
                     <input v-model="DatosBebe.Peso" maxlength="4" class="input input-expediente" :disabled="!activarForm"
                         type="text" placeholder="">
                     <div class="cut"></div>
-                    <label class="placeholder">Peso del bebé (Kg)</label>
+                    <label class="placeholder-expediente">Peso del bebé <sub>(Kg)</sub> </label>
                 </div>
                 <div class="input-container ic1">
                     <input v-model="DatosBebe.Altura" max="10" class="input input-expediente" :disabled="!activarForm"
                         type="text" placeholder="">
                     <div class="cut"></div>
-                    <label class="placeholder">Altura del bebé (cm)</label>
+                    <label class="placeholder-expediente">Altura del bebé <sub>(cm)</sub></label>
                 </div>
             </div>
 
             <div class="input-container ic1">
                 <input v-model="DatosBebe.Sexo" class="input" disabled type="text" placeholder="">
                 <div class="cut"></div>
-                <label for="firstname" class="placeholder">Género</label>
+                <label for="firstname" class="placeholder-expediente">Género</label>
             </div>
             <div class="input-container ic1">
                 <input v-model="DatosBebe.FechaNacimiento" class="input" disabled type="text" placeholder="">
                 <div class="cut"></div>
-                <label class="placeholder">Fecha de Nacimiento</label>
+                <label class="placeholder-expediente">Fecha de Nacimiento</label>
             </div>
-            <div class="input-container ic1">
+            <div class="input-container">
                 <input v-model="DatosPadres.Madre" class="input" disabled type="text" placeholder="">
                 <div class="cut"></div>
-                <label class="placeholder">Nombre de la Madre</label>
+                <label class="placeholder-expediente">Nombre de la Madre</label>
             </div>
-            <div class="input-container ic1">
+            <div class="input-container">
                 <input v-model="DatosPadres.Padre" class="input" disabled type="text" placeholder="">
                 <div class="cut"></div>
-                <label class="placeholder">Nombre del Padre</label>
+                <label class="placeholder-expediente">Nombre del Padre</label>
             </div>
 
             <div class="input-container text-center">

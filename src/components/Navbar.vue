@@ -11,7 +11,7 @@
             <ul class="navbar">
                 <li class="item" v-if="!admin">
                     <router-link v-if="session" class="link" to="/inicio">Inicio</router-link>
-                    <router-link v-else class="link" to="/">Inicio</router-link>
+                    <router-link v-else class="link" to="/babygrowthhub">Inicio</router-link>
                 </li>
                 <li class="item" v-if="admin && session == true">
                     <router-link v-if="session" class="link" to="/admin">Inicio</router-link>
@@ -64,10 +64,10 @@ export default {
             localStorage.removeItem('idAdulto')
             localStorage.removeItem('userRol')
             localStorage.removeItem('admin')
-            if (this.$route.path === '/'){
+            if (this.$route.path === '/babygrowthhub'){
                 window.location.reload()
             } else {
-                this.$router.push('/')
+                this.$router.push('/babygrowthhub')
             }
         },
         created() {

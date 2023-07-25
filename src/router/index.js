@@ -10,7 +10,7 @@ const router = createRouter({
       component: ()=> import ("../views/NotFound.vue")
     },
     {
-      path: '/',
+      path: '/babygrowthhub',
       name: 'home',
       component: HomeView
     },
