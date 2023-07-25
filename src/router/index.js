@@ -33,12 +33,12 @@ const router = createRouter({
       component: () => import('../views/RegisterParentVIew.vue')
     },
     {
-      path: "/registro/2",
+      path: "/registro/2/:idBebe",
       name: 'registroEncargado',
       component: () => import('../views/RegisterEncargadoVIew.vue')
     },
     {
-      path: '/registro/3',
+      path: '/registro/3/:idAdulto',
       name: 'registroBebe',
       component: ()=> import('../views/RegisterBabyView.vue')
     },
