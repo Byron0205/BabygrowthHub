@@ -66,7 +66,6 @@ export default {
         created() {
             const validatedSession = localStorage.getItem('session')
             const validatedRol = localStorage.getItem('userRol')
-            console.log(validatedRol)
 
             if (validatedSession === '1' || validatedSession === '2' || validatedSession === '3') {
                 this.session = true;

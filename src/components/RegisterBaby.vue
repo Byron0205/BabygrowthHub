@@ -223,14 +223,14 @@ export default {
         .post(url, this.DatosBebe)
         .then((response) => {
           const msg = response.data;
-          console.log(msg);
+          //console.log(msg);
           this.vincularBebe(this.DatosBebe.IDBebe, idAdulto)
           this.$router.push("/");
         })
         .catch((err) => {
           console.error("Error al obtener los datos: " + err);
         });
-      console.log(this.DatosBebe);
+      //console.log(this.DatosBebe);
     },
 
     fillMonths() {

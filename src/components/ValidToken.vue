@@ -41,7 +41,6 @@ export default {
       const secretoString = localStorage.getItem("secreto");
       const secretoObj = JSON.parse(secretoString);
 
-      console.log(secretoString);
       const datosToken = {
         token: this.token,
         secreto: secretoObj,

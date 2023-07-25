@@ -2,10 +2,7 @@
   <div>
     <div class="profile-container">
       <div class="profile-card">
-        <i
-          class="fa-regular fa-circle-user custom-icon-profile"
-          style="color: #4f439a"
-        ></i>
+        <i class="fa-regular fa-circle-user custom-icon-profile" style="color: #4f439a"></i>
         <h2 class="text-profile">Perfil</h2>
         <div class="profile-role">
           <h3>{{ profileData.ROL }}</h3>
@@ -15,34 +12,15 @@
         <div class="personal-information-container">
           <div class="personal-information">
             <label for="name">Nombre</label>
-            <input
-              type="text"
-              class="input-modify"
-              :value="inputValue('Nombre')"
-              @input="updateProfileData('Nombre', $event.target.value)"
-              :readonly="!isInputEditable"
-            />
+            <input type="text" class="input-modify" :value="inputValue('Nombre')"
+              @input="updateProfileData('Nombre', $event.target.value)" :readonly="!isInputEditable" />
             <label for="last-name">Apellidos</label>
-            <input
-              type="text"
-              class="input-modify"
-              :value="inputValue('Apellidos')"
-              @input="updateProfileData('Apellidos', $event.target.value)"
-              :readonly="!isInputEditable"
-            />
+            <input type="text" class="input-modify" :value="inputValue('Apellidos')"
+              @input="updateProfileData('Apellidos', $event.target.value)" :readonly="!isInputEditable" />
             <label for="contact">Contacto</label>
-            <input
-              type="text"
-              class="input-modify"
-              :value="inputValue('Correo')"
-              @input="updateProfileData('Correo', $event.target.value)"
-              :readonly="!isInputEditable"
-            />
-            <button
-              v-if="!isInputEditable"
-              class="modify"
-              @click="toggleInputEditable"
-            >
+            <input type="text" class="input-modify" :value="inputValue('Correo')"
+              @input="updateProfileData('Correo', $event.target.value)" :readonly="!isInputEditable" />
+            <button v-if="!isInputEditable" class="modify" @click="toggleInputEditable">
               MODIFICAR
             </button>
             <div v-else>
@@ -55,24 +33,19 @@
           <div class="son-information">
             <label for="sons" class="sons-text">Hijos registrados</label>
             <select class="sons" v-model="selectedSon">
-              <option
-                v-for="son in profileData.hijos"
-                :key="son.IDBebe"
-                :value="son.IDBebe"
-              >
+              <option v-for="son in profileData.hijos" :key="son.IDBebe" :value="son.IDBebe">
                 {{ son.NombreHijo }} {{ son.ApellidoHijo }}
               </option>
             </select>
             <label for="">Selecciona uno de tus tesoros para:</label>
             <button class="btn-galery">Galería del recuerdo</button>
-            <button class="btn-expedient" @click="verExpedienteBebe">
+
+
+            <button class="btn-expedient" v-if="selectedSon" @click="verExpedienteBebe">
               Expediente salud medicación
             </button>
-            <button
-              class="btn-baby-code"
-              @click="viewSendBabyCode"
-              v-if="selectedSon"
-            >
+
+            <button class="btn-baby-code" @click="viewSendBabyCode" v-if="selectedSon">
               Compartir código bebé
             </button>
           </div>
@@ -81,19 +54,16 @@
       <div v-if="message" class="alert" :class="alertType">
         {{ message }}
       </div>
-      <div  class="administrative-panel-container">
+      <div class="administrative-panel-container">
         <div v-if="userRole !== '3'" class="administrative-panel">
           <h2>Panel administrativo</h2>
           <button class="family-admin">Administrar familia</button>
-          <button class="add-baby">Agregar otro bebé</button>
+          <button class="add-baby" @click="vincularBebe">Agregar otro bebé</button>
         </div>
       </div>
     </div>
     <div class="rainbow-decoration">
-      <img
-        src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-arcoiris.png"
-        alt=""
-      />
+      <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-arcoiris.png" alt="" />
     </div>
 
     <div class="sendBabyCodeContainer" v-if="isSendCodePopupOpen">
@@ -105,38 +75,20 @@
         <div class="formCreateNewEvent">
           <div class="sendBabyCodeFlexContainer">
             <label class="sendBabyCodeBabieName">{{ selectedNameSon }}</label>
-            <input
-              class="sendBabyCodeInput"
-              type="text"
-              readonly="true"
-              v-model="babyCode"
-            />
+            <input class="sendBabyCodeInput" type="text" readonly="true" v-model="babyCode" />
 
-            <input
-              class="sendBabyCodeInput"
-              placeholder="Email"
-              type="text"
-              v-model="email"
-            />
+            <input class="sendBabyCodeInput" placeholder="Email" type="text" v-model="email" />
           </div>
 
           <div class="sendBabyCodeFlexContainer">
-            <button
-              :class="
-                validEmail
-                  ? 'sendBabyCodeButton send submit-sendEmail'
-                  : 'sendBabyCodeButton send submit-disabled-sendEmail'
-              "
-              :disabled="!validEmail"
-              @click="sendBabyCodeEmail"
-            >
+            <button :class="validEmail
+                ? 'sendBabyCodeButton send submit-sendEmail'
+                : 'sendBabyCodeButton send submit-disabled-sendEmail'
+              " :disabled="!validEmail" @click="sendBabyCodeEmail">
               Compartir
             </button>
 
-            <button
-              class="sendBabyCodeButton return"
-              @click="isSendCodePopupOpen = false"
-            >
+            <button class="sendBabyCodeButton return" @click="isSendCodePopupOpen = false">
               Regresar
             </button>
           </div>
@@ -175,45 +127,50 @@ export default {
     };
   },
 
-    computed: {
-        activeProfileData() {
-            return this.isInputEditable ? this.modifiedProfileData : this.profileData;
-        },
-        hasChildren() {
-            return this.profileData.hijos && this.profileData.hijos.length > 0;
-        },
-        userRole() {
-            const userRole = localStorage.getItem('userRol')
-            if (userRole === "0" || userRole === undefined) {
-                this.$router.push('/login');
-            }
-            console.log(userRole);
-            return userRole;
-        },
+  computed: {
+    activeProfileData() {
+      return this.isInputEditable ? this.modifiedProfileData : this.profileData;
     },
-    mounted() {
-        if (localStorage.getItem('session') !== '1') {
-            this.$router.push('/login')
-        }
-        this.profileData.IDAdulto = localStorage.getItem('idAdulto');
-        this.fetchProfileData();
-        this.checkUserRolePermission();
+    hasChildren() {
+      return this.profileData.hijos && this.profileData.hijos.length > 0;
+    },
+    userRole() {
+      const userRole = localStorage.getItem('userRol')
+      if (userRole === "0" || userRole === undefined) {
+        this.$router.push('/login');
+      }
+      return userRole;
+    },
+  },
+  mounted() {
+    if (localStorage.getItem('session') !== '1') {
+      this.$router.push('/login')
+    }
+    this.profileData.IDAdulto = localStorage.getItem('idAdulto');
+    this.fetchProfileData();
+    this.checkUserRolePermission();
+  },
+
+  methods: {
+    checkUserRolePermission() {
+      if (this.userRole == "3") {
+        this.isInputEditable = false;
+      }
     },
 
-    methods: {
-        checkUserRolePermission() {
-            if (this.userRole == "3") {    
-                this.isInputEditable = false;
-            }
-        },
-        verExpedienteBebe() {
-            this.$router.push('/expediente/salud/' + this.selectedSon)
-        },
-        fetchProfileData() {
-            axios.get(`http://localhost:3000/adultos/${this.profileData.IDAdulto}`)
-                .then((response) => {
-                    const profileDataFromAPI = response.data[0];
-                    console.log(profileDataFromAPI)
+    vincularBebe(){
+      this.$router.push('/registro/3/'+this.profileData.IDAdulto)
+    },
+
+
+    verExpedienteBebe() {
+      this.$router.push('/expediente/salud/' + this.selectedSon)
+    },
+    fetchProfileData() {
+      axios.get(`http://localhost:3000/adultos/${this.profileData.IDAdulto}`)
+        .then((response) => {
+          const profileDataFromAPI = response.data[0];
+          //console.log(profileDataFromAPI)
 
           this.profileData.IDAdulto = localStorage.getItem("idAdulto");
           this.profileData.Nombre = profileDataFromAPI.Nombre;
