@@ -10,22 +10,21 @@
 
             <div class="flex flex-register input-container">
                 <div class="input-container ic1">
-                    <input v-model="DatosBebe.Peso" maxlength="4" class="input input-expediente" :disabled="!activarForm" type="text"
-                        placeholder="">
+                    <input v-model="DatosBebe.Peso" maxlength="4" class="input input-expediente" :disabled="!activarForm"
+                        type="text" placeholder="">
                     <div class="cut"></div>
                     <label class="placeholder">Peso del bebé (Kg)</label>
                 </div>
                 <div class="input-container ic1">
-                    <input v-model="DatosBebe.Altura" max="10" class="input input-expediente" :disabled="!activarForm" type="text"
-                        placeholder="">
+                    <input v-model="DatosBebe.Altura" max="10" class="input input-expediente" :disabled="!activarForm"
+                        type="text" placeholder="">
                     <div class="cut"></div>
                     <label class="placeholder">Altura del bebé (cm)</label>
                 </div>
             </div>
 
             <div class="input-container ic1">
-                <input v-model="DatosBebe.Sexo" class="input" disabled type="text"
-                    placeholder="">
+                <input v-model="DatosBebe.Sexo" class="input" disabled type="text" placeholder="">
                 <div class="cut"></div>
                 <label for="firstname" class="placeholder">Género</label>
             </div>
@@ -70,9 +69,9 @@ export default {
                 Altura: '',
                 Peso: ''
             },
-            padres:{},
-            DatosPadres:{
-                Padre:'',
+            padres: {},
+            DatosPadres: {
+                Padre: '',
                 Madre: ''
             },
         }
@@ -83,7 +82,7 @@ export default {
                 this.btn = 'Confirmar'
                 this.activarForm = true
             } else {
-                const url= 'https://tiusr3pl.cuc-carrera-ti.ac.cr/modificarBebe'
+                const url = 'https://tiusr3pl.cuc-carrera-ti.ac.cr/modificarBebe'
 
                 axios.put(url, {
                     IDBebe: this.DatosBebe.IDBebe,
@@ -92,13 +91,13 @@ export default {
                     Nombre: this.DatosBebe.Nombre,
                     Sexo: this.DatosBebe.Sexo
                 })
-                .then(response=>{
-                    const msg = response.data;
-                    console.log(msg);
-                })
-                .catch(err=>{
-                    console.error('Error al modificar bebe')
-                })
+                    .then(response => {
+                        const msg = response.data;
+                        console.log(msg);
+                    })
+                    .catch(err => {
+                        console.error('Error al modificar bebe')
+                    })
                 this.btn = 'Modificar'
                 this.activarForm = false
             }
@@ -125,18 +124,29 @@ export default {
                     console.error('Error al obtener los datos: ' + err)
                 })
         },
-        
+
         obtenerPadres(id) {
-            const url = 'https://tiusr3pl.cuc-carrera-ti.ac.cr/ver-padres/' + id
+            const url = 'https://tiusr3pl.cuc-carrera-ti.ac.cr/ver-padres/' + id;
             axios.get(url)
                 .then(response => {
                     this.padres = response.data;
-                    this.DatosPadres.Padre = this.padres[1].Nombre
-                    this.DatosPadres.Madre = this.padres[0].Nombre
+
+                    if (this.padres.length > 0) {
+                        this.DatosPadres.Padre = this.padres[0].Nombre;
+                        if (this.padres.length > 1) {
+                            this.DatosPadres.Madre = this.padres[1].Nombre;
+                        } else {
+                            this.DatosPadres.Madre = '';
+                        }
+                    } else {
+                        // Si no hay padres disponibles, puedes establecer los valores como desees.
+                        this.DatosPadres.Padre = '';
+                        this.DatosPadres.Madre = '';
+                    }
                 })
                 .catch(err => {
-                    console.error('Error al obtener los datos: ' + err)
-                })
+                    console.error('Error al obtener los datos: ' + err);
+                });
         }
 
     },
