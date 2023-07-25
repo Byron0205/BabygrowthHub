@@ -111,6 +111,9 @@ export default {
           this.enviarToken(this.user.correo);
           localStorage.setItem("idAdulto", msg.id);
           localStorage.setItem("userRol", msg.rol);
+          if (localStorage.getItem("userRol") == 4){
+            localStorage.setItem('admin', 'true')
+          }
           this.$router.push("/doble-factor");
         })
         .catch((error) => {

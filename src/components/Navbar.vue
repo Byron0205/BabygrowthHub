@@ -9,14 +9,20 @@
         </div>
         <div :class="session ? 'flex-session' : 'flex margin-nav'">
             <ul class="navbar">
-                <li class="item">
+                <li class="item" v-if="!admin">
                     <router-link v-if="session" class="link" to="/inicio">Inicio</router-link>
                     <router-link v-else class="link" to="/">Inicio</router-link>
                 </li>
-                <li class="item">
+                <li class="item" v-if="admin && session == true">
+                    <router-link v-if="session" class="link" to="/admin">Inicio</router-link>
+                    
+                </li>
+
+
+                <li class="item" v-if="!admin">
                     <router-link class="link" to="/etapas-desarrollo">Etapas</router-link>
                 </li>
-                <li class="item">
+                <li class="item" v-if="!admin">
                     <router-link class="link" to="/dietas">Dietas</router-link>
                 </li>
                 <!-- <li class="item" v-show="session && (rol === 1 || rol === 2)">
@@ -46,7 +52,8 @@ export default {
     data() {
         return {
             session: false,
-            rol: 0
+            rol: 0,
+            admin: true
         }
     },
     methods: {
@@ -57,6 +64,7 @@ export default {
             localStorage.removeItem('session')
             localStorage.removeItem('idAdulto')
             localStorage.removeItem('userRol')
+            localStorage.removeItem('admin')
             if (this.$route.path === '/'){
                 window.location.reload()
             } else {
@@ -79,10 +87,11 @@ export default {
     watch: {
         $route() {
             this.created();
+            this.admin= localStorage.getItem('admin')
         }
     },
     created() {
         this.created();
-    }
+    },
 }
 </script>
