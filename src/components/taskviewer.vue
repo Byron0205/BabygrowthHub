@@ -14,7 +14,7 @@
       </div>
       <div class="info-right-task">
         <p class="task-priority" :style="{ color: activity.colorPrioridad }">
-          Prioridad {{ activity.nombrePrioridad }}
+          {{ activity.nombrePrioridad }}
         </p>
         <div class="task-date">
           <i class="fa-solid fa-clock color" style="margin-top: 1.3rem;"></i>

@@ -48,16 +48,6 @@ const router = createRouter({
       component: ()=> import('../views/AdminView.vue')
     },
     {
-      path: "/admin/usuarios",
-      name: "usuarios",
-      component: ()=> import('../views/UsersView.vue')
-    },
-    {
-      path: "/admin/auditoria",
-      name: "auditoria",
-      component: ()=> import("../views/AuditoriaView.vue")
-    },
-    {
       path: '/actividades/seguimiento',
       name: 'seguimiento',
       component: ()=> import('../views/ActividadesView.vue')
