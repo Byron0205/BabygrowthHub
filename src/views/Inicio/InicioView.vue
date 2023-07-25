@@ -11,13 +11,13 @@
                 <div class="card-height">
                     <i class="fa-solid fa-ruler-vertical custom-icon" style="color: #FCB510;"></i>
                     <h2>{{ promedios[edadActual].altura }} cm</h2>
-                    <p>Altura actual de tu pequeño</p>
+                    <p>Promedio de altura de los tesoros</p>
                 </div>
                 <div class="card-weight">
                     <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-sol.png" alt="img-sol">
                     <i class="fa-solid fa-weight-scale custom-icon" style="color: #69dcff;"></i>
                     <h2>{{ promedios[edadActual].peso }} Kg</h2>
-                    <p>Peso actual de tu pequeño</p>
+                    <p>Promedio de peso en los tesoros</p>
                 </div>
             </div>
             <div class="text-card">
