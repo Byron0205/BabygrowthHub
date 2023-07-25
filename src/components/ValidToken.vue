@@ -5,15 +5,12 @@
       <div class="c-login-body">
         <form @submit.prevent="validateEnterToken" class="login">
           <div class="input-container ic1">
-            <input v-model="token" class="input" type="text" placeholder="" />
+            <input v-model="token" maxlength="6" @input="validarNumeros" class="input" type="text" placeholder="" />
             <div class="cut"></div>
             <label class="placeholder">Token</label>
           </div>
 
-          <button
-            :disabled="!validToken"
-            :class="validToken ? 'submit' : 'submit-disabled'"
-          >
+          <button :disabled="!validToken" :class="validToken ? 'submit' : 'submit-disabled'">
             Validar Token
           </button>
         </form>
@@ -65,6 +62,14 @@ export default {
           console.error("Error al hacer el login: ", error);
         });
     },
+
+    validarNumeros() {
+      if (!this.validNumeros) {
+        // Si el usuario ingresó un valor no numérico, actualizamos la variable para que contenga solo números
+        this.encargado.IDAdulto = this.encargado.IDAdulto.replace(/[^\d]/g, "");
+      }
+    },
+
     showAlert() {
       const displayDuration = 3000;
 
@@ -84,6 +89,11 @@ export default {
       }
     },
   },
+  computed:{
+    validNumeros() {
+      return /^\d*$/.test(this.encargado.IDAdulto);
+    },
+  }
 };
 </script>
 

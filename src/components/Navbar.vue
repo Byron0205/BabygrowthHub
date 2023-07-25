@@ -15,7 +15,6 @@
                 </li>
                 <li class="item" v-if="admin && session == true">
                     <router-link v-if="session" class="link" to="/admin">Inicio</router-link>
-                    
                 </li>
 
 

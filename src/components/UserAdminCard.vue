@@ -41,7 +41,7 @@ export default {
     },
     methods: {
         obtenerUsuarios() {
-            const url = "http://localhost:3000/verUsuarios"
+            const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/verUsuarios"
 
             axios.get(url)
                 .then(response => {

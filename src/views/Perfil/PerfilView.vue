@@ -29,7 +29,7 @@
             </div>
           </div>
         </div>
-        <div v-if="userRole !== '3'" class="son-information-container">
+        <div v-if="userRole !== '3' || userRole !== '4'" class="son-information-container">
           <div class="son-information">
             <label for="sons" class="sons-text">Hijos registrados</label>
             <select class="sons" v-model="selectedSon">
@@ -55,7 +55,7 @@
         {{ message }}
       </div>
       <div class="administrative-panel-container">
-        <div v-if="userRole !== '3'" class="administrative-panel">
+        <div v-if="userRole !== '3' || userRole !== '4'" class="administrative-panel">
           <h2>Panel administrativo</h2>
           <button class="family-admin">Administrar familia</button>
           <button class="add-baby" @click="vincularBebe">Agregar otro bebé</button>
@@ -153,7 +153,7 @@ export default {
 
   methods: {
     checkUserRolePermission() {
-      if (this.userRole == "3") {
+      if (this.userRole == "3" || this.userRole == "4") {
         this.isInputEditable = false;
       }
     },
@@ -167,7 +167,7 @@ export default {
       this.$router.push('/expediente/salud/' + this.selectedSon)
     },
     fetchProfileData() {
-      axios.get(`http://localhost:3000/adultos/${this.profileData.IDAdulto}`)
+      axios.get(`https://tiusr3pl.cuc-carrera-ti.ac.cr/adultos/${this.profileData.IDAdulto}`)
         .then((response) => {
           const profileDataFromAPI = response.data[0];
           //console.log(profileDataFromAPI)
