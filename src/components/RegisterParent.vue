@@ -54,7 +54,7 @@
       <div class="input-container width-50">
         <input
           v-model="parent.Correo"
-          maxlength="25"
+          maxlength="50"
           class="input"
           type="text"
           placeholder=""
@@ -65,7 +65,7 @@
       <div class="input-container width-50">
         <input
           v-model="parent.Contrasenna"
-          maxlength="12"
+          maxlength="50"
           class="input"
           type="text"
           placeholder=""
@@ -182,10 +182,8 @@ export default {
       }
     },
     validarApellidos() {
-      if (!this.validApellidos) {
-        // Si el usuario ingresó un valor no alfabético, actualizamos la variable para que contenga solo letras
-        this.parent.Apellidos = this.parent.Apellidos.replace(/[^A-Za-z]/g, "");
-      }
+      // Acepta letras mayúsculas, minúsculas y espacios
+      this.parent.Apellidos = this.parent.Apellidos.replace(/[^A-Za-z\s]/g, '');
     },
   },
   watch: {

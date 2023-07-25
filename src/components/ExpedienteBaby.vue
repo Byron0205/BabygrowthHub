@@ -10,21 +10,21 @@
 
             <div class="flex flex-register input-container">
                 <div class="input-container ic1">
-                    <input v-model="DatosBebe.Peso" class="input input-expediente" :disabled="!activarForm" type="text"
+                    <input v-model="DatosBebe.Peso" maxlength="4" class="input input-expediente" :disabled="!activarForm" type="text"
                         placeholder="">
                     <div class="cut"></div>
-                    <label class="placeholder">Peso del bebé</label>
+                    <label class="placeholder">Peso del bebé (Kg)</label>
                 </div>
                 <div class="input-container ic1">
-                    <input v-model="DatosBebe.Altura" class="input input-expediente" :disabled="!activarForm" type="text"
+                    <input v-model="DatosBebe.Altura" max="10" class="input input-expediente" :disabled="!activarForm" type="text"
                         placeholder="">
                     <div class="cut"></div>
-                    <label class="placeholder">Altura del bebé</label>
+                    <label class="placeholder">Altura del bebé (cm)</label>
                 </div>
             </div>
 
             <div class="input-container ic1">
-                <input v-model="DatosBebe.Sexo" class="input input-expediente" :disabled="!activarForm" type="text"
+                <input v-model="DatosBebe.Sexo" class="input" disabled type="text"
                     placeholder="">
                 <div class="cut"></div>
                 <label for="firstname" class="placeholder">Género</label>

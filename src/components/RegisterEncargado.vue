@@ -43,7 +43,7 @@
       <div class="input-container width-50">
         <input
           v-model="encargado.Correo"
-          maxlength="25"
+          maxlength="50"
           class="input"
           type="text"
           placeholder=""
@@ -166,13 +166,8 @@ export default {
       }
     },
     validarApellidos() {
-      if (!this.validApellidos) {
-        // Si el usuario ingresó un valor no alfabético, actualizamos la variable para que contenga solo letras
-        this.encargado.Apellidos = this.encargado.Apellidos.replace(
-          /[^A-Za-z]/g,
-          ""
-        );
-      }
+      // Acepta letras mayúsculas, minúsculas y espacios
+      this.encargado.Apellidos = this.encargado.Apellidos.replace(/[^A-Za-z\s]/g, '');
     },
     vincularBebe() {
       const idBebe = this.$route.params.idBebe;

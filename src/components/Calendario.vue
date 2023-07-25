@@ -352,7 +352,7 @@ export default {
         .post("https://tiusr3pl.cuc-carrera-ti.ac.cr/insertar-actividad", data)
         .then((response) => {
           this.selectedEvent = null;
-          window.location.reload();
+          this.$router.push('/actividades/calendario')
         })
         .catch((error) => {
           console.error("Error al obtener los datos:", error);
@@ -429,7 +429,7 @@ export default {
         )
         .then((response) => {
           this.selectedEvent = null;
-          window.location.reload();
+          this.$router.push('/actividades/calendario')
         })
         .catch((error) => {
           console.error("Error al obtener los datos:", error);

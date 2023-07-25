@@ -10,6 +10,7 @@
               class="input"
               type="text"
               placeholder=""
+              maxlength="100"
             />
             <div class="cut"></div>
             <label class="placeholder">Correo</label>
@@ -21,6 +22,7 @@
               class="input"
               type="password"
               placeholder=""
+              maxlength="50"
             />
             <div class="cut"></div>
             <label class="placeholder">Contraseña</label>

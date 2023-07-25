@@ -276,13 +276,8 @@ export default {
       }
     },
     validarApellidos() {
-      if (!this.validApellidos) {
-        // Si el usuario ingresó un valor no alfabético, actualizamos la variable para que contenga solo letras
-        this.DatosBebe.Apellidos = this.DatosBebe.Apellidos.replace(
-          /[^A-Za-z]/g,
-          ""
-        );
-      }
+      // Acepta letras mayúsculas, minúsculas y espacios
+      this.DatosBebe.Apellidos = this.DatosBebe.Apellidos.replace(/[^A-Za-z\s]/g, '');
     },
     vincularBebe(idBebe, idAdulto) {
       const data = {
