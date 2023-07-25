@@ -206,12 +206,10 @@
 }
 
 .newEventBnt.save {
+  color: #ffffff;
   background-color: $purple;
 }
 
-.newEventBnt.cancel {
-  background-color: #fe5a86;
-}
 
 .newEventBnt:hover {
   cursor: pointer;

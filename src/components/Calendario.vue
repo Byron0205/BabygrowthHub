@@ -64,6 +64,7 @@
               type="text"
               id="newEventName"
               v-model="eventName"
+              maxlength="100"
             />
           </div>
           <div class="newEventFlexContainer">
@@ -74,6 +75,7 @@
               class="newEventInput newEventTextArea"
               id="newEventDescription"
               v-model="eventDescription"
+              maxlength="300"
             ></textarea>
           </div>
           <div class="newEventFlexContainer">

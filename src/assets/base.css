@@ -992,11 +992,8 @@ footer {
 }
 
 .newEventBnt.save {
+  color: #ffffff;
   background-color: #6055A4;
-}
-
-.newEventBnt.cancel {
-  background-color: #fe5a86;
 }
 
 .newEventBnt:hover {
