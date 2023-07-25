@@ -133,7 +133,7 @@ export default {
   },
   methods: {
     registerParentForm() {
-      const url = "http://localhost:3000/registrarAdulto";
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/registrarAdulto";
 
       axios
         .post(url, this.parent)

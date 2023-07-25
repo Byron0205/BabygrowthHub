@@ -61,7 +61,7 @@ export default {
             }
         },
         obtenerExpediente(id) {
-            const url = 'http://localhost:3000/verExpediente/' + id
+            const url = 'https://tiusr3pl.cuc-carrera-ti.ac.cr/verExpediente/' + id
             axios.get(url)
                 .then(response => {
                     this.DatosBebe = response.data;

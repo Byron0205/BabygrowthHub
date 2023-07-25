@@ -347,7 +347,7 @@ export default {
       };
       // Realizar la solicitud POST con el objeto de datos como cuerpo de la solicitud
       axios
-        .post("http://localhost:3000/insertar-actividad", data)
+        .post("https://tiusr3pl.cuc-carrera-ti.ac.cr/insertar-actividad", data)
         .then((response) => {
           this.selectedEvent = null;
           window.location.reload();
@@ -392,7 +392,7 @@ export default {
     },
     getCategories() {
       axios
-        .get("http://localhost:3000/recuperar-categorias")
+        .get("https://tiusr3pl.cuc-carrera-ti.ac.cr/recuperar-categorias")
         .then((response) => {
           this.categories = response.data;
         })
@@ -402,7 +402,7 @@ export default {
     },
     getPriorities() {
       axios
-        .get("http://localhost:3000/recuperar-prioridades")
+        .get("https://tiusr3pl.cuc-carrera-ti.ac.cr/recuperar-prioridades")
         .then((response) => {
           this.priorities = response.data;
         })
@@ -412,7 +412,7 @@ export default {
     },
     getActivities(idAdulto) {
       axios
-        .get(`http://localhost:3000/recuperar-actividades/${idAdulto}`)
+        .get(`https://tiusr3pl.cuc-carrera-ti.ac.cr/recuperar-actividades/${idAdulto}`)
         .then((response) => {
           this.events = response.data;
         })
@@ -423,7 +423,7 @@ export default {
     postDeleteActivity(idActividad, idBebe) {
       axios
         .post(
-          `http://localhost:3000/eliminar-actividad/${idActividad}/${idBebe}`
+          `https://tiusr3pl.cuc-carrera-ti.ac.cr/eliminar-actividad/${idActividad}/${idBebe}`
         )
         .then((response) => {
           this.selectedEvent = null;
@@ -435,7 +435,7 @@ export default {
     },
     getBabies(idAdulto) {
       axios
-        .get(`http://localhost:3000/recuperar-bebes/${idAdulto}`)
+        .get(`https://tiusr3pl.cuc-carrera-ti.ac.cr/recuperar-bebes/${idAdulto}`)
         .then((response) => {
           this.registeredBabies = response.data;
         })

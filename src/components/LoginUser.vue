@@ -103,7 +103,7 @@ export default {
     },
     login() {
       axios
-        .post("http://localhost:3000/login", this.user)
+        .post("https://tiusr3pl.cuc-carrera-ti.ac.cr/login", this.user)
         .then((response) => {
           //success response
           let msg = response.data;
@@ -129,7 +129,7 @@ export default {
     encargadoForm() {
       const idBebe = this.babyCode;
       axios
-        .get(`http://localhost:3000/validar-codigo-bebe/${idBebe}`)
+        .get(`https://tiusr3pl.cuc-carrera-ti.ac.cr/validar-codigo-bebe/${idBebe}`)
         .then((response) => {
           const msg = response.data[0];
           if (msg.CodigoValido) {
@@ -151,7 +151,7 @@ export default {
     },
     enviarToken(email) {
       axios
-        .get(`http://localhost:3000/enviar-token/${email}/1`)
+        .get(`https://tiusr3pl.cuc-carrera-ti.ac.cr/enviar-token/${email}/1`)
         .then((response) => {
           // Almacenar el secreto necesario para validar el token
           localStorage.setItem("secreto", JSON.stringify(response.data));

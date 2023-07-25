@@ -210,7 +210,7 @@ export default {
             this.$router.push('/expediente/salud/' + this.selectedSon)
         },
         fetchProfileData() {
-            axios.get(`http://localhost:3000/adultos/${this.profileData.IDAdulto}`)
+            axios.get(`https://tiusr3pl.cuc-carrera-ti.ac.cr/adultos/${this.profileData.IDAdulto}`)
                 .then((response) => {
                     const profileDataFromAPI = response.data[0];
                     console.log(profileDataFromAPI)
@@ -260,7 +260,7 @@ export default {
 
       try {
         await axios.put(
-          `http://localhost:3000/adultos/${this.profileData.IDAdulto}`,
+          `https://tiusr3pl.cuc-carrera-ti.ac.cr/adultos/${this.profileData.IDAdulto}`,
           {
             Nombre: this.modifiedProfileData.Nombre,
             Apellidos: this.modifiedProfileData.Apellidos,
@@ -303,7 +303,7 @@ export default {
         formatmail: "2",
       };
       axios
-        .post("http://localhost:3000/enviar-codigo-bebe", data)
+        .post("https://tiusr3pl.cuc-carrera-ti.ac.cr/enviar-codigo-bebe", data)
         .then((response) => {
           let msg = response.data;
           if (msg.codigoEnviado) {

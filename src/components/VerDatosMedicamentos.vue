@@ -31,7 +31,7 @@ export default {
             this.diagnosticos = this.diagnosticos.filter(elemento => elemento.id !== id);
         },
         obtenerMedicamentos(id) {
-            const url = 'http://localhost:3000/verMedicamentos/' + id
+            const url = 'https://tiusr3pl.cuc-carrera-ti.ac.cr/verMedicamentos/' + id
             axios.get(url)
                 .then(response => {
                     this.Medicamentos = response.data;
@@ -42,7 +42,7 @@ export default {
                 })
         },
         obtenerVacunas(id) {
-            const url = 'http://localhost:3000/verVacunas/' + id
+            const url = 'https://tiusr3pl.cuc-carrera-ti.ac.cr/verVacunas/' + id
             axios.get(url)
                 .then(response => {
                     this.Vacunas = response.data;
@@ -53,7 +53,7 @@ export default {
                 })
         },
         obtenerExpediente(id) {
-            const url = 'http://localhost:3000/verExpediente/' + id
+            const url = 'https://tiusr3pl.cuc-carrera-ti.ac.cr/verExpediente/' + id
             axios.get(url)
                 .then(response => {
                     this.DatosBebe = response.data;

@@ -50,7 +50,7 @@ export default {
             this.diagnosticos = this.diagnosticos.filter(elemento => elemento.id !== id);
         },
         obtenerDiagnosticos(id) {
-            const url = 'http://localhost:3000/verDiagnosticos/' + id
+            const url = 'https://tiusr3pl.cuc-carrera-ti.ac.cr/verDiagnosticos/' + id
             axios.get(url)
                 .then(response => {
                     this.PDiagnosticos = response.data;
@@ -61,7 +61,7 @@ export default {
                 })
         },
         obtenerAlergias(id) {
-            const url = 'http://localhost:3000/verAlergias/' + id
+            const url = 'https://tiusr3pl.cuc-carrera-ti.ac.cr/verAlergias/' + id
             axios.get(url)
                 .then(response => {
                     this.PAlergias= response.data;

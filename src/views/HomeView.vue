@@ -100,7 +100,7 @@ export default {
   methods: {
     getNombresSignificados() {
       axios
-        .get(`http://localhost:3000/recuperar-nombres-significados`)
+        .get(`https://tiusr3pl.cuc-carrera-ti.ac.cr/recuperar-nombres-significados`)
         .then((response) => {
           this.nombres_significados = response.data;
         })
