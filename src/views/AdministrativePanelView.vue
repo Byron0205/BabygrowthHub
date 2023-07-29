@@ -81,26 +81,7 @@ export default {
                     role: 'Encargado',
                     selected: false,
                 },
-                {
-                    name: 'Carlos Gómez Rodríguez',
-                    role: 'Padre',
-                    selected: false,
-                },
-                {
-                    name: 'María López Herrera',
-                    role: 'Madre',
-                    selected: false,
-                },
-                {
-                    name: 'Pedro Martínez Fernández',
-                    role: 'Invitado',
-                    selected: false,
-                },
-                {
-                    name: 'Laura Ramírez Cruz',
-                    role: 'Encargado',
-                    selected: false,
-                }
+                
             ],
             selectedMemberIndex: null,
             selectedMemberRole: '',
