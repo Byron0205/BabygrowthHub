@@ -115,7 +115,7 @@ export default {
         Apellidos: "",
         Correo: "",
         Contrasenna: "",
-        IDRol: "3",
+        IDRol: "4",
       },
 
       validfield: false,

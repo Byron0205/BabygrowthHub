@@ -16,13 +16,15 @@
                 <div v-if="DatosBebe.Sexo == 'F'" class="baby-name-container-salud">
                     <p class="baby-name text-center">
                         Estas viendo los datos de la pequeña<br>
-                        <span class="name">{{ DatosBebe.Nombre }} {{ DatosBebe.Apellidos }}</span>
+                        <span class="name">{{ DatosBebe.Nombre }} {{ DatosBebe.Apellidos }}</span><br>
+                        <span class="name">{{ DatosBebe.IDBebe }}</span>
                     </p>
                 </div>
                 <div v-else class="baby-name-container-salud">
                     <p class="baby-name">
                         Estas viendo los datos del pequeño<br>
-                        <span class="name">{{ DatosBebe.Nombre }} {{ DatosBebe.Apellidos }}</span>
+                        <span class="name">{{ DatosBebe.Nombre }} {{ DatosBebe.Apellidos }}</span><br>
+                        <span class="name">{{ DatosBebe.IDBebe }}</span>
                     </p>
                 </div>
             </div>
