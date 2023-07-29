@@ -2,6 +2,12 @@
     <div>
         <form @submit.prevent="actualizarDatos" class="login form-register">
             <div class="input-container ic1">
+                <input v-model="DatosBebe.IDBebe" class="input" disabled type="text"
+                    placeholder="">
+                <div class="cut"></div>
+                <label class="placeholder-expediente">Código</label>
+            </div>
+            <div class="input-container ic1">
                 <input v-model="DatosBebe.Nombre" class="input input-expediente" :disabled="!activarForm" type="text"
                     placeholder="">
                 <div class="cut"></div>
@@ -28,7 +34,7 @@
                 <div class="cut"></div>
                 <label for="firstname" class="placeholder-expediente">Género</label>
             </div>
-            <div class="input-container ic1">
+            <div class="input-container">
                 <input v-model="DatosBebe.FechaNacimiento" class="input" disabled type="text" placeholder="">
                 <div class="cut"></div>
                 <label class="placeholder-expediente">Fecha de Nacimiento</label>

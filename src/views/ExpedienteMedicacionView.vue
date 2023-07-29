@@ -65,17 +65,6 @@ export default {
             axios.get(url)
                 .then(response => {
                     this.DatosBebe = response.data;
-                    const fechaObjeto = new Date(this.DatosBebe.FechaNacimiento)
-
-                    // Obtener los componentes de la fecha (día, mes, año)
-                    const dia = String(fechaObjeto.getDate()).padStart(2, '0');
-                    const mes = String(fechaObjeto.getMonth() + 1).padStart(2, '0');
-                    const anio = fechaObjeto.getFullYear();
-
-                    // Formatear la fecha en el formato "dd/mm/yyyy"
-                    const fechaFormateada = `${dia}/${mes}/${anio}`;
-
-                    this.DatosBebe.FechaNacimiento = fechaFormateada;
                 })
                 .catch(err => {
                     console.error('Error al obtener los datos: ' + err)

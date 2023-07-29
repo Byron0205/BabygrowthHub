@@ -139,6 +139,11 @@ nav {
   gap: 10px;
 }
 
+.container-nombre-expediente {
+  margin: 0 auto;
+  width: 100%;
+}
+
 .container-register {
   margin: 0 auto;
   margin-bottom: 20px;
@@ -293,6 +298,7 @@ footer {
   border: 1px solid #4F439A;
   box-sizing: border-box;
   color: #253962;
+  font-family: "Baloo 2";
   font-size: 18px;
   height: 40px;
   padding: 4px 10px 0;
@@ -2265,6 +2271,13 @@ footer {
   height: -moz-fit-content;
   height: fit-content;
   z-index: 2;
+}
+
+.baby-name-container-salud {
+  border-radius: 15px;
+  border: 1px solid #253962;
+  background-color: #f6f6fa;
+  margin: 10px auto;
 }
 
 .baby-name {
