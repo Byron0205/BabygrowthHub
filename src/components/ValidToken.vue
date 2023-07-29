@@ -81,7 +81,7 @@ export default {
   },
   computed:{
     validNumeros() {
-      return /^\d{6}*$/.test(this.token);
+      return /^\d*$/.test(this.token);
     },
   }
 };
