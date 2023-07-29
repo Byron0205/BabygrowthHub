@@ -117,11 +117,13 @@
 }
 
 .icon-trash {
-    transition: all ease-in-out 500ms;
-
+    color: #0F5B8E;
+    transition: all ease-in-out 0.2s;
     &:hover {
-        transform: scale(1.18);
+        transform: scale(1.2);
+        cursor: pointer;
     }
+    margin-right: 0.5rem;
 }
 
 /* ---------- Medicacion ---------- */
@@ -262,4 +264,34 @@
     transform-origin: 0 30%;
     transition: transform 200ms, color 200ms;
     top: -10px;
+}
+
+.button-expediente{
+    font-family: 'Baloo 2', sans-serif;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 1rem;
+    width: 20rem;
+    
+}
+
+.button-expediente:focus{
+    border: dashed 2px #314269;
+    
+}
+
+.button-expediente:hover{
+    cursor: pointer;
+}
+
+.button-expediente.diagnositoco{
+    background-color: #F4D2DE;
+    color: #E4547D;
+}
+
+.button-expediente.alergias{
+    background-color: #DAEFFE;
+    color: #479DD8;
 }
