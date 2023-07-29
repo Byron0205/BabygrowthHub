@@ -16,7 +16,7 @@
                     </div>
                     <div class="family-role">
                         <i class="fa-regular fa-user" style="color: #4F439A; font-weight: 600;"></i>
-                        <p class="rol-adm-family" >Madre</p>
+                        <p class="rol-adm-family">Madre</p>
                     </div>
                 </div>
                 <div v-if="selectedMemberIndex !== null" class="container-select-guess">
@@ -26,11 +26,12 @@
                     <div class="select-guess-border">
                         <p class="selected-user-rol">{{ selectedMemberIndex !== null ?
                             familyMembers[selectedMemberIndex].name : '' }}</p>
-                        <select class="rols-user" @change="updateRole" v-if="selectedMemberIndex !== null">
-                            <option>Padre</option>
-                            <option>Madre</option>
-                            <option>Encargado</option>
-                            <option>Invitado</option>
+                        <select class="rols-user" @change="updateRole" v-if="selectedMemberIndex !== null"
+                            v-model="selectedMemberRole">
+                            <option value="Padre">Padre</option>
+                            <option value="Madre">Madre</option>
+                            <option value="Encargado">Encargado</option>
+                            <option value="Invitado">Invitado</option>
                         </select>
                     </div>
                 </div>
@@ -81,7 +82,27 @@ export default {
                     role: 'Encargado',
                     selected: false,
                 },
-                
+                {
+                    name: 'Carlos Gómez Rodríguez',
+                    role: 'Padre',
+                    selected: false,
+                },
+                {
+                    name: 'María López Herrera',
+                    role: 'Madre',
+                    selected: false,
+                },
+                {
+                    name: 'Pedro Martínez Fernández',
+                    role: 'Invitado',
+                    selected: false,
+                },
+                {
+                    name: 'Laura Ramírez Cruz',
+                    role: 'Encargado',
+                    selected: false,
+                },
+
             ],
             selectedMemberIndex: null,
             selectedMemberRole: '',
@@ -92,7 +113,7 @@ export default {
         selectedMemberIndex(newValue) {
             this.selectedMemberRole = newValue !== null ? this.familyMembers[newValue].role : '';
         },
-        selectedMemberRole(newValue) {
+        selectedMemberRoleChanged(newValue) {
             if (this.selectedMemberIndex !== null) {
                 this.familyMembers[this.selectedMemberIndex].role = newValue;
             }
@@ -124,7 +145,12 @@ export default {
                 case 'invitado':
                     return '#FEBD54';
                 default:
-                    return '#000000'; 
+                    return '#000000';
+            }
+        },
+        updateRole() {
+            if (this.selectedMemberIndex !== null) {
+                this.familyMembers[this.selectedMemberIndex].role = this.selectedMemberRole;
             }
         },
     },
