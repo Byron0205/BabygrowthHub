@@ -66,7 +66,7 @@ export default {
     validarNumeros() {
       if (!this.validNumeros) {
         // Si el usuario ingresó un valor no numérico, actualizamos la variable para que contenga solo números
-        this.encargado.IDAdulto = this.encargado.IDAdulto.replace(/[^\d]/g, "");
+        this.token = this.token.replace(/[^\d]/g, "");
       }
     },
 
@@ -79,19 +79,9 @@ export default {
       }, displayDuration);
     },
   },
-  watch: {
-    token: function () {
-      const regex = /^\d{6}$/;
-      if (regex.test(this.token)) {
-        this.validToken = true;
-      } else {
-        this.validToken = false;
-      }
-    },
-  },
   computed:{
     validNumeros() {
-      return /^\d*$/.test(this.encargado.IDAdulto);
+      return /^\d{6}*$/.test(this.token);
     },
   }
 };

@@ -109,10 +109,11 @@ export default {
         .then((response) => {
           //success response
           let msg = response.data;
-          console.log(msg.msg);
+          console.log(msg);
           this.enviarToken(this.user.correo);
           localStorage.setItem("idAdulto", msg.id);
           localStorage.setItem("userRol", msg.rol);
+          localStorage.setItem("nombre", msg.nombre);
           if (localStorage.getItem("userRol") == 4){
             localStorage.setItem('admin', 'true')
           }

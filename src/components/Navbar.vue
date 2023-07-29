@@ -64,6 +64,7 @@ export default {
             localStorage.removeItem('idAdulto')
             localStorage.removeItem('userRol')
             localStorage.removeItem('admin')
+            localStorage.removeItem('nombre')
             if (this.$route.path === '/babygrowthhub'){
                 window.location.reload()
             } else {

@@ -1,7 +1,9 @@
 <template>
+    <p class="user-name">¡Bienvenido de nuevo, <span class="name">{{ nombreUsuario.split(' ')[0] }}</span>!</p>
     <div class="container-inicio">
         <div>
-            <h1 class="stats-title">Estadísticas según la edad de los tesoros <br> {{ promedios[edadActual].edad }} años</h1>
+            <h1 class="stats-title">Estadísticas según la edad de los tesoros <br> {{ promedios[edadActual].edad }} años
+            </h1>
             <div class="cards-container">
                 <div class="card-dream">
                     <i class="fa-regular fa-moon custom-icon" style="color: #796CD0;"></i>
@@ -14,7 +16,8 @@
                     <p>Altura actual de tu pequeño</p>
                 </div>
                 <div class="card-weight">
-                    <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-sol.png" alt="img-sol">
+                    <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-sol.png"
+                        alt="img-sol">
                     <i class="fa-solid fa-weight-scale custom-icon" style="color: #69dcff;"></i>
                     <h2>{{ promedios[edadActual].peso }} Kg</h2>
                     <p>Peso actual de tu pequeño</p>
@@ -29,17 +32,19 @@
         </div>
 
         <div class="photos-content">
-            <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Imagen-ni%C3%B1os.png" alt="" class="image-bottom">
+            <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Imagen-ni%C3%B1os.png" alt=""
+                class="image-bottom">
         </div>
     </div>
 </template>
-  
+
 <script>
 export default {
     name: 'BabygrowthHubInicioView',
 
     data() {
         return {
+            nombreUsuario: '',
             edadActual: 0,
             promedios: [
                 { edad: 0, horasSueno: 14, altura: 50, peso: 3.4 },
@@ -54,9 +59,7 @@ export default {
 
     mounted() {
         this.checkUserSession();
-        if(localStorage.getItem('session') !== '1'){
-            this.$router.push('/login')
-        }
+        this.nombreUsuario = localStorage.getItem('nombre')
         this.updateData();
         setInterval(this.updateData, 5000);
     },

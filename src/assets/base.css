@@ -1936,10 +1936,24 @@ footer {
   margin-left: 160px;
 }
 
+.user-name {
+  margin: -1px auto;
+  max-width: 90%;
+  color: #253962;
+  font-size: 30px;
+  font-family: "Baloo 2", cursive;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  text-align: center;
+}
+.user-name .name {
+  color: #e24a75;
+}
+
 .cards-container {
-  margin-left: 80px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 }
 
@@ -2043,7 +2057,8 @@ footer {
 
 .container-inicio {
   display: flex;
-  gap: 35px;
+  gap: 25px;
+  margin: 0 auto;
 }
 
 .photos-content {
