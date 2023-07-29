@@ -91,6 +91,11 @@ const router = createRouter({
       path: "/etapas-desarrollo",
       name: "etapas-desarrollo",
       component: ()=> import('../views/EtapasDesarrollo/EtapasView.vue')
+    },
+    {
+      path: "/admin-panel-family",
+      name: "admin-panel-family",
+      component: ()=> import('../views/AdministrativePanelView.vue')
     }
   ]
 })

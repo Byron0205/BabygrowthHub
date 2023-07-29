@@ -1,0 +1,247 @@
+.text-info-adm {
+    width: 566px;
+    color: #253962;
+    text-align: justify;
+    font-family: 'Baloo 2';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.family-adm-group {
+    width: 560px;
+    height: 81px;
+    border-radius: 15px;
+    border: 1px solid #4F439A;
+    background: #F6F6FA;
+}
+
+.title-adm-family {
+    color: #4F439A;
+    text-align: center;
+    font-family: 'Catamaran';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.family-adm {
+    color: #4F439A;
+    font-family: 'Catamaran';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.container-select-guess {
+    margin-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 560px;
+    height: 270px;
+    margin: 0 auto;
+}
+
+.select-guess-dash,
+.select-guess-border {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-guess-dash {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    width: 560px;
+    height: 48px;
+    border-radius: 15px 15px 0px 0px;
+    background: #E9EBEF;
+}
+
+.select-guess-border {
+    width: 558px;
+    height: 209px;
+    border-radius: 0px 0px 15px 15px;
+    border: 1px dashed #253962;
+    background: #FFF;
+}
+
+.text-select-guess-dash {
+    margin: auto;
+    color: #253962;
+    text-align: center;
+    font-family: 'Baloo 2';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.selected-user-rol {
+    color: #253962;
+    font-family: 'Catamaran';
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.rols-user {
+    position: relative;
+    width: 184px;
+    height: 43px;
+    border-radius: 5px;
+    border: 1px solid #253962;
+    color: #253962;
+    font-family: 'Baloo 2';
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.selected-member {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 513px;
+    height: 81px;
+    border-radius: 15px;
+    border: 1px dashed #FE5D37;
+    background: #FFFCF6;
+}
+
+.select-member {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 513px;
+    height: 81px;
+    border-radius: 15px;
+    border: 1px solid #EBE7E7;
+}
+
+.member-text {
+    color: #253962;
+    font-family: 'Catamaran';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+}
+
+.container-adm-family {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 3000px;
+}
+
+.left-container {
+    width: 600px;
+}
+
+.right-container {
+    width: 550px;
+    margin-left: 20px;
+    max-height: 500px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #c4c4c4 #f0f0f0;
+}
+
+.right-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.right-container::-webkit-scrollbar-thumb {
+    background-color: #c4c4c4;
+    border-radius: 5px;
+}
+
+.right-container::-webkit-scrollbar-thumb:hover {
+    background-color: #a0a0a0;
+}
+
+.right-container {
+    scrollbar-color: #c4c4c4 #f0f0f0;
+}
+
+.right-container {
+    scrollbar-width: thin;
+}
+
+.family-info {
+    margin-left: 40px;
+    flex-direction: column;
+}
+
+.family-role {
+    margin-right: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.family-adm-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 560px;
+    height: 81px;
+    border-radius: 15px;
+    border: 1px solid #4F439A;
+    background: #F6F6FA;
+    padding: 10px;
+}
+
+.rol-adm-family {
+    margin-left: 5px;
+    color: #4F439A;
+    font-family: 'Baloo 2';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.family-rol {
+    margin-right: 60px;
+}
+
+.family-info-members {
+    margin-left: 40px;
+}
+
+.role-father {
+    color: #4F439A;
+    /* Color para el rol "Padre" */
+}
+
+.role-mother {
+    color: #E871B5;
+    /* Color para el rol "Madre" */
+}
+
+.role-caretaker {
+    color: #56A8B9;
+    /* Color para el rol "Encargado" */
+}
+
+.role-guest {
+    color: #FEBD54;
+    /* Color para el rol "Invitado" */
+}
