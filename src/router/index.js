@@ -93,7 +93,7 @@ const router = createRouter({
       component: ()=> import('../views/EtapasDesarrollo/EtapasView.vue')
     },
     {
-      path: "/admin-panel-family",
+      path: "/admin-panel-family/:id",
       name: "admin-panel-family",
       component: ()=> import('../views/AdministrativePanelView.vue')
     }

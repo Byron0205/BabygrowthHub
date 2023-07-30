@@ -12,11 +12,11 @@
                 <div class="family-adm-group">
                     <div class="family-info">
                         <h2 class="title-adm-family">Encargada/o del grupo familiar:</h2>
-                        <p class="family-adm">Mauren García Mora</p>
+                        <p class="family-adm">{{ encargadoPrincipal }}</p>
                     </div>
                     <div class="family-role">
                         <i class="fa-regular fa-user" style="color: #4F439A; font-weight: 600;"></i>
-                        <p class="rol-adm-family">Madre</p>
+                        <p class="rol-adm-family">{{ encargadoPrincipalRole }}</p>
                     </div>
                 </div>
                 <div v-if="selectedMemberIndex !== null" class="container-select-guess">
@@ -28,10 +28,10 @@
                             familyMembers[selectedMemberIndex].name : '' }}</p>
                         <select class="rols-user" @change="updateRole" v-if="selectedMemberIndex !== null"
                             v-model="selectedMemberRole">
-                            <option value="Padre">Padre</option>
-                            <option value="Madre">Madre</option>
-                            <option value="Encargado">Encargado</option>
-                            <option value="Invitado">Invitado</option>
+                            <option value="2">Padre</option>
+                            <option value="1">Madre</option>
+                            <option value="3">Encargado</option>
+                            <option value="5">Invitado</option>
                         </select>
                     </div>
                 </div>
@@ -56,56 +56,23 @@
 </template>
   
 <script>
+import axios from "axios";
 export default {
     name: 'BabygrowthHubAdministrativePanelView',
 
     data() {
         return {
-            familyMembers: [
-                {
-                    name: 'Carlos Gómez Rodríguez',
-                    role: 'Padre',
-                    selected: false,
-                },
-                {
-                    name: 'María López Herrera',
-                    role: 'Madre',
-                    selected: false,
-                },
-                {
-                    name: 'Pedro Martínez Fernández',
-                    role: 'Invitado',
-                    selected: false,
-                },
-                {
-                    name: 'Laura Ramírez Cruz',
-                    role: 'Encargado',
-                    selected: false,
-                },
-                {
-                    name: 'Carlos Gómez Rodríguez',
-                    role: 'Padre',
-                    selected: false,
-                },
-                {
-                    name: 'María López Herrera',
-                    role: 'Madre',
-                    selected: false,
-                },
-                {
-                    name: 'Pedro Martínez Fernández',
-                    role: 'Invitado',
-                    selected: false,
-                },
-                {
-                    name: 'Laura Ramírez Cruz',
-                    role: 'Encargado',
-                    selected: false,
-                },
-
-            ],
+            familyMembers: [],
             selectedMemberIndex: null,
+            encargadoPrincipal: '',
+            encargadoPrincipalRole: '',
             selectedMemberRole: '',
+            roleMappings: {
+                1: 'Madre',
+                2: 'Padre',
+                3: 'Encargado',
+                5: 'Invitado',
+            },
         };
     },
 
@@ -113,7 +80,7 @@ export default {
         selectedMemberIndex(newValue) {
             this.selectedMemberRole = newValue !== null ? this.familyMembers[newValue].role : '';
         },
-        selectedMemberRoleChanged(newValue) {
+        selectedMemberRole(newValue) {
             if (this.selectedMemberIndex !== null) {
                 this.familyMembers[this.selectedMemberIndex].role = newValue;
             }
@@ -121,6 +88,31 @@ export default {
     },
 
     methods: {
+        fetchFamilyMembers(idBebe) {
+            axios.get(`https://tiusr3pl.cuc-carrera-ti.ac.cr/adultosxbebe/${idBebe}`)
+                .then(response => {
+                    this.familyMembers = response.data.map(member => ({
+                        IDAdulto: member.IDAdulto,
+                        name: member.NombreCompleto,
+                        role: member.Rol,
+                        isEncargadoPrincipal: member.EncargadoPrincipal === 1,
+                        selected: false,
+                    }));
+
+                    const encargadoPrincipalMember = this.familyMembers.find(member => member.isEncargadoPrincipal);
+                    if (encargadoPrincipalMember) {
+                        this.encargadoPrincipal = encargadoPrincipalMember.name;
+                        this.encargadoPrincipalRole = encargadoPrincipalMember.role;
+                    } else {
+                        this.encargadoPrincipal = 'No se encontró un encargado para este grupo familiar';
+                        this.encargadoPrincipalRole = '';
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching family members:', error);
+                });
+        },
+
         selectMember(index) {
             if (this.selectedMemberIndex !== null) {
                 this.familyMembers[this.selectedMemberIndex].selected = false;
@@ -129,30 +121,46 @@ export default {
             this.familyMembers[index].selected = true;
             this.selectedMemberRole = this.familyMembers[index].role;
         },
-        updateRole() {
-            if (this.selectedMemberIndex !== null) {
-                this.familyMembers[this.selectedMemberIndex].role = this.selectedMemberRole;
-            }
-        },
+
         getRoleColor(role) {
             switch (role.toLowerCase()) {
-                case 'padre':
+                case 'padre' || '2':
                     return '#4F439A';
-                case 'madre':
+                case 'madre' || '1':
                     return '#E871B5';
-                case 'encargado':
+                case 'encargado' || '3':
                     return '#56A8B9';
-                case 'invitado':
+                case 'invitado' || '5':
                     return '#FEBD54';
                 default:
                     return '#000000';
             }
         },
-        updateRole() {
+        async updateRole() {
             if (this.selectedMemberIndex !== null) {
-                this.familyMembers[this.selectedMemberIndex].role = this.selectedMemberRole;
+                this.familyMembers[this.selectedMemberIndex].Rol = this.selectedMemberRole;
+                const IDBebe = this.$route.params.id;
+                const { name, Rol } = this.familyMembers[this.selectedMemberIndex];
+                const IDAdulto = this.familyMembers[this.selectedMemberIndex].IDAdulto;
+
+                try {
+                    await axios.put(`https://tiusr3pl.cuc-carrera-ti.ac.cr/adultosxbebe/${IDBebe}`, {
+                        IDAdulto: IDAdulto,
+                        NuevoRol: Rol,
+                    });
+
+                    console.log("Rol modificado exitosamente en el backend.");
+                    this.fetchFamilyMembers(IDBebe);
+                } catch (error) {
+                    console.error("Error al modificar el rol en el backend:", error);
+                }
             }
         },
+    },
+    mounted() {
+        const IDBebe = this.$route.params.id;
+        console.log(IDBebe)
+        this.fetchFamilyMembers(IDBebe);
     },
 };
 </script>
