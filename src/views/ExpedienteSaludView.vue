@@ -35,13 +35,20 @@
             <div class="body-expediente">
                 <ExpedienteBebe />
                 <verDatosPadecimiento />
+
+                
             </div>
+
+
         </div>
+        
     </div>
+
+    
 </template>
 
 <script>
-import ExpedienteBebe from '../components/ExpedienteBaby.vue'
+import ExpedienteBebe from '../components/Expedientebaby.vue'
 import MenuLateral from '../components/MenuLateral.vue'
 import verDatosPadecimiento from '../components/VerDatosPadecimiento.vue';
 import axios from 'axios';
@@ -61,7 +68,7 @@ export default {
             },
         }
     },
-    components: { MenuLateral, ExpedienteBebe, verDatosPadecimiento },
+    components: { MenuLateral, ExpedienteBebe, verDatosPadecimiento},
     mounted() {
         this.checkUserSession();
         this.idBebe = this.$route.params.id;

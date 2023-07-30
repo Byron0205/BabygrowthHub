@@ -1,0 +1,261 @@
+/*Estilso para el formulario para agregar padecimiento*/
+.addVacunaContainer {
+  font-family: "Baloo 2";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(#7d7d9a66, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addVacunaHeader {
+  background: linear-gradient(
+    90deg,
+    rgba(126, 202, 253, 0.3) 42.19%,
+    rgba(126, 202, 253, 0.12) 99.48%
+  );
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.addVacunaHeader p {
+  margin: 0;
+  color: #357cac;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.addVacunaContent {
+  background-color: white;
+  border-radius: 15px;
+  position: relative;
+  padding: 2rem;
+  max-width: 40rem;
+}
+
+
+.addVacunainformationTop {
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: dashed 2px #357cac;
+}
+.addVacunaTitle {
+  color: $letter-1;
+  font-family: "Catamaran";
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-left: 1rem;
+}
+
+.addVacunaSelect {
+  width: 100%;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid #357cac;
+  background-color: #fcfcfc;
+  color: #357cac;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.addVacunaButtonsContainer{
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.addVacunaButton {
+  padding: 0.5rem;
+  margin-right: 2rem;
+  width: 10rem;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  border-radius: 5px;
+  color: #ffffff;
+  border: none;
+  opacity: 0.9;
+}
+
+.addVacunaButton.add {
+  background-color: #357cac;
+}
+
+.addVacunaButton.volver {
+  background-color: #FB5D3B;
+}
+
+.addVacunaButton:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.addVacunaLabel{
+  color: $letter-1;
+  font-family: "Baloo 2";
+  font-weight: normal;
+}
+
+.addVacunaInputFecha{
+  color: $letter-1;
+  font-family: "Catamaran";
+  font-weight: 400;
+
+  height: 2.4rem;
+  border-radius: 5px;
+  border: 1px solid #357cac;
+  background-color: #fcfcfc;
+  color: #357cac;
+  padding: 5px;
+}
+
+.addVacunaInputFecha:focus{
+  outline: none;
+}
+
+
+
+/*Estilso para el formulario para agregar padecimiento*/
+.addMedicamentoContainer {
+  font-family: "Baloo 2";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(#7d7d9a66, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addMedicamentoHeader {
+  background: linear-gradient(
+    90deg,
+    rgba(#e4547d, 0.3) 42.19%,
+    rgba(#e4547d, 0.12) 99.48%
+  );
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.addMedicamentoHeader p {
+  margin: 0;
+  color: #e4547d;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.addMedicamentoContent {
+  background-color: white;
+  border-radius: 15px;
+  position: relative;
+  padding: 2rem;
+  max-width: 40rem;
+}
+
+.addMedicamentoTitle {
+  color: $letter-1;
+  font-family: "Catamaran";
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-left: 1rem;
+}
+
+.addMedicamentoSelect {
+  width: 100%;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid #e4547d;
+  background-color: #fcfcfc;
+  color: #e4547d;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.addMedicamentoButtonsContainer{
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.addMedicamentoButton {
+  padding: 0.5rem;
+  margin-right: 2rem;
+  width: 10rem;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  border-radius: 5px;
+  color: #ffffff;
+  border: none;
+  opacity: 0.9;
+}
+
+.addMedicamentoButton.add {
+  background-color: #e4547d;
+}
+
+.addMedicamentoButton.volver {
+  background-color: #FB5D3B;
+}
+
+.addMedicamentoButton:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.addMedicamentoLabel{
+  color: $letter-1;
+  font-family: "Baloo 2";
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+
+.addMedicamentoInputFecha{
+  color: $letter-1;
+  font-family: "Catamaran";
+  font-weight: 400;
+  width: 97%;
+  height: 2.4rem;
+  border-radius: 5px;
+  border: 1px solid #e4547d;
+  background-color: #fcfcfc;
+  color: #e4547d;
+  padding: 5px;
+}
+
+.addMedicamentoInputFecha:focus{
+  outline: none;
+}
+
+.addMedicamentoinformationTop {
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: dashed 2px #e4547d;
+}
