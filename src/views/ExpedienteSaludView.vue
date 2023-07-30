@@ -35,9 +35,16 @@
             <div class="body-expediente">
                 <ExpedienteBebe />
                 <verDatosPadecimiento />
+
+                
             </div>
+
+
         </div>
+        
     </div>
+
+    
 </template>
 
 <script>
@@ -61,7 +68,7 @@ export default {
             },
         }
     },
-    components: { MenuLateral, ExpedienteBebe, verDatosPadecimiento },
+    components: { MenuLateral, ExpedienteBebe, verDatosPadecimiento},
     mounted() {
         this.checkUserSession();
         this.idBebe = this.$route.params.id;
