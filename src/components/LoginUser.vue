@@ -114,6 +114,7 @@ export default {
           localStorage.setItem("idAdulto", msg.id);
           localStorage.setItem("userRol", msg.rol);
           localStorage.setItem("nombre", msg.nombre);
+          localStorage.setItem("notification", false);
           if (localStorage.getItem("userRol") == 4){
             localStorage.setItem('admin', 'true')
           }

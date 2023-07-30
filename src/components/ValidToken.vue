@@ -62,11 +62,18 @@ export default {
           console.error("Error al hacer el login: ", error);
         });
     },
-
+    validarCampos() {
+      if (this.token !== '') {
+        this.validToken = true;
+      }else{
+        this.validToken= false;
+      }
+    },
     validarNumeros() {
       if (!this.validNumeros) {
         // Si el usuario ingresó un valor no numérico, actualizamos la variable para que contenga solo números
         this.token = this.token.replace(/[^\d]/g, "");
+        this.validarCampos()
       }
     },
 
@@ -79,7 +86,14 @@ export default {
       }, displayDuration);
     },
   },
-  computed:{
+  watch: {
+    token: {
+      handler() {
+        this.validarCampos();
+      },
+    },
+  },
+  computed: {
     validNumeros() {
       return /^\d*$/.test(this.token);
     },
