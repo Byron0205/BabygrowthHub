@@ -228,7 +228,7 @@ export default {
       this.$router.push("/expediente/salud/" + this.selectedSon);
     },
     verAdministrativePanel() {
-      this.$router.push("/admin-panel-family");
+      this.$router.push("/admin-panel-family/" +this.selectedSon);
     },
     fetchProfileData() {
       axios
