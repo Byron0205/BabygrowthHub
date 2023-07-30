@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import ExpedienteBebe from '../components/ExpedienteBaby.vue'
+import ExpedienteBebe from '../components/Expedientebaby.vue'
 import MenuLateral from '../components/MenuLateral.vue'
 import verDatosPadecimiento from '../components/VerDatosPadecimiento.vue';
 import axios from 'axios';

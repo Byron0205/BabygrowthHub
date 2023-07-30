@@ -1,85 +1,106 @@
 <template>
-    <div class="flex-table-menu">
-        <MenuLateral>
-            <div class="item-lateral">
-                <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-Salud.svg" alt="reloj">
-                <router-link class="link-menu" :to="'/expediente/salud/'+ this.DatosBebe.IDBebe">Salud</router-link>
-            </div>
-            <div class="item-lateral">
-                <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-beaker.svg" alt="reloj">
-                <router-link class="link-menu" :to="'/expediente/medicacion/'+ this.DatosBebe.IDBebe">Medicación</router-link>
-            </div>
-        </MenuLateral>
+  <div class="flex-table-menu">
+    <MenuLateral>
+      <div class="item-lateral">
+        <img
+          src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-Salud.svg"
+          alt="reloj"
+        />
+        <router-link class="link-menu" :to="'/expediente/salud/' + this.idBebe"
+          >Salud</router-link
+        >
+      </div>
+      <div class="item-lateral">
+        <img
+          src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-beaker.svg"
+          alt="reloj"
+        />
+        <router-link
+          class="link-menu"
+          :to="'/expediente/medicacion/' + this.idBebe"
+          >Medicación</router-link
+        >
+      </div>
+    </MenuLateral>
 
-
-        <div class="baby-container-medicacion-datos">
-            <div v-if="DatosBebe.Sexo == 'F'" class="baby-name-container">
-                <p class="baby-name">Estas viendo los datos de la pequeña<br><span class="name">{{ DatosBebe.Nombre }} {{ DatosBebe.Apellidos }}</span></p>
-            </div>
-            <div v-else class="baby-name-container">
-                <p class="baby-name">Estas viendo los datos del pequeño<br><span class="name">{{ DatosBebe.Nombre }} {{ DatosBebe.Apellidos }}</span></p>
-            </div>
-
-
-            <div class="baby-container-msg">
-                <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion.png" alt="icon">
-                <p class="baby-msg">Recuerda que mantener actualizado el expediente de medicación de tu precioso bebé es
-                    fundamental para garantizar su bienestar!</p>
-            </div>
-
-            <VerDatosMedicamentos/>
+    <div class="container-expediente">
+      <div class="container-nombre-expediente">
+        <div v-if="DatosBebe.Sexo == 'F'" class="baby-name-container-salud">
+          <p class="baby-name text-center">
+            Estas viendo los datos de la pequeña<br />
+            <span class="name"
+              >{{ DatosBebe.Nombre }} {{ DatosBebe.Apellidos }}</span
+            ><br />
+            <span class="name">{{ DatosBebe.IDBebe }}</span>
+          </p>
         </div>
+        <div v-else class="baby-name-container-salud">
+          <p class="baby-name">
+            Estas viendo los datos del pequeño<br />
+            <span class="name"
+              >{{ DatosBebe.Nombre }} {{ DatosBebe.Apellidos }}</span
+            ><br />
+            <span class="name">{{ DatosBebe.IDBebe }}</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="header-expediente">
+        <p class="title-expediente">Expediente de Medicación</p>
+      </div>
+      <div class="body-expediente">
+        
+        <verDatosMedicamentos />
+      </div>
     </div>
+  </div>
 </template>
 
 <script>
-import axios from 'axios';
-import ExpedienteBebe from '../components/ExpedienteBaby.vue'
-import MenuLateral from '../components/MenuLateral.vue'
-import VerDatosMedicamentos from '../components/VerDatosMedicamentos.vue';
+import ExpedienteBebe from "../components/Expedientebaby.vue";
+import MenuLateral from "../components/MenuLateral.vue";
+import verDatosMedicamentos from "../components/VerDatosMedicamentos.vue";
+import axios from "axios";
 export default {
-    components: { MenuLateral, ExpedienteBebe, VerDatosMedicamentos },
-    data() {
-        return {
-            DatosBebe: {
-                IDBebe: '',
-                Nombre: '',
-                Apellidos: '',
-                Edad: '',
-                FechaNacimiento: '',
-                Sexo: '',
-                Altura: '',
-                Peso: ''
-            },
-        }
+  data() {
+    return {
+      idBebe: "",
+      DatosBebe: {
+        IDBebe: "",
+        Nombre: "",
+        Apellidos: "",
+        Edad: "",
+        FechaNacimiento: "",
+        Sexo: "",
+        Altura: "",
+        Peso: "",
+      },
+    };
+  },
+  components: { MenuLateral, ExpedienteBebe, verDatosMedicamentos },
+  mounted() {
+    this.checkUserSession();
+    this.idBebe = this.$route.params.id;
+    this.obtenerExpediente(this.idBebe);
+  },
+  methods: {
+    checkUserSession() {
+      const sessionValue = localStorage.getItem("session");
+      if (sessionValue === "0" || sessionValue === undefined) {
+        this.$router.push("/login");
+      }
     },
-    methods:{
-        checkUserSession() {
-            const sessionValue = localStorage.getItem('session');
-            if (sessionValue === '0' || sessionValue === undefined) {
-                this.$router.push('/login');
-            }
-        },
-        obtenerExpediente(id) {
-            const url = 'https://tiusr3pl.cuc-carrera-ti.ac.cr/verExpediente/' + id
-            axios.get(url)
-                .then(response => {
-                    this.DatosBebe = response.data;
-                })
-                .catch(err => {
-                    console.error('Error al obtener los datos: ' + err)
-                })
-        },
+    obtenerExpediente(id) {
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/verExpediente/" + id;
+      axios
+        .get(url)
+        .then((response) => {
+          this.DatosBebe = response.data;
+        })
+        .catch((err) => {
+          console.error("Error al obtener los datos: " + err);
+        });
     },
-    mounted(){
-        if(localStorage.getItem('session') !== '1'){
-            this.$router.push('/login')
-        }
-        this.checkUserSession()
-        const idBebe = this.$route.params.id;
-        this.obtenerExpediente(idBebe);
-    }
-}
+  },
+};
 </script>
-
-<style></style>
