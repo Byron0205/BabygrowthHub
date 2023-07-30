@@ -98,23 +98,10 @@
                 </option>
               </select>
             </div>
-            <div class="newEventFlexContainer row">
               <div class="newEventFlexContainer">
                 <label class="newEventLabel" for="eventTime">Seleccione una hora</label>
                 <input class="newEventSelect" type="time" id="eventTime" v-model="eventTime" />
               </div>
-              <div class="newEventFlexContainer">
-                <label class="newEventLabel" for="eventTime">Recordatorio:</label>
-                <label class="newEventLabel">
-                  <input type="radio" v-model="reminder" :value="true" />
-                  Si
-                </label>
-                <label class="newEventLabel">
-                  <input type="radio" v-model="reminder" :value="false" />
-                  No
-                </label>
-              </div>
-            </div>
 
             <div class="newEventFlexContainer row">
               <button class="newEventBnt save" @click="saveEvent">Guardar</button>
