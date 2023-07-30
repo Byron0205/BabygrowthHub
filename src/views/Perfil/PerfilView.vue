@@ -96,7 +96,7 @@
           class="administrative-panel"
         >
           <h2>Panel administrativo</h2>
-          <button class="family-admin">Administrar familia</button>
+          <button class="family-admin" @click="verAdministrativePanel">Administrar familia</button>
           <button class="add-baby" @click="vincularBebe">
             Agregar otro bebé
           </button>
@@ -226,6 +226,9 @@ export default {
 
     verExpedienteBebe() {
       this.$router.push("/expediente/salud/" + this.selectedSon);
+    },
+    verAdministrativePanel() {
+      this.$router.push("/admin-panel-family");
     },
     fetchProfileData() {
       axios
