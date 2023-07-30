@@ -1,12 +1,20 @@
-import './assets/normalize.css'
-import './assets/base.css'
+import "./assets/normalize.css";
+import "./assets/base.css";
 
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
 
-const app = createApp(App)
+// Escuchar mensajes postMessage desde el exterior de la aplicación Vue
+window.addEventListener("message", (event) => {
+    if (event.data && event.data.type === "verActividad") {
+        const urlDestino = event.data.data;
+        router.push(urlDestino);
+    }
+});
 
-app.use(router)
+const app = createApp(App);
 
-app.mount('#app')
+app.use(router);
+
+app.mount("#app");

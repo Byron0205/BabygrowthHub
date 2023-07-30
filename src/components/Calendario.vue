@@ -98,9 +98,22 @@
                 </option>
               </select>
             </div>
-            <div class="newEventFlexContainer">
-              <label class="newEventLabel" for="eventTime">Seleccione una hora</label>
-              <input class="newEventSelect" type="time" id="eventTime" v-model="eventTime" />
+            <div class="newEventFlexContainer row">
+              <div class="newEventFlexContainer">
+                <label class="newEventLabel" for="eventTime">Seleccione una hora</label>
+                <input class="newEventSelect" type="time" id="eventTime" v-model="eventTime" />
+              </div>
+              <div class="newEventFlexContainer">
+                <label class="newEventLabel" for="eventTime">Recordatorio:</label>
+                <label class="newEventLabel">
+                  <input type="radio" v-model="reminder" :value="true" />
+                  Si
+                </label>
+                <label class="newEventLabel">
+                  <input type="radio" v-model="reminder" :value="false" />
+                  No
+                </label>
+              </div>
             </div>
 
             <div class="newEventFlexContainer row">
@@ -187,6 +200,9 @@ export default {
       eventName: "",
       eventDescription: "",
       eventTime: "",
+
+      reminder: false,
+
       isNewEventPopupOpen: false,
       isViewEventPopupOpen: false,
       eventDate: null,
@@ -197,8 +213,8 @@ export default {
       eventBaby: null,
       registeredBabies: [],
       selectedEvent: null,
-      IDAdulto:'',
-      selectedSon:''
+      IDAdulto: '',
+      selectedSon: ''
     };
   },
   computed: {
@@ -344,7 +360,7 @@ export default {
         .get(`https://tiusr3pl.cuc-carrera-ti.ac.cr/recuperar-actividades/${this.IDAdulto}`)
         .then((response) => {
           this.events = response.data;
-          this.events= this.events.filter(event => event.IDBebe === this.selectedSon)
+          this.events = this.events.filter(event => event.IDBebe === this.selectedSon)
           //console.log(this.events);
           //console.log(this.selectedSon);
         })
