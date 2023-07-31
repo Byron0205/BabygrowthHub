@@ -115,7 +115,7 @@ export default {
         Apellidos: "",
         Correo: "",
         Contrasenna: "",
-        IDRol: "4",
+
       },
 
       validfield: false,
@@ -172,10 +172,11 @@ export default {
     vincularBebe() {
       const idBebe = this.$route.params.idBebe;
       const idAdulto = this.encargado.IDAdulto;
-
       const data = {
         idBebe: idBebe,
         idAdulto: idAdulto,
+        EncargadoPrincipal: 0, 
+        IDRol: 5
       };
 
       console.log(data);
