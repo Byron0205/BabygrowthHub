@@ -138,15 +138,28 @@ export default {
         },
         async updateRole() {
             if (this.selectedMemberIndex !== null) {
-                this.familyMembers[this.selectedMemberIndex].Rol = this.selectedMemberRole;
                 const IDBebe = this.$route.params.id;
-                const { name, Rol } = this.familyMembers[this.selectedMemberIndex];
+                const newRole = this.selectedMemberRole;
+
+                const existingRoles = this.familyMembers.map(member => member.role);
+                const roleCount1 = existingRoles.filter(role => role === 'Madre').length;
+                const roleCount2 = existingRoles.filter(role => role === 'Padre').length;
+
+                if ((newRole === '1' && roleCount1 >= 1) || (newRole === '2' && roleCount2 >= 1)) {
+                    console.error("Error: There can only be one member with role 'Madre' (1) and one member with role 'Padre' (2).");
+                    this.fetchFamilyMembers(IDBebe);
+                    return;
+                }
+
+                this.familyMembers[this.selectedMemberIndex].role = newRole;
+                
+                const { name, role } = this.familyMembers[this.selectedMemberIndex];
                 const IDAdulto = this.familyMembers[this.selectedMemberIndex].IDAdulto;
 
                 try {
                     await axios.put(`https://tiusr3pl.cuc-carrera-ti.ac.cr/adultosxbebe/${IDBebe}`, {
                         IDAdulto: IDAdulto,
-                        NuevoRol: Rol,
+                        NuevoRol: role,
                     });
 
                     console.log("Rol modificado exitosamente en el backend.");
@@ -157,7 +170,18 @@ export default {
             }
         },
     },
+    userRole() {
+        const userRole = localStorage.getItem("userRol");
+        if (userRole === "0" || userRole === undefined) {
+            this.$router.push("/login");
+        }
+        return userRole;
+    },
+
     mounted() {
+        if (localStorage.getItem("session") !== "1") {
+            this.$router.push("/login");
+        }
         const IDBebe = this.$route.params.id;
         console.log(IDBebe)
         this.fetchFamilyMembers(IDBebe);
