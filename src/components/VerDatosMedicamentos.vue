@@ -54,47 +54,41 @@
     </div>
   </div>
 
-  <div class="addAllergyContainer" v-if="this.isAddAllergyPopupOpen">
+  <div class="addAllergyContainer" v-if="this.isAddVacunaPopupOpen">
     <div class="addAllergyContent">
       <div class="addAllergyHeader">
-        <p>NUEVA ALERGIA</p>
+        <p>NUEVA VACUNA</p>
       </div>
       <div style="margin-top: 2rem">
         <div
           class="addAllergyFlexContainer centerElements addAllergyinformationTop"
         >
-          <p class="addAllergyTitle">Selecciona una alergia para agregarla</p>
+          <p class="addAllergyTitle">Selecciona una vacuna para agregarla</p>
         </div>
         <div style="margin-top: 1rem">
-          <select class="addAllergySelect" v-model="medicinaSeleccionado">
-            <option
-              v-for="alergia in this.CatalogoAlergias"
-              :key="alergia.IDAlergia"
-              :value="alergia.IDAlergia"
+          <label class="addAllergyLabel"
+              >Vacunas</label
             >
-              {{ alergia.Nombre }}
+          <select class="addAllergySelect" v-model="medicinaSeleccionado" >
+            <option
+              v-for="vacuna in this.CatalogoVacunas"
+              :key="vacuna.IDVacuna"
+              :value="vacuna.IDVacuna"
+            >
+              {{ vacuna.Nombre }}
             </option>
           </select>
         </div>
         <div style="margin-top: 1rem">
           <div style="display: flex; flex-direction: column">
-            <label class="addAllergyLabel" for="fechaInicio"
-              >Fecha de incio</label
+            <label class="addAllergyLabel" for="fechaVacuna"
+              >Fecha de aplicación</label
             >
             <input
               class="addAllergyInputFecha"
-              id="fechaInicio"
+              id="fechaVacuna"
               type="date"
-              v-model="fechaInicio"
-            />
-          </div>
-          <div style="display: flex; flex-direction: column; margin-top: 1rem">
-            <label class="addAllergyLabel" for="fechaFin">Fecha final</label>
-            <input
-              class="addAllergyInputFecha"
-              id="fechaFin"
-              type="date"
-              v-model="fechaFin"
+              v-model="fechaVacuna"
             />
           </div>
         </div>
@@ -102,14 +96,14 @@
           <button
             class="addAllergyButton add"
             @click="
-              agregarNuevoPadecimiento(medicinaSeleccionado, 'vacuna')
+              agregarMedicina(medicinaSeleccionado, 'vacuna')
             "
           >
             Guardar
           </button>
           <button
             class="addAllergyButton volver"
-            @click="this.isAddAllergyPopupOpen = false"
+            @click="this.isAddVacunaPopupOpen = false"
           >
             Volver
           </button>
@@ -197,17 +191,16 @@ export default {
       Vacunas: [],
       Diagnosticosbebe : [],
       DiagnosticosMedicamentos: [],
-      CatalogoAlergias: [],
+      CatalogoVacunas: [],
       CatalogoDiagnosticos: [],
       medicinaSeleccionado: "",
       diagnosticoSeleccionado:"",
-      fechaInicio: "",
-      fechaFin: "",
+      fechaVacuna: "",
       idbebe: "",
       message: "",
       alertType: "",
       nombreMedico: "",
-      isAddAllergyPopupOpen: false,
+      isAddVacunaPopupOpen: false,
       isAddMedicamentoPopupOpen: false,
     };
   },
@@ -291,12 +284,12 @@ export default {
       }, displayDuration);
     },
     obtenerCatalogoAlergias() {
-      this.isAddAllergyPopupOpen = true;
-      const url = "http://localhost:3000/obtener-alergias";
+      this.isAddVacunaPopupOpen = true;
+      const url = "http://localhost:3000/obtener-vacunas";
       axios
         .get(url)
         .then((response) => {
-          this.CatalogoAlergias = response.data;
+          this.CatalogoVacunas = response.data;
         })
         .catch((err) => {
           console.error("Error al obtener los datos: " + err);
@@ -350,6 +343,10 @@ export default {
         };
       } else {
         data = {
+          IDmedicina: idMedicina,
+          tipoInsert: tipoInsert,
+          IDbebe: this.idbebe,
+          FechaAplicacion: this.fechaVacuna,
         };
       }
 
@@ -364,12 +361,13 @@ export default {
               this.obtenerMedicamentos(this.idbebe);
               this.isAddMedicamentoPopupOpen = false;
             } else {
-              this.obtenerDiagnosticos(this.idbebe);
-              this.isAddDiagnosticPopupOpen = false;
+              this.obtenerVacunas(this.idbebe);
+              this.isAddVacunaPopupOpen = false;
             }
 
             //Borrar datos de propiedades
             this.diagnosticoSeleccionado = "";
+            this.fechaVacuna = "";
           } else {
             this.message = "¡Ha ocurrido al insertar el padecimiento!";
             this.alertType = "error";
