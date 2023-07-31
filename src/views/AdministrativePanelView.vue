@@ -104,7 +104,7 @@ export default {
                         this.encargadoPrincipal = encargadoPrincipalMember.name;
                         this.encargadoPrincipalRole = encargadoPrincipalMember.role;
                     } else {
-                        this.encargadoPrincipal = 'No se encontró un encargado para este grupo familiar';
+                        this.encargadoPrincipal = `Este grupo familiar no tiene encargado`;
                         this.encargadoPrincipalRole = '';
                     }
                 })
