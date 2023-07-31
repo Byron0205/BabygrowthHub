@@ -17,8 +17,13 @@
             <div v-for="(diet, index) in selectedDiets" :key="diet.IDDieta"
                 :class="{ 'diet-container': true, 'left': index % 2 === 0, 'right': index % 2 === 1 }">
                 <h2 class="title-diet">{{ diet.Nombre }}</h2>
-                <p class="diet-text">{{ diet.Detalles }}</p>
-                
+                <div class="container-text-etapa">
+                    <p class="diet-text">{{ diet.Detalles }}</p>
+                    <div class="img-container">
+                        <img :src="diet.img" alt="bebe" class="img-content">
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

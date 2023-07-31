@@ -1233,10 +1233,19 @@ footer {
   margin-right: 60px;
 }
 
-.diet-image {
-  width: 100px;
-  height: auto;
-  margin-right: 10px;
+.img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  height: 200px;
+}
+
+.img-content {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .diet-content {
@@ -1251,13 +1260,28 @@ footer {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin-left: 40px;
+  margin: 5px 0px 0px 40px;
 }
 
 .diet-text {
   margin-left: 40px;
-  width: 700px;
-  height: 359px;
+  width: 500px;
+  height: 340px;
+  color: #253962;
+  font-family: "Catamaran";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.container-text-etapa {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 300px;
   color: #253962;
   font-family: "Catamaran";
   font-size: 20px;
@@ -2238,7 +2262,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   border-radius: 15px;
-  border: 1px solid #0F5B8E;
+  border: 1px solid #0f5b8e;
   padding: 1px 5px;
 }
 
@@ -2248,7 +2272,7 @@ footer {
 }
 
 .text-item-style {
-  color: #0F5B8E;
+  color: #0f5b8e;
   font-family: "Catamaran";
   font-size: 18px;
   font-style: normal;
@@ -2257,10 +2281,13 @@ footer {
 }
 
 .icon-trash {
-  transition: all ease-in-out 500ms;
+  color: #0f5b8e;
+  transition: all ease-in-out 0.2s;
+  margin-right: 0.5rem;
 }
 .icon-trash:hover {
-  transform: scale(1.18);
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
 /* ---------- Medicacion ---------- */
@@ -2331,19 +2358,10 @@ footer {
   font-weight: 700;
 }
 
-.baby-container-msg {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  width: 100%;
-  background: linear-gradient(270deg, rgba(121, 108, 208, 0.05) 0%, rgba(254, 93, 55, 0.05) 99.99%, rgba(121, 108, 208, 0) 100%);
-  z-index: 1;
-}
-
 .baby-msg {
   width: 300px;
   padding: 5px 10px 5px 0px;
-  color: #FE5D37;
+  color: #fe5d37;
   text-align: center;
   font-family: "Baloo 2";
   font-size: 20px;
@@ -2351,30 +2369,6 @@ footer {
   font-weight: 700;
   line-height: 35px;
   /* 175% */
-}
-
-.data-view-medicamentos {
-  width: 530px;
-  height: 218px;
-  border-radius: 15px 0 0 15px;
-  border: 2px solid rgba(15, 91, 142, 0.15);
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 4px;
-  overflow: auto;
-}
-.data-view-medicamentos::-webkit-scrollbar {
-  width: 10px;
-}
-.data-view-medicamentos::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-.data-view-medicamentos::-webkit-scrollbar-thumb {
-  background-color: #FE5D37;
-}
-.data-view-medicamentos::-webkit-scrollbar-thumb:hover {
-  background-color: #fe7250;
 }
 
 .placeholder-expediente {
@@ -2392,6 +2386,800 @@ footer {
   top: -10px;
 }
 
+.button-expediente {
+  font-family: "Baloo 2", sans-serif;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 15px;
+  padding: 1rem;
+  width: 20rem;
+}
+
+.button-expediente:focus {
+  border: dashed 2px #314269;
+}
+
+.button-expediente:hover {
+  cursor: pointer;
+}
+
+.button-expediente.diagnositoco {
+  background-color: #f4d2de;
+  color: #e4547d;
+}
+
+.button-expediente.alergias {
+  background-color: #daeffe;
+  color: #479dd8;
+}
+
+.button-expediente.diagnositoco.agregar {
+  width: auto;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+
+.button-expediente.alergias.agregar {
+  width: auto;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+
+/*Estilso para el formulario para agregar padecimiento*/
+.addAllergyContainer {
+  font-family: "Baloo 2";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(125, 125, 154, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addAllergyHeader {
+  background: linear-gradient(90deg, rgba(126, 202, 253, 0.3) 42.19%, rgba(126, 202, 253, 0.12) 99.48%);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.addAllergyHeader p {
+  margin: 0;
+  color: #357cac;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.addAllergyContent {
+  background-color: white;
+  border-radius: 15px;
+  position: relative;
+  padding: 2rem;
+  max-width: 40rem;
+}
+
+.addAllergyinformationTop {
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: dashed 2px #357cac;
+}
+
+.addAllergyTitle {
+  color: #253962;
+  font-family: "Catamaran";
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-left: 1rem;
+}
+
+.addAllergySelect {
+  width: 100%;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid #357cac;
+  background-color: #fcfcfc;
+  color: #357cac;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.addAllergyButtonsContainer {
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.addAllergyButton {
+  padding: 0.5rem;
+  margin-right: 2rem;
+  width: 10rem;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  border-radius: 5px;
+  color: #ffffff;
+  border: none;
+  opacity: 0.9;
+}
+
+.addAllergyButton.add {
+  background-color: #357cac;
+}
+
+.addAllergyButton.volver {
+  background-color: #FB5D3B;
+}
+
+.addAllergyButton:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.addAllergyLabel {
+  color: #253962;
+  font-family: "Baloo 2";
+  font-weight: normal;
+}
+
+.addAllergyInputFecha {
+  color: #253962;
+  font-family: "Catamaran";
+  font-weight: 400;
+  height: 2.4rem;
+  border-radius: 5px;
+  border: 1px solid #357cac;
+  background-color: #fcfcfc;
+  color: #357cac;
+  padding: 5px;
+}
+
+.addAllergyInputFecha:focus {
+  outline: none;
+}
+
+/*Estilso para el formulario para agregar padecimiento*/
+.addDiagnosticContainer {
+  font-family: "Baloo 2";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(125, 125, 154, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addDiagnosticHeader {
+  background: linear-gradient(90deg, rgba(228, 84, 125, 0.3) 42.19%, rgba(228, 84, 125, 0.12) 99.48%);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.addDiagnosticHeader p {
+  margin: 0;
+  color: #e4547d;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.addDiagnosticContent {
+  background-color: white;
+  border-radius: 15px;
+  position: relative;
+  padding: 2rem;
+  max-width: 40rem;
+}
+
+.addDiagnosticTitle {
+  color: #253962;
+  font-family: "Catamaran";
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-left: 1rem;
+}
+
+.addDiagnosticSelect {
+  width: 100%;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid #e4547d;
+  background-color: #fcfcfc;
+  color: #e4547d;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.addDiagnosticButtonsContainer {
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.addDiagnosticButton {
+  padding: 0.5rem;
+  margin-right: 2rem;
+  width: 10rem;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  border-radius: 5px;
+  color: #ffffff;
+  border: none;
+  opacity: 0.9;
+}
+
+.addDiagnosticButton.add {
+  background-color: #e4547d;
+}
+
+.addDiagnosticButton.volver {
+  background-color: #FB5D3B;
+}
+
+.addDiagnosticButton:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.addDiagnosticLabel {
+  color: #253962;
+  font-family: "Baloo 2";
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+
+.addDiagnosticInputFecha {
+  color: #253962;
+  font-family: "Catamaran";
+  font-weight: 400;
+  width: 97%;
+  height: 2.4rem;
+  border-radius: 5px;
+  border: 1px solid #e4547d;
+  background-color: #fcfcfc;
+  color: #e4547d;
+  padding: 5px;
+}
+
+.addDiagnosticInputFecha:focus {
+  outline: none;
+}
+
+.addDiagnosticinformationTop {
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: dashed 2px #e4547d;
+}
+
+.text-info-adm {
+  width: 566px;
+  color: #253962;
+  text-align: justify;
+  font-family: "Baloo 2";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.family-adm-group {
+  width: 560px;
+  height: 81px;
+  border-radius: 15px;
+  border: 1px solid #4F439A;
+  background: #F6F6FA;
+}
+
+.title-adm-family {
+  color: #4F439A;
+  text-align: center;
+  font-family: "Catamaran";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.family-adm {
+  color: #4F439A;
+  font-family: "Catamaran";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.container-select-guess {
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 560px;
+  height: 270px;
+  margin: 0 auto;
+}
+
+.select-guess-dash,
+.select-guess-border {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.select-guess-dash {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40px;
+  width: 560px;
+  height: 48px;
+  border-radius: 15px 15px 0px 0px;
+  background: #E9EBEF;
+}
+
+.select-guess-border {
+  width: 558px;
+  height: 209px;
+  border-radius: 0px 0px 15px 15px;
+  border: 1px dashed #253962;
+  background: #FFF;
+}
+
+.text-select-guess-dash {
+  margin: auto;
+  color: #253962;
+  text-align: center;
+  font-family: "Baloo 2";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.selected-user-rol {
+  color: #253962;
+  font-family: "Catamaran";
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.rols-user {
+  position: relative;
+  width: 184px;
+  height: 43px;
+  border-radius: 5px;
+  border: 1px solid #253962;
+  color: #253962;
+  font-family: "Baloo 2";
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.selected-member {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 513px;
+  height: 81px;
+  border-radius: 15px;
+  border: 1px dashed #FE5D37;
+  background: #FFFCF6;
+}
+
+.select-member {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 513px;
+  height: 81px;
+  border-radius: 15px;
+  border: 1px solid #EBE7E7;
+}
+
+.member-text {
+  color: #253962;
+  font-family: "Catamaran";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+}
+
+.container-adm-family {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 3000px;
+}
+
+.left-container {
+  width: 600px;
+}
+
+.right-container {
+  width: 550px;
+  margin-left: 20px;
+  max-height: 450px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #c4c4c4 #f0f0f0;
+}
+
+.right-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.right-container::-webkit-scrollbar-thumb {
+  background-color: #c4c4c4;
+  border-radius: 5px;
+}
+
+.right-container::-webkit-scrollbar-thumb:hover {
+  background-color: #a0a0a0;
+}
+
+.right-container {
+  scrollbar-color: #c4c4c4 #f0f0f0;
+}
+
+.right-container {
+  scrollbar-width: thin;
+}
+
+.family-info {
+  margin-left: 40px;
+  flex-direction: column;
+}
+
+.family-role {
+  margin-right: 60px;
+  display: flex;
+  align-items: center;
+}
+
+.family-adm-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 560px;
+  height: 81px;
+  border-radius: 15px;
+  border: 1px solid #4F439A;
+  background: #F6F6FA;
+  padding: 10px;
+}
+
+.rol-adm-family {
+  margin-left: 5px;
+  color: #4F439A;
+  font-family: "Baloo 2";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.family-rol {
+  margin-right: 60px;
+}
+
+.family-info-members {
+  margin-left: 40px;
+}
+
+.role-father {
+  color: #4F439A;
+  /* Color para el rol "Padre" */
+}
+
+.role-mother {
+  color: #E871B5;
+  /* Color para el rol "Madre" */
+}
+
+.role-caretaker {
+  color: #56A8B9;
+  /* Color para el rol "Encargado" */
+}
+
+.role-guest {
+  color: #FEBD54;
+  /* Color para el rol "Invitado" */
+}
+
+/*Estilso para el formulario para agregar padecimiento*/
+.addVacunaContainer {
+  font-family: "Baloo 2";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(125, 125, 154, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addVacunaHeader {
+  background: linear-gradient(90deg, rgba(126, 202, 253, 0.3) 42.19%, rgba(126, 202, 253, 0.12) 99.48%);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.addVacunaHeader p {
+  margin: 0;
+  color: #357cac;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.addVacunaContent {
+  background-color: white;
+  border-radius: 15px;
+  position: relative;
+  padding: 2rem;
+  max-width: 40rem;
+}
+
+.addVacunainformationTop {
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: dashed 2px #357cac;
+}
+
+.addVacunaTitle {
+  color: #253962;
+  font-family: "Catamaran";
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-left: 1rem;
+}
+
+.addVacunaSelect {
+  width: 100%;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid #357cac;
+  background-color: #fcfcfc;
+  color: #357cac;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.addVacunaButtonsContainer {
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.addVacunaButton {
+  padding: 0.5rem;
+  margin-right: 2rem;
+  width: 10rem;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  border-radius: 5px;
+  color: #ffffff;
+  border: none;
+  opacity: 0.9;
+}
+
+.addVacunaButton.add {
+  background-color: #357cac;
+}
+
+.addVacunaButton.volver {
+  background-color: #FB5D3B;
+}
+
+.addVacunaButton:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.addVacunaLabel {
+  color: #253962;
+  font-family: "Baloo 2";
+  font-weight: normal;
+}
+
+.addVacunaInputFecha {
+  color: #253962;
+  font-family: "Catamaran";
+  font-weight: 400;
+  height: 2.4rem;
+  border-radius: 5px;
+  border: 1px solid #357cac;
+  background-color: #fcfcfc;
+  color: #357cac;
+  padding: 5px;
+}
+
+.addVacunaInputFecha:focus {
+  outline: none;
+}
+
+/*Estilso para el formulario para agregar padecimiento*/
+.addMedicamentoContainer {
+  font-family: "Baloo 2";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(125, 125, 154, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.addMedicamentoHeader {
+  background: linear-gradient(90deg, rgba(228, 84, 125, 0.3) 42.19%, rgba(228, 84, 125, 0.12) 99.48%);
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.addMedicamentoHeader p {
+  margin: 0;
+  color: #e4547d;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.addMedicamentoContent {
+  background-color: white;
+  border-radius: 15px;
+  position: relative;
+  padding: 2rem;
+  max-width: 40rem;
+}
+
+.addMedicamentoTitle {
+  color: #253962;
+  font-family: "Catamaran";
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin-left: 1rem;
+}
+
+.addMedicamentoSelect {
+  width: 100%;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid #e4547d;
+  background-color: #fcfcfc;
+  color: #e4547d;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.addMedicamentoButtonsContainer {
+  margin-top: 1rem;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.addMedicamentoButton {
+  padding: 0.5rem;
+  margin-right: 2rem;
+  width: 10rem;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  border-radius: 5px;
+  color: #ffffff;
+  border: none;
+  opacity: 0.9;
+}
+
+.addMedicamentoButton.add {
+  background-color: #e4547d;
+}
+
+.addMedicamentoButton.volver {
+  background-color: #FB5D3B;
+}
+
+.addMedicamentoButton:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.addMedicamentoLabel {
+  color: #253962;
+  font-family: "Baloo 2";
+  font-weight: normal;
+  padding: 0;
+  margin: 0;
+}
+
+.addMedicamentoInputFecha {
+  color: #253962;
+  font-family: "Catamaran";
+  font-weight: 400;
+  width: 97%;
+  height: 2.4rem;
+  border-radius: 5px;
+  border: 1px solid #e4547d;
+  background-color: #fcfcfc;
+  color: #e4547d;
+  padding: 5px;
+}
+
+.addMedicamentoInputFecha:focus {
+  outline: none;
+}
+
+.addMedicamentoinformationTop {
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: dashed 2px #e4547d;
+}
+
 html {
   box-sizing: border-box;
   margin: 0;
@@ -2400,4 +3188,14 @@ html {
 
 .text-center {
   text-align: center;
+}
+
+.family-info-members {
+  flex: 1;
+}
+
+.family-rol {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }/*# sourceMappingURL=base.css.map */
