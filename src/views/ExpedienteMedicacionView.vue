@@ -49,8 +49,13 @@
         <p class="title-expediente">Expediente de Medicación</p>
       </div>
       <div class="body-expediente">
+        <div>
+          <verDatosMedicamentos />
+        </div>
+        <div>
+          <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/Advertencia+actualizacion+expediente.png" class="medicacionImagenAdvertencia">
+        </div>
         
-        <verDatosMedicamentos />
       </div>
     </div>
   </div>

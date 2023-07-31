@@ -6,13 +6,13 @@
     <div class="select-Data">
       <div style="display: flex">
         <button
-          class="button-expediente diagnositoco"
+          class="button-medicina medicamento"
           @click="obtenerMedicamentos(this.idbebe)"
         >
           Medicamentos
         </button>
         <button
-          class="button-expediente diagnositoco agregar"
+          class="button-medicina medicamento agregar"
           @click="obternerDiagnosticosBebe()"
         >
           <i class="fa-solid fa-plus"></i>
@@ -21,13 +21,13 @@
 
       <div style="display: flex">
         <button
-          class="button-expediente alergias"
+          class="button-medicina vacuna"
           @click="obtenerVacunas(this.idbebe)"
         >
           Vacunas
         </button>
         <button
-          class="button-expediente alergias agregar"
+          class="button-medicina vacuna agregar"
           @click="obtenerCatalogoAlergias()"
         >
           <i class="fa-solid fa-plus"></i>
@@ -54,22 +54,22 @@
     </div>
   </div>
 
-  <div class="addAllergyContainer" v-if="this.isAddVacunaPopupOpen">
-    <div class="addAllergyContent">
-      <div class="addAllergyHeader">
+  <div class="addVacunaContainer" v-if="this.isAddVacunaPopupOpen">
+    <div class="addVacunaContent">
+      <div class="addVacunaHeader">
         <p>NUEVA VACUNA</p>
       </div>
       <div style="margin-top: 2rem">
         <div
-          class="addAllergyFlexContainer centerElements addAllergyinformationTop"
+          class="addAllergyFlexContainer centerElements addVacunainformationTop"
         >
-          <p class="addAllergyTitle">Selecciona una vacuna para agregarla</p>
+          <p class="addVacunaTitle">Selecciona una vacuna para agregarla</p>
         </div>
         <div style="margin-top: 1rem">
-          <label class="addAllergyLabel"
+          <label class="addVacunaLabel"
               >Vacunas</label
             >
-          <select class="addAllergySelect" v-model="medicinaSeleccionado" >
+          <select class="addVacunaSelect" v-model="medicinaSeleccionado" >
             <option
               v-for="vacuna in this.CatalogoVacunas"
               :key="vacuna.IDVacuna"
@@ -81,11 +81,11 @@
         </div>
         <div style="margin-top: 1rem">
           <div style="display: flex; flex-direction: column">
-            <label class="addAllergyLabel" for="fechaVacuna"
+            <label class="addVacunaLabel" for="fechaVacuna"
               >Fecha de aplicación</label
             >
             <input
-              class="addAllergyInputFecha"
+              class="addVacunaInputFecha"
               id="fechaVacuna"
               type="date"
               v-model="fechaVacuna"
@@ -94,7 +94,7 @@
         </div>
         <div class="addAllergyButtonsContainer">
           <button
-            class="addAllergyButton add"
+            class="addVacunaButton add"
             @click="
               agregarMedicina(medicinaSeleccionado, 'vacuna')
             "
@@ -102,7 +102,7 @@
             Guardar
           </button>
           <button
-            class="addAllergyButton volver"
+            class="addVacunaButton volver"
             @click="this.isAddVacunaPopupOpen = false"
           >
             Volver
@@ -112,23 +112,23 @@
     </div>
   </div>
 
-  <div class="addDiagnosticContainer" v-if="this.isAddMedicamentoPopupOpen">
-    <div class="addDiagnosticContent">
-      <div class="addDiagnosticHeader">
+  <div class="addMedicamentoContainer" v-if="this.isAddMedicamentoPopupOpen">
+    <div class="addMedicamentoContent">
+      <div class="addMedicamentoHeader">
         <p>NUEVO MEDICAMENTO</p>
       </div>
       <div style="margin-top: 2rem">
         <div
-          class="addDiagnosticFlexContainer centerElements addDiagnosticinformationTop"
+          class="addDiagnosticFlexContainer centerElements addMedicamentoinformationTop"
         >
-          <p class="addDiagnosticTitle">
+          <p class="addMedicamentoTitle">
             Selecciona un diagnostico junto a su medicamento
           </p>
         </div>
         <div style="margin-top: 1rem">
-          <p class="addDiagnosticLabel">Diagnostico actuales del bebé:</p>
+          <p class="addMedicamentoLabel">Diagnostico actuales del bebé:</p>
           <select
-            class="addDiagnosticSelect"
+            class="addMedicamentoSelect"
             v-model="diagnosticoSeleccionado"
             @change="obternerMedicamentosDiagnostico()"
           >
@@ -143,9 +143,9 @@
         </div>
 
         <div style="margin-top: 1rem">
-          <p class="addDiagnosticLabel">Medicamentos para el diagnostico:</p>
+          <p class="addMedicamentoLabel">Medicamentos para el diagnostico:</p>
           <select
-            class="addDiagnosticSelect"
+            class="addMedicamentoSelect"
             v-model="medicinaSeleccionado"
           >
             <option
@@ -158,9 +158,9 @@
           </select>
         </div>
 
-        <div class="addDiagnosticButtonsContainer">
+        <div class="addMedicamentoButtonsContainer">
           <button
-            class="addDiagnosticButton add"
+            class="addMedicamentoButton add"
             @click="
               agregarMedicina(medicinaSeleccionado, 'medicamento')
             "
@@ -168,7 +168,7 @@
             Guardar
           </button>
           <button
-            class="addDiagnosticButton volver"
+            class="addMedicamentoButton volver"
             @click="this.isAddMedicamentoPopupOpen = false"
           >
             Volver

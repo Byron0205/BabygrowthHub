@@ -2134,6 +2134,7 @@ footer {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  color: #5c4faa;
 }
 
 .input-expediente {
@@ -2464,7 +2465,7 @@ footer {
 }
 
 .addAllergyButton.volver {
-  background-color: #FB5D3B;
+  background-color: #e4547d;
 }
 
 .addAllergyButton:hover {
@@ -2582,7 +2583,7 @@ footer {
 }
 
 .addDiagnosticButton.volver {
-  background-color: #FB5D3B;
+  background-color: #479dd8;
 }
 
 .addDiagnosticButton:hover {
@@ -2621,6 +2622,50 @@ footer {
   border-bottom: dashed 2px #e4547d;
 }
 
+.button-medicina {
+  font-family: "Baloo 2", sans-serif;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 15px;
+  padding: 1rem;
+  width: 20rem;
+}
+
+.button-medicina:focus {
+  border: dashed 2px #314269;
+}
+
+.button-medicina:hover {
+  cursor: pointer;
+}
+
+.button-medicina.medicamento {
+  background-color: #fedfd8;
+  color: #fe5d37;
+}
+
+.button-medicina.vacuna {
+  background-color: #ebe9f8;
+  color: #5c4faa;
+}
+
+.button-medicina.medicamento.agregar {
+  width: auto;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+
+.button-medicina.vacuna.agregar {
+  width: auto;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+
 /*Estilso para el formulario para agregar padecimiento*/
 .addVacunaContainer {
   font-family: "Baloo 2";
@@ -2636,7 +2681,7 @@ footer {
 }
 
 .addVacunaHeader {
-  background: linear-gradient(90deg, rgba(126, 202, 253, 0.3) 42.19%, rgba(126, 202, 253, 0.12) 99.48%);
+  background: linear-gradient(90deg, rgba(92, 79, 170, 0.3) 42.19%, rgba(92, 79, 170, 0.12) 99.48%);
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   display: flex;
@@ -2651,7 +2696,7 @@ footer {
 
 .addVacunaHeader p {
   margin: 0;
-  color: #357cac;
+  color: #5c4faa;
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -2667,7 +2712,7 @@ footer {
 .addVacunainformationTop {
   width: 100%;
   justify-content: space-between;
-  border-bottom: dashed 2px #357cac;
+  border-bottom: dashed 2px #5c4faa;
 }
 
 .addVacunaTitle {
@@ -2682,9 +2727,9 @@ footer {
   width: 100%;
   height: 48px;
   border-radius: 5px;
-  border: 1px solid #357cac;
+  border: 1px solid #5c4faa;
   background-color: #fcfcfc;
-  color: #357cac;
+  color: #5c4faa;
   padding: 5px;
   margin-bottom: 10px;
 }
@@ -2711,7 +2756,7 @@ footer {
 }
 
 .addVacunaButton.add {
-  background-color: #357cac;
+  background-color: #5c4faa;
 }
 
 .addVacunaButton.volver {
@@ -2727,6 +2772,7 @@ footer {
   color: #253962;
   font-family: "Baloo 2";
   font-weight: normal;
+  color: #5c4faa;
 }
 
 .addVacunaInputFecha {
@@ -2735,9 +2781,9 @@ footer {
   font-weight: 400;
   height: 2.4rem;
   border-radius: 5px;
-  border: 1px solid #357cac;
+  border: 1px solid #5c4faa;
   background-color: #fcfcfc;
-  color: #357cac;
+  color: #5c4faa;
   padding: 5px;
 }
 
@@ -2760,7 +2806,7 @@ footer {
 }
 
 .addMedicamentoHeader {
-  background: linear-gradient(90deg, rgba(228, 84, 125, 0.3) 42.19%, rgba(228, 84, 125, 0.12) 99.48%);
+  background: linear-gradient(90deg, rgba(254, 93, 55, 0.3) 42.19%, rgba(254, 93, 55, 0.12) 99.48%);
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   display: flex;
@@ -2775,7 +2821,7 @@ footer {
 
 .addMedicamentoHeader p {
   margin: 0;
-  color: #e4547d;
+  color: #fe5d37;
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -2800,9 +2846,9 @@ footer {
   width: 100%;
   height: 48px;
   border-radius: 5px;
-  border: 1px solid #e4547d;
+  border: 1px solid #fe5d37;
   background-color: #fcfcfc;
-  color: #e4547d;
+  color: #fe5d37;
   padding: 5px;
   margin-bottom: 10px;
 }
@@ -2829,11 +2875,11 @@ footer {
 }
 
 .addMedicamentoButton.add {
-  background-color: #e4547d;
+  background-color: #fe5d37;
 }
 
 .addMedicamentoButton.volver {
-  background-color: #FB5D3B;
+  background-color: #5c4faa;
 }
 
 .addMedicamentoButton:hover {
@@ -2847,6 +2893,7 @@ footer {
   font-weight: normal;
   padding: 0;
   margin: 0;
+  color: #fe5d37;
 }
 
 .addMedicamentoInputFecha {
@@ -2856,9 +2903,9 @@ footer {
   width: 97%;
   height: 2.4rem;
   border-radius: 5px;
-  border: 1px solid #e4547d;
+  border: 1px solid #fe5d37;
   background-color: #fcfcfc;
-  color: #e4547d;
+  color: #fe5d37;
   padding: 5px;
 }
 
@@ -2869,7 +2916,11 @@ footer {
 .addMedicamentoinformationTop {
   width: 100%;
   justify-content: space-between;
-  border-bottom: dashed 2px #e4547d;
+  border-bottom: dashed 2px #fe5d37;
+}
+
+.medicacionImagenAdvertencia {
+  margin-top: 5.5rem;
 }
 
 html {

@@ -1,3 +1,49 @@
+.button-medicina {
+  font-family: "Baloo 2", sans-serif;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 15px;
+  padding: 1rem;
+  width: 20rem;
+}
+
+.button-medicina:focus {
+  border: dashed 2px #314269;
+}
+
+.button-medicina:hover {
+  cursor: pointer;
+}
+
+.button-medicina.medicamento {
+  background-color: #fedfd8;
+  color: #fe5d37;
+}
+
+.button-medicina.vacuna {
+  background-color: #ebe9f8;
+  color: #5c4faa;
+}
+
+.button-medicina.medicamento.agregar{
+  width: auto;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+
+.button-medicina.vacuna.agregar{
+  width: auto;
+  padding-left: 1.3rem;
+  padding-right: 1.3rem;
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+
+
+
 /*Estilso para el formulario para agregar padecimiento*/
 .addVacunaContainer {
   font-family: "Baloo 2";
@@ -15,8 +61,8 @@
 .addVacunaHeader {
   background: linear-gradient(
     90deg,
-    rgba(126, 202, 253, 0.3) 42.19%,
-    rgba(126, 202, 253, 0.12) 99.48%
+    rgba(#5c4faa, 0.3) 42.19%,
+    rgba(#5c4faa, 0.12) 99.48%
   );
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -32,7 +78,8 @@
 
 .addVacunaHeader p {
   margin: 0;
-  color: #357cac;
+  color: #5c4faa;
+  //color: #357cac;
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -49,7 +96,7 @@
 .addVacunainformationTop {
   width: 100%;
   justify-content: space-between;
-  border-bottom: dashed 2px #357cac;
+  border-bottom: dashed 2px #5c4faa;
 }
 .addVacunaTitle {
   color: $letter-1;
@@ -63,9 +110,9 @@
   width: 100%;
   height: 48px;
   border-radius: 5px;
-  border: 1px solid #357cac;
+  border: 1px solid #5c4faa;
   background-color: #fcfcfc;
-  color: #357cac;
+  color: #5c4faa;
   padding: 5px;
   margin-bottom: 10px;
 }
@@ -92,7 +139,7 @@
 }
 
 .addVacunaButton.add {
-  background-color: #357cac;
+  background-color: #5c4faa;
 }
 
 .addVacunaButton.volver {
@@ -108,6 +155,7 @@
   color: $letter-1;
   font-family: "Baloo 2";
   font-weight: normal;
+  color: #5c4faa;
 }
 
 .addVacunaInputFecha{
@@ -117,9 +165,9 @@
 
   height: 2.4rem;
   border-radius: 5px;
-  border: 1px solid #357cac;
+  border: 1px solid #5c4faa;
   background-color: #fcfcfc;
-  color: #357cac;
+  color: #5c4faa;
   padding: 5px;
 }
 
@@ -146,8 +194,8 @@
 .addMedicamentoHeader {
   background: linear-gradient(
     90deg,
-    rgba(#e4547d, 0.3) 42.19%,
-    rgba(#e4547d, 0.12) 99.48%
+    rgba(#fe5d37, 0.3) 42.19%,
+    rgba(#fe5d37, 0.12) 99.48%
   );
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
@@ -163,7 +211,7 @@
 
 .addMedicamentoHeader p {
   margin: 0;
-  color: #e4547d;
+  color: #fe5d37;
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -188,9 +236,9 @@
   width: 100%;
   height: 48px;
   border-radius: 5px;
-  border: 1px solid #e4547d;
+  border: 1px solid #fe5d37;
   background-color: #fcfcfc;
-  color: #e4547d;
+  color: #fe5d37;
   padding: 5px;
   margin-bottom: 10px;
 }
@@ -217,11 +265,11 @@
 }
 
 .addMedicamentoButton.add {
-  background-color: #e4547d;
+  background-color: #fe5d37;
 }
 
 .addMedicamentoButton.volver {
-  background-color: #FB5D3B;
+  background-color: #5c4faa;
 }
 
 .addMedicamentoButton:hover {
@@ -235,6 +283,7 @@
   font-weight: normal;
   padding: 0;
   margin: 0;
+  color: #fe5d37;
 }
 
 .addMedicamentoInputFecha{
@@ -244,9 +293,9 @@
   width: 97%;
   height: 2.4rem;
   border-radius: 5px;
-  border: 1px solid #e4547d;
+  border: 1px solid #fe5d37;
   background-color: #fcfcfc;
-  color: #e4547d;
+  color: #fe5d37;
   padding: 5px;
 }
 
@@ -257,5 +306,9 @@
 .addMedicamentoinformationTop {
   width: 100%;
   justify-content: space-between;
-  border-bottom: dashed 2px #e4547d;
+  border-bottom: dashed 2px #fe5d37;
+}
+
+.medicacionImagenAdvertencia{
+  margin-top: 5.5rem;
 }
