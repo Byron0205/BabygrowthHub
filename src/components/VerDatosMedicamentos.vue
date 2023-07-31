@@ -207,7 +207,7 @@ export default {
   methods: {
     deleteMedicina(id, type) {
       if (type == "medicamento") {
-        const url = "http://localhost:3000/eliminar-medicamento/" + id;
+        const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/eliminar-medicamento/" + id;
         axios
           .get(url)
           .then((response) => {
@@ -223,7 +223,7 @@ export default {
             console.error("Error al obtener los datos: " + err);
           });
       } else {
-        const url = "http://localhost:3000/eliminar-vacuna/" + id;
+        const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/eliminar-vacuna/" + id;
         axios
           .get(url)
           .then((response) => {
@@ -244,7 +244,7 @@ export default {
     obtenerMedicamentos(id) {
       this.Medicamentos = [];
       this.Medicinas = [];
-      const url = "http://localhost:3000/verMedicamentos/" + id;
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/verMedicamentos/" + id;
       axios
         .get(url)
         .then((response) => {
@@ -261,7 +261,7 @@ export default {
     obtenerVacunas(id) {
       this.Medicinas = [];
       this.Vacunas = [];
-      const url = "http://localhost:3000/verVacunas/" + id;
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/verVacunas/" + id;
       axios
         .get(url)
         .then((response) => {
@@ -285,7 +285,7 @@ export default {
     },
     obtenerCatalogoAlergias() {
       this.isAddVacunaPopupOpen = true;
-      const url = "http://localhost:3000/obtener-vacunas";
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/obtener-vacunas";
       axios
         .get(url)
         .then((response) => {
@@ -297,7 +297,7 @@ export default {
     },
     obternerCatalogoDiagnosticos() {
       this.isAddDiagnosticPopupOpen = true;
-      const url = "http://localhost:3000/obtener-diagnosticos";
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/obtener-diagnosticos";
       axios
         .get(url)
         .then((response) => {
@@ -309,7 +309,7 @@ export default {
     },
     obternerDiagnosticosBebe() {
       this.isAddMedicamentoPopupOpen = true;
-      const url = "http://localhost:3000/obtener-diagnosticos-bebe/" + this.idbebe;
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/obtener-diagnosticos-bebe/" + this.idbebe;
       axios
         .get(url)
         .then((response) => {
@@ -321,7 +321,7 @@ export default {
     },
     obternerMedicamentosDiagnostico() {
       console.log(this.diagnosticoSeleccionado);
-      const url = "http://localhost:3000/obtener-diagnosticos-medicamentos/" + this.diagnosticoSeleccionado;
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/obtener-diagnosticos-medicamentos/" + this.diagnosticoSeleccionado;
       axios
         .get(url)
         .then((response) => {
@@ -352,7 +352,7 @@ export default {
 
       console.log(data);
 
-      const url = "http://localhost:3000/insertar-medicina";
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/insertar-medicina";
       axios
         .post(url, data)
         .then((response) => {

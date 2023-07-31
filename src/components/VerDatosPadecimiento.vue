@@ -207,7 +207,7 @@ export default {
   methods: {
     deleteDiagnostico(id, type) {
       if (type == "diagnostico") {
-        const url = "http://localhost:3000/eliminar-diagnostico/" + id;
+        const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/eliminar-diagnostico/" + id;
         axios
           .get(url)
           .then((response) => {
@@ -224,7 +224,7 @@ export default {
           });
       } else {
         console.log(`ID Alergia: ${id}`)
-        const url = "http://localhost:3000/eliminar-alergia/" + id;
+        const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/eliminar-alergia/" + id;
         axios
           .get(url)
           .then((response) => {
@@ -246,7 +246,7 @@ export default {
       console.log(id);
       this.Diagnosticos = [];
       this.Padecimientos = [];
-      const url = "http://localhost:3000/verDiagnosticos/" + id;
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/verDiagnosticos/" + id;
       axios
         .get(url)
         .then((response) => {
@@ -263,7 +263,7 @@ export default {
     obtenerAlergias(id) {
       this.Alergias = [];
       this.Padecimientos = [];
-      const url = "http://localhost:3000/verAlergias/" + id;
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/verAlergias/" + id;
       axios
         .get(url)
         .then((response) => {
@@ -287,7 +287,7 @@ export default {
     },
     obtenerCatalogoAlergias() {
       this.isAddAllergyPopupOpen = true;
-      const url = "http://localhost:3000/obtener-alergias";
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/obtener-alergias";
       axios
         .get(url)
         .then((response) => {
@@ -317,7 +317,7 @@ export default {
         };
       }
 
-      const url = "http://localhost:3000/insertar-padecimiento";
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/insertar-padecimiento";
       axios
         .post(url, data)
         .then((response) => {
@@ -347,7 +347,7 @@ export default {
     },
     obternerCatalogoDiagnosticos() {
       this.isAddDiagnosticPopupOpen = true;
-      const url = "http://localhost:3000/obtener-diagnosticos";
+      const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/obtener-diagnosticos";
       axios
         .get(url)
         .then((response) => {
