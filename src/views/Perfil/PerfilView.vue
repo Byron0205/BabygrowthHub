@@ -2,10 +2,7 @@
   <div>
     <div class="profile-container">
       <div class="profile-card">
-        <i
-          class="fa-regular fa-circle-user custom-icon-profile"
-          style="color: #4f439a"
-        ></i>
+        <i class="fa-regular fa-circle-user custom-icon-profile" style="color: #4f439a"></i>
         <h2 class="text-profile">Perfil</h2>
         <div class="profile-role">
           <h3>{{ profileData.ROL }}</h3>
@@ -15,34 +12,15 @@
         <div class="personal-information-container">
           <div class="personal-information">
             <label for="name">Nombre</label>
-            <input
-              type="text"
-              class="input-modify"
-              :value="inputValue('Nombre')"
-              @input="updateProfileData('Nombre', $event.target.value)"
-              :readonly="!isInputEditable"
-            />
+            <input type="text" class="input-modify" :value="inputValue('Nombre')"
+              @input="updateProfileData('Nombre', $event.target.value)" :readonly="!isInputEditable" />
             <label for="last-name">Apellidos</label>
-            <input
-              type="text"
-              class="input-modify"
-              :value="inputValue('Apellidos')"
-              @input="updateProfileData('Apellidos', $event.target.value)"
-              :readonly="!isInputEditable"
-            />
+            <input type="text" class="input-modify" :value="inputValue('Apellidos')"
+              @input="updateProfileData('Apellidos', $event.target.value)" :readonly="!isInputEditable" />
             <label for="contact">Contacto</label>
-            <input
-              type="text"
-              class="input-modify"
-              :value="inputValue('Correo')"
-              @input="updateProfileData('Correo', $event.target.value)"
-              :readonly="!isInputEditable"
-            />
-            <button
-              v-if="!isInputEditable"
-              class="modify"
-              @click="toggleInputEditable"
-            >
+            <input type="text" class="input-modify" :value="inputValue('Correo')"
+              @input="updateProfileData('Correo', $event.target.value)" :readonly="!isInputEditable" />
+            <button v-if="!isInputEditable" class="modify" @click="toggleInputEditable">
               MODIFICAR
             </button>
             <div v-else>
@@ -51,37 +29,31 @@
             </div>
           </div>
         </div>
-        <div
-          v-if="userRole !== '3' || userRole !== '4'"
-          class="son-information-container"
-        >
+        <div v-if="userRole !== '3' || userRole !== '4'" class="son-information-container">
           <div class="son-information">
             <label for="sons" class="sons-text">Hijos registrados</label>
+            <br>
+            <label for="sons" class="sons-text-orange"> Bebes asociados</label>
             <select class="sons" v-model="selectedSon">
-              <option
-                v-for="son in profileData.hijos"
-                :key="son.IDBebe"
-                :value="son.IDBebe"
-              >
+              <option v-for="son in profileData.hijos" :key="son.IDBebe" :value="son.IDBebe"
+                :style="{ 'color': getRoleTextColor(son.ROL) }">
                 {{ son.NombreHijo }} {{ son.ApellidoHijo }}
               </option>
             </select>
             <label for="">Selecciona uno de tus tesoros para:</label>
-            <button class="btn-galery">Galería del recuerdo</button>
-
             <button
-              class="btn-expedient"
-              v-if="selectedSon"
-              @click="verExpedienteBebe"
-            >
+            v-if="selectedSon && (profileData.ROL === 'Padre' || profileData.ROL === 'Madre') && (getSelectedSonRole() === 'Padre' || getSelectedSonRole() === 'Madre')" 
+            class="btn-galery">Galería del recuerdo</button>
+
+            <button class="btn-expedient"
+              v-if="selectedSon && (profileData.ROL === 'Padre' || profileData.ROL === 'Madre') && (getSelectedSonRole() === 'Padre' || getSelectedSonRole() === 'Madre')"
+              @click="verExpedienteBebe">
               Expediente salud medicación
             </button>
 
-            <button
-              class="btn-baby-code"
-              @click="viewSendBabyCode"
-              v-if="selectedSon"
-            >
+
+            <button class="btn-baby-code" @click="viewSendBabyCode"
+              v-if="selectedSon && (profileData.ROL === 'Padre' || profileData.ROL === 'Madre') && (getSelectedSonRole() === 'Padre' || getSelectedSonRole() === 'Madre')">
               Compartir código bebé
             </button>
           </div>
@@ -91,10 +63,7 @@
         {{ message }}
       </div>
       <div class="administrative-panel-container">
-        <div
-          v-if="userRole !== '3' || userRole !== '4'"
-          class="administrative-panel"
-        >
+        <div  v-if="selectedSon && (profileData.ROL === 'Padre' || profileData.ROL === 'Madre') && (getSelectedSonRole() === 'Padre' || getSelectedSonRole() === 'Madre')" class="administrative-panel">
           <h2>Panel administrativo</h2>
           <button class="family-admin" @click="verAdministrativePanel">Administrar familia</button>
           <button class="add-baby" @click="vincularBebe">
@@ -104,10 +73,7 @@
       </div>
     </div>
     <div class="rainbow-decoration">
-      <img
-        src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-arcoiris.png"
-        alt=""
-      />
+      <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-arcoiris.png" alt="" />
     </div>
 
     <div class="sendBabyCodeContainer" v-if="isSendCodePopupOpen">
@@ -119,38 +85,20 @@
         <div class="formCreateNewEvent">
           <div class="sendBabyCodeFlexContainer">
             <label class="sendBabyCodeBabieName">{{ selectedNameSon }}</label>
-            <input
-              class="sendBabyCodeInput"
-              type="text"
-              readonly="true"
-              v-model="babyCode"
-            />
+            <input class="sendBabyCodeInput" type="text" readonly="true" v-model="babyCode" />
 
-            <input
-              class="sendBabyCodeInput"
-              placeholder="Email"
-              type="text"
-              v-model="email"
-            />
+            <input class="sendBabyCodeInput" placeholder="Email" type="text" v-model="email" />
           </div>
 
           <div class="sendBabyCodeFlexContainer">
-            <button
-              :class="
-                validEmail
-                  ? 'sendBabyCodeButton send submit-sendEmail'
-                  : 'sendBabyCodeButton send submit-disabled-sendEmail'
-              "
-              :disabled="!validEmail"
-              @click="sendBabyCodeEmail"
-            >
+            <button :class="validEmail
+              ? 'sendBabyCodeButton send submit-sendEmail'
+              : 'sendBabyCodeButton send submit-disabled-sendEmail'
+              " :disabled="!validEmail" @click="sendBabyCodeEmail">
               Compartir
             </button>
 
-            <button
-              class="sendBabyCodeButton return"
-              @click="isSendCodePopupOpen = false"
-            >
+            <button class="sendBabyCodeButton return" @click="isSendCodePopupOpen = false">
               Regresar
             </button>
           </div>
@@ -219,7 +167,19 @@ export default {
         this.isInputEditable = false;
       }
     },
-
+    getSelectedSonRole() {
+      const selectedSonObj = this.profileData.hijos.find((son) => son.IDBebe === this.selectedSon);
+      return selectedSonObj ? selectedSonObj.ROL : '';
+    },
+    getRoleTextColor(rol) {
+      if (rol === "Padre" || rol === "Madre") {
+        return "#4d4298"; // Color morado para "Padre" o "Madre"
+      } else if (rol === "Encargado") {
+        return "#fe5d37"; // Color naranja para "Encargado"
+      } else {
+        return "black"; // Color negro para otros roles
+      }
+    },
     vincularBebe() {
       this.$router.push("/registro/3/" + this.profileData.IDAdulto);
     },
@@ -228,7 +188,7 @@ export default {
       this.$router.push("/expediente/salud/" + this.selectedSon);
     },
     verAdministrativePanel() {
-      this.$router.push("/admin-panel-family/" +this.selectedSon);
+      this.$router.push("/admin-panel-family/" + this.selectedSon);
     },
     fetchProfileData() {
       axios
