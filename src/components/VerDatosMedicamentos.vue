@@ -38,11 +38,13 @@
       <div class="view-item" v-for="item in Medicinas" :key="item.id">
         <div class="text-item">
           <i class="fa-solid fa-align-left icon-text"></i>
-          <p class="text-item-style">{{ item.nombre }} </p>
-          <p class="text-item-style" v-if="isDate(item.detalle)">fecha {{ formatDate(item.detalle) }}</p>
-          <p class="text-item-style" v-else> para {{ item.detalle }}</p>
+          <p class="text-item-style">  {{ item.nombre }}</p>
+          <p class="text-item-style"  v-if="isDate(item.detalle)">
+            {{ formatDate(item.detalle) }}
+          </p>
+          <p class="text-item-style" v-else> | Diagnostico {{ item.detalle }}</p>
         </div>
-        <div v-if="this.isMedicine">
+        <div>
           <i
             class="fa-solid fa-trash icon-trash"
             @click="deleteDiagnostico(item.id, item.type)"
@@ -207,20 +209,19 @@ export default {
       nombreMedico: "",
       isAddAllergyPopupOpen: false,
       isAddDiagnosticPopupOpen: false,
-      isMedicine: false,
     };
   },
   methods: {
     deleteDiagnostico(id, type) {
-      if (type == "diagnostico") {
-        const url = "http://localhost:3000/eliminar-diagnostico/" + id;
+      if (type == "medicamento") {
+        const url = "http://localhost:3000/eliminar-medicamento/" + id;
         axios
           .get(url)
           .then((response) => {
             if (response.data.resultado) {
-              this.obtenerDiagnosticos(this.idbebe);
+              this.obtenerMedicamentos(this.idbebe);
             } else {
-              this.message = "¡Ha ocurrido al eliminar la diagnostico!";
+              this.message = "¡Ha ocurrido al eliminar el medicamento!";
               this.alertType = "error";
               this.showAlert();
             }
@@ -229,14 +230,13 @@ export default {
             console.error("Error al obtener los datos: " + err);
           });
       } else {
-        console.log(`ID Alergia: ${id}`);
-        const url = "http://localhost:3000/eliminar-alergia/" + id;
+        const url = "http://localhost:3000/eliminar-vacuna/" + id;
         axios
           .get(url)
           .then((response) => {
             console.log(response.data);
             if (response.data.resultado) {
-              this.obtenerAlergias(this.idbebe);
+              this.obtenerVacunas(this.idbebe);
             } else {
               this.message = "¡Ha ocurrido al eliminar la alergia!";
               this.alertType = "error";
@@ -249,7 +249,6 @@ export default {
       }
     },
     obtenerMedicamentos(id) {
-      this.isMedicine = false;
       this.Medicamentos = [];
       this.Medicinas = [];
       const url = "http://localhost:3000/verMedicamentos/" + id;
@@ -267,7 +266,6 @@ export default {
         });
     },
     obtenerVacunas(id) {
-      this.isMedicine = true;
       this.Medicinas = [];
       this.Vacunas = [];
       const url = "http://localhost:3000/verVacunas/" + id;
@@ -373,8 +371,8 @@ export default {
         return dateString;
       } else {
         // Obtener el día, el mes y el año por separado
-        const day = date.getDate().toString().padStart(2, '0');
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, "0");
+        const month = (date.getMonth() + 1).toString().padStart(2, "0");
         const year = date.getFullYear().toString();
         // Unir los valores en el formato deseado (día-mes-año)
         const formattedDate = `${day}-${month}-${year}`;
