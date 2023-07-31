@@ -13,7 +13,7 @@
         </button>
         <button
           class="button-expediente diagnositoco agregar"
-          @click="obternerCatalogoDiagnosticos()"
+          @click="obternerDiagnosticosBebe()"
         >
           <i class="fa-solid fa-plus"></i>
         </button>
@@ -38,61 +38,57 @@
       <div class="view-item" v-for="item in Medicinas" :key="item.id">
         <div class="text-item">
           <i class="fa-solid fa-align-left icon-text"></i>
-          <p class="text-item-style">{{ item.nombre }} </p>
-          <p class="text-item-style" v-if="isDate(item.detalle)">fecha {{ formatDate(item.detalle) }}</p>
-          <p class="text-item-style" v-else> para {{ item.detalle }}</p>
+          <p class="text-item-style">  {{ item.nombre }}</p>
+          <p class="text-item-style"  v-if="isDate(item.detalle)">
+            {{ formatDate(item.detalle) }}
+          </p>
+          <p class="text-item-style" v-else> | Diagnostico {{ item.detalle }}</p>
         </div>
-        <div v-if="this.isMedicine">
+        <div>
           <i
             class="fa-solid fa-trash icon-trash"
-            @click="deleteDiagnostico(item.id, item.type)"
+            @click="deleteMedicina(item.id, item.type)"
           ></i>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="addAllergyContainer" v-if="this.isAddAllergyPopupOpen">
+  <div class="addAllergyContainer" v-if="this.isAddVacunaPopupOpen">
     <div class="addAllergyContent">
       <div class="addAllergyHeader">
-        <p>NUEVA ALERGIA</p>
+        <p>NUEVA VACUNA</p>
       </div>
       <div style="margin-top: 2rem">
         <div
           class="addAllergyFlexContainer centerElements addAllergyinformationTop"
         >
-          <p class="addAllergyTitle">Selecciona una alergia para agregarla</p>
+          <p class="addAllergyTitle">Selecciona una vacuna para agregarla</p>
         </div>
         <div style="margin-top: 1rem">
-          <select class="addAllergySelect" v-model="padecimientoSeleccionado">
-            <option
-              v-for="alergia in this.CatalogoAlergias"
-              :key="alergia.IDAlergia"
-              :value="alergia.IDAlergia"
+          <label class="addAllergyLabel"
+              >Vacunas</label
             >
-              {{ alergia.Nombre }}
+          <select class="addAllergySelect" v-model="medicinaSeleccionado" >
+            <option
+              v-for="vacuna in this.CatalogoVacunas"
+              :key="vacuna.IDVacuna"
+              :value="vacuna.IDVacuna"
+            >
+              {{ vacuna.Nombre }}
             </option>
           </select>
         </div>
         <div style="margin-top: 1rem">
           <div style="display: flex; flex-direction: column">
-            <label class="addAllergyLabel" for="fechaInicio"
-              >Fecha de incio</label
+            <label class="addAllergyLabel" for="fechaVacuna"
+              >Fecha de aplicación</label
             >
             <input
               class="addAllergyInputFecha"
-              id="fechaInicio"
+              id="fechaVacuna"
               type="date"
-              v-model="fechaInicio"
-            />
-          </div>
-          <div style="display: flex; flex-direction: column; margin-top: 1rem">
-            <label class="addAllergyLabel" for="fechaFin">Fecha final</label>
-            <input
-              class="addAllergyInputFecha"
-              id="fechaFin"
-              type="date"
-              v-model="fechaFin"
+              v-model="fechaVacuna"
             />
           </div>
         </div>
@@ -100,14 +96,14 @@
           <button
             class="addAllergyButton add"
             @click="
-              agregarNuevoPadecimiento(padecimientoSeleccionado, 'alergia')
+              agregarMedicina(medicinaSeleccionado, 'vacuna')
             "
           >
             Guardar
           </button>
           <button
             class="addAllergyButton volver"
-            @click="this.isAddAllergyPopupOpen = false"
+            @click="this.isAddVacunaPopupOpen = false"
           >
             Volver
           </button>
@@ -116,67 +112,64 @@
     </div>
   </div>
 
-  <div class="addDiagnosticContainer" v-if="this.isAddDiagnosticPopupOpen">
+  <div class="addDiagnosticContainer" v-if="this.isAddMedicamentoPopupOpen">
     <div class="addDiagnosticContent">
       <div class="addDiagnosticHeader">
-        <p>NUEVO DIAGNOSTICO</p>
+        <p>NUEVO MEDICAMENTO</p>
       </div>
       <div style="margin-top: 2rem">
         <div
           class="addDiagnosticFlexContainer centerElements addDiagnosticinformationTop"
         >
           <p class="addDiagnosticTitle">
-            Selecciona un diagnostico junto a su médico
+            Selecciona un diagnostico junto a su medicamento
           </p>
         </div>
         <div style="margin-top: 1rem">
-          <p class="addDiagnosticLabel">Diagnostico:</p>
+          <p class="addDiagnosticLabel">Diagnostico actuales del bebé:</p>
           <select
             class="addDiagnosticSelect"
-            v-model="padecimientoSeleccionado"
+            v-model="diagnosticoSeleccionado"
+            @change="obternerMedicamentosDiagnostico()"
           >
             <option
-              v-for="diagnotico in this.CatalogoDiagnosticos"
-              :key="diagnotico.IDDiagnostico"
-              :value="diagnotico.IDDiagnostico"
+              v-for="diagnotico in this.Diagnosticosbebe"
+              :key="diagnotico.id"
+              :value="diagnotico.id"
             >
-              {{ diagnotico.Detalle }}
+              {{ diagnotico.Padecimiento }}
             </option>
           </select>
         </div>
 
         <div style="margin-top: 1rem">
-          <p class="addDiagnosticLabel">Medico:</p>
-          <input
-            class="addDiagnosticInputFecha"
-            id="fechaFin"
-            type="text"
-            v-model="nombreMedico"
-          />
-        </div>
-
-        <div style="margin-top: 1rem">
-          <label class="addDiagnosticLabel" for="fecha">Fecha:</label>
-          <input
-            class="addDiagnosticInputFecha"
-            id="fecha"
-            type="date"
-            v-model="fechaInicio"
-          />
+          <p class="addDiagnosticLabel">Medicamentos para el diagnostico:</p>
+          <select
+            class="addDiagnosticSelect"
+            v-model="medicinaSeleccionado"
+          >
+            <option
+              v-for="medicamentoDiagnostico in this.DiagnosticosMedicamentos"
+              :key="medicamentoDiagnostico.IDMedicamento"
+              :value="medicamentoDiagnostico.IDMedicamento"
+            >
+              {{ medicamentoDiagnostico.Nombre }}
+            </option>
+          </select>
         </div>
 
         <div class="addDiagnosticButtonsContainer">
           <button
             class="addDiagnosticButton add"
             @click="
-              agregarNuevoPadecimiento(padecimientoSeleccionado, 'diagnostico')
+              agregarMedicina(medicinaSeleccionado, 'medicamento')
             "
           >
             Guardar
           </button>
           <button
             class="addDiagnosticButton volver"
-            @click="this.isAddDiagnosticPopupOpen = false"
+            @click="this.isAddMedicamentoPopupOpen = false"
           >
             Volver
           </button>
@@ -196,31 +189,32 @@ export default {
       Medicinas: [],
       Medicamentos: [],
       Vacunas: [],
-      CatalogoAlergias: [],
+      Diagnosticosbebe : [],
+      DiagnosticosMedicamentos: [],
+      CatalogoVacunas: [],
       CatalogoDiagnosticos: [],
-      padecimientoSeleccionado: "",
-      fechaInicio: "",
-      fechaFin: "",
+      medicinaSeleccionado: "",
+      diagnosticoSeleccionado:"",
+      fechaVacuna: "",
       idbebe: "",
       message: "",
       alertType: "",
       nombreMedico: "",
-      isAddAllergyPopupOpen: false,
-      isAddDiagnosticPopupOpen: false,
-      isMedicine: false,
+      isAddVacunaPopupOpen: false,
+      isAddMedicamentoPopupOpen: false,
     };
   },
   methods: {
-    deleteDiagnostico(id, type) {
-      if (type == "diagnostico") {
-        const url = "http://localhost:3000/eliminar-diagnostico/" + id;
+    deleteMedicina(id, type) {
+      if (type == "medicamento") {
+        const url = "http://localhost:3000/eliminar-medicamento/" + id;
         axios
           .get(url)
           .then((response) => {
             if (response.data.resultado) {
-              this.obtenerDiagnosticos(this.idbebe);
+              this.obtenerMedicamentos(this.idbebe);
             } else {
-              this.message = "¡Ha ocurrido al eliminar la diagnostico!";
+              this.message = "¡Ha ocurrido al eliminar el medicamento!";
               this.alertType = "error";
               this.showAlert();
             }
@@ -229,14 +223,13 @@ export default {
             console.error("Error al obtener los datos: " + err);
           });
       } else {
-        console.log(`ID Alergia: ${id}`);
-        const url = "http://localhost:3000/eliminar-alergia/" + id;
+        const url = "http://localhost:3000/eliminar-vacuna/" + id;
         axios
           .get(url)
           .then((response) => {
             console.log(response.data);
             if (response.data.resultado) {
-              this.obtenerAlergias(this.idbebe);
+              this.obtenerVacunas(this.idbebe);
             } else {
               this.message = "¡Ha ocurrido al eliminar la alergia!";
               this.alertType = "error";
@@ -249,7 +242,6 @@ export default {
       }
     },
     obtenerMedicamentos(id) {
-      this.isMedicine = false;
       this.Medicamentos = [];
       this.Medicinas = [];
       const url = "http://localhost:3000/verMedicamentos/" + id;
@@ -267,7 +259,6 @@ export default {
         });
     },
     obtenerVacunas(id) {
-      this.isMedicine = true;
       this.Medicinas = [];
       this.Vacunas = [];
       const url = "http://localhost:3000/verVacunas/" + id;
@@ -293,60 +284,12 @@ export default {
       }, displayDuration);
     },
     obtenerCatalogoAlergias() {
-      this.isAddAllergyPopupOpen = true;
-      const url = "http://localhost:3000/obtener-alergias";
+      this.isAddVacunaPopupOpen = true;
+      const url = "http://localhost:3000/obtener-vacunas";
       axios
         .get(url)
         .then((response) => {
-          this.CatalogoAlergias = response.data;
-        })
-        .catch((err) => {
-          console.error("Error al obtener los datos: " + err);
-        });
-    },
-    agregarNuevoPadecimiento(idPadecimiento, tipoInsert) {
-      let data = {};
-
-      if (tipoInsert == "alergia") {
-        data = {
-          idPadecimiento: idPadecimiento,
-          tipoInsert: tipoInsert,
-          IDbebe: this.idbebe,
-          fechaInicio: this.fechaInicio,
-          fechaFin: this.fechaFin,
-        };
-      } else {
-        data = {
-          idPadecimiento: idPadecimiento,
-          nombreMedico: this.nombreMedico,
-          IDbebe: this.idbebe,
-          fechaDiagnostico: this.fechaInicio,
-        };
-      }
-
-      const url = "http://localhost:3000/insertar-padecimiento";
-      axios
-        .post(url, data)
-        .then((response) => {
-          if (response.data.resultado) {
-            if (tipoInsert == "alergia") {
-              this.obtenerAlergias(this.idbebe);
-              this.isAddAllergyPopupOpen = false;
-            } else {
-              this.obtenerDiagnosticos(this.idbebe);
-              this.isAddDiagnosticPopupOpen = false;
-            }
-
-            //Borrar datos de propiedades
-            this.padecimientoSeleccionado = "";
-            this.fechaFin = "";
-            this.fechaInicio = "";
-            this.nombreMedico = "";
-          } else {
-            this.message = "¡Ha ocurrido al insertar el padecimiento!";
-            this.alertType = "error";
-            this.showAlert();
-          }
+          this.CatalogoVacunas = response.data;
         })
         .catch((err) => {
           console.error("Error al obtener los datos: " + err);
@@ -364,6 +307,77 @@ export default {
           console.error("Error al obtener los datos: " + err);
         });
     },
+    obternerDiagnosticosBebe() {
+      this.isAddMedicamentoPopupOpen = true;
+      const url = "http://localhost:3000/obtener-diagnosticos-bebe/" + this.idbebe;
+      axios
+        .get(url)
+        .then((response) => {
+          this.Diagnosticosbebe = response.data;
+        })
+        .catch((err) => {
+          console.error("Error al obtener los datos: " + err);
+        });
+    },
+    obternerMedicamentosDiagnostico() {
+      console.log(this.diagnosticoSeleccionado);
+      const url = "http://localhost:3000/obtener-diagnosticos-medicamentos/" + this.diagnosticoSeleccionado;
+      axios
+        .get(url)
+        .then((response) => {
+          this.DiagnosticosMedicamentos = response.data;
+        })
+        .catch((err) => {
+          console.error("Error al obtener los datos: " + err);
+        });
+    },
+    agregarMedicina(idMedicina, tipoInsert) {
+      let data = {};
+
+      if (tipoInsert == "medicamento") {
+        data = {
+          IDmedicina: idMedicina,
+          tipoInsert: tipoInsert,
+          IDbebe: this.idbebe,
+          IDDiagnostico: this.diagnosticoSeleccionado,
+        };
+      } else {
+        data = {
+          IDmedicina: idMedicina,
+          tipoInsert: tipoInsert,
+          IDbebe: this.idbebe,
+          FechaAplicacion: this.fechaVacuna,
+        };
+      }
+
+      console.log(data);
+
+      const url = "http://localhost:3000/insertar-medicina";
+      axios
+        .post(url, data)
+        .then((response) => {
+          if (response.data.resultado) {
+            if (tipoInsert == "medicamento") {
+              this.obtenerMedicamentos(this.idbebe);
+              this.isAddMedicamentoPopupOpen = false;
+            } else {
+              this.obtenerVacunas(this.idbebe);
+              this.isAddVacunaPopupOpen = false;
+            }
+
+            //Borrar datos de propiedades
+            this.diagnosticoSeleccionado = "";
+            this.fechaVacuna = "";
+          } else {
+            this.message = "¡Ha ocurrido al insertar el padecimiento!";
+            this.alertType = "error";
+            this.showAlert();
+          }
+        })
+        .catch((err) => {
+          console.error("Error al obtener los datos: " + err);
+        });
+    },
     isDate(value) {
       return !isNaN(new Date(value));
     },
@@ -373,8 +387,8 @@ export default {
         return dateString;
       } else {
         // Obtener el día, el mes y el año por separado
-        const day = date.getDate().toString().padStart(2, '0');
-        const month = (date.getMonth() + 1).toString().padStart(2, '0');
+        const day = date.getDate().toString().padStart(2, "0");
+        const month = (date.getMonth() + 1).toString().padStart(2, "0");
         const year = date.getFullYear().toString();
         // Unir los valores en el formato deseado (día-mes-año)
         const formattedDate = `${day}-${month}-${year}`;
