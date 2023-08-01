@@ -92,10 +92,7 @@ export default {
       const url = 'https://rh-persons.onrender.com/persona'
 
       const res = await axios.get(url, {
-        params: { id: this.parent.IDAdulto },
-        headers: {
-          'Access-Control-Allow-Origin': 'http://localhost:5000'
-        }
+        params: { id: this.parent.IDAdulto }
       },)
       const data = res.data
       this.parent.Nombre = data.Nombre
