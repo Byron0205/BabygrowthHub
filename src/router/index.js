@@ -96,6 +96,11 @@ const router = createRouter({
       path: "/admin-panel-family/:id",
       name: "admin-panel-family",
       component: ()=> import('../views/AdministrativePanelView.vue')
+    },
+    {
+      path: "/upmultimedia/:id",
+      name: "upmultimedia",
+      component: ()=> import('../views/Multimedia/SubirMultimediaView.vue')
     }
   ]
 })
