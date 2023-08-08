@@ -31,7 +31,8 @@
                     <router-link class="link" to="/actividades/seguimiento">Actividad</router-link>
                 </li>
                 <li class="item" v-show="session && rol !== 0">
-                    <router-link class="link" to="/perfil">Perfil</router-link>
+                    <router-link v-if="!admin" class="link" to="/perfil">Perfil</router-link>
+                    <router-link v-if="admin && session == true" class="link" to="/admin/perfil">Perfil</router-link>
                 </li>
             </ul>
             <div class="btn-group">

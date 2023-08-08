@@ -96,6 +96,12 @@ const router = createRouter({
       path: "/admin-panel-family/:id",
       name: "admin-panel-family",
       component: ()=> import('../views/AdministrativePanelView.vue')
+    },
+    {
+      path: '/admin/perfil',
+      name: 'adminProfile',
+      component: ()=> import ('../views/ProfileAdmin.vue'),
+
     }
   ]
 })
