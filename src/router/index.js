@@ -101,7 +101,11 @@ const router = createRouter({
       path: '/admin/perfil',
       name: 'adminProfile',
       component: ()=> import ('../views/ProfileAdmin.vue'),
-
+    },
+    {
+      path: "/upmultimedia/:id",
+      name: "upmultimedia",
+      component: ()=> import('../views/Multimedia/SubirMultimediaView.vue')
     }
   ]
 })
