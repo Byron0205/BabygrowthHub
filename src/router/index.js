@@ -106,7 +106,7 @@ const router = createRouter({
       path: "/upmultimedia/:id",
       name: "upmultimedia",
       component: ()=> import('../views/Multimedia/SubirMultimediaView.vue')
-    }
+    },
   ]
 })
 
