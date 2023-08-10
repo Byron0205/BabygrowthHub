@@ -17,7 +17,7 @@
                 <input type="file" class="upload-input" ref="fileInput" @change="onFileChange" style="display: none">
                 <p class="date">{{ formattedDate }}</p>
                 <p v-if="uploadedFile" class="drag-text">{{ uploadedFile.name }}</p>
-                <p v-else class="drag-text">Arrastre y suelte la imagen / video o haga clic para seleccionar un archivo</p>
+                <p v-else class="drag-text">Arrastre y suelte la imagen (jpg,png) / video (mp4) / <br>audio (mp3) o haga clic para seleccionar un archivo</p>
                 <i v-if="uploadedFile" @click="deleteUploadedFile" class="trash-icon fas fa-trash"
                     style="color: #4F439A;"></i>
             </div>
@@ -127,20 +127,24 @@ export default {
             }
         },
         onFileChange(event) {
-            const files = event.target.files;
+        const files = event.target.files;
 
-            if (files.length > 0) {
-                const allowedTypes = ['image/jpeg', 'image/png', 'video/mp4', 'audio/mpeg'];
-                const selectedFile = files[0];
+        if (files.length > 0) {
+            const allowedTypes = ['image/jpeg', 'image/png', 'video/mp4', 'audio/mpeg'];
+            const selectedFile = files[0];
 
-                if (allowedTypes.includes(selectedFile.type)) {
-                    this.uploadedFile = selectedFile;
-                } else {
-                    // Mostrar un mensaje de error al usuario
-                    console.error('Tipo de archivo no permitido');
-                }
+            if (selectedFile.size > 20 * 1024 * 1024) {
+                alert('El archivo es demasiado grande. El tamaño máximo permitido es 20 MB.');
+                return;
             }
-        },
+
+            if (allowedTypes.includes(selectedFile.type)) {
+                this.uploadedFile = selectedFile;
+            } else {
+                alert('Tipo de archivo no permitido');
+            }
+        }
+    },
 
         deleteUploadedFile() {
             this.uploadedFile = null;
