@@ -13,10 +13,11 @@
             <label for="new-memory" class="text-label">Nombre Recuerdo</label>
             <input type="text" class="new-memory" v-model="newMemoryName" ref="memoryInput">
             <div class="upload-multi" @dragover="onDragOver" @dragleave="onDragLeave" @drop="onDrop"
-                :class="{ 'drag-over': isDragging }">
+                @click="triggerFileInput" :class="{ 'drag-over': isDragging }">
+                <input type="file" class="upload-input" ref="fileInput" @change="onFileChange" style="display: none">
                 <p class="date">{{ formattedDate }}</p>
                 <p v-if="uploadedFile" class="drag-text">{{ uploadedFile.name }}</p>
-                <p v-else class="drag-text">Arrastre y suelte la imagen / video</p>
+                <p v-else class="drag-text">Arrastre y suelte la imagen / video o haga clic para seleccionar un archivo</p>
                 <i v-if="uploadedFile" @click="deleteUploadedFile" class="trash-icon fas fa-trash"
                     style="color: #4F439A;"></i>
             </div>
@@ -26,6 +27,7 @@
                     <select class="type-multi" @change="onAlbumChange" v-model="selectedAlbum">
                         <option value="1">Etapas de desarrollo</option>
                         <option value="2">Ultrasonidos</option>
+                        <option value="3">Audio</option>
                     </select>
                 </div>
                 <div v-if="selectedAlbum !== '2'" class="select-wrapper">
@@ -41,9 +43,10 @@
                 </div>
             </div>
             <label for="sons" class="text-label">Asociar con tu pequeño/a</label>
-            <select class="sons">
-                <option value="1">Ismael Rosales Mora</option>
-                <option value="2">Laura Rosales Mora</option>
+            <select class="sons" v-model="selectedChild">
+                <option v-for="child in filteredChildren" :key="child.IDBebe" :value="child.IDBebe">
+                    {{ child.NombreHijo }} {{ child.ApellidoHijo }}
+                </option>
             </select>
             <button class="save-multi" @click="uploadFileToServer">Guardar recuerdo</button>
         </div>
@@ -51,6 +54,7 @@
 </template>
   
 <script>
+import axios from "axios";
 export default {
     name: 'BabygrowthHubSubirMultimediaView',
 
@@ -62,14 +66,34 @@ export default {
             selectedAlbum: '1',
             newMemoryName: '',
             selectedStage: '',
+            children: [],
+            selectedChild: null,
         };
     },
 
     mounted() {
         this.setFormattedDate();
+        this.fetchChildren();
+    },
+    computed: {
+        filteredChildren() {
+            return this.children.filter(child => child.ROL === "Padre" || child.ROL === "Madre");
+        },
     },
 
     methods: {
+        fetchChildren() {
+            const idAdulto = localStorage.getItem("idAdulto");
+
+            axios
+                .get(`https://tiusr3pl.cuc-carrera-ti.ac.cr/adultos/${idAdulto}`)
+                .then((response) => {
+                    this.children = response.data.filter((item) => item.IDBebe !== null);
+                })
+                .catch((error) => {
+                    console.error("Error al obtener datos de los hijos:", error);
+                });
+        },
         onAlbumChange() {
             if (this.selectedAlbum === '2') {
                 this.selectedStage = '';
@@ -97,15 +121,32 @@ export default {
             this.isDragging = false;
 
             const files = event.dataTransfer.files;
-            console.log(files);
 
             if (files.length > 0) {
                 this.uploadedFile = files[0];
             }
         },
+        onFileChange(event) {
+            const files = event.target.files;
+
+            if (files.length > 0) {
+                const allowedTypes = ['image/jpeg', 'image/png', 'video/mp4', 'audio/mpeg'];
+                const selectedFile = files[0];
+
+                if (allowedTypes.includes(selectedFile.type)) {
+                    this.uploadedFile = selectedFile;
+                } else {
+                    // Mostrar un mensaje de error al usuario
+                    console.error('Tipo de archivo no permitido');
+                }
+            }
+        },
 
         deleteUploadedFile() {
             this.uploadedFile = null;
+        },
+        triggerFileInput() {
+            this.$refs.fileInput.click();
         },
 
         async uploadFileToServer() {
@@ -117,24 +158,30 @@ export default {
                 const formData = new FormData();
                 formData.append('archivo', this.uploadedFile);
 
-                const isImage = this.uploadedFile.type.includes('image');
+                let fileType = '';
+                if (this.uploadedFile.type.includes('image')) {
+                    fileType = 'image';
+                } else if (this.uploadedFile.type.includes('video')) {
+                    fileType = 'video';
+                } else if (this.uploadedFile.type.includes('audio')) {
+                    fileType = 'audio';
+                }
 
                 const data = {
                     NombreRecuerdo: this.newMemoryName,
                     IDEtapa: this.selectedAlbum === '2' ? null : this.selectedStage,
-                    TipoArchivo: isImage ? 'image' : 'video',
+                    TipoArchivo: fileType,
                     RutaArchivo: '',
                     IDAlbum: this.selectedAlbum,
-                    IDBebe: 17561,
+                    IDBebe: this.selectedChild,
                 };
 
                 formData.append('data', JSON.stringify(data));
 
-                const response = await fetch('http://localhost:3000/subir-imagen', {
+                const response = await fetch('https://tiusr3pl.cuc-carrera-ti.ac.cr/subir-imagen', {
                     method: 'POST',
                     body: formData,
-                });
-
+                })
                 if (!response.ok) {
                     throw new Error('Failed to upload file');
                 }
@@ -152,7 +199,7 @@ export default {
 
         async insertDataToDatabase(data) {
             try {
-                const response = await fetch('http://localhost:3000/subir-multimedia', {
+                const response = await fetch('https://tiusr3pl.cuc-carrera-ti.ac.cr/subir-multimedia', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
