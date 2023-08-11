@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="info-container">
-            <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Imagen-decoracion.png" alt="">
+            <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Imagen-decoracion.png" class="img-multimedia" alt="">
             <p class="info-text">Sumérgete en un mundo encantador donde las imágenes y videos se convierten en tesoros de
                 los momentos más preciosos del crecimiento de tus adorables bebés.
                 Comparte en este apartado tus <strong>imagenes y videos</strong> más preciados de tus tesoros!</p>
@@ -177,7 +177,7 @@ export default {
                     TipoArchivo: fileType,
                     RutaArchivo: '',
                     IDAlbum: this.selectedAlbum,
-                    IDBebe: this.selectedChild,
+                    IDBebe: 35118,
                 };
 
                 formData.append('data', JSON.stringify(data));
