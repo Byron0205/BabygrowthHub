@@ -454,3 +454,83 @@
 .submit-disabled-sendEmail:hover {
   cursor: not-allowed;
 }
+
+@media only screen and (max-width: 768px) {
+  .profile-container {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    height: auto;
+    
+  }
+
+  .rainbow-decoration{
+    display: none;
+  }
+
+  .profile-card {
+    flex-direction: column;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    background: none;
+  }
+
+  .profile-card .custom-icon-profile {
+    margin-left: 0 auto;
+    margin-right: 0  auto;
+  }
+
+  .profile-card .text-profile {
+    margin-left: 0 auto;
+    margin-right: 0  auto;
+  }
+
+  .profile-card .profile-role {
+    width: 100%;
+
+    h3 {
+      font-size: 24px;
+    }
+  }
+
+  .information-container {
+    flex-direction: column;
+  }
+  
+
+  
+  .modify,
+  .isInputEditable,
+  .input-modify,
+  .sons,
+  .btn-galery,
+  .btn-expedient,
+  .btn-baby-code,
+  .family-admin,
+  .add-baby,
+  .input-modify[readonly],
+  .save,
+  .cancel,
+  .sendBabyCodeInput {
+    width: 100%;
+    max-width: 100%;
+    
+  }
+  
+
+  .personal-information-container,
+  .son-information-container,
+  .administrative-panel {
+    width: 100%;
+    margin: 0;
+    margin-left: auto;
+    margin-right:  auto;
+  }
+  
+}

@@ -73,7 +73,7 @@
       </div>
     </div>
     <div class="rainbow-decoration">
-      <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-arcoiris.png" alt="" />
+      <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-arcoiris.png" id="img-arcoiris-profile" alt="" />
     </div>
 
     <div class="sendBabyCodeContainer" v-if="isSendCodePopupOpen">

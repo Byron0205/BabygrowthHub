@@ -143,3 +143,68 @@
     border-radius: 15px 15px 0px 0px;
     background-color: rgba(121, 108, 208, 0.9);
 }
+
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 30px;
+    }
+
+    .diet-container {
+        width: 90%;
+        margin: 20px auto;
+    }
+
+    .diet-container.left,
+    .diet-container.right {
+        margin: 20px auto;
+    }
+
+    .img-container {
+        width: 100%;
+        height: auto;
+    }
+
+    .img-content {
+        display: none;
+    }
+
+    .title-diet {
+        font-size: 20px;
+        margin: 10px 0 0 20px;
+    }
+
+    .diet-text {
+        font-size: 14px;
+        margin: 10px 0 0 20px;
+        width: 100%;
+        height: auto;
+    }
+
+    .container-text-etapa {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .navbar-diet {
+        width: 90%;
+        margin: 20px auto;
+        flex-direction: column;
+        background-color: rgba(121, 108, 208, 0.15);
+        border-radius: 15px;
+    }
+
+    .age-option {
+        width: 100%;
+        height: auto;
+        margin: 5px 0;
+        font-size: 15px;
+    }
+
+    .age-option.selected {
+        color: #FFF;
+        border-radius: 15px 15px 15px 15px;
+        background-color: rgba(121, 108, 208, 0.9);
+    }
+    
+}
