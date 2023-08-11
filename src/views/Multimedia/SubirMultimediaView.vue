@@ -177,7 +177,7 @@ export default {
                     TipoArchivo: fileType,
                     RutaArchivo: '',
                     IDAlbum: this.selectedAlbum,
-                    IDBebe: 35118,
+                    IDBebe: this.selectedChild,
                 };
 
                 formData.append('data', JSON.stringify(data));
