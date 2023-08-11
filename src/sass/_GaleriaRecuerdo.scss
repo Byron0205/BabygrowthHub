@@ -2,98 +2,96 @@
   display: flex;
   flex-direction: row;
   padding: 1rem;
+  align-items: center;
 }
 
-.flexGalleryItem{
+.flexGalleryItem {
   flex: 1;
   padding: 1rem;
-  
 }
-.flexGalleryItem:last-child{
+.flexGalleryItem:last-child {
   flex: 1;
 }
 
-.flexAlbumsContainer{
+.flexAlbumsContainer {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.btnAlbum{
+.btnAlbum {
   margin: 0.5rem;
   border-radius: 40px;
   border: none;
 
   //Tipografia
   text-align: center;
-  font-family: 'Baloo 2';
+  font-family: "Baloo 2";
   font-size: 1.5rem;
   font-style: normal;
   font-weight: 700;
 
-  &.btnAlbum:hover{
+  &.btnAlbum:hover {
     cursor: pointer;
     border: dashed;
   }
 
   //Clases botones segun album
-  &.albumeEtapaDesarrollo{
-    background: rgba(121, 108, 208, 0.20);
+  &.albumeEtapaDesarrollo {
+    background: rgba(121, 108, 208, 0.2);
     width: 15.5rem;
     height: 8.5rem;
     flex-shrink: 0;
 
-    color: #796CD0;
+    color: #796cd0;
   }
 
-  &.albumPorAnio{
-    background: #FFF2F5;
+  &.albumPorAnio {
+    background: #fff2f5;
     width: 15.5rem;
     height: 8.5rem;
     flex-shrink: 0;
 
-    color: #FE5A86;
-   
+    color: #fe5a86;
   }
 
-  &.albumUltrasonidos{
-    background: #FFF3D8;
+  &.albumUltrasonidos {
+    background: #fff3d8;
     width: 15rem;
     height: 19rem;
     flex-shrink: 0;
 
-    color: #FCB510;
-   
+    color: #fcb510;
   }
 
-  &.subirVideoFoto{
+  &.subirVideoFoto {
     background: #daf6ff;
     width: 15.5rem;
     height: 8.5rem;
     flex-shrink: 0;
 
-    color: #69DCFF;
+    color: #69dcff;
   }
 
-  &.subirAudio{
+  &.subirAudio {
     background: #ffe9dd;
     width: 15.5rem;
     height: 8.5rem;
     flex-shrink: 0;
 
-    color: #FF6C19;
+    color: #ff6c19;
   }
 }
 
-.flexColumGallery{
+.flexColumGallery {
   flex-direction: column;
   width: auto;
 }
 
-.titleGallery{
+.titleGallery {
   color: #253962;
   text-align: center;
-  font-family: 'Baloo 2';
+  font-family: "Baloo 2";
   font-size: 2.3rem;
   font-style: normal;
   font-weight: 800;
@@ -101,10 +99,62 @@
   width: auto;
 }
 
-.galleryParagraph{
+.galleryParagraph {
   color: #253962;
-  font-family: 'Baloo 2';
+  font-family: "Baloo 2";
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+@media (max-width: 768px) {
+  
+  .flexGalleryItem {
+    padding: 0rem;
+  }
+
+  .galleryParagraph {
+    padding: 1rem;
+    
+  }
+
+  .flexViewGallery {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  //Para invertir el orden de posicionamiento
+  .flexGalleryItem:nth-child(1) {
+    order: 2;
+  }
+  
+  .flexGalleryItem:nth-child(2) {
+    order: 1;
+  }
+
+  .btnAlbum {
+
+    font-size: 1rem;
+    margin: 0.3rem;
+
+    //Clases botones segun album
+    &.albumPorAnio ,
+    &.subirAudio,
+    &.subirVideoFoto,
+    &.albumeEtapaDesarrollo {
+      width: 6.3rem;
+      height: 4rem;
+
+      border-radius: 20px;
+    }
+  
+
+    &.albumUltrasonidos {
+      width: 6.3rem;
+      height: 8rem;
+
+      border-radius: 20px;
+    }
+  }
+
 }

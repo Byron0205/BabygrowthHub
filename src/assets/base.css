@@ -3423,6 +3423,7 @@ footer {
   display: flex;
   flex-direction: row;
   padding: 1rem;
+  align-items: center;
 }
 
 .flexGalleryItem {
@@ -3459,35 +3460,35 @@ footer {
   width: 15.5rem;
   height: 8.5rem;
   flex-shrink: 0;
-  color: #796CD0;
+  color: #796cd0;
 }
 .btnAlbum.albumPorAnio {
-  background: #FFF2F5;
+  background: #fff2f5;
   width: 15.5rem;
   height: 8.5rem;
   flex-shrink: 0;
-  color: #FE5A86;
+  color: #fe5a86;
 }
 .btnAlbum.albumUltrasonidos {
-  background: #FFF3D8;
+  background: #fff3d8;
   width: 15rem;
   height: 19rem;
   flex-shrink: 0;
-  color: #FCB510;
+  color: #fcb510;
 }
 .btnAlbum.subirVideoFoto {
   background: #daf6ff;
   width: 15.5rem;
   height: 8.5rem;
   flex-shrink: 0;
-  color: #69DCFF;
+  color: #69dcff;
 }
 .btnAlbum.subirAudio {
   background: #ffe9dd;
   width: 15.5rem;
   height: 8.5rem;
   flex-shrink: 0;
-  color: #FF6C19;
+  color: #ff6c19;
 }
 
 .flexColumGallery {
@@ -3514,6 +3515,38 @@ footer {
   line-height: normal;
 }
 
+@media (max-width: 768px) {
+  .flexGalleryItem {
+    padding: 0rem;
+  }
+  .galleryParagraph {
+    padding: 1rem;
+  }
+  .flexViewGallery {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .flexGalleryItem:nth-child(1) {
+    order: 2;
+  }
+  .flexGalleryItem:nth-child(2) {
+    order: 1;
+  }
+  .btnAlbum {
+    font-size: 1rem;
+    margin: 0.3rem;
+  }
+  .btnAlbum.albumPorAnio, .btnAlbum.subirAudio, .btnAlbum.subirVideoFoto, .btnAlbum.albumeEtapaDesarrollo {
+    width: 6.3rem;
+    height: 4rem;
+    border-radius: 20px;
+  }
+  .btnAlbum.albumUltrasonidos {
+    width: 6.3rem;
+    height: 8rem;
+    border-radius: 20px;
+  }
+}
 html {
   box-sizing: border-box;
   margin: 0;
