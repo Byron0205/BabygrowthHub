@@ -117,6 +117,11 @@ const router = createRouter({
       name:"galeriaRecuerdo",
       component:()=> import('../views/Multimedia/GaleriaRecuerdo.vue')
     },
+    {
+      path:"/album-etapas-desarrollo/:id/:idAlbum",
+      name:"etapasDesarrollo",
+      component:()=> import('../views/Multimedia/etapasDesarrollo.vue')
+    },
   ]
 })
 

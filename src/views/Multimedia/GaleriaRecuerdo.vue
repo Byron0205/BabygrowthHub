@@ -15,7 +15,7 @@
       <div class="flexAlbumsContainer">
         <div class="flexColumGallery">
           <div>
-            <button class="btnAlbum albumeEtapaDesarrollo">
+            <button class="btnAlbum albumeEtapaDesarrollo" @click="etapasDesarrollo(this.idBebe, 1)">
               Etapas del desarrollo
             </button>
           </div>
@@ -66,6 +66,9 @@ export default {
         this.$router.push("/login");
       }
     },
+    etapasDesarrollo(idBebe, idAlbum){
+      this.$router.push(`/album-etapas-desarrollo/${idBebe}/${idAlbum}`);
+    }
   },
   mounted() {
     this.checkUserSession();
