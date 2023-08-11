@@ -1,21 +1,37 @@
-.img-boy{
-    position: absolute;
-    bottom: 0;
+.img-boy {
+    display: none;
 
-    @include respond-to(tv){
+    @include respond-to(desktop) {
+        display: block;
+        position: absolute;
+        bottom: 0;
+    }
+
+
+    @include respond-to(tv) {
         height: 40%;
     }
 }
 
-.img-cloud-bg{
-    position: absolute;
-    top: 250px;
-    left:0;
-    width: 100%;
-    height: 400px;
-    z-index: 0;
+.flex{
+    display: flex;
+    gap: 4px;
+}
 
-    @include respond-to(tv){
+.img-cloud-bg {
+    display: none;
+
+    @include respond-to(desktop) {
+        display: block;
+        position: absolute;
+        top: 250px;
+        left: 0;
+        width: 100%;
+        height: 400px;
+        z-index: 0;
+    }
+
+    @include respond-to(tv) {
         width: 100%;
         height: 440px;
         top: 280px;
@@ -23,16 +39,17 @@
     }
 }
 
-.form-register{
+.form-register {
     /* margin-top: -15px; */
     grid-column: 2/4;
-    grid-row: 1/3 ;
+    grid-row: 1/3;
     align-items: flex-start;
     justify-content: flex-start;
     z-index: 1;
 
 }
-.title-register{
+
+.title-register {
     grid-column: 1/3;
     grid-row: 1/2;
     color: $lb-2;
@@ -43,21 +60,25 @@
     text-transform: uppercase;
 }
 
-.submit-register{
+.submit-register {
     width: 80%;
     font-size: 20px;
     background-color: $lb-3;
     border-radius: 36px;
 }
 
-.width-50{
-    width: 50%;
+.width-50 {
+    width: 100%;
 
-    @include respond-to(tv){
+    @include respond-to(desktop){
+        width: 50%;
+    }
+
+    @include respond-to(tv) {
         width: 50%;
     }
 }
 
-.flex-register{
-    gap:10px;
+.flex-register {
+    gap: 10px;
 }

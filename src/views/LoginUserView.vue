@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container-login">
     <div class="container-img-login">
       <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-espacio.png" alt="">
       <img class="img-padres-2" src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/img-padre.png" alt="">
