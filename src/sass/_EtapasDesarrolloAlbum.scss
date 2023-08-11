@@ -25,6 +25,11 @@
   padding: 1rem;
 }
 
+
+.galleryContent:hover {
+  border: dashed;
+}
+
 .galleryItem {
   position: relative;
   overflow: hidden;

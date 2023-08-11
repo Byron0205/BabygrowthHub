@@ -32,7 +32,7 @@
     <div
       v-for="(multi, index) in filteredMultimediaType"
       :key="multi.IDMultimedia"
-      class="galleryItem"
+      class="galleryItem galleryContent"
       :style="getSequentialColor(index)"
     >
       <div class="titleMultimedia">
