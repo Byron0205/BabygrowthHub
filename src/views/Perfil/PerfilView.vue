@@ -43,7 +43,7 @@
             <label for="">Selecciona uno de tus tesoros para:</label>
             <button
             v-if="selectedSon && (profileData.ROL === 'Padre' || profileData.ROL === 'Madre') && (getSelectedSonRole() === 'Padre' || getSelectedSonRole() === 'Madre')" 
-            class="btn-galery">Galería del recuerdo</button>
+            class="btn-galery" @click="verGaleriaRecuerdo">Galería del recuerdo</button>
 
             <button class="btn-expedient"
               v-if="selectedSon && (profileData.ROL === 'Padre' || profileData.ROL === 'Madre') && (getSelectedSonRole() === 'Padre' || getSelectedSonRole() === 'Madre')"
@@ -189,6 +189,9 @@ export default {
     },
     verAdministrativePanel() {
       this.$router.push("/admin-panel-family/" + this.selectedSon);
+    },
+    verGaleriaRecuerdo() {
+      this.$router.push("/galeria-recuerdo/" + this.selectedSon + "/"+this.selectedNameSon);
     },
     fetchProfileData() {
       axios

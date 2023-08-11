@@ -9,7 +9,7 @@
     </div>
     <div class="flexGalleryItem">
       <div>
-        <p class="titleGallery">Galería de Recuerdos</p>
+        <p class="titleGallery">Galería Recuerdos de <span style="color: #ff6c19;"> {{ nombreBebe }} </span></p>
       </div>
 
       <div class="flexAlbumsContainer">
@@ -50,3 +50,27 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      idBebe: "",
+      nombreBebe: "",
+    };
+  },
+  methods: {
+    checkUserSession() {
+      const sessionValue = localStorage.getItem("session");
+      if (sessionValue === "0" || sessionValue === undefined) {
+        this.$router.push("/login");
+      }
+    },
+  },
+  mounted() {
+    this.checkUserSession();
+    this.idBebe = this.$route.params.id;
+    this.nombreBebe = this.$route.params.nombreBebe;
+  },
+};
+</script>

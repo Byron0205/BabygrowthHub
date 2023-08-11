@@ -113,7 +113,7 @@ const router = createRouter({
       component:()=> import('../views/PreguntasView.vue')
     },
     {
-      path:"/galeria-recuerdo",
+      path:"/galeria-recuerdo/:id/:nombreBebe",
       name:"galeriaRecuerdo",
       component:()=> import('../views/Multimedia/GaleriaRecuerdo.vue')
     },
