@@ -118,6 +118,7 @@
     width: 100%;
     height: 45px;
     border-radius: 15px;
+    border: 1px dashed #4f439a;
     border-color: rgba(92, 79, 170, 0.1);
     background: rgba(92, 79, 170, 0.1);
     color: #5c4faa;
@@ -285,8 +286,9 @@
   height: 100%;
 }
 
+
 .input-modify[readonly] {
-  border: 1px solid transparent;
+  border: 1px dashed #4f439a;
   background-color: #f0f0f0;
 }
 
@@ -522,13 +524,26 @@
     max-width: 100%;
     
   }
+
+  .modify,
+  .input-modify[readonly],
+  .input-modify{
+    max-width: 80%;
+  }
   
+  .son-information-container,
+  .son-information,
+  .personal-information
+  {
+    text-align: center;
+    margin-left: auto;
+    margin-right:  auto;
+  }
 
   .personal-information-container,
   .son-information-container,
   .administrative-panel {
     width: 100%;
-    margin: 0;
     margin-left: auto;
     margin-right:  auto;
   }
