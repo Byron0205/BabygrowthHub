@@ -57,6 +57,12 @@
         >
       </li>
 
+      <li class="nav-munu-item" v-show="session && (rol === 1 || rol === 2)">
+        <router-link class="nav-link" to="/preguntas"
+          >Preguntas&Respuestas</router-link
+        >
+      </li>
+
       <li class="nav-munu-item" v-show="session && rol !== 0">
         <router-link v-if="!admin" class="nav-link" to="/perfil"
           >Perfil</router-link

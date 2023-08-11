@@ -107,6 +107,16 @@ const router = createRouter({
       name: "upmultimedia",
       component: ()=> import('../views/Multimedia/SubirMultimediaView.vue')
     },
+    {
+      path:"/preguntas",
+      name:"preguntas",
+      component:()=> import('../views/PreguntasView.vue')
+    },
+    {
+      path:"/galeria-recuerdo",
+      name:"galeriaRecuerdo",
+      component:()=> import('../views/Multimedia/GaleriaRecuerdo.vue')
+    },
   ]
 })
 

@@ -92,16 +92,7 @@
   width: 100%;
 }
 
-.header {
-  background-color: #ffff;
-  height: 100px;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  text-align: center;
-  z-index: 1;
-}
+
 
 .nav {
   color: #e24a75;
@@ -163,9 +154,6 @@
 
 /* Estilos para pantallas más pequeñas */
 @media (max-width: 1280px) {
-  .header {
-    height: auto;
-  }
   .nav {
     padding-left: 0;
   }
@@ -182,9 +170,9 @@
     background-color: #faf9ff;
     padding: 0;
     width: 100%;
-    top: 190px;
-    height: calc(100%);
-    overflow-y: auto;
+    top: 180px;
+    height: 100%;
+    
     right: 100%;
     transition: right 0.3s;
   }
@@ -211,11 +199,12 @@
 
   .nav-menu-visible {
     right: 0;
-    top: 190px;
+    top: 180px;
   }
 
   .container-img {
     width: 100%;
+    height: 49px;
   }
 
   .img-logo {
