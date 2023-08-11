@@ -107,7 +107,7 @@ export default {
       return new Date(date).toLocaleDateString(undefined, options);
     },
     obtenerMultimediaEtapas() {
-      const url = `http://localhost:3000/recuperar-multimedia/${this.idBebe}/${this.idAlbum}`;
+      const url = `https://tiusr3pl.cuc-carrera-ti.ac.cr/recuperar-multimedia/${this.idBebe}/${this.idAlbum}`;
       axios
         .get(url)
         .then((response) => {
