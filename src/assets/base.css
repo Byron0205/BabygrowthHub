@@ -3547,6 +3547,132 @@ footer {
     border-radius: 20px;
   }
 }
+.galleryTitle {
+  color: #4f4785;
+  text-align: center;
+  font-family: "Baloo 2";
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.galleryParagraph {
+  color: #253962;
+  text-align: center;
+  font-family: "Baloo 2";
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.gridGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.galleryItem {
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  border-radius: 30px;
+}
+
+.galleryMultimediaContainer {
+  padding: 1rem;
+}
+
+.galleryMultimedia {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.titleMultimedia {
+  text-align: center;
+  color: #253962;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.infoMultimedia {
+  font-size: 1.3rem;
+  text-align: center;
+  color: #253962;
+  font-family: "Baloo 2";
+}
+
+/* Para navbar de opciones*/
+.navbarGallery {
+  margin-top: 1.5rem;
+  width: 80%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(121, 108, 208, 0.15);
+  border-radius: 15px 15px 0px 0px;
+  justify-content: center;
+}
+
+.ageOptionsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.ageOption {
+  width: 10rem;
+  height: 4rem;
+  cursor: pointer;
+  color: #5C4FAA;
+  font-family: "Baloo 2";
+  font-size: 1.5rem;
+  font-weight: 600;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.ageOption.selected {
+  color: #FFF;
+  border-radius: 15px 15px 0px 0px;
+  background-color: rgba(121, 108, 208, 0.9);
+}
+
+.audioMultimediaContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrar horizontalmente */
+  text-align: center; /* Centrar el contenido de texto */
+}
+
+@media (max-width: 768px) {
+  .gridGallery {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .galleryTitle {
+    font-size: 1.2rem;
+  }
+  .galleryParagraph {
+    font-size: 1rem;
+    text-align: justify;
+  }
+  .ageOptionsContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .ageOption {
+    width: 100%;
+    height: 3rem;
+    font-size: 1rem;
+  }
+}
 html {
   box-sizing: border-box;
   margin: 0;
