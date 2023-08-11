@@ -25,7 +25,7 @@
         </div>
 
         <div class="flexColumGallery">
-          <button class="btnAlbum albumUltrasonidos">Ultrasonidos</button>
+          <button class="btnAlbum albumUltrasonidos" @click="ultrasonidos(this.idBebe, 2)">Ultrasonidos</button>
         </div>
 
         <div class="flexColumGallery">
@@ -71,6 +71,9 @@ export default {
     },
     albumAnnio(idBebe, idAlbum){
       this.$router.push(`/album-por-anio/${idBebe}/${idAlbum}`);
+    },
+    ultrasonidos(idBebe, idAlbum){
+      this.$router.push(`/album-ultrasonidos/${idBebe}/${idAlbum}`);
     }
   },
   mounted() {

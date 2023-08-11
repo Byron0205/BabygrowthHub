@@ -127,6 +127,11 @@ const router = createRouter({
       name:"albumAnnio",
       component:()=> import('../views/Multimedia/porAnnio.vue')
     },
+    {
+      path:"/album-ultrasonidos/:id/:idAlbum",
+      name:"albumUltrasonidos",
+      component:()=> import('../views/Multimedia/ultrasonidos.vue')
+    },
   ]
 })
 

@@ -3712,6 +3712,38 @@ footer {
   outline: none;
 }
 
+.galleryContentUltrasonidos {
+  background: rgba(37, 57, 98, 0.05);
+  color: #253962;
+}
+
+.galleryContentUltrasonidos:hover {
+  border: dashed;
+}
+
+.ultrasonidosTitleContainer {
+  background: linear-gradient(270deg, rgba(121, 108, 208, 0.05) 0%, rgba(254, 93, 55, 0.05) 99.99%, rgba(121, 108, 208, 0) 100%);
+  border: 2px dashed transparent;
+  -o-border-image: linear-gradient(270deg, rgba(121, 108, 208, 0.05) 0%, rgba(254, 93, 55, 0.05) 99.99%, rgba(121, 108, 208, 0) 100%);
+     border-image: linear-gradient(270deg, rgba(121, 108, 208, 0.05) 0%, rgba(254, 93, 55, 0.05) 99.99%, rgba(121, 108, 208, 0) 100%);
+  border-image-slice: 1;
+}
+
+.ultrasonidosTitle {
+  color: #fa5d3b;
+  text-align: center;
+  font-family: "Baloo 2";
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+@media (max-width: 768px) {
+  .ultrasonidosTitle {
+    font-size: 1rem;
+  }
+}
 html {
   box-sizing: border-box;
   margin: 0;
