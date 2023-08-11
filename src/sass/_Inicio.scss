@@ -1,4 +1,3 @@
-
 .stats-title {
     color: #253962;
     font-size: 30px;
@@ -9,7 +8,7 @@
     margin-left: 160px;
 }
 
-.user-name{
+.user-name {
     margin: -1px auto;
     max-width: 90%;
     color: #253962;
@@ -20,7 +19,7 @@
     line-height: normal;
     text-align: center;
 
-    .name{
+    .name {
         color: $letter-2;
     }
 }
@@ -34,10 +33,10 @@
 .card-dream,
 .card-height,
 .card-weight {
-    text-align: center; 
+    text-align: center;
 }
 
-.card-dream{
+.card-dream {
     margin-right: 20px;
     width: 228px;
     height: 287px;
@@ -45,7 +44,7 @@
     border-radius: 40px;
     background: rgba(121, 108, 208, 0.20);
 
-    h2{
+    h2 {
         color: #796CD0;
         font-size: 33px;
         font-family: 'Baloo 2';
@@ -53,7 +52,8 @@
         font-weight: 800;
         line-height: normal;
     }
-    p{
+
+    p {
         color: #796CD0;
         text-align: center;
         font-size: 20px;
@@ -64,15 +64,15 @@
     }
 }
 
-.card-height{
+.card-height {
     margin-right: 20px;
     width: 228px;
     height: 287px;
     flex-shrink: 0;
     border-radius: 40px;
     background: #FFF3D8;
-    
-    h2{
+
+    h2 {
         color: #FCB510;
         font-size: 33px;
         font-family: 'Baloo 2';
@@ -80,7 +80,8 @@
         font-weight: 700;
         line-height: normal;
     }
-    p{
+
+    p {
         color: #FCB510;
         text-align: center;
         font-size: 20px;
@@ -90,11 +91,13 @@
         line-height: normal;
     }
 }
+
 .custom-icon {
     margin-top: 20px;
     font-size: 64px;
 }
-.card-weight{
+
+.card-weight {
     margin-right: 20px;
     width: 228px;
     height: 287px;
@@ -102,8 +105,8 @@
     border-radius: 40px;
     background: rgba(181, 238, 255, 0.50);
     position: relative;
-    
-    h2{
+
+    h2 {
         color: #69DCFF;
         font-size: 33px;
         font-family: 'Baloo 2';
@@ -112,7 +115,7 @@
         line-height: normal;
     }
 
-    p{
+    p {
         color: #69DCFF;
         text-align: center;
         font-size: 20px;
@@ -127,12 +130,17 @@
         height: 98px;
         position: absolute;
         top: 0;
-        right: 0;
+        right: 28px;
         transform: translate(50%, -50%);
+
+        @include respond-to(desktop) {
+            right: 0;
+        }
+
     }
 }
 
-.container-inicio{
+.container-inicio {
     display: flex;
     gap: 25px;
     margin: 0 auto;
@@ -160,14 +168,14 @@
     .image-bottom {
         /* position: relative;
         z-index: 0; */
-        
+
         object-fit: contain;
         width: 100%;
         height: 100%;
     }
 }
 
-.text-card{
+.text-card {
     margin-left: 80px;
     display: flex;
     width: 802px;

@@ -604,14 +604,19 @@ footer {
 }
 
 .title-register {
-  grid-column: 1/3;
-  grid-row: 1/2;
+  font-size: 40px;
   color: #479DD8;
   font-family: "baloo 2", cursive;
   font-weight: 700;
-  font-size: 50px;
   line-height: normal;
   text-transform: uppercase;
+}
+@media (min-width: 968px) {
+  .title-register {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    font-size: 50px;
+  }
 }
 
 .submit-register {
@@ -674,6 +679,8 @@ footer {
 
 .age-btn-container {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-age {
@@ -2444,8 +2451,13 @@ footer {
   height: 98px;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 28px;
   transform: translate(50%, -50%);
+}
+@media (min-width: 968px) {
+  .card-weight img {
+    right: 0;
+  }
 }
 
 .container-inicio {

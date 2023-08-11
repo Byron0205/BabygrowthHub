@@ -13,7 +13,7 @@
     }
 }
 
-.flex{
+.flex {
     display: flex;
     gap: 4px;
 }
@@ -50,14 +50,19 @@
 }
 
 .title-register {
-    grid-column: 1/3;
-    grid-row: 1/2;
+    font-size: 40px;
     color: $lb-2;
     font-family: "baloo 2", cursive;
     font-weight: 700;
-    font-size: 50px;
     line-height: normal;
     text-transform: uppercase;
+
+    @include respond-to(desktop) {
+        grid-column: 1/3;
+        grid-row: 1/2;
+        font-size: 50px;
+    }
+
 }
 
 .submit-register {
@@ -70,7 +75,7 @@
 .width-50 {
     width: 100%;
 
-    @include respond-to(desktop){
+    @include respond-to(desktop) {
         width: 50%;
     }
 
