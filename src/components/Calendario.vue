@@ -57,15 +57,15 @@
       </table>
 
       <!-- Lista de eventos -->
-      <div class="selectedDayEvents">
-        <h3>Eventos del día {{ formatDate(selectedDate) }}</h3>
-        <button @click="isNewEventPopupOpen = true">Agregar evento</button>
+      <div v-if="ismobileView" class="selectedDayEvents">
+        <h3 class="titleEventsMobile">Eventos del día {{ formatDate(selectedDate) }}</h3>
+        <button class="btnTaskMobile" @click="isNewEventPopupOpen = true"><i class="fas fa-plus"></i> Agregar evento</button>
         <ul>
           <li v-for="event in selectedDayEvents" :key="event.IDActividad" class="selectedDayEvent" :style="{ backgroundColor: event.CategoriaColor }">
             <div class="selectedDayEventInfo">
               <div class="selectedDayEventTitle">{{ event.Titulo }}</div>
             </div>
-            <button @click="viewEvent(event)">Ver detalles</button>
+            <button class="btnTaskMobile" @click="viewEvent(event)">Ver detalles</button>
           </li>
         </ul>
       </div>
@@ -426,32 +426,3 @@ export default {
 };
 </script>
 
-<style>
-.selectedDayEvents {
-  margin-top: 20px;
-  border-top: 1px solid #ccc;
-  padding-top: 10px;
-}
-
-.selectedDayEvent {
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  background-color: #f0f0f0;
-}
-
-.selectedDayEventColor {
-  width: 10px;
-  height: 100%;
-}
-
-.selectedDayEventTitle {
-  margin-left: 10px;
-}
-
-.selectedDayEvent button {
-  margin-left: auto;
-}
-</style>

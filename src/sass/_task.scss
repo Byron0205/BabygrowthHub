@@ -14,9 +14,14 @@
 
 .info-task{
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
     margin: 0 10px;
     margin-bottom: 15px;
+
+    @include respond-to(tablet){
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 .description-task{

@@ -462,3 +462,54 @@
   line-height: normal;
   text-transform: uppercase;
 }
+
+/* btn task mobile */
+
+.btnTaskMobile{
+  background-color: #4f439a;
+  color: #f8f8fd;
+  border: none;
+  padding: 10px;
+  border-radius: 15px;
+  font-family: 'Baloo 2';
+
+  &:hover{
+    cursor: pointer;
+
+  }
+}
+
+.titleEventsMobile{
+  color: $letter-2 ;
+}
+
+.selectedDayEvents {
+  font-family: 'Baloo 2';
+  color: $letter-3;
+  font-size: 18px;
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.selectedDayEvent {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+}
+
+.selectedDayEventColor {
+  width: 10px;
+  height: 100%;
+}
+
+.selectedDayEventTitle {
+  margin-left: 10px;
+}
+
+.selectedDayEvent button {
+  margin-left: auto;
+}

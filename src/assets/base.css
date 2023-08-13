@@ -1430,6 +1430,54 @@ footer {
   text-transform: uppercase;
 }
 
+/* btn task mobile */
+.btnTaskMobile {
+  background-color: #4f439a;
+  color: #f8f8fd;
+  border: none;
+  padding: 10px;
+  border-radius: 15px;
+  font-family: "Baloo 2";
+}
+.btnTaskMobile:hover {
+  cursor: pointer;
+}
+
+.titleEventsMobile {
+  color: #e24a75;
+}
+
+.selectedDayEvents {
+  font-family: "Baloo 2";
+  color: #fff2f5;
+  font-size: 18px;
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.selectedDayEvent {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+}
+
+.selectedDayEventColor {
+  width: 10px;
+  height: 100%;
+}
+
+.selectedDayEventTitle {
+  margin-left: 10px;
+}
+
+.selectedDayEvent button {
+  margin-left: auto;
+}
+
 .title-container {
   width: 100%;
   text-align: center;
@@ -2386,9 +2434,15 @@ footer {
 
 .info-task {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   margin: 0 10px;
   margin-bottom: 15px;
+}
+@media (min-width: 768px) {
+  .info-task {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .description-task {
