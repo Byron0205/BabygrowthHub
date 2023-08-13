@@ -207,6 +207,7 @@ export default {
   methods: {
     deleteDiagnostico(id, type) {
       if (type == "diagnostico") {
+        console.log(`ID Diagnostico: ${id}`)
         const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/eliminar-diagnostico/" + id;
         axios
           .get(url)
