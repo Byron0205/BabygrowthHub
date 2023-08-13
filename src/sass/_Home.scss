@@ -29,7 +29,7 @@
   color: $letter-1;
 }
 
-.homeImgContainer{
+.homeImgContainer {
   flex: 1;
   max-width: 40%;
 }
@@ -54,27 +54,75 @@
   font-size: 1.3rem;
 }
 
-.homeDecoration{
+.homeDecoration {
   position: relative;
   padding: 1rem;
 }
 
-.homeSpaceship{
+.homeSpaceship {
   position: absolute;
   top: -5rem;
   left: -3rem;
 }
 
-.homeBear{
+.homeBear {
   position: absolute;
   top: -30rem;
   left: 50rem;
   width: 7rem;
 }
 
-.homeSun{
+.homeSun {
   position: absolute;
   top: 5rem;
   left: 120rem;
   width: 7rem;
+}
+
+@media (max-width: 768px) {
+  .homeFlexContainer {
+    padding: 1rem;
+    flex-direction: column;
+  }
+
+  .homeText {
+    flex: 1;
+    padding: 0rem;
+    text-align: justify;
+  }
+
+  .homeParagraph {
+    font-size: 1rem;
+  }
+  .homeSpaceship {
+    position: absolute;
+    top: -3rem;
+    left: 0.5rem;
+    width: 100%;
+  }
+
+  .homeDecoration {
+    width: 10%;
+  }
+
+  .homeLogo {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .homeLink {
+    font-size: 0.9rem;
+  }
+
+  .homeContainerLinks {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+
+  .homeImgContainer {
+    flex: 1;
+    margin-top: 1rem;
+    max-width: 100%;
+  }
 }

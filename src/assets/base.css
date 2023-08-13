@@ -158,6 +158,12 @@
 
 /* Estilos para pantallas más pequeñas */
 @media (max-width: 1280px) {
+  /*Estilo para efecto sticky*/
+  .header-nav-hamburguesa {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999;
+  }
   .nav {
     padding-left: 0;
   }
@@ -756,6 +762,46 @@ footer {
   width: 7rem;
 }
 
+@media (max-width: 768px) {
+  .homeFlexContainer {
+    padding: 1rem;
+    flex-direction: column;
+  }
+  .homeText {
+    flex: 1;
+    padding: 0rem;
+    text-align: justify;
+  }
+  .homeParagraph {
+    font-size: 1rem;
+  }
+  .homeSpaceship {
+    position: absolute;
+    top: -3rem;
+    left: 0.5rem;
+    width: 100%;
+  }
+  .homeDecoration {
+    width: 10%;
+  }
+  .homeLogo {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .homeLink {
+    font-size: 0.9rem;
+  }
+  .homeContainerLinks {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+  .homeImgContainer {
+    flex: 1;
+    margin-top: 1rem;
+    max-width: 100%;
+  }
+}
 .NSflexContainer {
   margin-top: 2rem;
   display: flex;
@@ -764,7 +810,7 @@ footer {
 
 .NSImgContainer {
   flex: 1;
-  max-width: 40%;
+  width: 40%;
 }
 
 .NSImg {
@@ -838,6 +884,43 @@ footer {
   line-height: normal;
 }
 
+@media (max-width: 768px) {
+  .NSflexContainer {
+    padding: 1rem;
+    flex-direction: column;
+  }
+  .NSText {
+    padding: 0rem;
+    order: 1;
+  }
+  .NSImgContainer {
+    margin-top: 1rem;
+    order: 2;
+    width: 100%;
+    display: none;
+  }
+  .NSTitle {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .NSParagraph {
+    font-size: 1rem;
+  }
+  .NSInput {
+    width: 90%;
+    padding: 0.7rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    border: solid 1px #253962;
+  }
+  .NSResultContainer {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .NSResult {
+    font-size: 1rem;
+  }
+}
 .sliderContainer {
   margin-top: 2rem;
   display: flex;
@@ -853,7 +936,8 @@ footer {
 
 .sliderImgContainer {
   flex: 1;
-  max-width: 40%;
+  max-width: 100%;
+  padding: 1rem;
 }
 
 .sliderImage {
@@ -898,6 +982,40 @@ footer {
   color: #6055A4;
 }
 
+@media (max-width: 767px) {
+  .sliderContainer {
+    margin: 1rem;
+    padding: 0rem;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 2px 2px 15px 0px rgba(0, 0, 0, 0.25);
+  }
+  .sliderItem {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem;
+  }
+  .sliderContent {
+    padding: 0rem;
+    text-align: center;
+  }
+  .sliderText {
+    font-size: 1rem;
+    text-align: justify;
+  }
+  .sliderTitle {
+    font-size: 1.5rem;
+  }
+  .sliderImageContainer {
+    max-width: 100%;
+  }
+  .sliderImage {
+    width: 100%;
+  }
+  .sliderButtonIcon {
+    font-size: 2rem;
+  }
+}
 .containterCalendar {
   font-family: "Baloo 2";
 }
