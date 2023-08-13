@@ -1,17 +1,20 @@
 <template>
     <div class="flex-table-menu">
-        <menu-lateral>
+        <MenuLateral>
             <div class="item-lateral">
-                <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-reloj.svg" alt="reloj">
-                <router-link class="link-menu" to="/actividades/seguimiento">Seguidor</router-link>
+                <router-link class="link-menu" to="/actividades/seguimiento">
+                    <span class="link-item-text">
+                        <i class="far fa-clock"></i> Seguidor</span>
+                </router-link>
             </div>
             <div class="item-lateral">
-                <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-calendario.svg" alt="reloj">
-                <router-link class="link-menu" to="/actividades/calendario">Calendario</router-link>
+                <router-link class="link-menu" to="/actividades/calendario">
+                    <span class="link-item-text"><i class="fa-regular fa-calendar"></i> Calendario</span>
+                </router-link>
             </div>
-        </menu-lateral>
+        </MenuLateral>
         <Tabla titulo="Hoy dia">
-            <taskviewer/>
+            <taskviewer />
         </Tabla>
     </div>
 </template>
@@ -21,18 +24,18 @@ import Tabla from '../components/Tabla.vue';
 import MenuLateral from '../components/MenuLateral.vue';
 import taskviewer from '../components/taskviewer.vue';
 export default {
-    components:{
+    components: {
         Tabla,
         MenuLateral,
         taskviewer
     },
-    mounted(){
+    mounted() {
         this.checkUserSession();
-        if(localStorage.getItem('session') !== '1'){
+        if (localStorage.getItem('session') !== '1') {
             this.$router.push('/login')
         }
     },
-    methods:{
+    methods: {
         checkUserSession() {
             const sessionValue = localStorage.getItem('session');
             if (sessionValue === '0' || sessionValue === undefined) {

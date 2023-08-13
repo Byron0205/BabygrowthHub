@@ -61,9 +61,8 @@
         <h3>Eventos del día {{ formatDate(selectedDate) }}</h3>
         <button @click="isNewEventPopupOpen = true">Agregar evento</button>
         <ul>
-          <li v-for="event in selectedDayEvents" :key="event.IDActividad" class="selectedDayEvent">
+          <li v-for="event in selectedDayEvents" :key="event.IDActividad" class="selectedDayEvent" :style="{ backgroundColor: event.CategoriaColor }">
             <div class="selectedDayEventInfo">
-              <div class="selectedDayEventColor" :style="{ backgroundColor: event.CategoriaColor }"></div>
               <div class="selectedDayEventTitle">{{ event.Titulo }}</div>
             </div>
             <button @click="viewEvent(event)">Ver detalles</button>
@@ -223,7 +222,7 @@ export default {
       IDAdulto: '',
       selectedSon: '',
 
-      ismobileView: window.innerWidth <= 768, // Determinar si la vista es de teléfono
+      ismobileView: window.innerWidth <= 1024, // Determinar si la vista es de teléfono
       selectedDayEvents: []
     };
   },

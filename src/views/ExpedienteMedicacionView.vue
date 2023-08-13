@@ -11,12 +11,10 @@
       <div class="item-lateral">
         <router-link
           class="link-menu"
-          :to="'/expediente/medicacion/' + this.idBebe"
-        >
+          :to="'/expediente/medicacion/' + this.idBebe">
           <span class="link-item-text">
-            <i class="fa-solid fa-capsules"></i> Medicación</span
-          ></router-link
-        >
+            <i class="fa-solid fa-capsules"></i> Medicación</span>
+        </router-link>
       </div>
     </MenuLateral>
 
