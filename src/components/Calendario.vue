@@ -22,6 +22,7 @@
         <img class="img" src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Efecto-nube.png"
           alt="fondo nubes" />
       </div>
+
       <table class="tableCalendar">
         <thead>
           <tr>
@@ -41,15 +42,34 @@
                 <span class="calendarDay" @click="selectDate(day)">{{
                   day.day
                 }}</span>
-                <div v-for="event in getEventsForDate(day.date)" :key="event.IDActividad" class="calendarEvent"
-                  :style="{ backgroundColor: event.CategoriaColor }" @click="viewEvent(event)">
-                  {{ event.Titulo }}
+                <!-- --------------------------------------------------------------------------------------- -->
+                <div v-if="!ismobileView">
+                  <div v-for="event in getEventsForDate(day.date)" :key="event.IDActividad" class="calendarEvent"
+                    :style="{ backgroundColor: event.CategoriaColor }" @click="viewEvent(event)">
+                    {{ event.Titulo }}
+                  </div>
                 </div>
+                <!-- --------------------------------------------------------------------------------------- -->
               </div>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <!-- Lista de eventos -->
+      <div class="selectedDayEvents">
+        <h3>Eventos del día {{ formatDate(selectedDate) }}</h3>
+        <button @click="isNewEventPopupOpen = true">Agregar evento</button>
+        <ul>
+          <li v-for="event in selectedDayEvents" :key="event.IDActividad" class="selectedDayEvent">
+            <div class="selectedDayEventInfo">
+              <div class="selectedDayEventColor" :style="{ backgroundColor: event.CategoriaColor }"></div>
+              <div class="selectedDayEventTitle">{{ event.Titulo }}</div>
+            </div>
+            <button @click="viewEvent(event)">Ver detalles</button>
+          </li>
+        </ul>
+      </div>
 
       <div class="createEventContainer" v-if="isNewEventPopupOpen">
         <div class="createEventContent">
@@ -98,10 +118,10 @@
                 </option>
               </select>
             </div>
-              <div class="newEventFlexContainer">
-                <label class="newEventLabel" for="eventTime">Seleccione una hora</label>
-                <input class="newEventSelect" type="time" id="eventTime" v-model="eventTime" />
-              </div>
+            <div class="newEventFlexContainer">
+              <label class="newEventLabel" for="eventTime">Seleccione una hora</label>
+              <input class="newEventSelect" type="time" id="eventTime" v-model="eventTime" />
+            </div>
 
             <div class="newEventFlexContainer row">
               <button class="newEventBnt save" @click="saveEvent">Guardar</button>
@@ -201,7 +221,10 @@ export default {
       registeredBabies: [],
       selectedEvent: null,
       IDAdulto: '',
-      selectedSon: ''
+      selectedSon: '',
+
+      ismobileView: window.innerWidth <= 768, // Determinar si la vista es de teléfono
+      selectedDayEvents: []
     };
   },
   computed: {
@@ -259,7 +282,11 @@ export default {
       if (day.date) {
         this.selectedDate = day.date;
         this.eventDate = format(day.date, "dd/MM/yyyy");
-        this.isNewEventPopupOpen = true;
+        this.selectedDayEvents = this.getEventsForDate(this.selectedDate); // Asignar los eventos del día seleccionado
+        if (!this.ismobileView) {
+          this.isNewEventPopupOpen = true;
+        }
+
       }
     },
     saveEvent() {
@@ -399,3 +426,33 @@ export default {
   },
 };
 </script>
+
+<style>
+.selectedDayEvents {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.selectedDayEvent {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+}
+
+.selectedDayEventColor {
+  width: 10px;
+  height: 100%;
+}
+
+.selectedDayEventTitle {
+  margin-left: 10px;
+}
+
+.selectedDayEvent button {
+  margin-left: auto;
+}
+</style>
