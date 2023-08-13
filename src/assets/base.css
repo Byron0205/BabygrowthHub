@@ -158,6 +158,12 @@
 
 /* Estilos para pantallas más pequeñas */
 @media (max-width: 1280px) {
+  /*Estilo para efecto sticky*/
+  .header-nav-hamburguesa {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 9999;
+  }
   .nav {
     padding-left: 0;
   }
@@ -314,13 +320,14 @@
     position: absolute;
     top: 210px;
     left: 0;
-    width: 100%;
+    width: 95%;
     height: auto;
     flex-shrink: 0;
     display: flex;
     flex-direction: row;
     padding: 0;
     margin: 0;
+    margin-left: 2.5%;
     border-radius: 15px;
   }
 }
@@ -816,6 +823,46 @@ footer {
   width: 7rem;
 }
 
+@media (max-width: 768px) {
+  .homeFlexContainer {
+    padding: 1rem;
+    flex-direction: column;
+  }
+  .homeText {
+    flex: 1;
+    padding: 0rem;
+    text-align: justify;
+  }
+  .homeParagraph {
+    font-size: 1rem;
+  }
+  .homeSpaceship {
+    position: absolute;
+    top: -3rem;
+    left: 0.5rem;
+    width: 100%;
+  }
+  .homeDecoration {
+    width: 10%;
+  }
+  .homeLogo {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .homeLink {
+    font-size: 0.9rem;
+  }
+  .homeContainerLinks {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+  .homeImgContainer {
+    flex: 1;
+    margin-top: 1rem;
+    max-width: 100%;
+  }
+}
 .NSflexContainer {
   margin-top: 2rem;
   display: flex;
@@ -824,7 +871,7 @@ footer {
 
 .NSImgContainer {
   flex: 1;
-  max-width: 40%;
+  width: 40%;
 }
 
 .NSImg {
@@ -898,6 +945,43 @@ footer {
   line-height: normal;
 }
 
+@media (max-width: 768px) {
+  .NSflexContainer {
+    padding: 1rem;
+    flex-direction: column;
+  }
+  .NSText {
+    padding: 0rem;
+    order: 1;
+  }
+  .NSImgContainer {
+    margin-top: 1rem;
+    order: 2;
+    width: 100%;
+    display: none;
+  }
+  .NSTitle {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .NSParagraph {
+    font-size: 1rem;
+  }
+  .NSInput {
+    width: 90%;
+    padding: 0.7rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    border: solid 1px #253962;
+  }
+  .NSResultContainer {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .NSResult {
+    font-size: 1rem;
+  }
+}
 .sliderContainer {
   margin-top: 2rem;
   display: flex;
@@ -913,7 +997,8 @@ footer {
 
 .sliderImgContainer {
   flex: 1;
-  max-width: 40%;
+  max-width: 100%;
+  padding: 1rem;
 }
 
 .sliderImage {
@@ -958,6 +1043,40 @@ footer {
   color: #6055A4;
 }
 
+@media (max-width: 767px) {
+  .sliderContainer {
+    margin: 1rem;
+    padding: 0rem;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 2px 2px 15px 0px rgba(0, 0, 0, 0.25);
+  }
+  .sliderItem {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem;
+  }
+  .sliderContent {
+    padding: 0rem;
+    text-align: center;
+  }
+  .sliderText {
+    font-size: 1rem;
+    text-align: justify;
+  }
+  .sliderTitle {
+    font-size: 1.5rem;
+  }
+  .sliderImageContainer {
+    max-width: 100%;
+  }
+  .sliderImage {
+    width: 100%;
+  }
+  .sliderButtonIcon {
+    font-size: 2rem;
+  }
+}
 .containterCalendar {
   font-family: "Baloo 2";
 }
@@ -3260,7 +3379,7 @@ footer {
     justify-content: center;
   }
   .description-MedicalData {
-    width: 80%;
+    width: 90%;
     font-size: 1rem;
   }
   .button-expediente {
@@ -3270,13 +3389,39 @@ footer {
     padding: 0.5rem;
   }
   .data-view-list {
-    width: 90%;
+    width: 95%;
     height: 218px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     padding: 4px;
+    border-radius: 15px;
     overflow: auto;
+  }
+  .viewMedicalData {
+    margin-top: 2rem;
+    border-top: dashed 2px #5c4fba;
+  }
+  .addAllergyContainer {
+    z-index: 9;
+  }
+  .addAllergyContent {
+    width: 80%;
+  }
+  .addAllergyTitle {
+    font-size: 1rem;
+  }
+  .addDiagnosticContainer {
+    z-index: 9;
+  }
+  .addDiagnosticContent {
+    width: 80%;
+  }
+  .addDiagnosticTitle {
+    font-size: 1rem;
+  }
+  .text-item-style {
+    font-size: 1rem;
   }
 }
 .text-info-adm {
@@ -3874,6 +4019,46 @@ footer {
   margin-top: 5.5rem;
 }
 
+@media (max-width: 768px) {
+  .button-medicina {
+    font-size: 1rem;
+    border-radius: 15px;
+    width: 10rem;
+    padding: 0.5rem;
+  }
+  .button-medicina.medicamento.agregar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .button-medicina.vacuna.agregar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .viewMedicalData.ocultar {
+    border-top: none;
+  }
+  .addVacunaContainer {
+    z-index: 9;
+  }
+  .addVacunaContent {
+    width: 80%;
+  }
+  .addVacunaTitle {
+    font-size: 1rem;
+  }
+  .addMedicamentoContainer {
+    z-index: 9;
+  }
+  .addMedicamentoContent {
+    width: 80%;
+  }
+  .addMedicamentoTitle {
+    font-size: 1rem;
+  }
+  .medicameto-imagen {
+    display: none;
+  }
+}
 .titleContainer {
   text-align: center;
 }

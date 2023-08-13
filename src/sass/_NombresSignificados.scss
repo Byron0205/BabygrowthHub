@@ -6,7 +6,7 @@
 
 .NSImgContainer {
   flex: 1;
-  max-width: 40%;
+  width: 40%;
 }
 
 .NSImg {
@@ -80,3 +80,46 @@
   line-height: normal;
 }
 
+@media (max-width: 768px) {
+  .NSflexContainer {
+    padding: 1rem;
+    flex-direction: column;
+  }
+
+  .NSText {
+    padding: 0rem;
+    order: 1;
+  }
+
+  .NSImgContainer {
+    margin-top: 1rem;
+    order: 2;
+    width: 100%;
+    display: none;
+  }
+
+  .NSTitle {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .NSParagraph {
+    font-size: 1rem;
+  }
+
+  .NSInput {
+    width: 90%;
+    padding: 0.7rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    border: solid 1px $letter-1;
+  }
+
+  .NSResultContainer{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .NSResult {
+    font-size: 1rem;
+  }
+}
