@@ -122,6 +122,16 @@ const router = createRouter({
       name:"etapasDesarrollo",
       component:()=> import('../views/Multimedia/etapasDesarrollo.vue')
     },
+    {
+      path:"/album-por-anio/:id/:idAlbum",
+      name:"albumAnnio",
+      component:()=> import('../views/Multimedia/porAnnio.vue')
+    },
+    {
+      path:"/album-ultrasonidos/:id/:idAlbum",
+      name:"albumUltrasonidos",
+      component:()=> import('../views/Multimedia/ultrasonidos.vue')
+    },
   ]
 })
 

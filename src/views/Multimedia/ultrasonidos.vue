@@ -1,42 +1,28 @@
 <template>
   <div>
-    <div class="galleryTitle">
-      <p>Explora el maravilloso viaje de desarrollo del bebé</p>
+    <div class="ultrasonidosTitleContainer">
+      <p class="ultrasonidosTitle">Celebra la vida desde el principio: Comparte tus ultrasonidos del bebé</p>
     </div>
 
     <div>
       <p class="galleryParagraph">
-        Adéntrate en un mundo de asombro y descubrimiento mientras exploras el
-        increíble viaje de desarrollo de tu bebé. Desde los primeros balbuceos
-        hasta los logros más sorprendentes, sumérgete en esta galería llena de
-        ternura y aprende junto a tu pequeño explorador.
+        Desde los primeros latidos del corazón hasta los primeros movimientos,
+        cada ultrasonido del bebé es una bendición. En nuestra plataforma,
+        puedes compartir y celebrar estos momentos preciosos. Comparte la magia
+        de la vida temprana y únete a otros padres en esta hermosa experiencia
+        de crecimiento y anticipación.
       </p>
-    </div>
-  </div>
-
-  <div class="navbarGallery">
-    <div class="ageOptionsContainer">
-      <div
-        class="ageOption"
-        v-for="multimedia in multimediaType"
-        :key="index"
-        :class="{ selected: selectedMultimediaType === multimedia }"
-        @click="selectMultimediaType(multimedia)"
-      >
-        {{ multimedia }}
-      </div>
     </div>
   </div>
 
   <div class="gridGallery">
     <div
-      v-for="(multi, index) in filteredMultimediaType"
+      v-for="(multi, index) in multimediaData"
       :key="multi.IDMultimedia"
-      class="galleryItem galleryContent"
-      :style="getSequentialColor(index)"
+      class="galleryItem galleryContentUltrasonidos"
     >
       <div class="titleMultimedia">
-        <p :style="getSequentialColor(index)">{{ multi.NombreRecuerdo }}</p>
+        <p>{{ multi.NombreRecuerdo }}</p>
       </div>
       <div class="galleryMultimediaContainer">
         <img
@@ -56,20 +42,17 @@
         </div>
 
         <div class="audioMultimediaContainer">
-          <audio
-            v-if="multi.TipoArchivo === 'audio'"
-            controls
-          >
+          <audio v-if="multi.TipoArchivo === 'audio'" controls>
             <source :src="multi.RutaArchivo" type="audio/mpeg" />
           </audio>
         </div>
       </div>
 
       <div class="infoMultimedia">
-        <p :style="getSequentialColor(index)">
+        <p>
           {{ formatDate(multi.FechaSubida) }}
         </p>
-        <p :style="getSequentialColor(index)">{{ multi.IDEtapa }}</p>
+        
       </div>
     </div>
   </div>
@@ -83,16 +66,6 @@ export default {
       idAlbum: "",
       idBebe: "",
       multimediaData: [],
-      backgroundColors: [
-        { background: "#f8f8fd", color: "#796cd0" },
-        { background: "#fff3d8", color: "#fcb510" },
-        { background: "#fff2f5", color: "#e24a75" },
-        { background: "#ffe9dd", color: "#ff6c19" },
-      ],
-      multimediaData: [],
-      multimediaType: ["Todos", "Imágenes", "Videos", "Audios"],
-      selectedMultimediaType: "",
-      filteredMultimediaType: [],
     };
   },
   methods: {
@@ -118,14 +91,6 @@ export default {
           console.error("Error al obtener los datos: " + err);
         });
     },
-    getSequentialColor(index) {
-      const colorIndex = index % this.backgroundColors.length;
-      const color = this.backgroundColors[colorIndex];
-      return {
-        backgroundColor: color.background,
-        color: color.color,
-      };
-    },
     selectMultimediaType(multimedia) {
       this.selectedMultimediaType = multimedia;
       this.filteredMultimediaType = "";
@@ -150,8 +115,6 @@ export default {
     this.checkUserSession();
     this.idBebe = this.$route.params.id;
     this.idAlbum = this.$route.params.idAlbum;
-
-    console.log(`${this.idBebe} | ${this.idAlbum}`);
 
     this.obtenerMultimediaEtapas();
   },

@@ -20,12 +20,12 @@
             </button>
           </div>
           <div>
-            <button class="btnAlbum albumPorAnio">Álbum por año</button>
+            <button class="btnAlbum albumPorAnio" @click="albumAnnio(this.idBebe, 1)">Álbum por año</button>
           </div>
         </div>
 
         <div class="flexColumGallery">
-          <button class="btnAlbum albumUltrasonidos">Ultrasonidos</button>
+          <button class="btnAlbum albumUltrasonidos" @click="ultrasonidos(this.idBebe, 2)">Ultrasonidos</button>
         </div>
 
         <div class="flexColumGallery">
@@ -68,6 +68,12 @@ export default {
     },
     etapasDesarrollo(idBebe, idAlbum){
       this.$router.push(`/album-etapas-desarrollo/${idBebe}/${idAlbum}`);
+    },
+    albumAnnio(idBebe, idAlbum){
+      this.$router.push(`/album-por-anio/${idBebe}/${idAlbum}`);
+    },
+    ultrasonidos(idBebe, idAlbum){
+      this.$router.push(`/album-ultrasonidos/${idBebe}/${idAlbum}`);
     }
   },
   mounted() {

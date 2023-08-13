@@ -2,23 +2,20 @@
   <div class="flex-table-menu">
     <MenuLateral>
       <div class="item-lateral">
-        <img
-          src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-Salud.svg"
-          alt="reloj"
-        />
         <router-link class="link-menu" :to="'/expediente/salud/' + this.idBebe"
-          >Salud</router-link
-        >
+          ><span class="link-item-text"
+            ><i class="fa-solid fa-user-doctor"></i> Salud</span
+          >
+        </router-link>
       </div>
       <div class="item-lateral">
-        <img
-          src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-beaker.svg"
-          alt="reloj"
-        />
         <router-link
           class="link-menu"
           :to="'/expediente/medicacion/' + this.idBebe"
-          >Medicación</router-link
+        >
+          <span class="link-item-text">
+            <i class="fa-solid fa-capsules"></i> Medicación</span
+          ></router-link
         >
       </div>
     </MenuLateral>
@@ -53,9 +50,11 @@
           <verDatosMedicamentos />
         </div>
         <div>
-          <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/Advertencia+actualizacion+expediente.png" class="medicacionImagenAdvertencia">
+          <img
+            src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/Advertencia+actualizacion+expediente.png"
+            class="medicacionImagenAdvertencia"
+          />
         </div>
-        
       </div>
     </div>
   </div>

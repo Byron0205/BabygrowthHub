@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-expediente-data">
         <form @submit.prevent="actualizarDatos" class="login form-register">
             <div class="input-container ic1">
                 <input v-model="DatosBebe.IDBebe" class="input" disabled type="text"
@@ -32,7 +32,7 @@
             <div class="input-container ic1">
                 <input v-model="DatosBebe.Sexo" class="input" disabled type="text" placeholder="">
                 <div class="cut"></div>
-                <label for="firstname" class="placeholder-expediente">Género</label>
+                <label for="firstname" class="placeholder-expediente">Género del bebe</label>
             </div>
             <div class="input-container">
                 <input v-model="DatosBebe.FechaNacimiento" class="input" disabled type="text" placeholder="">

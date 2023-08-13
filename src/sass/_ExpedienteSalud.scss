@@ -6,6 +6,7 @@
 }
 
 .container-expediente {
+  margin-top: 3rem;
   width: 100%;
 }
 
@@ -538,4 +539,57 @@
   width: 100%;
   justify-content: space-between;
   border-bottom: dashed 2px #e4547d;
+}
+
+@media (max-width:768px) {
+  .body-expediente {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .name {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .baby-name {
+    font-size: 1rem;
+  }
+
+  .title-expediente {
+    font-size: 1.5rem;
+    font-style: normal;
+  }
+  
+  .container-expediente-data{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .description-MedicalData {
+    width: 80%;
+    font-size: 1rem;
+  }
+
+  .button-expediente {
+    font-size: 1rem;
+    border-radius: 15px;
+    width: 10rem;
+    padding: 0.5rem;
+  }
+
+  .data-view-list {
+    width: 90%;
+    height: 218px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+  
+    overflow: auto;
+  }
 }
