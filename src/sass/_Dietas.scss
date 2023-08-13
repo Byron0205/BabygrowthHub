@@ -151,6 +151,7 @@
 
     .diet-container {
         width: 90%;
+        height: auto;
         margin: 20px auto;
     }
 
@@ -160,7 +161,6 @@
     }
 
     .img-container {
-        width: 100%;
         height: auto;
     }
 
@@ -173,10 +173,11 @@
         margin: 10px 0 0 20px;
     }
 
+
     .diet-text {
+        width: 80%;
         font-size: 14px;
-        margin: 10px 0 0 20px;
-        width: 100%;
+        margin: 0px 0 0 20px;
         height: auto;
     }
 
@@ -184,6 +185,7 @@
         width: 100%;
         height: auto;
         padding: 20px;
+        display:grid;
     }
 
     .navbar-diet {

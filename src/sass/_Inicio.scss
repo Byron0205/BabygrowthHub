@@ -203,6 +203,10 @@
         font-size: 24px;
         margin-left: 20px;
         text-align: center;
+
+        br{
+            display: none;
+        }
     }
 
     .cards-container {
@@ -213,14 +217,34 @@
     .card-dream,
     .card-height,
     .card-weight {
-        width: 100%;
-        max-width: 343px;
-        max-height: 225px;
-        margin: 20px auto;
+        width: 343px;
+        height: 61px;
+        margin: 10px auto;
+        display: flex;
+        justify-content: space-between;
+        font-size: 14px;
+
+        h2{
+            font-size: 16px;
+            margin: auto;
+        }
+    
+        p{
+            font-size: 16px;
+            margin: auto;
+        }
+
+        img {
+            width: 48px;
+            height: 48px;
+        }
+
     }
 
     .custom-icon {
-        font-size: 48px;
+        margin: auto;
+        margin-left: 20px;
+        font-size: 28px;
     }
 
     .container-inicio {
@@ -234,9 +258,11 @@
 
 
         .image-bottom {
-            width: 100%;
+            width: 80%;
             height: auto;
-            margin-top: 60px;
+            margin-top: 70px;
+            margin-left: auto;
+            margin-right: auto;
         }
     }
 
@@ -245,6 +271,6 @@
         width: 100%;
         max-width: 300px;
         font-size: 18px;
-        text-align: center;
+        text-align: justify;
     }
 }

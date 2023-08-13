@@ -17,7 +17,7 @@
                 <input type="file" class="upload-input" ref="fileInput" @change="onFileChange" style="display: none">
                 <p class="date">{{ formattedDate }}</p>
                 <p v-if="uploadedFile" class="drag-text">{{ uploadedFile.name }}</p>
-                <p v-else class="drag-text">Arrastre y suelte la imagen (jpg,png) / video (mp4) / <br>audio (mp3) o haga clic para seleccionar un archivo</p>
+                <p v-else class="drag-text">Arrastre imagen (jpg, png), video (mp4) o audio (mp3) o haga clic para elegir archivo.</p>
                 <i v-if="uploadedFile" @click="deleteUploadedFile" class="trash-icon fas fa-trash"
                     style="color: #4F439A;"></i>
             </div>
@@ -177,7 +177,7 @@ export default {
                     TipoArchivo: fileType,
                     RutaArchivo: '',
                     IDAlbum: this.selectedAlbum,
-                    IDBebe: 35118,
+                    IDBebe: this.selectedChild,
                 };
 
                 formData.append('data', JSON.stringify(data));
