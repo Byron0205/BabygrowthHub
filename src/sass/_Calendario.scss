@@ -12,10 +12,14 @@
 
 .mes {
   color: $letter-2;
-  font-size: 2rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 700;
   margin: 1.5rem;
+
+  @include respond-to(tablet){
+    font-size: 2rem;
+  }
 
   @include respond-to(desktop) {
     font-size: 3rem;
@@ -82,19 +86,27 @@
   border: solid 1px $letter-2;
   background-color: rgb($letter-2, 0.1);
   border-radius: 5px;
-  padding: .3rem;
+  padding: .2rem .3rem;
+
+  @include respond-to(tablet) {
+    padding: 0 1rem;
+  }
 
   @include respond-to(desktop) {
-    padding: 1rem;
+    padding: 2rem;
   }
 }
 
 .isSelected {
   border: dashed 1px $letter-1;
-  padding: .3rem;
+  padding: .2rem .3rem;
   border-radius: 5px;
 
-  @include respond-to(desktop) {
+  @include respond-to(tablet) {
+    padding: 0 1rem;
+  }
+
+  @include respond-to(desktop){
     padding: 2rem;
   }
 }

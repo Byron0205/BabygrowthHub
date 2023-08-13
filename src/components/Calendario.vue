@@ -59,9 +59,11 @@
       <!-- Lista de eventos -->
       <div v-if="ismobileView" class="selectedDayEvents">
         <h3 class="titleEventsMobile">Eventos del día {{ formatDate(selectedDate) }}</h3>
-        <button class="btnTaskMobile" @click="isNewEventPopupOpen = true"><i class="fas fa-plus"></i> Agregar evento</button>
+        <button class="btnTaskMobile" @click="isNewEventPopupOpen = true"><i class="fas fa-plus"></i> Agregar
+          evento</button>
         <ul>
-          <li v-for="event in selectedDayEvents" :key="event.IDActividad" class="selectedDayEvent" :style="{ backgroundColor: event.CategoriaColor }">
+          <li v-for="event in selectedDayEvents" :key="event.IDActividad" class="selectedDayEvent"
+            :style="{ backgroundColor: event.CategoriaColor }">
             <div class="selectedDayEventInfo">
               <div class="selectedDayEventTitle">{{ event.Titulo }}</div>
             </div>
@@ -259,6 +261,9 @@ export default {
     },
   },
   methods: {
+    handleWindowResize() {
+      this.ismobileView = window.innerWidth <= 1024; // Ajusta el umbral según tus necesidades
+    },
     previousMonth() {
       this.currentDate = addMonths(this.currentDate, -1);
     },
@@ -422,7 +427,14 @@ export default {
     this.getBabies(this.IDAdulto);
     this.getCategories();
     this.getPriorities();
+    // Agrega el oyente de eventos para el cambio de tamaño de ventana
+    window.addEventListener('resize', this.handleWindowResize);
+    this.handleWindowResize(); // Llama al método una vez al inicio para establecer el valor inicial
   },
+  beforeDestroy() {
+    // Elimina el oyente de eventos para el cambio de tamaño de ventana
+    window.removeEventListener('resize', this.handleWindowResize);
+  }
 };
 </script>
 

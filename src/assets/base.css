@@ -972,10 +972,15 @@ footer {
 
 .mes {
   color: #e24a75;
-  font-size: 2rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 700;
   margin: 1.5rem;
+}
+@media (min-width: 768px) {
+  .mes {
+    font-size: 2rem;
+  }
 }
 @media (min-width: 968px) {
   .mes {
@@ -1045,18 +1050,28 @@ footer {
   border: solid 1px #e24a75;
   background-color: rgba(226, 74, 117, 0.1);
   border-radius: 5px;
-  padding: 0.3rem;
+  padding: 0.2rem 0.3rem;
+}
+@media (min-width: 768px) {
+  .calendarToday {
+    padding: 0 1rem;
+  }
 }
 @media (min-width: 968px) {
   .calendarToday {
-    padding: 1rem;
+    padding: 2rem;
   }
 }
 
 .isSelected {
   border: dashed 1px #253962;
-  padding: 0.3rem;
+  padding: 0.2rem 0.3rem;
   border-radius: 5px;
+}
+@media (min-width: 768px) {
+  .isSelected {
+    padding: 0 1rem;
+  }
 }
 @media (min-width: 968px) {
   .isSelected {
