@@ -5,15 +5,19 @@
     background-color: $menu-lateral;
     display: flex;
     flex-direction: column;
+    padding: 0;
+    margin: 0;
+    border-radius: 15px;
 }
 
 .item-lateral{
     display: flex;
-    gap: 10px;
     justify-content: center;
     align-items: center;
-    margin: 5px 5px;
-    color: $letter-1;
+    margin-top: 1rem;
+    width: 100%;
+    
+    
 
     &:nth-child(2){
         margin-top: 10px ;
@@ -21,18 +25,49 @@
 }
 
 .link-menu{
+    color: #253962 !important;
     text-decoration: none;
     width: 100%;
     font-family: 'Baloo 2';
     font-size: 25px;
-    font-weight: 600;
+    font-weight: 400;
     line-height: normal;
+
+    border-radius: 5px;
+
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 
     &:hover{
         color: lighten($color: $letter-1, $amount: 15);
     }
 }
 
+.link-item-text{
+    margin-left: 1rem;
+}
+
+
+
 .item-lateral > .router-link-exact-active{
-    background-color: #A9DCFF;
+    background-color: #253962;
+    color: #fff !important;
+}
+
+
+@media (max-width:768px) {
+    .menu-lateral{
+        position: absolute;
+        top: 210px;
+        left: 0;
+        width: 100%;
+        height: auto;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: row;
+        padding: 0;
+        margin: 0;
+        border-radius: 15px;
+
+    }
 }
