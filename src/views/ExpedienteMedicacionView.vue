@@ -49,7 +49,7 @@
         <div>
           <verDatosMedicamentos />
         </div>
-        <div>
+        <div class="medicameto-imagen">
           <img
             src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/Advertencia+actualizacion+expediente.png"
             class="medicacionImagenAdvertencia"

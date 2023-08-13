@@ -291,6 +291,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .addAllergyHeader {
@@ -571,7 +572,7 @@
   }
 
   .description-MedicalData {
-    width: 80%;
+    width: 90%;
     font-size: 1rem;
   }
 
@@ -583,13 +584,48 @@
   }
 
   .data-view-list {
-    width: 90%;
+    width: 95%;
     height: 218px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     padding: 4px;
+
+    border-radius: 15px;
   
     overflow: auto;
+  }
+
+  .viewMedicalData {
+    margin-top: 2rem;
+    border-top: dashed 2px #5c4fba;
+  }
+
+  .addAllergyContainer{
+    z-index: 9;
+  }
+
+  .addAllergyContent{
+    width: 80%;
+  }
+
+  .addAllergyTitle {
+    font-size: 1rem;
+  }
+
+  .addDiagnosticContainer{
+    z-index: 9;
+  }
+
+  .addDiagnosticContent{
+    width: 80%;
+  }
+
+  .addDiagnosticTitle {
+    font-size: 1rem;
+  }
+
+  .text-item-style {
+    font-size: 1rem;
   }
 }

@@ -293,13 +293,14 @@
     position: absolute;
     top: 210px;
     left: 0;
-    width: 100%;
+    width: 95%;
     height: auto;
     flex-shrink: 0;
     display: flex;
     flex-direction: row;
     padding: 0;
     margin: 0;
+    margin-left: 2.5%;
     border-radius: 15px;
   }
 }
@@ -2821,7 +2822,7 @@ footer {
     justify-content: center;
   }
   .description-MedicalData {
-    width: 80%;
+    width: 90%;
     font-size: 1rem;
   }
   .button-expediente {
@@ -2831,13 +2832,39 @@ footer {
     padding: 0.5rem;
   }
   .data-view-list {
-    width: 90%;
+    width: 95%;
     height: 218px;
     display: flex;
     flex-direction: column;
     gap: 5px;
     padding: 4px;
+    border-radius: 15px;
     overflow: auto;
+  }
+  .viewMedicalData {
+    margin-top: 2rem;
+    border-top: dashed 2px #5c4fba;
+  }
+  .addAllergyContainer {
+    z-index: 9;
+  }
+  .addAllergyContent {
+    width: 80%;
+  }
+  .addAllergyTitle {
+    font-size: 1rem;
+  }
+  .addDiagnosticContainer {
+    z-index: 9;
+  }
+  .addDiagnosticContent {
+    width: 80%;
+  }
+  .addDiagnosticTitle {
+    font-size: 1rem;
+  }
+  .text-item-style {
+    font-size: 1rem;
   }
 }
 .text-info-adm {
@@ -3389,6 +3416,46 @@ footer {
   margin-top: 5.5rem;
 }
 
+@media (max-width: 768px) {
+  .button-medicina {
+    font-size: 1rem;
+    border-radius: 15px;
+    width: 10rem;
+    padding: 0.5rem;
+  }
+  .button-medicina.medicamento.agregar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .button-medicina.vacuna.agregar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .viewMedicalData.ocultar {
+    border-top: none;
+  }
+  .addVacunaContainer {
+    z-index: 9;
+  }
+  .addVacunaContent {
+    width: 80%;
+  }
+  .addVacunaTitle {
+    font-size: 1rem;
+  }
+  .addMedicamentoContainer {
+    z-index: 9;
+  }
+  .addMedicamentoContent {
+    width: 80%;
+  }
+  .addMedicamentoTitle {
+    font-size: 1rem;
+  }
+  .medicameto-imagen {
+    display: none;
+  }
+}
 .titleContainer {
   text-align: center;
 }

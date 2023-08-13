@@ -1,5 +1,5 @@
 <template>
-  <div class="viewMedicalData">
+  <div class="viewMedicalData ocultar">
     <p class="description-MedicalData">
       Selecciona alguna de las siguientes opciones para poder ver los datos
     </p>
@@ -181,7 +181,6 @@
 
 <script>
 import axios from "axios";
-import { tr } from "date-fns/locale";
 
 export default {
   data() {

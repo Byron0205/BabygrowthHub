@@ -312,3 +312,55 @@
 .medicacionImagenAdvertencia{
   margin-top: 5.5rem;
 }
+
+@media (max-width:768px) {
+
+  .button-medicina {
+    font-size: 1rem;
+    border-radius: 15px;
+    width: 10rem;
+    padding: 0.5rem;
+  }
+
+  .button-medicina.medicamento.agregar{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .button-medicina.vacuna.agregar{
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .viewMedicalData.ocultar{
+    border-top: none;
+  }
+
+  .addVacunaContainer{
+    z-index: 9;
+  }
+
+  .addVacunaContent{
+    width: 80%;
+  }
+
+  .addVacunaTitle {
+    font-size: 1rem;
+  }
+
+  .addMedicamentoContainer{
+    z-index: 9;
+  }
+
+  .addMedicamentoContent{
+    width: 80%;
+  }
+
+  .addMedicamentoTitle {
+    font-size: 1rem;
+  }
+
+  .medicameto-imagen{
+    display: none;
+  }
+}
