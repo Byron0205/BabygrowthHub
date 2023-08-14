@@ -6,6 +6,7 @@
 }
 
 .container-expediente {
+  margin-top: 3rem;
   width: 100%;
 }
 
@@ -290,6 +291,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .addAllergyHeader {
@@ -538,4 +540,92 @@
   width: 100%;
   justify-content: space-between;
   border-bottom: dashed 2px #e4547d;
+}
+
+@media (max-width:768px) {
+  .body-expediente {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .name {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  .baby-name {
+    font-size: 1rem;
+  }
+
+  .title-expediente {
+    font-size: 1.5rem;
+    font-style: normal;
+  }
+  
+  .container-expediente-data{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .description-MedicalData {
+    width: 90%;
+    font-size: 1rem;
+  }
+
+  .button-expediente {
+    font-size: 1rem;
+    border-radius: 15px;
+    width: 10rem;
+    padding: 0.5rem;
+  }
+
+  .data-view-list {
+    width: 95%;
+    height: 218px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+
+    border-radius: 15px;
+  
+    overflow: auto;
+  }
+
+  .viewMedicalData {
+    margin-top: 2rem;
+    border-top: dashed 2px #5c4fba;
+  }
+
+  .addAllergyContainer{
+    z-index: 9;
+  }
+
+  .addAllergyContent{
+    width: 80%;
+  }
+
+  .addAllergyTitle {
+    font-size: 1rem;
+  }
+
+  .addDiagnosticContainer{
+    z-index: 9;
+  }
+
+  .addDiagnosticContent{
+    width: 80%;
+  }
+
+  .addDiagnosticTitle {
+    font-size: 1rem;
+  }
+
+  .text-item-style {
+    font-size: 1rem;
+  }
 }

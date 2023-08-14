@@ -1,36 +1,21 @@
 <template>
-  <div>
+  <div class=".container-login">
     <div class="c-login">
       <div class="c-login-header">¡Bienvenido de nuevo!</div>
       <div class="c-login-body">
         <form @submit.prevent="login" class="login">
           <div class="input-container ic1">
-            <input
-              v-model="user.correo"
-              class="input"
-              type="text"
-              placeholder=""
-              maxlength="100"
-            />
+            <input v-model="user.correo" class="input" type="text" placeholder="" maxlength="100" />
             <div class="cut"></div>
             <label class="placeholder">Correo</label>
           </div>
 
           <div class="input-container ic1">
-            <input
-              v-model="user.contrasenna"
-              class="input"
-              type="password"
-              placeholder=""
-              maxlength="50"
-            />
+            <input v-model="user.contrasenna" class="input" type="password" placeholder="" maxlength="50" />
             <div class="cut"></div>
             <label class="placeholder">Contraseña</label>
           </div>
-          <button
-            :disabled="!validLogin"
-            :class="validLogin ? 'submit' : 'submit-disabled'"
-          >
+          <button :disabled="!validLogin" :class="validLogin ? 'submit' : 'submit-disabled'">
             Iniciar Sesión
           </button>
         </form>
@@ -38,12 +23,8 @@
         <div class="divider"></div>
         <p class="text-option">
           ¿No tienes una cuenta?
-          <span @click="registerParent" class="option-enlace"
-            >¡Creemos una nueva juntos!</span
-          >
+          <span @click="registerParent" class="option-enlace">¡Creemos una nueva juntos!</span>
         </p>
-
-        <!-- <p class="text-option">¿Olvido su contraseña? <span class="option">¡Aquí te ayudamos!</span></p> -->
 
         <div class="divider"></div>
         <form @submit.prevent="validBabyCode" class="login">
@@ -51,20 +32,10 @@
             Unirse mediante un <span class="option">código</span>
           </p>
           <div class="input-container">
-            <input
-              v-model="babyCode"
-              class="input"
-              type="text"
-              placeholder=""
-            />
+            <input v-model="babyCode" class="input" type="text" placeholder="" />
           </div>
-          <button
-            :disabled="!validCodeBaby"
-            @click="encargadoForm"
-            :class="
-              validCodeBaby ? 'submit submit-2' : 'submit-disabled submit-2'
-            "
-          >
+          <button :disabled="!validCodeBaby" @click="encargadoForm" :class="validCodeBaby ? 'submit submit-2' : 'submit-disabled submit-2'
+            ">
             Unirse mediante Código
           </button>
         </form>
@@ -115,7 +86,7 @@ export default {
           localStorage.setItem("userRol", msg.rol);
           localStorage.setItem("nombre", msg.nombre);
           localStorage.setItem("notification", false);
-          if (localStorage.getItem("userRol") == 4){
+          if (localStorage.getItem("userRol") == 4) {
             localStorage.setItem('admin', 'true')
           }
           this.$router.push("/doble-factor");

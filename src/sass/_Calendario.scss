@@ -12,10 +12,18 @@
 
 .mes {
   color: $letter-2;
-  font-size: 3rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 700;
   margin: 1.5rem;
+
+  @include respond-to(tablet){
+    font-size: 2rem;
+  }
+
+  @include respond-to(desktop) {
+    font-size: 3rem;
+  }
 }
 
 .nextButton {
@@ -36,38 +44,71 @@
 .tableCalendar {
   width: 100%;
   border-collapse: collapse;
+
+  @include respond-to(desktop) {
+    width: 100%;
+  }
 }
 
 .nameDayWeek {
   color: $purple;
-  font-size: 1.5rem;
+  font-size: 1rem;
   border: none;
+
+  @include respond-to(desktop) {
+    font-size: 1.5rem;
+  }
 }
 
 .cellsCalendar {
   border: solid 1px rgb($letter-1, 0.1);
-  font-size: 1rem;
+  font-size: .5rem;
   padding: 1rem;
   text-align: right;
 
   /* PARA EVITAR DEFORMACION DE CELDA*/
-  max-width: 5rem;
-  width: 5rem;
-  max-height: 6rem;
-  height: 6rem;
+  max-width: 2rem;
+  width: 2rem;
+  max-height: 2rem;
+  height: 2rem;
+
+  @include respond-to(desktop) {
+    font-size: 1rem;
+    /* PARA EVITAR DEFORMACION DE CELDA*/
+    max-width: 5rem;
+    width: 5rem;
+    max-height: 6rem;
+    height: 6rem;
+  }
 }
 
 .calendarToday {
   border: solid 1px $letter-2;
   background-color: rgb($letter-2, 0.1);
   border-radius: 5px;
-  padding: 1rem;
+  padding: .2rem .3rem;
+
+  @include respond-to(tablet) {
+    padding: 0 1rem;
+  }
+
+  @include respond-to(desktop) {
+    padding: 2rem;
+  }
 }
 
 .isSelected {
   border: dashed 1px $letter-1;
-  padding: 2rem;
+  padding: .2rem .3rem;
   border-radius: 5px;
+
+  @include respond-to(tablet) {
+    padding: 0 1rem;
+  }
+
+  @include respond-to(desktop){
+    padding: 2rem;
+  }
 }
 
 .calendarEvent {
@@ -97,13 +138,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 
 .createEventContent {
   background-color: white;
   border-radius: 15px;
   position: relative;
-  padding: 2rem;
+  padding: 1.5rem;
+  width: 80%;
+
+  @include respond-to(tablet) {
+    padding: 2rem;
+    width: 30rem;
+  }
 }
 
 .createEventHeader {
@@ -149,15 +197,24 @@
   background-color: #f8f8fd;
   color: $purple;
   margin-bottom: 1.5rem;
-  width: 30rem;
-  max-width: 30rem;
+  width: 90%;
+
+  @include respond-to(tablet) {
+    width: 30rem;
+    max-width: 30rem;
+  }
 }
 
 .newEventInput.newEventTextArea {
-  max-width: 30rem;
-  min-width: 30rem;
-  max-height: 6rem;
-  min-height: 6rem;
+  width: 90%;
+  min-height: 4rem;
+
+  @include respond-to(tablet) {
+    max-width: 30rem;
+    min-width: 30rem;
+    max-height: 6rem;
+    min-height: 6rem;
+  }
 }
 
 .newEventInput:focus {
@@ -170,7 +227,11 @@
 }
 
 .newEventFlexContainer.row {
-  flex-direction: row;
+  flex-direction: column;
+
+  @include respond-to(desktop) {
+    flex-direction: row;
+  }
 }
 
 .newEventSelect {
@@ -180,9 +241,13 @@
   background-color: #f8f8fd;
   color: $purple;
   margin-bottom: 1.5rem;
-  max-width: 15rem;
-  min-width: 15rem;
+  min-width: 90%;
   margin-right: 1rem;
+
+  @include respond-to(tablet) {
+    max-width: 15rem;
+    min-width: 15rem;
+  }
 }
 
 .newEventSelect:focus {
@@ -227,14 +292,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 
 .eventDetailsHeader {
-  background: linear-gradient(
-    90deg,
-    rgba(126, 202, 253, 0.3) 42.19%,
-    rgba(126, 202, 253, 0.12) 99.48%
-  );
+  background: linear-gradient(90deg,
+      rgba(126, 202, 253, 0.3) 42.19%,
+      rgba(126, 202, 253, 0.12) 99.48%);
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   display: flex;
@@ -271,6 +335,7 @@
   justify-content: space-between;
   border-bottom: dashed 2px #357cac;
 }
+
 .eventDetailsTitle {
   color: $letter-1;
   font-family: "Catamaran";
@@ -354,7 +419,11 @@
 
 .calendarDay {
   font-family: "Baloo 2";
-  font-size: 1.5rem;
+  font-size: 1rem;
+
+  @include respond-to(desktop) {
+    font-size: 1.5rem;
+  }
 }
 
 .calendarDay:hover {
@@ -404,4 +473,55 @@
   font-weight: 600;
   line-height: normal;
   text-transform: uppercase;
+}
+
+/* btn task mobile */
+
+.btnTaskMobile{
+  background-color: #4f439a;
+  color: #f8f8fd;
+  border: none;
+  padding: 10px;
+  border-radius: 15px;
+  font-family: 'Baloo 2';
+
+  &:hover{
+    cursor: pointer;
+
+  }
+}
+
+.titleEventsMobile{
+  color: $letter-2 ;
+}
+
+.selectedDayEvents {
+  font-family: 'Baloo 2';
+  color: $letter-3;
+  font-size: 18px;
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.selectedDayEvent {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+}
+
+.selectedDayEventColor {
+  width: 10px;
+  height: 100%;
+}
+
+.selectedDayEventTitle {
+  margin-left: 10px;
+}
+
+.selectedDayEvent button {
+  margin-left: auto;
 }

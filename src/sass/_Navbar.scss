@@ -99,7 +99,7 @@
   background-color: #fff2f5;
   position: relative;
   padding: 10px;
-  z-index: 999;
+  z-index: 998;
 }
 
 .nav-link {
@@ -154,6 +154,15 @@
 
 /* Estilos para pantallas más pequeñas */
 @media (max-width: 1280px) {
+
+  /*Estilo para efecto sticky*/
+  .header-nav-hamburguesa{
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 998;
+  }
+
+  
   .nav {
     padding-left: 0;
   }

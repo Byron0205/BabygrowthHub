@@ -98,7 +98,7 @@
   background-color: #fff2f5;
   position: relative;
   padding: 10px;
-  z-index: 999;
+  z-index: 998;
 }
 
 .nav-link {
@@ -158,6 +158,12 @@
 
 /* Estilos para pantallas más pequeñas */
 @media (max-width: 1280px) {
+  /*Estilo para efecto sticky*/
+  .header-nav-hamburguesa {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 998;
+  }
   .nav {
     padding-left: 0;
   }
@@ -217,6 +223,19 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  justify-content: center;
+}
+@media (min-width: 968px) {
+  .container {
+    justify-content: flex-start;
+  }
+}
+
+.container-login {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
 }
 
 .container-nombre-expediente {
@@ -225,14 +244,22 @@
 }
 
 .container-register {
-  margin: 0 auto;
-  margin-bottom: 20px;
-  width: 90%;
-  height: 344px;
-  display: grid;
-  grid-template-columns: 40% 60%;
-  justify-self: start;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+}
+@media (min-width: 968px) {
+  .container-register {
+    margin: 0 auto;
+    margin-bottom: 20px;
+    width: 90%;
+    height: 344px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    justify-self: start;
+    align-items: center;
+  }
 }
 @media (min-height: 900px) {
   .container-register {
@@ -247,36 +274,63 @@
   background-color: #F4F9FD;
   display: flex;
   flex-direction: column;
+  padding: 0;
+  margin: 0;
+  border-radius: 15px;
 }
 
 .item-lateral {
   display: flex;
-  gap: 10px;
   justify-content: center;
   align-items: center;
-  margin: 5px 5px;
-  color: #253962;
+  margin-top: 1rem;
+  width: 100%;
 }
 .item-lateral:nth-child(2) {
   margin-top: 10px;
 }
 
 .link-menu {
+  color: #253962 !important;
   text-decoration: none;
   width: 100%;
   font-family: "Baloo 2";
   font-size: 25px;
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
+  border-radius: 5px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 .link-menu:hover {
   color: #3a599a;
 }
 
-.item-lateral > .router-link-exact-active {
-  background-color: #A9DCFF;
+.link-item-text {
+  margin-left: 1rem;
 }
 
+.item-lateral > .router-link-exact-active {
+  background-color: #253962;
+  color: #fff !important;
+}
+
+@media (max-width: 768px) {
+  .menu-lateral {
+    position: absolute;
+    top: 210px;
+    left: 0;
+    width: 95%;
+    height: auto;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
+    margin-left: 2.5%;
+    border-radius: 15px;
+  }
+}
 .flex-table-menu {
   width: 90%;
   margin: 0 auto;
@@ -328,11 +382,16 @@ footer {
 
 .c-login {
   border-radius: 15px 15px 0 0;
-  width: 550px;
+  width: 360px;
   padding-bottom: 30px;
   flex-shrink: 0;
   color: #253962;
   background-color: rgba(79, 67, 154, 0.05);
+}
+@media (min-width: 768px) {
+  .c-login {
+    width: 550px;
+  }
 }
 
 .c-login-header {
@@ -458,6 +517,7 @@ footer {
   margin-top: 10px;
   padding-bottom: 0;
   margin-bottom: 10px;
+  text-align: center;
 }
 .text-option:last-child {
   padding-bottom: 0;
@@ -485,11 +545,16 @@ footer {
 }
 
 .container-img-login {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 60%;
-  height: 100%;
+  display: none;
+}
+@media (min-width: 968px) {
+  .container-img-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+  }
 }
 
 .img-padres-1 {
@@ -519,8 +584,14 @@ footer {
 }
 
 .img-boy {
-  position: absolute;
-  bottom: 0;
+  display: none;
+}
+@media (min-width: 968px) {
+  .img-boy {
+    display: block;
+    position: absolute;
+    bottom: 0;
+  }
 }
 @media (min-height: 900px) {
   .img-boy {
@@ -528,13 +599,24 @@ footer {
   }
 }
 
+.flex {
+  display: flex;
+  gap: 4px;
+}
+
 .img-cloud-bg {
-  position: absolute;
-  top: 250px;
-  left: 0;
-  width: 100%;
-  height: 400px;
-  z-index: 0;
+  display: none;
+}
+@media (min-width: 968px) {
+  .img-cloud-bg {
+    display: block;
+    position: absolute;
+    top: 250px;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    z-index: 0;
+  }
 }
 @media (min-height: 900px) {
   .img-cloud-bg {
@@ -555,14 +637,19 @@ footer {
 }
 
 .title-register {
-  grid-column: 1/3;
-  grid-row: 1/2;
+  font-size: 40px;
   color: #479DD8;
   font-family: "baloo 2", cursive;
   font-weight: 700;
-  font-size: 50px;
   line-height: normal;
   text-transform: uppercase;
+}
+@media (min-width: 968px) {
+  .title-register {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    font-size: 50px;
+  }
 }
 
 .submit-register {
@@ -573,7 +660,12 @@ footer {
 }
 
 .width-50 {
-  width: 50%;
+  width: 100%;
+}
+@media (min-width: 968px) {
+  .width-50 {
+    width: 50%;
+  }
 }
 @media (min-height: 900px) {
   .width-50 {
@@ -620,6 +712,8 @@ footer {
 
 .age-btn-container {
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-age {
@@ -729,6 +823,46 @@ footer {
   width: 7rem;
 }
 
+@media (max-width: 768px) {
+  .homeFlexContainer {
+    padding: 1rem;
+    flex-direction: column;
+  }
+  .homeText {
+    flex: 1;
+    padding: 0rem;
+    text-align: justify;
+  }
+  .homeParagraph {
+    font-size: 1rem;
+  }
+  .homeSpaceship {
+    position: absolute;
+    top: -3rem;
+    left: 0.5rem;
+    width: 100%;
+  }
+  .homeDecoration {
+    width: 10%;
+  }
+  .homeLogo {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .homeLink {
+    font-size: 0.9rem;
+  }
+  .homeContainerLinks {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+  }
+  .homeImgContainer {
+    flex: 1;
+    margin-top: 1rem;
+    max-width: 100%;
+  }
+}
 .NSflexContainer {
   margin-top: 2rem;
   display: flex;
@@ -737,7 +871,7 @@ footer {
 
 .NSImgContainer {
   flex: 1;
-  max-width: 40%;
+  width: 40%;
 }
 
 .NSImg {
@@ -811,6 +945,43 @@ footer {
   line-height: normal;
 }
 
+@media (max-width: 768px) {
+  .NSflexContainer {
+    padding: 1rem;
+    flex-direction: column;
+  }
+  .NSText {
+    padding: 0rem;
+    order: 1;
+  }
+  .NSImgContainer {
+    margin-top: 1rem;
+    order: 2;
+    width: 100%;
+    display: none;
+  }
+  .NSTitle {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+  .NSParagraph {
+    font-size: 1rem;
+  }
+  .NSInput {
+    width: 90%;
+    padding: 0.7rem;
+    margin-right: 1rem;
+    border-radius: 5px;
+    border: solid 1px #253962;
+  }
+  .NSResultContainer {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .NSResult {
+    font-size: 1rem;
+  }
+}
 .sliderContainer {
   margin-top: 2rem;
   display: flex;
@@ -826,7 +997,8 @@ footer {
 
 .sliderImgContainer {
   flex: 1;
-  max-width: 40%;
+  max-width: 100%;
+  padding: 1rem;
 }
 
 .sliderImage {
@@ -871,6 +1043,40 @@ footer {
   color: #6055A4;
 }
 
+@media (max-width: 767px) {
+  .sliderContainer {
+    margin: 1rem;
+    padding: 0rem;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 2px 2px 15px 0px rgba(0, 0, 0, 0.25);
+  }
+  .sliderItem {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem;
+  }
+  .sliderContent {
+    padding: 0rem;
+    text-align: center;
+  }
+  .sliderText {
+    font-size: 1rem;
+    text-align: justify;
+  }
+  .sliderTitle {
+    font-size: 1.5rem;
+  }
+  .sliderImageContainer {
+    max-width: 100%;
+  }
+  .sliderImage {
+    width: 100%;
+  }
+  .sliderButtonIcon {
+    font-size: 2rem;
+  }
+}
 .containterCalendar {
   font-family: "Baloo 2";
 }
@@ -885,10 +1091,20 @@ footer {
 
 .mes {
   color: #e24a75;
-  font-size: 3rem;
+  font-size: 1rem;
   font-style: normal;
   font-weight: 700;
   margin: 1.5rem;
+}
+@media (min-width: 768px) {
+  .mes {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 968px) {
+  .mes {
+    font-size: 3rem;
+  }
 }
 
 .nextButton {
@@ -910,36 +1126,76 @@ footer {
   width: 100%;
   border-collapse: collapse;
 }
+@media (min-width: 968px) {
+  .tableCalendar {
+    width: 100%;
+  }
+}
 
 .nameDayWeek {
   color: #6055A4;
-  font-size: 1.5rem;
+  font-size: 1rem;
   border: none;
+}
+@media (min-width: 968px) {
+  .nameDayWeek {
+    font-size: 1.5rem;
+  }
 }
 
 .cellsCalendar {
   border: solid 1px rgba(37, 57, 98, 0.1);
-  font-size: 1rem;
+  font-size: 0.5rem;
   padding: 1rem;
   text-align: right;
   /* PARA EVITAR DEFORMACION DE CELDA*/
-  max-width: 5rem;
-  width: 5rem;
-  max-height: 6rem;
-  height: 6rem;
+  max-width: 2rem;
+  width: 2rem;
+  max-height: 2rem;
+  height: 2rem;
+}
+@media (min-width: 968px) {
+  .cellsCalendar {
+    font-size: 1rem;
+    /* PARA EVITAR DEFORMACION DE CELDA*/
+    max-width: 5rem;
+    width: 5rem;
+    max-height: 6rem;
+    height: 6rem;
+  }
 }
 
 .calendarToday {
   border: solid 1px #e24a75;
   background-color: rgba(226, 74, 117, 0.1);
   border-radius: 5px;
-  padding: 1rem;
+  padding: 0.2rem 0.3rem;
+}
+@media (min-width: 768px) {
+  .calendarToday {
+    padding: 0 1rem;
+  }
+}
+@media (min-width: 968px) {
+  .calendarToday {
+    padding: 2rem;
+  }
 }
 
 .isSelected {
   border: dashed 1px #253962;
-  padding: 2rem;
+  padding: 0.2rem 0.3rem;
   border-radius: 5px;
+}
+@media (min-width: 768px) {
+  .isSelected {
+    padding: 0 1rem;
+  }
+}
+@media (min-width: 968px) {
+  .isSelected {
+    padding: 2rem;
+  }
 }
 
 .calendarEvent {
@@ -968,13 +1224,21 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 
 .createEventContent {
   background-color: white;
   border-radius: 15px;
   position: relative;
-  padding: 2rem;
+  padding: 1.5rem;
+  width: 80%;
+}
+@media (min-width: 768px) {
+  .createEventContent {
+    padding: 2rem;
+    width: 30rem;
+  }
 }
 
 .createEventHeader {
@@ -1021,15 +1285,26 @@ footer {
   background-color: #f8f8fd;
   color: #6055A4;
   margin-bottom: 1.5rem;
-  width: 30rem;
-  max-width: 30rem;
+  width: 90%;
+}
+@media (min-width: 768px) {
+  .newEventInput {
+    width: 30rem;
+    max-width: 30rem;
+  }
 }
 
 .newEventInput.newEventTextArea {
-  max-width: 30rem;
-  min-width: 30rem;
-  max-height: 6rem;
-  min-height: 6rem;
+  width: 90%;
+  min-height: 4rem;
+}
+@media (min-width: 768px) {
+  .newEventInput.newEventTextArea {
+    max-width: 30rem;
+    min-width: 30rem;
+    max-height: 6rem;
+    min-height: 6rem;
+  }
 }
 
 .newEventInput:focus {
@@ -1042,7 +1317,12 @@ footer {
 }
 
 .newEventFlexContainer.row {
-  flex-direction: row;
+  flex-direction: column;
+}
+@media (min-width: 968px) {
+  .newEventFlexContainer.row {
+    flex-direction: row;
+  }
 }
 
 .newEventSelect {
@@ -1052,9 +1332,14 @@ footer {
   background-color: #f8f8fd;
   color: #6055A4;
   margin-bottom: 1.5rem;
-  max-width: 15rem;
-  min-width: 15rem;
+  min-width: 90%;
   margin-right: 1rem;
+}
+@media (min-width: 768px) {
+  .newEventSelect {
+    max-width: 15rem;
+    min-width: 15rem;
+  }
 }
 
 .newEventSelect:focus {
@@ -1098,6 +1383,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 
 .eventDetailsHeader {
@@ -1222,7 +1508,12 @@ footer {
 
 .calendarDay {
   font-family: "Baloo 2";
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+@media (min-width: 968px) {
+  .calendarDay {
+    font-size: 1.5rem;
+  }
 }
 
 .calendarDay:hover {
@@ -1271,6 +1562,54 @@ footer {
   font-weight: 600;
   line-height: normal;
   text-transform: uppercase;
+}
+
+/* btn task mobile */
+.btnTaskMobile {
+  background-color: #4f439a;
+  color: #f8f8fd;
+  border: none;
+  padding: 10px;
+  border-radius: 15px;
+  font-family: "Baloo 2";
+}
+.btnTaskMobile:hover {
+  cursor: pointer;
+}
+
+.titleEventsMobile {
+  color: #e24a75;
+}
+
+.selectedDayEvents {
+  font-family: "Baloo 2";
+  color: #fff2f5;
+  font-size: 18px;
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.selectedDayEvent {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+}
+
+.selectedDayEventColor {
+  width: 10px;
+  height: 100%;
+}
+
+.selectedDayEventTitle {
+  margin-left: 10px;
+}
+
+.selectedDayEvent button {
+  margin-left: auto;
 }
 
 .title-container {
@@ -1418,6 +1757,60 @@ footer {
   background-color: rgba(121, 108, 208, 0.9);
 }
 
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 30px;
+  }
+  .diet-container {
+    width: 90%;
+    height: auto;
+    margin: 20px auto;
+  }
+  .diet-container.left,
+  .diet-container.right {
+    margin: 20px auto;
+  }
+  .img-container {
+    height: auto;
+  }
+  .img-content {
+    display: none;
+  }
+  .title-diet {
+    font-size: 20px;
+    margin: 10px 0 0 20px;
+  }
+  .diet-text {
+    width: 80%;
+    font-size: 14px;
+    margin: 0px 0 0 20px;
+    height: auto;
+  }
+  .container-text-etapa {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    display: grid;
+  }
+  .navbar-diet {
+    width: 90%;
+    margin: 20px auto;
+    flex-direction: column;
+    background-color: rgba(121, 108, 208, 0.15);
+    border-radius: 15px;
+  }
+  .age-option {
+    width: 100%;
+    height: auto;
+    margin: 5px 0;
+    font-size: 15px;
+  }
+  .age-option.selected {
+    color: #FFF;
+    border-radius: 15px 15px 15px 15px;
+    background-color: rgba(121, 108, 208, 0.9);
+  }
+}
 .profile-container {
   margin-left: auto;
   margin-right: auto;
@@ -1494,6 +1887,7 @@ footer {
   height: 38.492px;
   border-radius: 5px;
   border: 1px dashed #4f439a;
+  font-family: "Baloo 2";
   background: rgba(121, 108, 208, 0.05);
   margin-bottom: 10px;
   padding: 5px;
@@ -1524,12 +1918,14 @@ footer {
   margin-bottom: 10px;
   padding: 5px;
   font-size: 16px;
+  font-family: "Baloo 2";
   color: #4f439a;
 }
 .personal-information .modify {
   width: 100%;
   height: 45px;
   border-radius: 15px;
+  border: 1px dashed #4f439a;
   border-color: rgba(92, 79, 170, 0.1);
   background: rgba(92, 79, 170, 0.1);
   color: #5c4faa;
@@ -1683,8 +2079,9 @@ footer {
 }
 
 .input-modify[readonly] {
-  border: 1px solid transparent;
+  border: 1px dashed #4f439a;
   background-color: #f0f0f0;
+  font-family: "Baloo 2";
 }
 
 .save,
@@ -1818,6 +2215,7 @@ footer {
 }
 
 .sendBabyCodeInput {
+  font-family: "Baloo 2";
   padding: 0.5rem;
   font-size: 1.5rem;
   border: 2px dashed #6055A4;
@@ -1850,6 +2248,83 @@ footer {
   cursor: not-allowed;
 }
 
+@media only screen and (max-width: 768px) {
+  .profile-container {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    padding: 0;
+    height: auto;
+  }
+  .rainbow-decoration {
+    display: none;
+  }
+  .profile-card {
+    flex-direction: column;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    background: none;
+  }
+  .profile-card .custom-icon-profile {
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+  }
+  .profile-card .text-profile {
+    margin-left: 0 auto;
+    margin-right: 0 auto;
+  }
+  .profile-card .profile-role {
+    width: 100%;
+  }
+  .profile-card .profile-role h3 {
+    font-size: 24px;
+  }
+  .information-container {
+    flex-direction: column;
+  }
+  .modify,
+  .isInputEditable,
+  .input-modify,
+  .sons,
+  .btn-galery,
+  .btn-expedient,
+  .btn-baby-code,
+  .family-admin,
+  .add-baby,
+  .input-modify[readonly],
+  .save,
+  .cancel,
+  .sendBabyCodeInput {
+    width: 100%;
+    max-width: 100%;
+    font-family: "Baloo 2";
+  }
+  .modify,
+  .input-modify[readonly],
+  .input-modify {
+    max-width: 80%;
+    font-family: "Baloo 2";
+  }
+  .son-information-container,
+  .son-information,
+  .personal-information {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .personal-information-container,
+  .son-information-container,
+  .administrative-panel {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 .container {
   display: flex;
 }
@@ -1862,6 +2337,21 @@ footer {
   margin-left: 50px;
   display: flex;
   width: 779px;
+  height: 219px;
+  flex-direction: column;
+  color: #253962;
+  text-align: justify;
+  font-family: "Baloo 2";
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.info-text-audio {
+  margin-left: 50px;
+  display: flex;
+  width: 629px;
   height: 219px;
   flex-direction: column;
   color: #253962;
@@ -1924,6 +2414,17 @@ footer {
   padding: 20px;
 }
 
+.form-multi-audio {
+  width: 788px;
+  height: 691px;
+  border-radius: 15px;
+  border: 1px dashed #FA5D3B;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
 .memory {
   width: 100%;
   height: 45px;
@@ -1932,6 +2433,25 @@ footer {
   display: flex;
   align-items: center;
   padding-left: 20px;
+}
+
+.memory-audio {
+  width: 100%;
+  height: 45px;
+  border-radius: 15px 15px 0px 0px;
+  background: linear-gradient(90deg, rgba(246, 139, 116, 0.3) 42.19%, rgba(250, 93, 59, 0.12) 99.48%);
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+}
+.memory-audio h2 {
+  color: #FA5D3B;
+  font-family: "Baloo 2";
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+  text-transform: uppercase;
 }
 
 .memory h2 {
@@ -1971,12 +2491,16 @@ footer {
   background-color: #E5E5E5;
 }
 .upload-multi .date {
+  font-family: "Baloo 2";
+  color: #4F439A;
   position: absolute;
   top: 10px;
   left: 10px;
   font-size: 16px;
 }
 .upload-multi .drag-text {
+  font-family: "Baloo 2";
+  color: #4F439A;
   text-align: center;
   font-size: 18px;
 }
@@ -1984,6 +2508,18 @@ footer {
   position: absolute;
   bottom: 10px;
   right: 10px;
+  font-size: 20px;
+}
+.upload-multi .record-icon {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  font-size: 20px;
+}
+.upload-multi .stop-icon {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
   font-size: 20px;
 }
 
@@ -2013,6 +2549,21 @@ footer {
   margin-bottom: 10px;
 }
 
+.type-multi-audio,
+.age-baby-audio,
+.sons-audio {
+  font-family: "Baloo 2";
+  width: 300px;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid #FA5D3B;
+  background-color: #fcfcfc;
+  color: #FA5D3B;
+  padding: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
 .save-multi {
   border-radius: 15px;
   background: #3E3578;
@@ -2029,6 +2580,114 @@ footer {
   margin-top: 30px;
 }
 
+.save-multi-audio {
+  border-radius: 15px;
+  background: #FA5D3B;
+  width: 262px;
+  height: 42px;
+  color: #FFF;
+  text-align: center;
+  font-family: "Baloo 2";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  text-transform: uppercase;
+  margin-top: 30px;
+}
+
+.audio-player {
+  width: 100%;
+  margin: 20px;
+  padding: 20px;
+}
+
+.upload-multi audio {
+  width: 80%;
+  max-width: 300px;
+  border: 2px solid #f6b77d;
+  border-radius: 8px;
+  margin: 26px;
+  padding: 8px;
+  background-color: #fff9f3;
+  font-family: "Baloo 2";
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  .info-container {
+    display: none;
+  }
+  .trash-icon {
+    font-size: 20px;
+  }
+  .info-text {
+    width: 80%;
+    font-size: 15px;
+  }
+  .form-multi {
+    width: 90%;
+    height: auto;
+    padding: 10px;
+  }
+  .form-multi-audio {
+    width: 90%;
+    height: auto;
+    padding: 10px;
+  }
+  .memory h2 {
+    font-size: 24px;
+  }
+  .new-memory {
+    width: 75%;
+    max-width: 300px;
+  }
+  .upload-multi {
+    width: 90%;
+    max-width: 500px;
+    font-family: "Baloo 2";
+    color: #4F439A;
+    height: auto;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .upload-multi .date {
+    position: static;
+    margin-bottom: 5px;
+  }
+  .upload-multi .drag-text {
+    font-size: 16px;
+  }
+  .select-container {
+    flex-direction: column;
+  }
+  .select-container .select-wrapper {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .type-multi,
+  .age-baby,
+  .sons {
+    width: 100%;
+    max-width: 300px;
+  }
+  .save-multi {
+    width: 100%;
+    height: 80px;
+    max-width: 200px;
+    margin-top: 20px;
+  }
+  .img-multimedia {
+    width: 100%;
+    margin-left: 0px auto;
+    margin-right: 0px auto;
+  }
+}
 .color {
   color: #253962;
 }
@@ -2043,9 +2702,15 @@ footer {
 
 .info-task {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   margin: 0 10px;
   margin-bottom: 15px;
+}
+@media (min-width: 768px) {
+  .info-task {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .description-task {
@@ -2204,8 +2869,13 @@ footer {
   height: 98px;
   position: absolute;
   top: 0;
-  right: 0;
+  right: 28px;
   transform: translate(50%, -50%);
+}
+@media (min-width: 968px) {
+  .card-weight img {
+    right: 0;
+  }
 }
 
 .container-inicio {
@@ -2256,6 +2926,81 @@ footer {
   line-height: normal;
 }
 
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 24px;
+  }
+  .user-name {
+    font-size: 24px;
+  }
+  .stats-title {
+    font-size: 24px;
+    margin-left: 20px;
+    text-align: center;
+  }
+  .stats-title br {
+    display: none;
+  }
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .card-dream,
+  .card-height,
+  .card-weight {
+    width: 343px;
+    height: 61px;
+    margin: 10px auto;
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+  }
+  .card-dream h2,
+  .card-height h2,
+  .card-weight h2 {
+    font-size: 16px;
+    margin: auto;
+  }
+  .card-dream p,
+  .card-height p,
+  .card-weight p {
+    font-size: 16px;
+    margin: auto;
+  }
+  .card-dream img,
+  .card-height img,
+  .card-weight img {
+    width: 48px;
+    height: 48px;
+  }
+  .custom-icon {
+    margin: auto;
+    margin-left: 20px;
+    font-size: 28px;
+  }
+  .container-inicio {
+    flex-direction: column;
+    gap: 20px;
+    margin: 20px auto;
+  }
+  .photos-content {
+    justify-content: center;
+  }
+  .photos-content .image-bottom {
+    width: 80%;
+    height: auto;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .text-card {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 300px;
+    font-size: 18px;
+    text-align: justify;
+  }
+}
 .body-expediente {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -2264,6 +3009,7 @@ footer {
 }
 
 .container-expediente {
+  margin-top: 3rem;
   width: 100%;
 }
 
@@ -2769,6 +3515,76 @@ footer {
   border-bottom: dashed 2px #e4547d;
 }
 
+@media (max-width: 768px) {
+  .body-expediente {
+    display: flex;
+    flex-direction: column;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .name {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  .baby-name {
+    font-size: 1rem;
+  }
+  .title-expediente {
+    font-size: 1.5rem;
+    font-style: normal;
+  }
+  .container-expediente-data {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .description-MedicalData {
+    width: 90%;
+    font-size: 1rem;
+  }
+  .button-expediente {
+    font-size: 1rem;
+    border-radius: 15px;
+    width: 10rem;
+    padding: 0.5rem;
+  }
+  .data-view-list {
+    width: 95%;
+    height: 218px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 4px;
+    border-radius: 15px;
+    overflow: auto;
+  }
+  .viewMedicalData {
+    margin-top: 2rem;
+    border-top: dashed 2px #5c4fba;
+  }
+  .addAllergyContainer {
+    z-index: 9;
+  }
+  .addAllergyContent {
+    width: 80%;
+  }
+  .addAllergyTitle {
+    font-size: 1rem;
+  }
+  .addDiagnosticContainer {
+    z-index: 9;
+  }
+  .addDiagnosticContent {
+    width: 80%;
+  }
+  .addDiagnosticTitle {
+    font-size: 1rem;
+  }
+  .text-item-style {
+    font-size: 1rem;
+  }
+}
 .text-info-adm {
   width: 566px;
   color: #253962;
@@ -3017,6 +3833,52 @@ footer {
   /* Color para el rol "Invitado" */
 }
 
+@media screen and (max-width: 768px) {
+  .text-info-adm {
+    display: none;
+  }
+  .page-wrapper {
+    margin-top: 550px;
+  }
+  .family-adm-group {
+    width: 90%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .title-adm-family,
+  .family-adm {
+    font-size: 18px;
+  }
+  .container-select-guess {
+    width: 100%;
+    height: auto;
+  }
+  .select-guess-dash,
+  .select-guess-border {
+    width: 90%;
+  }
+  .container-adm-family {
+    flex-direction: column;
+  }
+  .left-container,
+  .right-container {
+    width: 100%;
+    margin: 0;
+  }
+  .right-container {
+    overflow-y: visible;
+    margin-top: 20px;
+    margin-bottom: 700px;
+  }
+  .selected-member,
+  .select-member {
+    width: 90%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
 .button-medicina {
   font-family: "Baloo 2", sans-serif;
   border: none;
@@ -3318,6 +4180,46 @@ footer {
   margin-top: 5.5rem;
 }
 
+@media (max-width: 768px) {
+  .button-medicina {
+    font-size: 1rem;
+    border-radius: 15px;
+    width: 10rem;
+    padding: 0.5rem;
+  }
+  .button-medicina.medicamento.agregar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .button-medicina.vacuna.agregar {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  .viewMedicalData.ocultar {
+    border-top: none;
+  }
+  .addVacunaContainer {
+    z-index: 9;
+  }
+  .addVacunaContent {
+    width: 80%;
+  }
+  .addVacunaTitle {
+    font-size: 1rem;
+  }
+  .addMedicamentoContainer {
+    z-index: 9;
+  }
+  .addMedicamentoContent {
+    width: 80%;
+  }
+  .addMedicamentoTitle {
+    font-size: 1rem;
+  }
+  .medicameto-imagen {
+    display: none;
+  }
+}
 .titleContainer {
   text-align: center;
 }
@@ -3545,6 +4447,203 @@ footer {
     width: 6.3rem;
     height: 8rem;
     border-radius: 20px;
+  }
+}
+.galleryTitle {
+  color: #4f4785;
+  text-align: center;
+  font-family: "Baloo 2";
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+.galleryParagraph {
+  color: #253962;
+  text-align: center;
+  font-family: "Baloo 2";
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.gridGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.galleryContent:hover {
+  border: dashed;
+}
+
+.galleryItem {
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  border-radius: 30px;
+}
+
+.galleryMultimediaContainer {
+  padding: 1rem;
+}
+
+.galleryMultimedia {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.titleMultimedia {
+  text-align: center;
+  color: #253962;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.infoMultimedia {
+  font-size: 1.3rem;
+  text-align: center;
+  color: #253962;
+  font-family: "Baloo 2";
+}
+
+/* Para navbar de opciones*/
+.navbarGallery {
+  margin-top: 1.5rem;
+  width: 80%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgba(121, 108, 208, 0.15);
+  border-radius: 15px 15px 0px 0px;
+  justify-content: center;
+}
+
+.ageOptionsContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.ageOption {
+  width: 10rem;
+  height: 4rem;
+  cursor: pointer;
+  color: #5C4FAA;
+  font-family: "Baloo 2";
+  font-size: 1.5rem;
+  font-weight: 600;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.ageOption.selected {
+  color: #FFF;
+  border-radius: 15px 15px 0px 0px;
+  background-color: rgba(121, 108, 208, 0.9);
+}
+
+.audioMultimediaContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centrar horizontalmente */
+  text-align: center; /* Centrar el contenido de texto */
+}
+
+@media (max-width: 768px) {
+  .gridGallery {
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .galleryTitle {
+    font-size: 1.2rem;
+  }
+  .galleryParagraph {
+    font-size: 1rem;
+    text-align: justify;
+  }
+  .ageOptionsContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .ageOption {
+    width: 100%;
+    height: 3rem;
+    font-size: 1rem;
+  }
+}
+.galleryItemColor {
+  background-color: #f8f8fd;
+  color: #796cd0;
+}
+
+.galleryContent:hover {
+  border: dashed;
+}
+
+.selectGalleryYearContainer {
+  width: 80%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.selectGalleryYear {
+  width: 100%;
+  height: 48px;
+  border-radius: 5px;
+  border: 1px solid #fa5d3b;
+  background-color: #fcfcfc;
+  color: #fa5d3b;
+  padding: 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-family: "Baloo 2";
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.selectGalleryYear:focus {
+  outline: none;
+}
+
+.galleryContentUltrasonidos {
+  background: rgba(37, 57, 98, 0.05);
+  color: #253962;
+}
+
+.galleryContentUltrasonidos:hover {
+  border: dashed;
+}
+
+.ultrasonidosTitleContainer {
+  background: linear-gradient(270deg, rgba(121, 108, 208, 0.05) 0%, rgba(254, 93, 55, 0.05) 99.99%, rgba(121, 108, 208, 0) 100%);
+  border: 2px dashed transparent;
+  -o-border-image: linear-gradient(270deg, rgba(121, 108, 208, 0.05) 0%, rgba(254, 93, 55, 0.05) 99.99%, rgba(121, 108, 208, 0) 100%);
+     border-image: linear-gradient(270deg, rgba(121, 108, 208, 0.05) 0%, rgba(254, 93, 55, 0.05) 99.99%, rgba(121, 108, 208, 0) 100%);
+  border-image-slice: 1;
+}
+
+.ultrasonidosTitle {
+  color: #fa5d3b;
+  text-align: center;
+  font-family: "Baloo 2";
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: 800;
+  line-height: normal;
+}
+
+@media (max-width: 768px) {
+  .ultrasonidosTitle {
+    font-size: 1rem;
   }
 }
 html {

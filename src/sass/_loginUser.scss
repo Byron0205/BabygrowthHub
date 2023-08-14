@@ -1,11 +1,14 @@
 .c-login {
     border-radius: 15px 15px 0 0;
-    width: 550px;
+    width: 360px;
     padding-bottom: 30px;
     flex-shrink: 0;
     color: $letter-1;
     background-color: rgba(79, 67, 154, 0.05);
-    ;
+
+    @include respond-to(tablet) {
+        width: 550px;
+    }
 }
 
 .c-login-header {
@@ -136,6 +139,7 @@
         margin-top: 10px;
         padding-bottom: 0;
         margin-bottom: 10px;
+        text-align: center;
     }
 
     &:last-child {
@@ -168,11 +172,15 @@
 }
 
 .container-img-login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 60%;
-    height: 100%;
+    display: none;
+
+    @include respond-to(desktop) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        height: 100%;
+    }
 }
 
 .img-padres-1 {

@@ -13,7 +13,8 @@
 
 .sliderImgContainer {
   flex: 1;
-  max-width: 40%;
+  max-width: 100%;
+  padding: 1rem;
 }
 
 .sliderImage {
@@ -57,4 +58,40 @@
 .sliderButtonIcon {
   font-size: 3rem;
   color: $purple;
+}
+
+
+@media (max-width: 767px) {
+  .sliderContainer {
+    margin: 1rem;
+    padding: 0rem;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 2px 2px 15px 0px rgba(0, 0, 0, 0.25);
+  }
+  .sliderItem {
+    display: flex;
+    flex-direction: column;
+    padding: 0rem;
+  }
+  .sliderContent {
+    padding: 0rem;
+    text-align: center;
+  }
+  .sliderText {
+    font-size: 1rem;
+    text-align: justify;
+  }
+  .sliderTitle {
+    font-size: 1.5rem;
+  }
+  .sliderImageContainer {
+    max-width: 100%;
+  }
+  .sliderImage {
+    width: 100%;
+  }
+  .sliderButtonIcon {
+    font-size: 2rem;
+  }
 }

@@ -2,6 +2,18 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    justify-content: center;
+
+    @include respond-to(desktop){
+        justify-content: flex-start;
+    }
+}
+
+.container-login{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
 }
 
 .container-nombre-expediente{
@@ -10,6 +22,12 @@
 }
 
 .container-register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    @include respond-to(desktop){
     margin: 0 auto;
     margin-bottom: 20px;
     width: 90%;
@@ -18,7 +36,7 @@
     grid-template-columns: 40% 60%;
     justify-self: start;
     align-items: center;
-
+    }
     @include respond-to(tv){
         height: 523px;
     }

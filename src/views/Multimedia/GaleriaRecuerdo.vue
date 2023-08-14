@@ -15,25 +15,25 @@
       <div class="flexAlbumsContainer">
         <div class="flexColumGallery">
           <div>
-            <button class="btnAlbum albumeEtapaDesarrollo">
+            <button class="btnAlbum albumeEtapaDesarrollo" @click="etapasDesarrollo(this.idBebe, 1)">
               Etapas del desarrollo
             </button>
           </div>
           <div>
-            <button class="btnAlbum albumPorAnio">Álbum por año</button>
+            <button class="btnAlbum albumPorAnio" @click="albumAnnio(this.idBebe, 1)">Álbum por año</button>
           </div>
         </div>
 
         <div class="flexColumGallery">
-          <button class="btnAlbum albumUltrasonidos">Ultrasonidos</button>
+          <button class="btnAlbum albumUltrasonidos" @click="ultrasonidos(this.idBebe, 2)">Ultrasonidos</button>
         </div>
 
         <div class="flexColumGallery">
           <div>
-            <button class="btnAlbum subirVideoFoto">Subir foto/video</button>
+            <button class="btnAlbum subirVideoFoto" @click="uploadMultimedia">Subir foto/video</button>
           </div>
           <div>
-            <button class="btnAlbum subirAudio">Grabar Audio</button>
+            <button class="btnAlbum subirAudio" @click="uploadSonido">Grabar Audio</button>
           </div>
         </div>
       </div>
@@ -60,12 +60,28 @@ export default {
     };
   },
   methods: {
+    uploadMultimedia(){
+      this.$router.push('/upmultimedia')
+    },
+    
+    uploadSonido(){
+      this.$router.push('/grabaraudios')
+    },
     checkUserSession() {
       const sessionValue = localStorage.getItem("session");
       if (sessionValue === "0" || sessionValue === undefined) {
         this.$router.push("/login");
       }
     },
+    etapasDesarrollo(idBebe, idAlbum){
+      this.$router.push(`/album-etapas-desarrollo/${idBebe}/${idAlbum}`);
+    },
+    albumAnnio(idBebe, idAlbum){
+      this.$router.push(`/album-por-anio/${idBebe}/${idAlbum}`);
+    },
+    ultrasonidos(idBebe, idAlbum){
+      this.$router.push(`/album-ultrasonidos/${idBebe}/${idAlbum}`);
+    }
   },
   mounted() {
     this.checkUserSession();

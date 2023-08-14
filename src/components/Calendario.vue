@@ -22,6 +22,7 @@
         <img class="img" src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Efecto-nube.png"
           alt="fondo nubes" />
       </div>
+
       <table class="tableCalendar">
         <thead>
           <tr>
@@ -41,15 +42,35 @@
                 <span class="calendarDay" @click="selectDate(day)">{{
                   day.day
                 }}</span>
-                <div v-for="event in getEventsForDate(day.date)" :key="event.IDActividad" class="calendarEvent"
-                  :style="{ backgroundColor: event.CategoriaColor }" @click="viewEvent(event)">
-                  {{ event.Titulo }}
+                <!-- --------------------------------------------------------------------------------------- -->
+                <div v-if="!ismobileView">
+                  <div v-for="event in getEventsForDate(day.date)" :key="event.IDActividad" class="calendarEvent"
+                    :style="{ backgroundColor: event.CategoriaColor }" @click="viewEvent(event)">
+                    {{ event.Titulo }}
+                  </div>
                 </div>
+                <!-- --------------------------------------------------------------------------------------- -->
               </div>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <!-- Lista de eventos -->
+      <div v-if="ismobileView" class="selectedDayEvents">
+        <h3 class="titleEventsMobile">Eventos del día {{ formatDate(selectedDate) }}</h3>
+        <button class="btnTaskMobile" @click="isNewEventPopupOpen = true"><i class="fas fa-plus"></i> Agregar
+          evento</button>
+        <ul>
+          <li v-for="event in selectedDayEvents" :key="event.IDActividad" class="selectedDayEvent"
+            :style="{ backgroundColor: event.CategoriaColor }">
+            <div class="selectedDayEventInfo">
+              <div class="selectedDayEventTitle">{{ event.Titulo }}</div>
+            </div>
+            <button class="btnTaskMobile" @click="viewEvent(event)">Ver detalles</button>
+          </li>
+        </ul>
+      </div>
 
       <div class="createEventContainer" v-if="isNewEventPopupOpen">
         <div class="createEventContent">
@@ -98,10 +119,10 @@
                 </option>
               </select>
             </div>
-              <div class="newEventFlexContainer">
-                <label class="newEventLabel" for="eventTime">Seleccione una hora</label>
-                <input class="newEventSelect" type="time" id="eventTime" v-model="eventTime" />
-              </div>
+            <div class="newEventFlexContainer">
+              <label class="newEventLabel" for="eventTime">Seleccione una hora</label>
+              <input class="newEventSelect" type="time" id="eventTime" v-model="eventTime" />
+            </div>
 
             <div class="newEventFlexContainer row">
               <button class="newEventBnt save" @click="saveEvent">Guardar</button>
@@ -201,7 +222,10 @@ export default {
       registeredBabies: [],
       selectedEvent: null,
       IDAdulto: '',
-      selectedSon: ''
+      selectedSon: '',
+
+      ismobileView: window.innerWidth <= 1024, // Determinar si la vista es de teléfono
+      selectedDayEvents: []
     };
   },
   computed: {
@@ -237,6 +261,9 @@ export default {
     },
   },
   methods: {
+    handleWindowResize() {
+      this.ismobileView = window.innerWidth <= 1024; // Ajusta el umbral según tus necesidades
+    },
     previousMonth() {
       this.currentDate = addMonths(this.currentDate, -1);
     },
@@ -259,7 +286,11 @@ export default {
       if (day.date) {
         this.selectedDate = day.date;
         this.eventDate = format(day.date, "dd/MM/yyyy");
-        this.isNewEventPopupOpen = true;
+        this.selectedDayEvents = this.getEventsForDate(this.selectedDate); // Asignar los eventos del día seleccionado
+        if (!this.ismobileView) {
+          this.isNewEventPopupOpen = true;
+        }
+
       }
     },
     saveEvent() {
@@ -396,6 +427,14 @@ export default {
     this.getBabies(this.IDAdulto);
     this.getCategories();
     this.getPriorities();
+    // Agrega el oyente de eventos para el cambio de tamaño de ventana
+    window.addEventListener('resize', this.handleWindowResize);
+    this.handleWindowResize(); // Llama al método una vez al inicio para establecer el valor inicial
   },
+  beforeDestroy() {
+    // Elimina el oyente de eventos para el cambio de tamaño de ventana
+    window.removeEventListener('resize', this.handleWindowResize);
+  }
 };
 </script>
+

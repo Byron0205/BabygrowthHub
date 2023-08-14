@@ -8,7 +8,7 @@
         <div class="cut"></div>
         <label class="placeholder">Cedula</label>
       </div>
-      <div class="flex flex-register input-container width-50">
+      <div class="flex input-container width-50">
         <div class="input-container width-50 ic1">
           <input v-model="parent.Nombre" @input="validarNombre" maxlength="15" :disabled="blockNombre" class="input" type="text" placeholder="" />
           <div class="cut"></div>
@@ -114,7 +114,7 @@ export default {
           const idAdulto = this.parent.IDAdulto;
           this.$router.push({
             name: "registroBebe",
-            params: { idAdulto: idAdulto },
+            params: { idAdulto: idAdulto, idRol: this.parent.IDRol },
           });
         })
         .catch((error) => {
