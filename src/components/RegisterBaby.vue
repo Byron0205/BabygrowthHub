@@ -157,6 +157,7 @@ export default {
       this.validarFechaEdad();
       this.DatosBebe.IDBebe = this.generarCodigoInvitacion();
       const idAdulto = this.$route.params.idAdulto;
+      const idRol = this.$route.params.idRol;
 
       const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/registrarBebe";
 
@@ -165,7 +166,7 @@ export default {
         .then((response) => {
           const msg = response.data;
           //console.log(msg);
-          this.vincularBebe(this.DatosBebe.IDBebe, idAdulto)
+          this.vincularBebe(this.DatosBebe.IDBebe, idAdulto, idRol);
           this.$router.push("/");
         })
         .catch((err) => {
@@ -220,10 +221,11 @@ export default {
       // Acepta letras mayúsculas, minúsculas y espacios
       this.DatosBebe.Apellidos = this.DatosBebe.Apellidos.replace(/[^A-Za-z\s]/g, '');
     },
-    vincularBebe(idBebe, idAdulto) {
+    vincularBebe(idBebe, idAdulto, idRol) {
       const data = {
         idBebe: idBebe,
         idAdulto: idAdulto,
+        IDRol: idRol
       };
 
       console.log(data);

@@ -38,7 +38,7 @@ const router = createRouter({
       component: () => import('../views/RegisterEncargadoVIew.vue')
     },
     {
-      path: '/registro/3/:idAdulto',
+      path: '/registro/3/:idAdulto/:idRol',
       name: 'registroBebe',
       component: ()=> import('../views/RegisterBabyView.vue')
     },

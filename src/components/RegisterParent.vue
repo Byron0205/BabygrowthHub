@@ -114,7 +114,7 @@ export default {
           const idAdulto = this.parent.IDAdulto;
           this.$router.push({
             name: "registroBebe",
-            params: { idAdulto: idAdulto },
+            params: { idAdulto: idAdulto, idRol: this.parent.IDRol },
           });
         })
         .catch((error) => {
