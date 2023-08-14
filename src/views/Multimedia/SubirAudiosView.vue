@@ -197,7 +197,7 @@ export default {
 
                 console.log('Data sent to the server:', data);
 
-                this.$router.push("/grabaraudios")
+                this.$router.push("/perfil")
             } catch (error) {
                 console.error('Error uploading file:', error);
             }
