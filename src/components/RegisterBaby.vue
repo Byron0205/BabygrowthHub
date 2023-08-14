@@ -225,7 +225,8 @@ export default {
       const data = {
         idBebe: idBebe,
         idAdulto: idAdulto,
-        IDRol: idRol
+        EncargadoPrincipal: 0,
+        IDRol: parseInt(idRol)
       };
 
       console.log(data);
