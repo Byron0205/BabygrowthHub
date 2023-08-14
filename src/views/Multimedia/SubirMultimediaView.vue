@@ -217,6 +217,7 @@ export default {
 
                 const result = await response.json();
                 console.log('Data inserted into the database:', result);
+                window.location.reload();
             } catch (error) {
                 console.error('Error inserting data into the database:', error);
             }

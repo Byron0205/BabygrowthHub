@@ -18,7 +18,7 @@
                 <audio ref="audioPlayer" controls></audio>
                 <i v-if="!isRecording" class="record-icon fas fa-microphone" style="color: #FA5D3B; font-size: 20px;"
                     @click="startRecording"></i>
-                <i v-if="isRecording" class="stop-icon fas fa-stop-circle"  style="color: #FA5D3B; font-size: 20px;"
+                <i v-if="isRecording" class="stop-icon fas fa-stop-circle" style="color: #FA5D3B; font-size: 20px;"
                     @click="stopRecording"></i>
                 <i v-if="showDeleteIcon" class="trash-icon fas fa-trash" style="color: #FA5D3B; font-size: 20px;"
                     @click.stop="deleteAudioRecording"></i>
@@ -101,7 +101,9 @@ export default {
 
                 this.mediaRecorder.onstop = () => {
                     const audioBlob = new Blob(chunks, { type: 'audio/mpeg' });
-                    this.audioRecording = audioBlob;
+                    const randomName = `${Math.random().toString(36).substring(7)}.mp3`;
+                    this.audioRecording = new File([audioBlob], randomName, { type: 'audio/mpeg' });
+
                     stream.getTracks().forEach((track) => track.stop());
                     this.showDeleteIcon = true;
                     this.$refs.audioPlayer.src = URL.createObjectURL(audioBlob);
@@ -120,7 +122,6 @@ export default {
                 this.mediaRecorder.stop();
                 this.isRecording = false;
                 this.$refs.audioPlayer.pause();
-                this.$refs.audioPlayer.currentTime = 0;
             }
         },
         deleteAudioRecording() {
@@ -163,12 +164,12 @@ export default {
 
         async uploadFileToServer() {
             try {
-                if (!this.uploadedFile) {
+                if (!this.audioRecording) {
                     return;
                 }
 
                 const formData = new FormData();
-                formData.append('archivo', this.audioRecording, `${this.newMemoryName}.mp3`); // Nombre del archivo basado en newMemoryName
+                formData.append('archivo', this.audioRecording);
                 const data = {
                     NombreRecuerdo: this.newMemoryName,
                     IDEtapa: this.selectedAlbum === '2' ? null : this.selectedStage,
@@ -177,6 +178,7 @@ export default {
                     IDAlbum: this.selectedAlbum,
                     IDBebe: this.selectedChild,
                 };
+                console.log('FormData contents:', formData);
 
                 formData.append('data', JSON.stringify(data));
 
@@ -194,6 +196,8 @@ export default {
                 await this.insertDataToDatabase(data);
 
                 console.log('Data sent to the server:', data);
+
+                window.location.reload();
             } catch (error) {
                 console.error('Error uploading file:', error);
             }
