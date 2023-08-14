@@ -117,6 +117,11 @@ const router = createRouter({
       name:"galeriaRecuerdo",
       component:()=> import('../views/Multimedia/GaleriaRecuerdo.vue')
     },
+    {
+      path: "/grabaraudios",
+      name: "grabaraudios",
+      component: ()=> import('../views/Multimedia/SubirAudiosView.vue')
+    },
   ]
 })
 
