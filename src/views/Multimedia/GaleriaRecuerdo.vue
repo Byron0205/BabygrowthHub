@@ -33,7 +33,7 @@
             <button class="btnAlbum subirVideoFoto" @click="uploadMultimedia">Subir foto/video</button>
           </div>
           <div>
-            <button class="btnAlbum subirAudio">Grabar Audio</button>
+            <button class="btnAlbum subirAudio" @click="uploadSonido">Grabar Audio</button>
           </div>
         </div>
       </div>
@@ -65,7 +65,7 @@ export default {
     },
     
     uploadSonido(){
-      this.$router.push('/upmultimedia')
+      this.$router.push('/grabaraudios')
     },
     checkUserSession() {
       const sessionValue = localStorage.getItem("session");
