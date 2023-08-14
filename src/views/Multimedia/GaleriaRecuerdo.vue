@@ -30,7 +30,7 @@
 
         <div class="flexColumGallery">
           <div>
-            <button class="btnAlbum subirVideoFoto">Subir foto/video</button>
+            <button class="btnAlbum subirVideoFoto" @click="uploadMultimedia">Subir foto/video</button>
           </div>
           <div>
             <button class="btnAlbum subirAudio">Grabar Audio</button>
@@ -60,6 +60,13 @@ export default {
     };
   },
   methods: {
+    uploadMultimedia(){
+      this.$router.push('/upmultimedia')
+    },
+    
+    uploadSonido(){
+      this.$router.push('/upmultimedia')
+    },
     checkUserSession() {
       const sessionValue = localStorage.getItem("session");
       if (sessionValue === "0" || sessionValue === undefined) {

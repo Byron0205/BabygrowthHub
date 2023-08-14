@@ -132,6 +132,11 @@ const router = createRouter({
       name:"albumUltrasonidos",
       component:()=> import('../views/Multimedia/ultrasonidos.vue')
     },
+    {
+      path: "/grabaraudios",
+      name: "grabaraudios",
+      component: ()=> import('../views/Multimedia/SubirAudiosView.vue')
+    },
   ]
 })
 
