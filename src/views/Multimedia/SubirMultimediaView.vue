@@ -196,7 +196,7 @@ export default {
                 await this.insertDataToDatabase(data);
 
                 console.log('Data sent to the server:', data);
-                window.location.reload();
+                this.$router.push("/upmultimedia")
             } catch (error) {
                 console.error('Error uploading file:', error);
             }

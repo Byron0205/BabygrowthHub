@@ -197,7 +197,7 @@ export default {
 
                 console.log('Data sent to the server:', data);
 
-                window.location.reload();
+                this.$router.push("/grabaraudios")
             } catch (error) {
                 console.error('Error uploading file:', error);
             }

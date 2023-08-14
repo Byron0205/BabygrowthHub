@@ -181,7 +181,13 @@ export default {
       }
     },
     vincularBebe() {
-      this.$router.push("/registro/3/" + this.profileData.IDAdulto);
+      let rol
+      if (this.profileData.ROL === "Padre") {
+        rol = 1; 
+      } else if (this.profileData.ROL === "Madre"){
+        rol= 2;
+      }
+      this.$router.push("/registro/3/" + this.profileData.IDAdulto + "/"+ rol);
     },
 
     verExpedienteBebe() {
