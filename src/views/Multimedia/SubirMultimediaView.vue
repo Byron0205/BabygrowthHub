@@ -196,6 +196,7 @@ export default {
                 await this.insertDataToDatabase(data);
 
                 console.log('Data sent to the server:', data);
+                window.location.reload();
             } catch (error) {
                 console.error('Error uploading file:', error);
             }
@@ -217,7 +218,7 @@ export default {
 
                 const result = await response.json();
                 console.log('Data inserted into the database:', result);
-                window.location.reload();
+                
             } catch (error) {
                 console.error('Error inserting data into the database:', error);
             }
