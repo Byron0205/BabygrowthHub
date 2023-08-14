@@ -72,6 +72,7 @@
     }
 }
 
+
 .upload-message {
     font-family: 'Baloo 2';
     width: 300px;
@@ -176,13 +177,18 @@
     }
 
     .date {
+        font-family: "Baloo 2";
+        color: #4F439A;
         position: absolute;
         top: 10px;
         left: 10px;
         font-size: 16px;
     }
 
+
     .drag-text {
+        font-family: "Baloo 2";
+        color: #4F439A;
         text-align: center;
         font-size: 18px;
     }
@@ -295,6 +301,7 @@
     margin: 26px;
     padding: 8px;
     background-color: #fff9f3;
+    font-family: "Baloo 2";
   }
 
 
@@ -341,6 +348,8 @@
     .upload-multi {
         width: 90%;
         max-width: 500px;
+        font-family: "Baloo 2";
+        color: #4F439A;
         height: auto;
         flex-direction: column;
         align-items: flex-start;
