@@ -2146,6 +2146,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 
 .sendBabyCodeHeader {
@@ -2468,6 +2469,7 @@ footer {
   width: 336px;
   height: 46px;
   border-radius: 5px;
+  font-family: "Baloo 2";
   border: 1px solid #3E3578;
   background: rgba(121, 108, 208, 0.03);
   margin-bottom: 20px;

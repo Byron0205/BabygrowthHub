@@ -72,7 +72,7 @@
           >
           <router-link
             v-if="admin && session == true"
-            class="link"
+            class="nav-link"
             to="/admin/perfil"
             >Perfil</router-link
           >
