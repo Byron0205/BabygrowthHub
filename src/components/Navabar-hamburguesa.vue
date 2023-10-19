@@ -4,14 +4,14 @@
       <div class="container-img">
         <img
           class="img"
-          src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Fondo-de-nubes.png"
+          src="https://sw-baby-growth-hub.s3.us-east-2.amazonaws.com/imagenes-sitio-web/fondo-nubes.svg"
           alt="fondo nubes"
         />
       </div>
       <div class="container-logo">
         <img
           class="img-logo"
-          src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/logo.png"
+          src="https://sw-baby-growth-hub.s3.us-east-2.amazonaws.com/imagenes-sitio-web/logo.svg"
           alt="logo"
         />
       </div>
@@ -82,7 +82,7 @@
     <div class="container-img">
       <img
         class="img-efecto-nube"
-        src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Efecto-nube.png"
+        src="https://sw-baby-growth-hub.s3.us-east-2.amazonaws.com/imagenes-sitio-web/efecto-nubes.svg"
         alt="efecto"
       />
     </div>

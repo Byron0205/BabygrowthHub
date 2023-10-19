@@ -10,23 +10,33 @@
                 </p>
             </div>
         </div>
-        <div class="description-task " style="padding: 1rem;">
+        <div class="description-task" style="padding: 1rem">
             <div>
-                <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-texto.svg" alt="label" />
+                <img
+                    src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-texto.svg"
+                    alt="label"
+                />
             </div>
-            <div class="description-task-text color">Registrado(a) desde: {{ formatDate(user.FechaRegistro) }}</div>
+            <div class="description-task-text color">
+                Registrado(a) desde: {{ formatDate(user.FechaRegistro) }}
+            </div>
         </div>
-        <div class="description-task " style="padding: 1rem;">
+        <div class="description-task" style="padding: 1rem">
             <div>
-                <img src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-texto.svg" alt="label" />
+                <img
+                    src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-texto.svg"
+                    alt="label"
+                />
             </div>
-            <div class="description-task-text color">Padre de: {{ user.Bebe }}</div>
+            <div class="description-task-text color">
+                Padre de: {{ user.Bebe }}
+            </div>
         </div>
     </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
     data() {
         return {
@@ -35,21 +45,22 @@ export default {
                 FechaRegistro: "",
                 Rol: "",
                 Bebe: "",
-                Correo: ""
-            }
-        }
+                Correo: "",
+            },
+        };
     },
     methods: {
         obtenerUsuarios() {
-            const url = "https://tiusr3pl.cuc-carrera-ti.ac.cr/verUsuarios"
+            const url = "http://localhost:3000/verUsuarios";
 
-            axios.get(url)
-                .then(response => {
+            axios
+                .get(url)
+                .then((response) => {
                     this.Users = response.data;
                 })
-                .catch(error => {
-                    console.log('Error al obtener los usuario: ' + error)
-                })
+                .catch((error) => {
+                    console.log("Error al obtener los usuario: " + error);
+                });
         },
         formatDate(isoDate) {
             const date = new Date(isoDate);
@@ -57,12 +68,12 @@ export default {
             const month = date.getMonth() + 1; // Los meses en JavaScript son base 0, por eso sumamos 1
             const year = date.getFullYear();
             return `${day}/${month}/${year}`;
-        }
+        },
     },
-    mounted(){
-        this.obtenerUsuarios()
-    }
-}
+    mounted() {
+        this.obtenerUsuarios();
+    },
+};
 </script>
 
 <style></style>

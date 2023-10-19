@@ -7,28 +7,39 @@
         </div>
         <div class="navbar-diet">
             <div class="age-options-container">
-                <div class="age-option" v-for="(ageRange, index) in ageRanges" :key="index"
-                    :class="{ selected: selectedAgeRange === index }" @click="selectAgeRange(index)">
+                <div
+                    class="age-option"
+                    v-for="(ageRange, index) in ageRanges"
+                    :key="index"
+                    :class="{ selected: selectedAgeRange === index }"
+                    @click="selectAgeRange(index)"
+                >
                     {{ ageRange }}
                 </div>
             </div>
         </div>
         <div v-if="selectedAgeRange !== null">
-            <div v-for="(diet, index) in selectedDiets" :key="diet.IDDieta"
-                :class="{ 'diet-container': true, 'left': index % 2 === 0, 'right': index % 2 === 1 }">
+            <div
+                v-for="(diet, index) in selectedDiets"
+                :key="diet.IDDieta"
+                :class="{
+                    'diet-container': true,
+                    left: index % 2 === 0,
+                    right: index % 2 === 1,
+                }"
+            >
                 <h2 class="title-diet">{{ diet.Nombre }}</h2>
                 <div class="container-text-etapa">
                     <p class="diet-text">{{ diet.Detalles }}</p>
                     <div class="img-container">
-                        <img :src="diet.img" alt="bebe" class="img-content">
+                        <img :src="diet.img" alt="bebe" class="img-content" />
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </template>
-  
+
 <script>
 import axios from "axios";
 
@@ -37,7 +48,13 @@ export default {
 
     data() {
         return {
-            ageRanges: ["0 - 1 años", "1 - 2 años", "2 - 3 años", "3 - 4 años", "4 - 5 años"],
+            ageRanges: [
+                "0 - 1 años",
+                "1 - 2 años",
+                "2 - 3 años",
+                "3 - 4 años",
+                "4 - 5 años",
+            ],
             selectedAgeRange: null,
             diets: [],
         };
@@ -69,7 +86,9 @@ export default {
     methods: {
         async fetchDietsFromAPI() {
             try {
-                const response = await axios.get("https://tiusr3pl.cuc-carrera-ti.ac.cr/dietas");
+                const response = await axios.get(
+                    "http://localhost:3000/dietas"
+                );
                 this.diets = response.data;
             } catch (error) {
                 console.error("Error fetching diets from API:", error);
@@ -90,6 +109,5 @@ export default {
     },
 };
 </script>
-  
+
 <style lang="scss" scoped></style>
-  
