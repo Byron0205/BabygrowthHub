@@ -7,7 +7,7 @@
         <div class="flexItem">
             <img
                 class="imgQuestions"
-                src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/Advertencia+sobre+uso+de+IA.png"
+                src="https://sw-baby-growth-hub.s3.us-east-2.amazonaws.com/imagenes-sitio-web/preguntas-respuestas.svg"
                 alt="Advertencia uso IA"
             />
         </div>

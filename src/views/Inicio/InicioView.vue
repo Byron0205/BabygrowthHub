@@ -31,7 +31,7 @@
                 </div>
                 <div class="card-weight">
                     <img
-                        src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-sol.png"
+                        src="https://sw-baby-growth-hub.s3.us-east-2.amazonaws.com/imagenes-sitio-web/decoracion-sol.svg"
                         alt="img-sol"
                     />
                     <i
@@ -55,7 +55,7 @@
 
         <div class="photos-content">
             <img
-                src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Imagen-ni%C3%B1os.png"
+                src="https://sw-baby-growth-hub.s3.us-east-2.amazonaws.com/imagenes-sitio-web/home-01.svg"
                 alt=""
                 class="image-bottom"
             />

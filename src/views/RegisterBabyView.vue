@@ -1,15 +1,17 @@
 <template>
-    <RegisterBaby/>
-    <img class="img-boy" src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/ni%C3%B1o1.png" alt="niño">
+    <RegisterBaby />
+    <img
+        class="img-boy"
+        src="https://sw-baby-growth-hub.s3.us-east-2.amazonaws.com/imagenes-sitio-web/decoracion-ni%C3%B1o.svg"
+        alt="niño"
+    />
 </template>
 
 <script>
-import RegisterBaby from '../components/RegisterBaby.vue';
+import RegisterBaby from "../components/RegisterBaby.vue";
 export default {
-    components: { RegisterBaby}
-}
+    components: { RegisterBaby },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

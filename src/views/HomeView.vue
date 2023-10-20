@@ -33,7 +33,7 @@
         <div class="homeImgContainer">
             <img
                 class="homeImg"
-                src="https://sw-baby-growth-hub.s3.us-east-2.amazonaws.com/imagenes-sitio-web/ni%C3%B1os-jugando.svg"
+                src="https://sw-baby-growth-hub.s3.us-east-2.amazonaws.com/imagenes-sitio-web/home-01.svg"
                 alt="Niños jugando"
             />
         </div>

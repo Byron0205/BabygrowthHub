@@ -58,7 +58,7 @@
                 </div>
                 <div class="medicameto-imagen">
                     <img
-                        src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/Advertencia+actualizacion+expediente.png"
+                        src="https://sw-baby-growth-hub.s3.us-east-2.amazonaws.com/imagenes-sitio-web/expediente-medicacion.svg"
                         class="medicacionImagenAdvertencia"
                     />
                 </div>

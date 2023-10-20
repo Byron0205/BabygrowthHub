@@ -2,7 +2,7 @@
     <div class="container">
         <div class="info-container">
             <img
-                src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Imagen-decoracion.png"
+                src="https://sw-baby-growth-hub.s3.us-east-2.amazonaws.com/imagenes-sitio-web/galeria-recuerdo.svg"
                 class="img-multimedia"
                 alt=""
             />
