@@ -19,7 +19,7 @@
         <div class="ageOptionsContainer">
             <div
                 class="ageOption"
-                v-for="multimedia in multimediaType"
+                v-for="(multimedia, index) in multimediaType"
                 :key="index"
                 :class="{ selected: selectedMultimediaType === multimedia }"
                 @click="selectMultimediaType(multimedia)"
