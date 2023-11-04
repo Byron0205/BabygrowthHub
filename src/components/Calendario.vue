@@ -29,7 +29,7 @@
             <div>
                 <img
                     class="img"
-                    src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Efecto-nube.png"
+                    src="https://sw-baby-growth-hub.s3.us-east-2.amazonaws.com/imagenes-sitio-web/efecto-nubes.svg"
                     alt="fondo nubes"
                 />
             </div>

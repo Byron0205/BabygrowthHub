@@ -162,7 +162,7 @@
         </div>
         <div class="rainbow-decoration">
             <img
-                src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/Decoracion-arcoiris.png"
+                src="https://sw-baby-growth-hub.s3.us-east-2.amazonaws.com/imagenes-sitio-web/decoracion-arcoiris.svg"
                 id="img-arcoiris-profile"
                 alt=""
             />

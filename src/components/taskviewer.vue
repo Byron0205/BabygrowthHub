@@ -1,6 +1,7 @@
 <template>
     <div
         class="task"
+        style="padding: 1rem; padding-top: 0rem; color: #253962"
         v-for="activity in activitiesDay"
         :key="activity.IDActividad"
     >
@@ -28,12 +29,9 @@
                 </div>
             </div>
         </div>
-        <div class="description-task" style="padding: 1rem">
+        <div class="description-task">
             <div>
-                <img
-                    src="https://baby-growth-hub.s3.amazonaws.com/ImagenesSitioWeb/img/icono-texto.svg"
-                    alt="label"
-                />
+                <i class="fa-solid fa-align-left"></i>
             </div>
             <div class="description-task-text color">
                 {{ activity.Detalle }}

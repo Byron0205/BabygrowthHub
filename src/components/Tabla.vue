@@ -7,14 +7,12 @@
     </div>
 </template>
 
-<script> 
+<script>
 export default {
-    props:{
-        titulo: String
-    }
-}
+    props: {
+        titulo: String,
+    },
+};
 </script>
 
-<style>
-
-</style>
+<style></style>
